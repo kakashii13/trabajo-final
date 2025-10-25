@@ -1,0 +1,70 @@
+## Ignorar carpetas de compilación
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]uild/
+bld/
+
+## Ignorar archivos de usuario de Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+
+## Ignorar archivos temporales
+*.tmp
+*.log
+*.cache
+*.bak
+*.swp
+*~
+
+## Ignorar paquetes NuGet
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+
+## Ignorar archivos de base de datos locales
+*.mdf
+*.ldf
+*.ndf
+
+## Ignorar carpetas de tu aplicación (IMPORTANTE)
+db/
+backups/
+pdfs/
+system/
+
+## Ignorar archivos de configuración con datos sensibles
+appsettings.json
+App.config
+Web.config
+
+## Ignorar archivos de ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## Ignorar archivos de testing
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+## Ignorar archivos de publicación
+publish/
+*.Publish.xml
+*.pubxml
+*.publishproj
+
+## Ignorar thumbnails de Windows
+Thumbs.db
+Desktop.ini
+
+## Ignorar archivos de Mac
+.DS_Store
