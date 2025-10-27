@@ -101,6 +101,12 @@ namespace BLL
         public void EliminarUsuario(BEUsuario usuario)
         {
             try {
+
+                if(usuario.NombreUsuario == "admin")
+                {
+                    throw new Exception("No se puede eliminar el usuario administrador.");
+                }
+
                 if (usuario.Eliminado)
                 {
                     throw new Exception("El usuario ya está eliminado.");

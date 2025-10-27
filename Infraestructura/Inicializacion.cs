@@ -23,14 +23,14 @@ namespace Infraestructura
 
         public static void InicializarSistema()
         {
+            // inicializamos la estructura de directorios
+            ServicioDirectorio.InicializarEstructura();
+
             // verificamos si el archivo de control existe
             if (!File.Exists(ArchivoControl))
             {
                 bllPermiso = new BLLPermiso();
                 bllUsuario = new BLLUsuario();
-
-                // inicializamos la estructura de directorios
-                ServicioDirectorio.InicializarEstructura();
 
                 // creamos el archivo de control para futuras ejecuciones
                 File.WriteAllText(ArchivoControl, DateTime.Now.ToString());
@@ -38,7 +38,7 @@ namespace Infraestructura
                 try
                 {
                     CrearPermisosDefault();
-                    CrearRoleDefault();
+                    CrearRolDefault();
                     CrearUsuarioAdmin();
                 }
                 catch (Exception ex)
@@ -52,8 +52,8 @@ namespace Infraestructura
         {
             List<BEPermiso> permisos = new List<BEPermiso>
         {
-            new BEPermisoSimple("inicio.cambiarClave"),
-            new BEPermisoSimple("inicio.cerrarSesion"),
+            //new BEPermisoSimple("inicio.cambiarClave"),
+            //new BEPermisoSimple("inicio.cerrarSesion"),
             new BEPermisoSimple("admin.usuarios"),
             new BEPermisoSimple("admin.rolesPermisos"),
             new BEPermisoSimple("padron.registrarAfiliado"),
@@ -78,25 +78,25 @@ namespace Infraestructura
             new BEPermisoSimple("baseDatos.bitacora"),
             new BEPermisoSimple("dashboard")
         };
-            
 
             foreach (var permiso in permisos)
             {
                 bllPermiso.CrearPermiso(permiso, false);
             }
         }
-        private static void CrearRoleDefault()
+        private static void CrearRolDefault()
         {
-            BEPermiso rolAdmin = new BERol("admin");
+            BERol rolAdmin = new BERol("admin");
 
             var permisos = bllPermiso.ListarPermisos()
                 .Where(p => p.Nombre != "admin");
 
+            bllPermiso.CrearPermiso(rolAdmin, true);
+
             foreach (var permiso in permisos)
             {
-                rolAdmin.AgregarPermiso(permiso);
+                bllPermiso.AsignarPermiso(rolAdmin, permiso);
             }
-            bllPermiso.CrearPermiso(rolAdmin, true);
         }
 
         private static void CrearUsuarioAdmin()
@@ -104,8 +104,7 @@ namespace Infraestructura
             BERol rol = bllPermiso.ListarRolesConPermisos()
                 .FirstOrDefault(r => r.Nombre == "admin");
 
-            string password = ServicioSeguridad.Encriptar("admin");
-            BEUsuario usuarioAdmin = new BEUsuario("admin","admin",  password, "admin", 0, true, false);
+            BEUsuario usuarioAdmin = new BEUsuario("admin","admin", "admin", "admin", 0, true, false);
 
             bllUsuario.CrearUsuario(usuarioAdmin);
             bllUsuario.AsignarRol(usuarioAdmin, rol);

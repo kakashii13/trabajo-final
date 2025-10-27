@@ -17,9 +17,10 @@ namespace UI
         BLLAfiliado bllAfiliado;
         BLLFactura bllFactura;
         BLLSolicitud bllSolicitud;
-        BLLPrestador bllPrestador;
+        BLLAutorizacion bllAutorizacion;
         List<BESolicitud> solicitudes;
         List<BEFactura> facturas;
+        List<BEAutorizacion> autorizaciones;
 
         public Dashboard()
         {
@@ -27,7 +28,7 @@ namespace UI
             bllAfiliado = new BLLAfiliado();
             bllFactura = new BLLFactura();
             bllSolicitud = new BLLSolicitud();
-            bllPrestador = new BLLPrestador();
+            bllAutorizacion = new BLLAutorizacion();
 
             CargarDashboard();
         }
@@ -50,30 +51,41 @@ namespace UI
                 solicitudes = bllSolicitud.ListarSolicitudes();
                 // facturas
                 facturas = bllFactura.ListarFacturas();
-                
-                ActualizarLabels(solicitudes, facturas);
+                // autorizaciones
+                autorizaciones = bllAutorizacion.ListarAutorizaciones();
+
+                ActualizarLabels(solicitudes, facturas, autorizaciones);
 
                 // practicas mas solicitadas
-                var practicasMasSolicitadas = solicitudes
-                    .GroupBy(s => s.Practica.Nombre)
-                    .Select(g => new { Practica = g.Key, Cantidad = g.Count() })
-                    .OrderByDescending(g => g.Cantidad)
-                    .Take(5)
-                    .ToList();
+                ActualizarPracticasChart(solicitudes);
 
-                chart_practicas_solicitadas.Series.Clear();
-                var series = chart_practicas_solicitadas.Series.Add("Prácticas");
-                foreach (var practica in practicasMasSolicitadas)
-                {
-                    series.Points.AddXY(practica.Practica, practica.Cantidad);
-                }
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("Error al cargar el dashboard: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ActualizarLabels(List<BESolicitud> solicitudes, List<BEFactura> facturas)
+        private void ActualizarPracticasChart(List<BESolicitud> solicitudes)
+        {
+            var practicasMasSolicitadas = solicitudes
+                   .GroupBy(s => s.Practica.Nombre)
+                   .Select(g => new { Practica = g.Key, Cantidad = g.Count() })
+                   .OrderByDescending(g => g.Cantidad)
+                   .Take(5)
+                   .ToList();
+
+            chart_practicas_solicitadas.Series.Clear();
+            
+            var series = chart_practicas_solicitadas.Series.Add("Prácticas");
+
+            foreach (var practica in practicasMasSolicitadas)
+            {
+                series.Points.AddXY(practica.Practica, practica.Cantidad);
+            }
+        }
+
+        private void ActualizarLabels(List<BESolicitud> solicitudes, List<BEFactura> facturas, List<BEAutorizacion> autorizaciones)
         {
             // actualizar labels de solicitudes
             lbl_solicitudes_pendientes.Text = solicitudes.Where(s => s.Estado == "Pendiente").Count().ToString();
@@ -115,6 +127,9 @@ namespace UI
                 .Where(f => f.Estado == "Pagada")
                 .Sum(f => f.Monto)
                 .ToString("C");
+
+            // actualizar label de autorizacion
+            lblAutorizaciones.Text = autorizaciones.Count.ToString();
         }
 
         private void btn_mes_Click(object sender, EventArgs e)
@@ -123,10 +138,19 @@ namespace UI
                 var solicitudesFiltradas = solicitudes
                     .Where(s => s.FechaSolicitud.Month == DateTime.Now.Month && s.FechaSolicitud.Year == DateTime.Now.Year)
                     .ToList();
+                
                 var facturasFiltradas = facturas
                     .Where(f => f.FechaRecibida.Month == DateTime.Now.Month && f.FechaRecibida.Year == DateTime.Now.Year)
                     .ToList();
-                ActualizarLabels(solicitudesFiltradas, facturasFiltradas);
+
+                var autorizacionesFiltradas = autorizaciones
+                    .Where(a => a.FechaAutorizacion.Month == DateTime.Now.Month && a.FechaAutorizacion.Year == DateTime.Now.Year)
+                    .ToList();
+
+                ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
+
+                // practicas mas solicitadas
+                ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)
             {
@@ -141,10 +165,18 @@ namespace UI
                 var solicitudesFiltradas = solicitudes
                     .Where(s => (DateTime.Now - s.FechaSolicitud).TotalDays <= 7)
                     .ToList();
+                
                 var facturasFiltradas = facturas.
                     Where(f => (DateTime.Now - f.FechaRecibida).TotalDays <= 7)
                     .ToList();
-                ActualizarLabels(solicitudesFiltradas, facturasFiltradas);
+
+                var autorizacionesFiltradas = autorizaciones
+                    .Where(a => (DateTime.Now - a.FechaAutorizacion).TotalDays <= 7)
+                    .ToList();
+
+                ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
+                // practicas mas solicitadas
+                ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)
             {
@@ -159,10 +191,18 @@ namespace UI
                 var solicitudesFiltradas = solicitudes
                     .Where(s => s.FechaSolicitud.Date == DateTime.Now.Date)
                     .ToList();
+                
                 var facturasFiltradas = facturas
                     .Where(f => f.FechaRecibida.Date == DateTime.Now.Date)
                     .ToList();
-                ActualizarLabels(solicitudesFiltradas, facturasFiltradas);
+                
+                var autorizacionesFiltradas = autorizaciones
+                    .Where(a => a.FechaAutorizacion.Date == DateTime.Now.Date)
+                    .ToList();
+
+                ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
+                // practicas mas solicitadas
+                ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)
             {
@@ -177,10 +217,18 @@ namespace UI
                 var solicitudesFiltradas = solicitudes
                     .Where(s => (DateTime.Now - s.FechaSolicitud).TotalDays <= 30)
                     .ToList();
+                
                 var facturasFiltradas = facturas
                     .Where(f => (DateTime.Now - f.FechaRecibida).TotalDays <= 30)
                     .ToList();
-                ActualizarLabels(solicitudesFiltradas, facturasFiltradas);
+                
+                var autorizacionesFiltradas = autorizaciones
+                    .Where(a => (DateTime.Now - a.FechaAutorizacion).TotalDays <= 30)
+                    .ToList();
+
+                ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
+                // practicas mas solicitadas
+                ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)
             {
@@ -206,10 +254,6 @@ namespace UI
             puntoInactivos.Label = $"Inactivos ({inactivos})";
             puntoInactivos.LegendText = "Inactivos";
             puntoInactivos.Color = Color.Brown;
-
-            // Configuraciones adicionales (opcionales)
-            //series["PieLabelStyle"] = "Outside"; // Etiquetas fuera de la torta
-            //series["PieLineColor"] = "Black"; // Color de las líneas
         }
 
         private void btn_buscar_Click(object sender, EventArgs e)
@@ -221,10 +265,18 @@ namespace UI
                 var solicitudesFiltradas = solicitudes
                     .Where(s => s.FechaSolicitud.Date >= fechaDesde && s.FechaSolicitud.Date <= fechaHasta)
                     .ToList();
+                
                 var facturasFiltradas = facturas
                     .Where(f => f.FechaRecibida.Date >= fechaDesde && f.FechaRecibida.Date <= fechaHasta)
                     .ToList();
-                ActualizarLabels(solicitudesFiltradas, facturasFiltradas);
+               
+                var autorizacionesFiltradas = autorizaciones
+                    .Where(a => a.FechaAutorizacion.Date >= fechaDesde && a.FechaAutorizacion.Date <= fechaHasta)
+                    .ToList();
+
+                ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
+                // practicas mas solicitadas
+                ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)
             {

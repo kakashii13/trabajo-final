@@ -30,6 +30,14 @@ namespace MPP
                 );
                 xDocument.Save(rutaArchivoPrestadores);
             }
+
+            if (!File.Exists(rutaArchivoPracticasPrestadores))
+            {
+                xDocument = new XDocument(
+                    new XElement("PracticasPrestadores")
+                );
+                xDocument.Save(rutaArchivoPracticasPrestadores);
+            }
         }
 
         public void CrearPrestador(BEPrestador prestador)

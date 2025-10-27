@@ -103,7 +103,7 @@ namespace MPP
 
             int ultimoNro = xDocument.Descendants("Autorizacion")
                 .Select(x => (int)x.Element("NumeroAutorizacion"))
-                .DefaultIfEmpty(1)
+                .DefaultIfEmpty(0)
                 .Max();
 
             return ultimoNro + 1;

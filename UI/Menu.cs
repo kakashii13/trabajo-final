@@ -38,7 +38,7 @@ namespace UI
             {
                 if (permiso is BEPermisoSimple permisoSimple)
                 {
-                    // Si es un permiso simple, agregarlo directamente
+                    // si un permiso es simple lo agregamos a la lista de permisos del usuario
                     if (!permisosUsuario.Any(p => p.Id == permisoSimple.Id))
                     {
                         permisosUsuario.Add(permisoSimple);
@@ -118,6 +118,10 @@ namespace UI
             {
                 if (item is ToolStripMenuItem subMenuItem)
                 {
+                    if(item.Name == "inicio")
+                    {
+                        continue; // dejamos siempre visibles los items inicio
+                    }
                     subMenuItem.Visible = false;
 
                     // si el elemento tiene subitems, llamamos recursivamente

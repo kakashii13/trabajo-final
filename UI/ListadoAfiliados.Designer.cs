@@ -42,7 +42,7 @@
             this.dg_afiliados.Location = new System.Drawing.Point(12, 35);
             this.dg_afiliados.Name = "dg_afiliados";
             this.dg_afiliados.ReadOnly = true;
-            this.dg_afiliados.Size = new System.Drawing.Size(856, 150);
+            this.dg_afiliados.Size = new System.Drawing.Size(856, 229);
             this.dg_afiliados.TabIndex = 0;
             this.dg_afiliados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_afiliados_CellClick);
             // 
@@ -61,7 +61,7 @@
             this.btn_cambio.Enabled = false;
             this.btn_cambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cambio.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_cambio.Location = new System.Drawing.Point(728, 214);
+            this.btn_cambio.Location = new System.Drawing.Point(728, 270);
             this.btn_cambio.Name = "btn_cambio";
             this.btn_cambio.Size = new System.Drawing.Size(140, 34);
             this.btn_cambio.TabIndex = 5;
@@ -73,7 +73,7 @@
             // 
             this.btn_inactivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_inactivar.ForeColor = System.Drawing.Color.Brown;
-            this.btn_inactivar.Location = new System.Drawing.Point(595, 214);
+            this.btn_inactivar.Location = new System.Drawing.Point(595, 270);
             this.btn_inactivar.Name = "btn_inactivar";
             this.btn_inactivar.Size = new System.Drawing.Size(123, 34);
             this.btn_inactivar.TabIndex = 6;
@@ -85,7 +85,7 @@
             // 
             this.btn_activar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_activar.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btn_activar.Location = new System.Drawing.Point(466, 214);
+            this.btn_activar.Location = new System.Drawing.Point(466, 270);
             this.btn_activar.Name = "btn_activar";
             this.btn_activar.Size = new System.Drawing.Size(123, 34);
             this.btn_activar.TabIndex = 7;
@@ -97,7 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 260);
+            this.ClientSize = new System.Drawing.Size(880, 316);
             this.Controls.Add(this.btn_activar);
             this.Controls.Add(this.btn_inactivar);
             this.Controls.Add(this.btn_cambio);

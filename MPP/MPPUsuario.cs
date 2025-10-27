@@ -28,6 +28,14 @@ namespace MPP
                 );
                 xDocument.Save(rutaUsuarios);
             }
+
+            if (!File.Exists(rutaUsuariosPermisos))
+            {
+                xDocument = new XDocument(
+                    new XElement("UsuariosPermisos")
+                );
+                xDocument.Save(rutaUsuariosPermisos);
+            }
         }
 
         public void CrearUsuario(BEUsuario usuario)
@@ -41,9 +49,9 @@ namespace MPP
                 new XElement("Apellido", usuario.Apellido),
                 new XElement("NombreUsuario", usuario.NombreUsuario),
                 new XElement("Password", usuario.Password),
-                new XElement("Activo", usuario.Activo).ToString().ToLower(),
-                new XElement("Eliminado", usuario.Eliminado).ToString().ToLower())
-                );
+                new XElement("Activo", usuario.Activo.ToString().ToLower()),
+                new XElement("Eliminado", usuario.Eliminado.ToString().ToLower())
+                ));
             xDocument.Save(rutaUsuarios);
         }
         public void ActualizarUsuario(BEUsuario usuario)

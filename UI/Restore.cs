@@ -58,12 +58,6 @@ namespace UI
                    throw new Exception("Debe seleccionar un backup para restaurar.");
                 }
 
-                DialogResult result = MessageBox.Show("Se generara un backup automatico antes de restaurar. ¿Desea continuar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.No)
-                {
-                    return;
-                }
-
                 bllBackup.RestaurarBackup(usuarioLogueado, lista_backups.SelectedItem.ToString());
                 MessageBox.Show("Backup restaurado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarDatos();

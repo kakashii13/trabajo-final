@@ -43,7 +43,7 @@
             this.dg_aportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_aportes.Location = new System.Drawing.Point(6, 19);
             this.dg_aportes.Name = "dg_aportes";
-            this.dg_aportes.Size = new System.Drawing.Size(487, 144);
+            this.dg_aportes.Size = new System.Drawing.Size(487, 270);
             this.dg_aportes.TabIndex = 0;
             // 
             // groupBox1
@@ -70,14 +70,14 @@
             this.groupBox2.Controls.Add(this.dg_aportes);
             this.groupBox2.Location = new System.Drawing.Point(225, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(499, 169);
+            this.groupBox2.Size = new System.Drawing.Size(499, 295);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Aportes";
             // 
             // btn_clear
             // 
-            this.btn_clear.Location = new System.Drawing.Point(600, 200);
+            this.btn_clear.Location = new System.Drawing.Point(600, 306);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(124, 33);
             this.btn_clear.TabIndex = 1;
@@ -89,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 245);
+            this.ClientSize = new System.Drawing.Size(740, 351);
             this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);

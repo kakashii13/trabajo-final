@@ -66,9 +66,6 @@ namespace BLL
                 if (!Directory.Exists(rutaBackup))
                     throw new Exception("El backup no existe");
 
-                // creamos un backup antes de restaurar por seguridad
-                CrearBackup(usuario);
-
                 // copiamos todos los xml
                 string[] archivos = Directory.GetFiles(rutaBackup, "*.xml");
                 foreach (string archivo in archivos)

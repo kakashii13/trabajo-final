@@ -44,7 +44,7 @@
             this.dgv_autorizaciones.Location = new System.Drawing.Point(6, 27);
             this.dgv_autorizaciones.Name = "dgv_autorizaciones";
             this.dgv_autorizaciones.ReadOnly = true;
-            this.dgv_autorizaciones.Size = new System.Drawing.Size(652, 195);
+            this.dgv_autorizaciones.Size = new System.Drawing.Size(652, 278);
             this.dgv_autorizaciones.TabIndex = 0;
             // 
             // lista_afiliados
@@ -71,14 +71,14 @@
             this.groupBox2.Controls.Add(this.dgv_autorizaciones);
             this.groupBox2.Location = new System.Drawing.Point(228, 11);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(667, 228);
+            this.groupBox2.Size = new System.Drawing.Size(667, 311);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Autorizaciones";
             // 
             // btn_listar
             // 
-            this.btn_listar.Location = new System.Drawing.Point(752, 245);
+            this.btn_listar.Location = new System.Drawing.Point(752, 328);
             this.btn_listar.Name = "btn_listar";
             this.btn_listar.Size = new System.Drawing.Size(143, 32);
             this.btn_listar.TabIndex = 4;
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 290);
+            this.ClientSize = new System.Drawing.Size(905, 372);
             this.Controls.Add(this.btn_listar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

@@ -46,7 +46,7 @@
             this.dgv_facturas.Location = new System.Drawing.Point(12, 55);
             this.dgv_facturas.Name = "dgv_facturas";
             this.dgv_facturas.ReadOnly = true;
-            this.dgv_facturas.Size = new System.Drawing.Size(649, 166);
+            this.dgv_facturas.Size = new System.Drawing.Size(735, 254);
             this.dgv_facturas.TabIndex = 0;
             this.dgv_facturas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_facturas_CellClick);
             // 
@@ -100,7 +100,7 @@
             // 
             this.btn_validar_importe.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_validar_importe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_validar_importe.Location = new System.Drawing.Point(12, 228);
+            this.btn_validar_importe.Location = new System.Drawing.Point(98, 326);
             this.btn_validar_importe.Name = "btn_validar_importe";
             this.btn_validar_importe.Size = new System.Drawing.Size(143, 37);
             this.btn_validar_importe.TabIndex = 13;
@@ -112,7 +112,7 @@
             // 
             this.btn_validar_autorizacion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_validar_autorizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_validar_autorizacion.Location = new System.Drawing.Point(181, 228);
+            this.btn_validar_autorizacion.Location = new System.Drawing.Point(267, 326);
             this.btn_validar_autorizacion.Name = "btn_validar_autorizacion";
             this.btn_validar_autorizacion.Size = new System.Drawing.Size(143, 37);
             this.btn_validar_autorizacion.TabIndex = 14;
@@ -125,7 +125,7 @@
             this.btn_rechazar.BackColor = System.Drawing.Color.Brown;
             this.btn_rechazar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_rechazar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_rechazar.Location = new System.Drawing.Point(351, 228);
+            this.btn_rechazar.Location = new System.Drawing.Point(437, 326);
             this.btn_rechazar.Name = "btn_rechazar";
             this.btn_rechazar.Size = new System.Drawing.Size(143, 37);
             this.btn_rechazar.TabIndex = 15;
@@ -139,7 +139,7 @@
             this.btn_aceptar.Enabled = false;
             this.btn_aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_aceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_aceptar.Location = new System.Drawing.Point(518, 228);
+            this.btn_aceptar.Location = new System.Drawing.Point(604, 326);
             this.btn_aceptar.Name = "btn_aceptar";
             this.btn_aceptar.Size = new System.Drawing.Size(143, 37);
             this.btn_aceptar.TabIndex = 16;
@@ -151,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 277);
+            this.ClientSize = new System.Drawing.Size(759, 375);
             this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.btn_rechazar);
             this.Controls.Add(this.btn_validar_autorizacion);
