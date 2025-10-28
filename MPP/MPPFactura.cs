@@ -104,6 +104,18 @@ namespace MPP
                             (int)f.Element("PrestadorId") == prestadorId);
         }   
 
+        public BEFactura ObtenerFacturaPorId(int facturaId)
+        {
+             xDocument = XDocument.Load(rutaArchivo);
+
+            var facturaElement = xDocument.Descendants("Factura")
+                .Where(x => (int)x.Attribute("Id") == facturaId)
+                .Select(x => MapearFactura(x))
+                .FirstOrDefault();
+
+            return facturaElement;
+        }
+
         private BEFactura MapearFactura(XElement element)
         {
             return new BEFactura(
@@ -115,7 +127,9 @@ namespace MPP
                     element.Element("Estado").Value,
                     new BEPrestador { Id = (int)element.Element("PrestadorId") },
                     new BEAutorizacion { NumeroAutorizacion = (int)element.Element("AutorizacionNumero") },
-                    element.Element("RutaPDF").Value
+                    element.Element("RutaPDF").Value,
+                    bool.Parse(element.Element("AutorizacionValidada").Value),
+                    bool.Parse(element.Element("ImporteValidado").Value)
                 );
         }
     }

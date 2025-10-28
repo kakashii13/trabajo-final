@@ -37,6 +37,7 @@
             this.btn_validar_autorizacion = new System.Windows.Forms.Button();
             this.btn_rechazar = new System.Windows.Forms.Button();
             this.btn_aceptar = new System.Windows.Forms.Button();
+            this.btnPagas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_facturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             // 
             this.btn_rechazadas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_rechazadas.ForeColor = System.Drawing.Color.Brown;
-            this.btn_rechazadas.Location = new System.Drawing.Point(285, 9);
+            this.btn_rechazadas.Location = new System.Drawing.Point(366, 9);
             this.btn_rechazadas.Name = "btn_rechazadas";
             this.btn_rechazadas.Size = new System.Drawing.Size(75, 37);
             this.btn_rechazadas.TabIndex = 11;
@@ -147,11 +148,24 @@
             this.btn_aceptar.UseVisualStyleBackColor = false;
             this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
             // 
+            // btnPagas
+            // 
+            this.btnPagas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPagas.ForeColor = System.Drawing.Color.YellowGreen;
+            this.btnPagas.Location = new System.Drawing.Point(285, 9);
+            this.btnPagas.Name = "btnPagas";
+            this.btnPagas.Size = new System.Drawing.Size(75, 37);
+            this.btnPagas.TabIndex = 17;
+            this.btnPagas.Text = "Pagas";
+            this.btnPagas.UseVisualStyleBackColor = false;
+            this.btnPagas.Click += new System.EventHandler(this.btnPagas_Click);
+            // 
             // ConsultarFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 375);
+            this.Controls.Add(this.btnPagas);
             this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.btn_rechazar);
             this.Controls.Add(this.btn_validar_autorizacion);
@@ -180,5 +194,6 @@
         private System.Windows.Forms.Button btn_validar_autorizacion;
         private System.Windows.Forms.Button btn_rechazar;
         private System.Windows.Forms.Button btn_aceptar;
+        private System.Windows.Forms.Button btnPagas;
     }
 }

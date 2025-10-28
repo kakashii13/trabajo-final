@@ -52,6 +52,11 @@ namespace BLL
                     throw new Exception("El usuario no existe.");
                 }
 
+                if(usuario.Nombre == "admin")
+                {
+                    throw new Exception("No se puede modificar el usuario administrador.");
+                }
+
                 mppUsuario.ActualizarUsuario(usuario);
             }
             catch (Exception ex)
@@ -231,6 +236,11 @@ namespace BLL
         {
             try
             {
+                if(usuario.Nombre == "admin")
+                {
+                    throw new Exception("No se puede resetear la contraseña del usuario administrador.");
+                }
+
                 // password default encriptada
                 string passwordDefault = "1234";
                 string passwordEncriptada = ServicioSeguridad.Encriptar(passwordDefault);

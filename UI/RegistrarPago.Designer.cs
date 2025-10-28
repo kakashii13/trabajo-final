@@ -31,8 +31,6 @@
             this.lista_facturas = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txt_numero_recibo = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_importe = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,10 +38,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_factura = new System.Windows.Forms.TextBox();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
+            this.btnGenerarRecibo = new System.Windows.Forms.Button();
+            this.comboFormaPago = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_numero_recibo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_importe)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,8 +67,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txt_numero_recibo);
             this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.comboFormaPago);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txt_importe);
             this.groupBox2.Controls.Add(this.label2);
@@ -82,27 +81,6 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Registrar pago";
-            // 
-            // txt_numero_recibo
-            // 
-            this.txt_numero_recibo.Location = new System.Drawing.Point(130, 83);
-            this.txt_numero_recibo.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.txt_numero_recibo.Name = "txt_numero_recibo";
-            this.txt_numero_recibo.Size = new System.Drawing.Size(95, 20);
-            this.txt_numero_recibo.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(127, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Numero recibo";
             // 
             // label3
             // 
@@ -173,18 +151,35 @@
             this.btn_cancel.UseVisualStyleBackColor = false;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // btn_save
+            // btnGenerarRecibo
             // 
-            this.btn_save.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_save.Location = new System.Drawing.Point(355, 212);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(120, 32);
-            this.btn_save.TabIndex = 48;
-            this.btn_save.Text = "Guardar";
-            this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btnGenerarRecibo.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnGenerarRecibo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarRecibo.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGenerarRecibo.Location = new System.Drawing.Point(355, 212);
+            this.btnGenerarRecibo.Name = "btnGenerarRecibo";
+            this.btnGenerarRecibo.Size = new System.Drawing.Size(120, 32);
+            this.btnGenerarRecibo.TabIndex = 48;
+            this.btnGenerarRecibo.Text = "Generar recibo";
+            this.btnGenerarRecibo.UseVisualStyleBackColor = false;
+            this.btnGenerarRecibo.Click += new System.EventHandler(this.btnGenerarRecibo_Click);
+            // 
+            // comboFormaPago
+            // 
+            this.comboFormaPago.FormattingEnabled = true;
+            this.comboFormaPago.Location = new System.Drawing.Point(126, 82);
+            this.comboFormaPago.Name = "comboFormaPago";
+            this.comboFormaPago.Size = new System.Drawing.Size(99, 21);
+            this.comboFormaPago.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(123, 66);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Forma de pago";
             // 
             // RegistrarPago
             // 
@@ -192,7 +187,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 261);
             this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.btnGenerarRecibo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "RegistrarPago";
@@ -200,7 +195,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_numero_recibo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_importe)).EndInit();
             this.ResumeLayout(false);
 
@@ -217,9 +211,9 @@
         private System.Windows.Forms.DateTimePicker fecha_pago;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_factura;
-        private System.Windows.Forms.NumericUpDown txt_numero_recibo;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btnGenerarRecibo;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboFormaPago;
     }
 }

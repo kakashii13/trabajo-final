@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
 using BLL;
+using Servicios;
 
 namespace UI
 {
@@ -19,9 +21,12 @@ namespace UI
         public RegistrarPago()
         {
             InitializeComponent();
+            
             bllPago = new BLLPago();
             bllFactura = new BLLFactura();
+
             CargarDatos();
+            CargarFormasDePago();
         }
 
         private void CargarDatos()
@@ -50,6 +55,7 @@ namespace UI
             try { 
                 if(lista_facturas.SelectedItem == null) { return; }
                 txt_factura.Text = ((BEFactura)lista_facturas.SelectedItem).Numero.ToString();
+                txt_importe.Value = ((BEFactura)lista_facturas.SelectedItem).Monto;
             }
             catch (Exception ex)
             {
@@ -57,7 +63,14 @@ namespace UI
             }
         }
 
-        private void btn_save_Click(object sender, EventArgs e)
+        private void CargarFormasDePago()
+        {
+            comboFormaPago.Items.Add("Cheque");
+            comboFormaPago.Items.Add("Transferencia Bancaria");
+            comboFormaPago.SelectedIndex = 0; 
+        }
+
+        private void btnGenerarRecibo_Click(object sender, EventArgs e)
         {
             try { 
                 if(lista_facturas.SelectedItem == null)
@@ -65,7 +78,7 @@ namespace UI
                     throw new Exception("Debe seleccionar una factura.");
                 }
 
-                if(string.IsNullOrWhiteSpace(txt_importe.Text) || string.IsNullOrWhiteSpace(txt_numero_recibo.Text))
+                if(string.IsNullOrWhiteSpace(txt_importe.Text))
                 {
                     throw new Exception("Debe completar todos los campos.");
                 }
@@ -76,16 +89,33 @@ namespace UI
                 }
 
                 var importe = decimal.Parse(txt_importe.Text);
-                var numeroRecibo = int.Parse(txt_numero_recibo.Text);
+                
                 var fechaPago = fecha_pago.Value;
                 BEFactura factura = (BEFactura)lista_facturas.SelectedItem;
 
-                bllPago.RegistrarPago(importe, numeroRecibo, fechaPago, factura);
-                MessageBox.Show("Pago registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+                BEPago nuevoPago = new BEPago(0, fechaPago, importe, 0, factura.Id, comboFormaPago.SelectedItem.ToString());
+
+                BEPago pago = bllPago.RegistrarPago(nuevoPago);
+
+                factura.Pago = pago;
+
+                string rutaPDF = ServicioPDF.GenerarPDFRecibo(factura);
+
+                DialogResult resultado = MessageBox.Show(
+                    $"Recibo generado correctamente.\nNúmero de recibo: {nuevoPago.NumeroRecibo}\n\n¿Desea abrir el PDF generado?",
+                    "Éxito",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information
+        );
+
+                if (resultado == DialogResult.Yes)
+                {
+                    // abrimos el pdf con el lector default
+                    System.Diagnostics.Process.Start(rutaPDF);
+                }
+
                 txt_factura.Clear();
                 txt_importe.Value = 0;
-                txt_numero_recibo.Value = 0;
             }
             catch (Exception ex)
             {

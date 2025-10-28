@@ -83,6 +83,13 @@ namespace UI
                 };
                 dgv_autorizaciones.Columns.Add(colPractica);
 
+                DataGridViewTextBoxColumn colPrestador = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Prestador",
+                    Name = "Prestador"
+                };
+                dgv_autorizaciones.Columns.Add(colPrestador);
+
                 DataGridViewTextBoxColumn colPrecio = new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Precio",
@@ -115,6 +122,7 @@ namespace UI
                     row.Cells["Afiliado"].Value = autorizacion.Afiliado.NombreApellido;
                     row.Cells["Practica"].Value = autorizacion.Practica.Nombre;
                     row.Cells["Precio"].Value = autorizacion.Practica.Precio;
+                    row.Cells["Prestador"].Value = autorizacion.Prestador.RazonSocial;
                 }
             }
         }

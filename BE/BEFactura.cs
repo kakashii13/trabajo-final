@@ -19,12 +19,22 @@ namespace BE
         public string RutaPDF { get; set; }
         public BEPrestador Prestador { get; set; }
         public BEAutorizacion Autorizacion {get; set;}
+        public BEPago Pago { get; set; }
         public BEFactura()
         {
 
         }
 
-        public BEFactura(int id, DateTime fechaRecibida, decimal monto, int numero, string observacion, string estado, BEPrestador prestador, BEAutorizacion autorizacion, string rutaPDF)
+        public BEFactura(int id, 
+            DateTime fechaRecibida, 
+            decimal monto, int numero, 
+            string observacion, 
+            string estado, 
+            BEPrestador prestador, 
+            BEAutorizacion autorizacion, 
+            string rutaPDF, 
+            bool autorizacionValidada, 
+            bool importeValidado)
         {
             Id = id;
             FechaRecibida = fechaRecibida;
@@ -35,11 +45,13 @@ namespace BE
             Autorizacion = autorizacion;
             Prestador = prestador;
             RutaPDF = rutaPDF;
+            AutorizacionValidada = autorizacionValidada;
+            ImporteValidado = importeValidado;
         }
 
         public override string ToString()
         {
-            return $"{Numero} - {Monto}";
+            return $"{Numero} - ${Monto}";
         }
     }
 }

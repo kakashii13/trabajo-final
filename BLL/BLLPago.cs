@@ -19,28 +19,43 @@ namespace BLL
             bllFactura = new BLLFactura();
         }
 
-        public void RegistrarPago(decimal importe, int numeroRecibo, DateTime fechaPago, BEFactura factura)
+        public BEPago RegistrarPago(BEPago pago)
         {
             try
             {
+                BEFactura factura = bllFactura.ObtenerFacturaPorId(pago.FacturaId); 
+
                 if (factura.Estado == "Pagada")
                 {
                     throw new Exception("La factura ya fue pagada.");
                 }
 
-                // obtenemos el ultimo id
-                int id = mppPago.ObtenerProximoId();
-                BEPago pago = new BEPago(id, fechaPago, importe, numeroRecibo, factura);
+                pago.Id = mppPago.ObtenerProximoId();
+                pago.NumeroRecibo = mppPago.ObtenerProximoNumeroRecibo();
 
                 mppPago.RegistrarPago(pago);
 
                 factura.Estado = "Pagada";
                 bllFactura.ActualizarFactura(factura);
+
+                return pago;
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al registrar el pago." + ex.Message);
             }
         }
+
+        public BEPago ObtenerPagoPorFacturaId(int facturaId)
+        {
+            try
+            {
+                return mppPago.ObtenerPagoPorFacturaId(facturaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el pago por ID de factura: " + ex.Message);
+            }
+        }   
     }
 }

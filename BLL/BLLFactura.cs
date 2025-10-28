@@ -51,10 +51,13 @@ namespace BLL
         {
             try
             {
+                BLLPago bllPago = new BLLPago();
+
                 List<BEFactura> facturas = mppFactura.ListarFacturas();
                 foreach (BEFactura factura in facturas)
                 {
                     factura.Prestador = bllPrestador.ObtenerPrestadorPorId(factura.Prestador.Id);
+                    factura.Pago = bllPago.ObtenerPagoPorFacturaId(factura.Id);
                 }
                 return facturas;
             }
@@ -95,6 +98,18 @@ namespace BLL
             }
         }
 
+        public BEFactura ObtenerFacturaPorId(int facturaId)
+        {
+            try
+            {
+                return mppFactura.ObtenerFacturaPorId(facturaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener la factura por ID: " + ex.Message);
+            }
+        }
+
         private void MarcarComoFacturada(BEAutorizacion autorizacion) {
             try
             {
@@ -117,7 +132,7 @@ namespace BLL
             try
             {
                 if (factura.ImporteValidado)
-                    throw new Exception("La factura ya fue validada anteriormente.");
+                    throw new Exception("El importe de la factura ya fue validado anteriormente.");
 
                 BEAutorizacion autorizacion = bllAutorizacion.ObtenerAutorizacionPorNumero(factura.Autorizacion.NumeroAutorizacion);
 
@@ -126,14 +141,32 @@ namespace BLL
 
                 autorizacion.Practica = bllPractica.ObtenerPracticaPorId(autorizacion.Practica.Id);
 
-                if (factura.Monto > autorizacion.Practica.Precio)
-                    throw new Exception($"El monto de la factura ({factura.Monto}) es mayor al precio de la práctica ({autorizacion.Practica.Precio}).");
+                if (factura.Monto != autorizacion.Practica.Precio)
+                    throw new Exception($"El monto de la factura ({factura.Monto}) difiere del precio de la práctica ({autorizacion.Practica.Precio}).");
 
                 // actualizamos la factura
                 factura.ImporteValidado = true;
                 ActualizarFactura(factura);
             }
             catch (Exception ex) { throw new Exception("Error al validar el importe: " + ex.Message); }
+        }
+
+        public void RechazarFactura(BEFactura factura)
+        {
+            try
+            {
+                if(factura.Estado != "Pendiente")
+                    throw new Exception("Solo se pueden rechazar facturas en estado Pendiente.");
+
+                // liberamos la autorizacion asociada
+                BEAutorizacion autorizacion = bllAutorizacion.ObtenerAutorizacionPorNumero(factura.Autorizacion.NumeroAutorizacion);
+                autorizacion.Facturada = false;
+                bllAutorizacion.ModificarAutorizacion(autorizacion);
+
+                factura.Estado = "Rechazada";
+                ActualizarFactura(factura);
+            }
+            catch (Exception ex) { throw new Exception("Error al rechazar la factura: " + ex.Message); }
         }
 
         public void ActualizarFactura(BEFactura factura)

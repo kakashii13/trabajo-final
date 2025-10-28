@@ -60,7 +60,7 @@ namespace MPP
 
             practicaElem.Element("Codigo").Value = practica.Codigo.ToString();
             practicaElem.Element("Nombre").Value = practica.Nombre;
-            practicaElem.Element("Precio").Value = practica.Precio.ToString();
+            practicaElem.Element("Precio").Value = practica.Precio.ToString(CultureInfo.InvariantCulture);
 
             xDocument.Save(rutaPracticas);
         }

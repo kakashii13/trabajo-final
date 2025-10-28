@@ -11,24 +11,26 @@ namespace BE
         public DateTime FechaPago { get; set; }
         public decimal Monto { get; set; }
         public int NumeroRecibo { get; set; }
-        public BEFactura Factura { get; set; }
+        public string FormaPago { get; set; }
+        public int FacturaId { get; set; }
 
         public BEPago()
         {
 
         }
-        public BEPago(int id, DateTime fechaPago, decimal monto, int numeroRecibo, BEFactura factura)
+        public BEPago(int id, DateTime fechaPago, decimal monto, int numeroRecibo, int facturaId, string formaPago)
         {
             Id = id;
             FechaPago = fechaPago;
             Monto = monto;
             NumeroRecibo = numeroRecibo;
-            Factura = factura;
+            FacturaId = facturaId;
+            FormaPago = formaPago;
         }
 
         public override string ToString()
         {
-            return $"{NumeroRecibo} - {Monto}";
+            return $"{NumeroRecibo} - ${Monto} - {FechaPago.ToString("yyyy-MM-dd")}";
         }
     }
 }
