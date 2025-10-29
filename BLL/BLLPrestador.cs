@@ -11,10 +11,12 @@ namespace BLL
     public class BLLPrestador
     {
         MPPPrestador mppPrestador;
+        BLLPractica bllPractica;
 
         public BLLPrestador()
         {
             mppPrestador = new MPPPrestador();
+            bllPractica = new BLLPractica();
         }
 
         public void CrearPrestador(BEPrestador prestador)
@@ -44,7 +46,44 @@ namespace BLL
             }
         }
 
-        public List<int> ListarPracticasDelPrestador(BEPrestador prestador)
+        public List<BEPrestador> ListarPrestadoresCompletos()
+        {
+            try
+            {
+                List<BEPrestador> prestadores = mppPrestador.ListarPrestadores();
+
+                List<BEPractica> todasLasPracticas = bllPractica.ListarPracticas();
+
+                Dictionary<int, BEPractica> practicasPorId = todasLasPracticas
+                    .ToDictionary(p => p.Id);
+
+                foreach (BEPrestador prestador in prestadores)
+                {
+                    List<int> practicasIds = mppPrestador.ListarPracticasIdsPorPrestador(prestador);
+                    
+                    if (prestador.Practicas == null)
+                    {
+                        prestador.Practicas = new List<BEPractica>();
+                    }
+
+                    foreach (int id in practicasIds)
+                    {
+                        if (practicasPorId.TryGetValue(id, out BEPractica practica))
+                        {
+                            prestador.Practicas.Add(practica);
+                        }
+                    }
+                }
+
+                return prestadores;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar los prestadores completos." + ex.Message);
+            }
+        }
+
+        public List<int> ListarPracticasIdsDelPrestador(BEPrestador prestador)
         {
             try
             {
@@ -82,6 +121,7 @@ namespace BLL
                 }
 
                 mppPrestador.AsignarPractica(prestador, practica);
+                prestador.Practicas.Add(practica);
             }
             catch (Exception ex) { throw new Exception("Error al asignar la práctica al prestador: " + ex.Message);
             }
@@ -95,6 +135,7 @@ namespace BLL
                 }
 
                 mppPrestador.QuitarPractica(prestador, practica);
+                prestador.Practicas.Remove(practica);
             }
             catch (Exception ex) { throw new Exception("Error al quitar la práctica del prestador: " + ex.Message);
             }

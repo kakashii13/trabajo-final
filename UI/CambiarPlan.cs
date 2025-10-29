@@ -12,20 +12,21 @@ using BLL;
 
 namespace UI
 {
-    public partial class CambioPlan : Form
+    public partial class CambiarPlan : Form
     {
         BLLAfiliado bllAfiliado;
         BEAfiliado afiliadoSeleccionado;
         BEPlan planSugerido;
         BLLPlan bllPlan;
         BLLAporte bllAporte;
-        public CambioPlan(BEAfiliado afiliadoSeleccionado)
+        public CambiarPlan(BEAfiliado afiliadoSeleccionado)
         {
             InitializeComponent();
+            this.afiliadoSeleccionado = afiliadoSeleccionado;
+
             bllAfiliado = new BLLAfiliado();
             bllPlan = new BLLPlan();
             bllAporte = new BLLAporte();
-            this.afiliadoSeleccionado = afiliadoSeleccionado;
            
             CargarDatosFormulario();
         }

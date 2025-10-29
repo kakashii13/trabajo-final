@@ -12,11 +12,11 @@ using BLL;
 
 namespace UI
 {
-    public partial class Bitacora : Form
+    public partial class ConsultarBitacora : Form
     {
         BLLBitacora bllBitacora;
         List<BEBitacora> bitacoras;
-        public Bitacora()
+        public ConsultarBitacora()
         {
             InitializeComponent();
             bllBitacora = new BLLBitacora();

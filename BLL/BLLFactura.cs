@@ -71,6 +71,11 @@ namespace BLL
         {
             try
             {
+                if (factura.Estado != "Pendiente")
+                {
+                    throw new Exception("Solo se pueden validar facturas en estado Pendiente.");
+                }
+
                 if (factura.AutorizacionValidada)
                     throw new Exception("La factura ya fue validada anteriormente.");
 
@@ -131,6 +136,9 @@ namespace BLL
         {
             try
             {
+                if(factura.Estado != "Pendiente")
+                    throw new Exception("Solo se pueden validar facturas en estado Pendiente.");
+
                 if (factura.ImporteValidado)
                     throw new Exception("El importe de la factura ya fue validado anteriormente.");
 
@@ -167,6 +175,24 @@ namespace BLL
                 ActualizarFactura(factura);
             }
             catch (Exception ex) { throw new Exception("Error al rechazar la factura: " + ex.Message); }
+        }
+
+        public void AceptarFactura(BEFactura factura)
+        {
+            try
+            {
+                if (factura.Estado != "Pendiente")
+                {
+                    throw new Exception("Solo se pueden aceptar facturas en estado Pendiente.");
+                }
+
+                if (!factura.ImporteValidado || !factura.AutorizacionValidada)
+                    throw new Exception("La factura debe tener importe y autorización validados.");
+
+                factura.Estado = "Aceptada";
+                mppFactura.ActualizarFactura(factura);
+            }
+            catch (Exception ex) { throw new Exception("Error al aceptar la factura: " + ex.Message); }
         }
 
         public void ActualizarFactura(BEFactura factura)

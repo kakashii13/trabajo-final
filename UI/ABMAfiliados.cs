@@ -12,13 +12,18 @@ using BE;
 
 namespace UI
 {
-    public partial class ListadoAfiliados : Form
+    public partial class ABMAfiliados : Form
     {
         BLLAfiliado bllAfiliado;
-        public ListadoAfiliados()
+        public ABMAfiliados()
         {
             InitializeComponent();
             bllAfiliado = new BLLAfiliado();
+
+            btn_cambio.Enabled = false;
+            btn_activar.Enabled = false;
+            btn_inactivar.Enabled = false;
+
             ConfigurarDataGrid();
             CargarAfiliados();
         }
@@ -82,14 +87,32 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try { 
-                if(dg_afiliados.CurrentRow == null) { return; }
+            try {
+                if (dg_afiliados.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un afiliado.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                BEAfiliado afiliadoSeleccionado = (BEAfiliado)dg_afiliados.CurrentRow.DataBoundItem;
+                BEAfiliado afiliadoSeleccionado = dg_afiliados.CurrentRow.DataBoundItem as BEAfiliado;
 
-                if (!afiliadoSeleccionado.CorrespondeCambioPlan) { return; }
+                if (afiliadoSeleccionado == null)
+                {
+                    MessageBox.Show("Error al obtener el afiliado seleccionado.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                CambioPlan cambioPlan = new CambioPlan(afiliadoSeleccionado);
+                if (!afiliadoSeleccionado.CorrespondeCambioPlan)
+                {
+                    MessageBox.Show("El afiliado no requiere cambio de plan.",
+                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                CambiarPlan cambioPlan = new CambiarPlan(afiliadoSeleccionado);
+
                 if (cambioPlan.ShowDialog() == DialogResult.OK)
                 {
                     CargarAfiliados(); 
@@ -108,11 +131,24 @@ namespace UI
                 if (dg_afiliados.CurrentRow == null)
                 {
                     btn_cambio.Enabled = false;
+                    btn_activar.Enabled = false;    
+                    btn_inactivar.Enabled = false;  
                     return;
                 }
 
-                BEAfiliado afiliadoSeleccionado = (BEAfiliado)dg_afiliados.CurrentRow.DataBoundItem;
+                BEAfiliado afiliadoSeleccionado = dg_afiliados.CurrentRow.DataBoundItem as BEAfiliado;
+
+                if (afiliadoSeleccionado == null)
+                {
+                    btn_cambio.Enabled = false;
+                    btn_activar.Enabled = false;
+                    btn_inactivar.Enabled = false;
+                    return;
+                }
+
                 btn_cambio.Enabled = afiliadoSeleccionado.CorrespondeCambioPlan;
+                btn_activar.Enabled = !afiliadoSeleccionado.Activo;  
+                btn_inactivar.Enabled = afiliadoSeleccionado.Activo;  
             }
             catch (Exception ex)
             {
@@ -123,8 +159,22 @@ namespace UI
         private void btn_activar_Click(object sender, EventArgs e)
         {
             try {
-                BEAfiliado afiliadoSeleccionado = (BEAfiliado)dg_afiliados.CurrentRow.DataBoundItem;
-                
+                if (dg_afiliados.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un afiliado.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                BEAfiliado afiliadoSeleccionado = dg_afiliados.CurrentRow.DataBoundItem as BEAfiliado;
+
+                if (afiliadoSeleccionado == null)
+                {
+                    MessageBox.Show("Error al obtener el afiliado seleccionado.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 bllAfiliado.ActivarAfiliado(afiliadoSeleccionado);
                 
                 MessageBox.Show("Afiliado activado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -141,8 +191,32 @@ namespace UI
         {
             try
             {
-                BEAfiliado afiliadoSeleccionado = (BEAfiliado)dg_afiliados.CurrentRow.DataBoundItem;
-                
+                if (dg_afiliados.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un afiliado.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                BEAfiliado afiliadoSeleccionado = dg_afiliados.CurrentRow.DataBoundItem as BEAfiliado;
+
+                if (afiliadoSeleccionado == null)
+                {
+                    MessageBox.Show("Error al obtener el afiliado seleccionado.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                DialogResult resultado = MessageBox.Show(
+                   $"¿Está seguro que desea inactivar a {afiliadoSeleccionado.NombreApellido}?",
+                   "Confirmar inactivación",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question);
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
+
                 bllAfiliado.InactivarAfiliado(afiliadoSeleccionado);
                 
                 MessageBox.Show("Afiliado inactivado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

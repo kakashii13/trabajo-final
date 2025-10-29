@@ -90,19 +90,29 @@ namespace UI
         {
             try
             {
-                modo = "Modificacion";
-                // llenamos los campos con datos del usuario seleccionado
-                if (dgv_users.CurrentRow == null) { return; }
-                
+                if (dgv_users.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un usuario para modificar.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
 
-                if (usuarioSeleccionado == null) { return; }
+                if (usuarioSeleccionado == null)
+                {
+                    MessageBox.Show("Error al obtener el usuario seleccionado.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                modo = "Modificacion";
                 
                 CargarDatosUsuario(usuarioSeleccionado);
 
-                // comportamiento UI
                 btn_cancel.Enabled = true;
                 btn_save.Enabled = true;
+
                 DeshabilitarAcciones();
                 HabilitarInputs();
             }
@@ -111,7 +121,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // guardar cambios o nuevo usuario
         private void btn_save_Click(object sender, EventArgs e)
         {
             try {
@@ -134,6 +143,11 @@ namespace UI
                 }
                 else if (modo == "Modificacion")
                 {
+                    if (usuarioSeleccionado == null) 
+                    {
+                        throw new Exception("No hay un usuario seleccionado para modificar.");
+                    }
+
                     usuarioSeleccionado.ActualizarDatos(nombre, apellido,nombreUsuario);
                     bllUsuario.ModificarUsuario(usuarioSeleccionado);
 
@@ -141,11 +155,13 @@ namespace UI
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                LimpiarInputs();
                 btn_save.Enabled = false;
                 btn_cancel.Enabled = false;
-                HabilitarAcciones();
+                usuarioSeleccionado = null; 
                 modo = null;
+                
+                LimpiarInputs();
+                HabilitarAcciones();
                 ListarUsuarios();
             }
             catch(Exception ex)
@@ -153,15 +169,15 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // cancela la operacion en curso
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             btn_save.Enabled = false;
             btn_cancel.Enabled = false;
             HabilitarAcciones();
             LimpiarInputs();
+            usuarioSeleccionado = null;
+            modo = null;
         }
-        // actualiza el listado de usuarios
         private void btn_update_Click(object sender, EventArgs e)
         {
              ListarUsuarios();
@@ -189,10 +205,11 @@ namespace UI
                 return false;
             }
 
-            if(string.IsNullOrEmpty(txt_password.Text) && modo == "Alta")
+            if (string.IsNullOrWhiteSpace(txt_password.Text) && modo == "Alta")
             {
                 txt_password.Focus();
-                MessageBox.Show("La contraseña es requerida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("La contraseña es requerida.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -203,14 +220,30 @@ namespace UI
         {
             try
             {
+                if (dgv_users.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un usuario.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
 
-                if (usuarioSeleccionado == null) { return; }
+                if (usuarioSeleccionado == null)
+                {
+                    MessageBox.Show("Error al obtener el usuario seleccionado.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 bllUsuario.DesactivarUsuario(usuarioSeleccionado);
 
                 MessageBox.Show("Usuario desactivado exitosamente.", "Éxito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ListarUsuarios();
                 LimpiarInputs();
+                usuarioSeleccionado = null;
             }
             catch (Exception ex)
             {
@@ -221,14 +254,30 @@ namespace UI
         private void btn_activar_Click(object sender, EventArgs e)
         {
             try {
+                if (dgv_users.CurrentRow == null) 
+                {
+                    MessageBox.Show("Debe seleccionar un usuario.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
 
-                if (usuarioSeleccionado == null) { return; }
+                if (usuarioSeleccionado == null)
+                {
+                    MessageBox.Show("Error al obtener el usuario seleccionado.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+
+                }
                 bllUsuario.ActivarUsuario(usuarioSeleccionado);
 
                 MessageBox.Show("Usuario activado exitosamente.", "Éxito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ListarUsuarios();
                 LimpiarInputs();
+                usuarioSeleccionado = null;
             }
             catch (Exception ex)
             {
@@ -240,14 +289,40 @@ namespace UI
         {
             try
             {
+                if (dgv_users.CurrentRow == null) 
+                {
+                    MessageBox.Show("Debe seleccionar un usuario.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
-                if (usuarioSeleccionado == null) { return; }
+
+                if (usuarioSeleccionado == null)
+                {
+                    MessageBox.Show("Error al obtener el usuario seleccionado.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                DialogResult resultado = MessageBox.Show(
+                $"¿Está seguro que desea eliminar al usuario '{usuarioSeleccionado.NombreUsuario}'?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
 
                 bllUsuario.EliminarUsuario(usuarioSeleccionado);
                 MessageBox.Show("Usuario eliminado exitosamente.", "Éxito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ListarUsuarios(); 
                 LimpiarInputs();
-                ListarUsuarios();
+                usuarioSeleccionado = null; 
             }
             catch (Exception ex)
             {
@@ -258,8 +333,21 @@ namespace UI
         private void btnResetearPass_Click(object sender, EventArgs e)
         {
             try {
+                if (dgv_users.CurrentRow == null) 
+                {
+                    MessageBox.Show("Debe seleccionar un usuario.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
-                if (usuarioSeleccionado == null) { return; }
+               
+                if (usuarioSeleccionado == null)
+                {
+                    MessageBox.Show("Error al obtener el usuario seleccionado.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 bllUsuario.ResetearPassword(usuarioSeleccionado);
                 MessageBox.Show("Contraseña reseteada exitosamente. La nueva contraseña es '1234'.", "Éxito",

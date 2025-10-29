@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class ListarAutorizaciones : Form
+    public partial class ConsultarAutorizaciones : Form
     {
         BLLAutorizacion bllAutorizaciones;
         BLLAfiliado bllAfiliado;
         List<BEAutorizacion> autorizaciones;
         BEAfiliado afiliadoSeleccionado;
-        public ListarAutorizaciones()
+        public ConsultarAutorizaciones()
         {
             InitializeComponent();
             bllAutorizaciones = new BLLAutorizacion();
@@ -49,7 +49,9 @@ namespace UI
         private void CargarAutorizaciones()
         {
             try {
-                autorizaciones = bllAutorizaciones.ListarAutorizaciones();
+                autorizaciones = bllAutorizaciones.ListarAutorizaciones()
+                                .OrderByDescending(a => a.FechaAutorizacion) 
+                                .ToList();
 
                 dgv_autorizaciones.AutoGenerateColumns = false;
                 dgv_autorizaciones.Columns.Clear();
@@ -130,7 +132,13 @@ namespace UI
         private void lista_afiliados_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if(lista_afiliados.SelectedItems == null) { return; }
+                if (lista_afiliados.SelectedItem == null) 
+                {
+                    afiliadoSeleccionado = null; 
+                    dgv_autorizaciones.DataSource = autorizaciones; 
+                    return;
+                }
+
                 afiliadoSeleccionado = (BEAfiliado)lista_afiliados.SelectedItem;
                 dgv_autorizaciones.DataSource = autorizaciones.Where(a => a.Afiliado.Id == afiliadoSeleccionado.Id).ToList();
             }
@@ -142,13 +150,8 @@ namespace UI
 
         private void btn_listar_Click(object sender, EventArgs e)
         {
-            try {
-                dgv_autorizaciones.DataSource = autorizaciones;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            lista_afiliados.SelectedIndex = -1;
+            dgv_autorizaciones.DataSource = autorizaciones;
         }
     }
 }

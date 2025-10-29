@@ -177,6 +177,7 @@ namespace BLL
                 }
 
                 mppPlan.AsignarPractica(plan, practica);
+                plan.Practicas.Add(practica);
             }
             catch (Exception ex)
             {
@@ -194,6 +195,7 @@ namespace BLL
                 }
 
                 mppPlan.QuitarPractica(plan, practica);
+                plan.Practicas.Remove(practica);
             }
             catch (Exception ex)
             {

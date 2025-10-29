@@ -33,10 +33,11 @@ namespace UI
             try
             {
                 // cargamos los aportes
-                aportes = bllAporte.ListarAportes();
+                aportes = bllAporte.ListarAportes()
+                .OrderByDescending(a => a.FechaRecibido)
+                .ToList();
                 dg_aportes.DataSource = aportes;
 
-                // Cargar afiliados en el combo/list
                 afiliados = bllAfiliado.ListarAfiliados();
                 foreach(var afiliado in afiliados)
                 {
@@ -55,11 +56,9 @@ namespace UI
         {
             try
             {
-                if (list_afiliados.SelectedItems == null) { return; }
+                if (list_afiliados.SelectedItem == null) { return; }
 
                 BEAfiliado afiliadoSeleccionado = (BEAfiliado)list_afiliados.SelectedItem;
-
-                if(afiliadoSeleccionado == null) { return; }
 
                 // filtramos los aportes del afiliado seleccionado
                 var aportesFiltrados = aportes.Where(a => a.AfiliadoId == afiliadoSeleccionado.Id).ToList();
@@ -77,7 +76,6 @@ namespace UI
             list_afiliados.SelectedIndex = -1;
 
             // mostramos todos los aportes
-            dg_aportes.DataSource = null;
             dg_aportes.DataSource = aportes;
         }
     }

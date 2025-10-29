@@ -28,8 +28,6 @@ namespace UI
         {
             try
             {
-                dgv_facturas.DataSource = null;
-
                 facturas = bllFactura.ListarFacturas();
 
                 dgv_facturas.DataSource = facturas;
@@ -39,59 +37,39 @@ namespace UI
                 MessageBox.Show("Error al cargar las facturas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void btn_pendientes_Click(object sender, EventArgs e)
+        private void FiltrarPorEstado(string estado)
         {
-            try {
-                dgv_facturas.DataSource = null;
-                var facturasFiltradas = facturas.Where(f => f.Estado == "Pendiente").ToList();
-                dgv_facturas.DataSource = facturasFiltradas;
+            try
+            {
+                dgv_facturas.DataSource = facturas
+                    .Where(f => f.Estado == estado)
+                    .ToList();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al filtrar las facturas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al filtrar las facturas: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btn_pendientes_Click(object sender, EventArgs e)
+        {
+            FiltrarPorEstado("Pendiente");
         } 
 
         private void btn_aceptadas_Click(object sender, EventArgs e)
         {
-            try {
-                dgv_facturas.DataSource = null;
-                var facturasFiltradas = facturas.Where(f => f.Estado == "Aceptada").ToList();
-                dgv_facturas.DataSource = facturasFiltradas;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al filtrar las facturas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            FiltrarPorEstado("Aceptada");
         }
 
         private void btn_rechazadas_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dgv_facturas.DataSource = null;
-                var facturasFiltradas = facturas.Where(f => f.Estado == "Rechazada").ToList();
-                dgv_facturas.DataSource = facturasFiltradas;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al filtrar las facturas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            FiltrarPorEstado("Rechazada");
         }
 
         private void btnPagas_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dgv_facturas.DataSource = null;
-                var facturasFiltradas = facturas.Where(f => f.Estado == "Pagada").ToList();
-                dgv_facturas.DataSource = facturasFiltradas;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al filtrar las facturas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            FiltrarPorEstado("Pagada");
         }
 
         private void btn_validar_importe_Click(object sender, EventArgs e)
@@ -100,11 +78,6 @@ namespace UI
                 if(facturaSeleccionada == null)
                 {
                     throw new Exception("Debe seleccionar una factura.");
-                }
-
-                if (facturaSeleccionada.Estado != "Pendiente")
-                {
-                    throw new Exception("Solo se pueden validar facturas en estado Pendiente.");
                 }
 
                 bllFactura.ValidarImporte(facturaSeleccionada);
@@ -124,11 +97,6 @@ namespace UI
             try {
                 if(facturaSeleccionada == null) { 
                     throw new Exception("Debe seleccionar una factura.");
-                }
-
-                if(facturaSeleccionada.Estado != "Pendiente")
-                {
-                    throw new Exception("Solo se pueden validar facturas en estado Pendiente.");
                 }
 
                 bllFactura.ValidarAutorizacion(facturaSeleccionada);
@@ -151,9 +119,14 @@ namespace UI
                     throw new Exception("Debe seleccionar una factura.");
                 }
 
-                if (facturaSeleccionada.Estado != "Pendiente")
+                DialogResult resultado = MessageBox.Show(
+                $"¿Está seguro que desea rechazar la factura N° {facturaSeleccionada.Numero}?",
+                "Confirmar rechazo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+                if (resultado != DialogResult.Yes)
                 {
-                    throw new Exception("Solo se pueden rechazar facturas en estado Pendiente.");
+                    return;
                 }
 
                 bllFactura.RechazarFactura(facturaSeleccionada);
@@ -179,15 +152,12 @@ namespace UI
                     throw new Exception("Debe seleccionar una factura.");
                 }
 
-                if (facturaSeleccionada.Estado != "Pendiente")
-                {
-                    throw new Exception("Solo se pueden aceptar facturas en estado Pendiente.");
-                }
+                bllFactura.AceptarFactura(facturaSeleccionada);
 
-                facturaSeleccionada.Estado = "Aceptada";
-                bllFactura.ActualizarFactura(facturaSeleccionada);
                 MessageBox.Show("Factura aceptada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 CargarDatos();
+                
                 facturaSeleccionada = null;
             }
             catch (Exception ex)

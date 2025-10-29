@@ -16,15 +16,13 @@ namespace UI
     public partial class Restore : Form
     {
         BLLBackup bllBackup;
-        BLLBitacora bllBitacora;
         BEUsuario usuarioLogueado;
         public Restore(BEUsuario usuarioLogueado)
         {
             InitializeComponent();
-            bllBackup = new BLLBackup();
-            bllBitacora = new BLLBitacora();
-            CargarDatos();
             this.usuarioLogueado = usuarioLogueado;
+            bllBackup = new BLLBackup();
+            CargarDatos();
         }
 
         private void CargarDatos()
@@ -52,19 +50,48 @@ namespace UI
 
         private void btn_restore_Click(object sender, EventArgs e)
         {
-            try { 
-                if(lista_backups.SelectedItem == null)
+            try
+            {
+                if (lista_backups.SelectedItem == null)
                 {
-                   throw new Exception("Debe seleccionar un backup para restaurar.");
+                    throw new Exception("Debe seleccionar un backup para restaurar.");
                 }
 
-                bllBackup.RestaurarBackup(usuarioLogueado, lista_backups.SelectedItem.ToString());
+                string backupSeleccionado = lista_backups.SelectedItem.ToString();
+
+                DialogResult resultado = MessageBox.Show(
+                $"ADVERTENCIA\n\n" +
+                $"Está a punto de restaurar el backup:\n'{backupSeleccionado}'\n\n" +
+                $"Esta acción sobreescribirá todos los datos actuales del sistema.\n\n" +
+                $"¿Está seguro que desea continuar?",
+                "Confirmar restauración",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                btn_restore.Enabled = false;
+                btn_cancelar.Enabled = false;
+                lista_backups.Enabled = false;
+                this.Cursor = Cursors.WaitCursor;
+
+                bllBackup.RestaurarBackup(usuarioLogueado, backupSeleccionado);
                 MessageBox.Show("Backup restaurado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarDatos();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btn_restore.Enabled = true;
+                btn_cancelar.Enabled = true;
+                lista_backups.Enabled = true;
+                this.Cursor = Cursors.Default;
             }
         }
     }

@@ -30,7 +30,7 @@ namespace UI
         {
             try { 
                 dgv_backups.DataSource = null;
-                dgv_backups.DataSource = bllBitacora.ListarTodo().Where(b => b.Operacion == "Backup").ToList();
+                dgv_backups.DataSource = bllBitacora.ListarBackups();
             }
             catch (Exception ex)
             {
@@ -46,6 +46,20 @@ namespace UI
         private void btn_backup_Click(object sender, EventArgs e)
         {
             try {
+
+                DialogResult resultado = MessageBox.Show(
+                   "¿Está seguro que desea crear un backup?\n\nEsto guardará el estado actual del sistema.",
+                   "Confirmar backup",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question);
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                btn_backup.Enabled = false;
+                this.Cursor = Cursors.WaitCursor;
+
                 bllBackup.CrearBackup(usuarioLogueado);
                 MessageBox.Show("Backup realizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarDatos();
@@ -53,6 +67,11 @@ namespace UI
             catch (Exception ex)
             {
                 MessageBox.Show("Error al realizar el backup: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btn_backup.Enabled = true;
+                this.Cursor = Cursors.Default;
             }
         }
     }

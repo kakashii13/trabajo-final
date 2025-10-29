@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class Bitacora
+    partial class ConsultarBitacora
     {
         /// <summary>
         /// Required designer variable.

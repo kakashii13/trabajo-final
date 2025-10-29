@@ -214,7 +214,7 @@ namespace UI
 
         private void listadoAfiliados_Click(object sender, EventArgs e)
         {
-            ListadoAfiliados listadoAfiliados = new ListadoAfiliados();
+            ABMAfiliados listadoAfiliados = new ABMAfiliados();
             listadoAfiliados.MdiParent = this;
             listadoAfiliados.Show();
         }
@@ -278,7 +278,7 @@ namespace UI
 
         private void listarAutorizaciones_Click(object sender, EventArgs e)
         {
-            ListarAutorizaciones listarAutorizaciones = new ListarAutorizaciones();
+            ConsultarAutorizaciones listarAutorizaciones = new ConsultarAutorizaciones();
             listarAutorizaciones.MdiParent = this;
             listarAutorizaciones.Show();
         }
@@ -320,7 +320,7 @@ namespace UI
 
         private void bitacora_Click(object sender, EventArgs e)
         {
-            Bitacora bitacora = new Bitacora();
+            ConsultarBitacora bitacora = new ConsultarBitacora();
             bitacora.MdiParent = this;
             bitacora.Show();
         }

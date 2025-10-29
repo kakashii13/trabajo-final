@@ -78,19 +78,25 @@ namespace UI
         {
             try
             {
-                modo = "Modificacion";
-                // llenamos los campos con datos de la practica seleccionada
-                if (dg_practicas.CurrentRow == null) { return; }
+                if (dg_practicas.CurrentRow == null) {
+                    MessageBox.Show("Debe seleccionar una práctica para modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                
 
                 practicaSeleccionada = dg_practicas.CurrentRow.DataBoundItem as BEPractica;
 
-                if (practicaSeleccionada == null) { return; }
+                if (practicaSeleccionada == null) {
+                    MessageBox.Show("Error al obtener la práctica seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                
+                modo = "Modificacion";
                
                 txt_nombre.Text = practicaSeleccionada.Nombre;
                 txt_codigo.Value = practicaSeleccionada.Codigo;
                 txt_precio.Text = practicaSeleccionada.Precio.ToString();
 
-                // comportamiento UI
                 btn_cancel.Enabled = true;
                 btn_save.Enabled = true;
                 DeshabilitarAcciones();
@@ -106,6 +112,8 @@ namespace UI
         {
             btn_save.Enabled = false;
             btn_cancel.Enabled = false;
+            practicaSeleccionada = null; 
+            modo = null;
             HabilitarAcciones();
             LimpiarInputs();
         }
@@ -118,10 +126,10 @@ namespace UI
                 {
                     throw new Exception("El nombre de la practica es obligatorio.");
                 }
-               
-                if(!decimal.TryParse(txt_precio.Text, out decimal precio_txt) || precio_txt <= 0)
+
+                if (!decimal.TryParse(txt_precio.Text, out decimal precio) || precio <= 0)
                 {
-                    throw new Exception("El precio de la practica es obligatorio y debe ser un número decimal mayor a 0.");
+                    throw new Exception("El precio debe ser un número decimal mayor a 0.");
                 }
 
                 if (txt_codigo.Value <= 0)
@@ -130,9 +138,7 @@ namespace UI
                 }
 
                 var nombre = txt_nombre.Text.Trim();
-                var precio = Convert.ToDecimal(txt_precio.Text);
-                var codigo = Convert.ToInt32(txt_codigo.Value);
-
+                var codigo = (int)txt_codigo.Value;
 
                 if (modo == "Alta")
                 {
@@ -144,19 +150,26 @@ namespace UI
                 }
                 else if (modo == "Modificacion")
                 {
+                    if (practicaSeleccionada == null)
+                    {
+                        throw new Exception("No hay una práctica seleccionada para modificar.");
+                    }
+
                     BEPractica practica = new BEPractica(practicaSeleccionada.Id, codigo, nombre, precio);
 
                     bllPractica.ModificarPractica(practica);
 
-                    MessageBox.Show("Practica modificada exitosamente.", "Éxito",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Practica modificada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 LimpiarInputs();
+                HabilitarAcciones();
+                
                 btn_save.Enabled = false;
                 btn_cancel.Enabled = false;
-                HabilitarAcciones();
+                practicaSeleccionada = null; 
                 modo = null;
+
                 CargarGrid();
             }
             catch (Exception ex)

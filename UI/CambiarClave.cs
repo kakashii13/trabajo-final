@@ -52,11 +52,10 @@ namespace UI
                     return;
                 }
 
-                //metodo para cambiar la password
                 bllUsuario.CambiarPassword(usuarioLogueado, nuevaClave);
 
                 MessageBox.Show("Clave cambiada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // limpiar ui
+                
                 txt_current_pass.Clear();
                 txt_new_pass.Clear();
                 txt_confirm_pass.Clear();

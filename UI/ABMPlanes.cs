@@ -76,16 +76,23 @@ namespace UI
             try
             {
                 // llenamos los campos con datos del plan seleccionado
-                if (dg_planes.CurrentRow == null) { return; }
+                if (dg_planes.CurrentRow == null) {
+                    MessageBox.Show("Debe seleccionar un plan para modificar.",
+                "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; 
+                }
 
                 planSeleccionado = dg_planes.CurrentRow.DataBoundItem as BEPlan;
 
-                if (planSeleccionado == null) { return; }
+                if (planSeleccionado == null) {
+                    MessageBox.Show("Error al obtener el plan seleccionado.",
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 txt_nombre.Text = planSeleccionado.Nombre;
                 txt_monto.Text = planSeleccionado.AporteTope.ToString();
 
-                // comportamiento UI
                 btn_cancel.Enabled = true;
                 btn_save.Enabled = true;
                 DeshabilitarAcciones();
@@ -104,6 +111,8 @@ namespace UI
             btn_cancel.Enabled = false;
             HabilitarAcciones();
             LimpiarInputs();
+            modo = null;
+            planSeleccionado = null;
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -116,13 +125,23 @@ namespace UI
                 {
                     throw new Exception("Todos los campos son obligatorios.");
                 }
-                if (!int.TryParse(txt_monto.Text, out int monto) || monto < 0)
+
+                if (!int.TryParse(txt_monto.Text, out int aporteTope))
                 {
-                    throw new Exception("El monto debe ser un número entero positivo.");
+                    throw new Exception("El monto debe ser un número entero válido.");
+                }
+
+                if (aporteTope <= 0)
+                {
+                    throw new Exception("El monto debe ser mayor a cero.");
+                }
+
+                if (aporteTope > 1000000)
+                {
+                    throw new Exception("El monto no puede superar $1.000.000.");
                 }
 
                 var nombre = txt_nombre.Text.Trim();
-                var aporteTope = Convert.ToInt32(txt_monto.Text);
 
                 if (modo == "Alta")
                 {
@@ -144,10 +163,13 @@ namespace UI
                 }
 
                 LimpiarInputs();
+                HabilitarAcciones();
+
                 btn_save.Enabled = false;
                 btn_cancel.Enabled = false;
-                HabilitarAcciones();
+                planSeleccionado = null;
                 modo = null;
+                
                 CargarGrid();
             }
             catch (Exception ex)

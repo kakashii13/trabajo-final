@@ -42,18 +42,37 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void LimpiarFormulario()
+        {
+            afiliadoSeleccionado = null;
+            txt_cuil.Clear();
+            lista_afiliados.ClearSelected(); 
+            combo_practicas.SelectedIndex = -1; 
+            date_solicitud.Value = DateTime.Now;
+        }
         private void btn_guardar_Click(object sender, EventArgs e)
         {
             try {
                 if(afiliadoSeleccionado == null)
                 {
-                    throw new Exception("Seleccione un afiliado");
+                    MessageBox.Show("Debe seleccionar un afiliado.",
+               "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
                 if (combo_practicas.SelectedItem == null)
                 {
-                    throw new Exception("Seleccione una práctica");
+                    MessageBox.Show("Debe seleccionar una práctica.",
+                 "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
+
+                if (date_solicitud.Value > DateTime.Now)
+                {
+                    MessageBox.Show("La fecha de solicitud no puede ser futura.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 DateTime fechaSolicitud = date_solicitud.Value;
                 BEPractica practicaSeleccionada = (BEPractica)combo_practicas.SelectedItem;
 
@@ -63,11 +82,7 @@ namespace UI
 
                 MessageBox.Show("Solicitud creada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                afiliadoSeleccionado = null;
-                txt_cuil.Clear();
-                lista_afiliados.SelectedItem = null;
-                combo_practicas.SelectedItem = null;
-                date_solicitud.Value = DateTime.Now;
+                LimpiarFormulario();
             }
             catch(Exception ex)
             {
@@ -83,7 +98,12 @@ namespace UI
         private void lista_afiliados_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if(lista_afiliados.SelectedItem == null) { return; }
+                if (lista_afiliados.SelectedItem == null)
+                {
+                    afiliadoSeleccionado = null; 
+                    txt_cuil.Clear();            
+                    return;
+                }
                 afiliadoSeleccionado = (BEAfiliado)lista_afiliados.SelectedItem;
                 txt_cuil.Text = afiliadoSeleccionado.Cuil;
             }

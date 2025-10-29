@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class ListadoAfiliados
+    partial class ABMAfiliados
     {
         /// <summary>
         /// Required designer variable.

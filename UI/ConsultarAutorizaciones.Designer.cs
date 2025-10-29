@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class ListarAutorizaciones
+    partial class ConsultarAutorizaciones
     {
         /// <summary>
         /// Required designer variable.

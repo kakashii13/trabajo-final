@@ -63,14 +63,17 @@ namespace UI
                 txt_plan.Clear();
                 txt_practica_plan.Clear();
 
-                if (lista_planes.SelectedIndex == -1) { return; }
+                if (lista_planes.SelectedItem == null) { 
+                    planSeleccionado = null;
+                    return;
+                }
 
                 planSeleccionado = (BEPlan)lista_planes.SelectedItem;
                 
-                // completamos el campo de plan seleccionado
+                
                 txt_plan.Text = planSeleccionado.ToString();
 
-                // listamos las practicas del plan seleccionado
+                
                 foreach(BEPractica practica in planSeleccionado.Practicas)
                 {
                     lista_practicas_plan.Items.Add(practica);
@@ -85,7 +88,11 @@ namespace UI
         private void lista_practicas_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if (lista_practicas.SelectedIndex == -1) { return; }
+                if (lista_practicas.SelectedItem == null) {
+                    practicaDisponibleSeleccionada = null; 
+                    txt_practica.Clear();
+                    return;
+                }
 
                 practicaDisponibleSeleccionada = (BEPractica)lista_practicas.SelectedItem;
 
@@ -100,16 +107,14 @@ namespace UI
         private void btn_asignar_Click(object sender, EventArgs e)
         {
             try {
-                 if(planSeleccionado == null && practicaDisponibleSeleccionada == null)
+                 if(planSeleccionado == null || practicaDisponibleSeleccionada == null)
                 {
                     throw new Exception("Debe seleccionar un plan y una práctica.");
                 }
 
                 bllPlan.AsignarPractica(planSeleccionado, practicaDisponibleSeleccionada);
 
-                // actualizamos la lista de practicas del plan
                 lista_practicas_plan.Items.Add(practicaDisponibleSeleccionada);
-                planSeleccionado.Practicas.Add(practicaDisponibleSeleccionada);
 
                 MessageBox.Show("Práctica asignada al plan correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txt_practica.Clear();
@@ -125,7 +130,12 @@ namespace UI
         private void lista_practicas_plan_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if(lista_practicas_plan.SelectedIndex == -1) { return; }
+                if(lista_practicas_plan.SelectedItem == null)
+                {
+                    practicaSeleccionadoPorPlan = null; 
+                    txt_practica_plan.Clear();
+                    return;
+                }
                
                 practicaSeleccionadoPorPlan = (BEPractica)lista_practicas_plan.SelectedItem;
                 txt_practica_plan.Text = practicaSeleccionadoPorPlan.ToString();
@@ -140,20 +150,30 @@ namespace UI
         {
             try
             {
-                if(planSeleccionado == null && practicaSeleccionadoPorPlan == null)
+                if(planSeleccionado == null || practicaSeleccionadoPorPlan == null)
                 {
                     throw new Exception("Debe seleccionar un plan y una práctica.");
                 }
+
+                DialogResult resultado = MessageBox.Show(
+                $"¿Está seguro que desea eliminar la práctica '{practicaSeleccionadoPorPlan.Nombre}' del plan '{planSeleccionado.Nombre}'?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
+
                 bllPlan.QuitarPractica(planSeleccionado, practicaSeleccionadoPorPlan);
-                
-                // actualizamos la lista de practicas del plan
+
                 lista_practicas_plan.Items.Remove(practicaSeleccionadoPorPlan);
-                planSeleccionado.Practicas.Remove(practicaSeleccionadoPorPlan);
 
                 MessageBox.Show("Práctica eliminada del plan correctamente.", "Exito", MessageBoxButtons.OK);
                 
                 txt_practica_plan.Clear();
                 lista_practicas_plan.ClearSelected();
+                practicaSeleccionadoPorPlan = null;
             }
             catch (Exception ex)
             {

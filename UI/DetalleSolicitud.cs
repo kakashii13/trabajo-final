@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class SolicitudDetalle : Form
+    public partial class DetalleSolicitud : Form
     {
         BESolicitud solicitudSeleccionada;
         BLLPrestador bllPrestador;
@@ -23,7 +23,7 @@ namespace UI
         BEPractica practicaSolicitada;
         BEAutorizacion autorizacion;
         BLLAutorizacion bllAutorizacion;
-        public SolicitudDetalle(BESolicitud solicitudSeleccionada)
+        public DetalleSolicitud(BESolicitud solicitudSeleccionada)
         {
             InitializeComponent();
             bllPrestador = new BLLPrestador();
@@ -42,7 +42,10 @@ namespace UI
                 txt_nombre_apellido.Text = solicitudSeleccionada.Afiliado.NombreApellido;
                 txt_activo.Text = solicitudSeleccionada.Afiliado.Activo ? "Si" : "No";
                 txt_nro_afiliado.Text = solicitudSeleccionada.Afiliado.NroAfiliado.ToString();
-                txt_plan.Text = solicitudSeleccionada.Afiliado.ObtenerPlanActual().ToString();
+
+                var planActual = solicitudSeleccionada.Afiliado.ObtenerPlanActual();
+                txt_plan.Text = planActual?.ToString() ?? "Sin plan";
+                
                 txt_telefono.Text = solicitudSeleccionada.Afiliado.Telefono;
 
                 // solicitud
@@ -84,7 +87,13 @@ namespace UI
         private void lista_prestadores_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if(lista_prestadores.SelectedIndex < 0) { return; }
+                if (lista_prestadores.SelectedItem == null)
+                {
+                    prestadorSeleccionado = null;
+                    txt_prestador.Clear();
+                    return;
+                }
+
                 prestadorSeleccionado = (BEPrestador)lista_prestadores.SelectedItem;
                 txt_prestador.Text = prestadorSeleccionado.ToString();
             }
@@ -98,24 +107,34 @@ namespace UI
         {
             try {
                 if (solicitudSeleccionada == null) { throw new Exception("No se ha seleccionado ninguna solicitud."); }
+
+                DialogResult confirmar = MessageBox.Show(
+                    "¿Está seguro que desea rechazar esta solicitud?",
+                    "Confirmar rechazo",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+                if (confirmar != DialogResult.Yes)
+                {
+                    return;
+                }
+
                 ObservacionRechazo observacionRechazo = new ObservacionRechazo();
+
 
                 if (observacionRechazo.ShowDialog() != DialogResult.OK)
                 {
                     return;
                 }
                 string observacion = observacionRechazo.Observacion;
-                solicitudSeleccionada.Estado = "Rechazado";
-                solicitudSeleccionada.MotivoRechazo = observacion;
                 
-                bllSolicitud.ModificarSolicitud(solicitudSeleccionada);
+                
+                bllSolicitud.RechazarSolicitud(solicitudSeleccionada, observacion);
 
 
                 MessageBox.Show("Solicitud rechazada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 txt_rechazo.Text = observacion;
-                txt_solicitud_estado.Text = solicitudSeleccionada.Estado;
-
+                txt_solicitud_estado.Text = "Rechazado";
                 btn_autorizar.Enabled = false;
                 btn_rechazar.Enabled = false;
             }
@@ -131,8 +150,10 @@ namespace UI
             try {
                 if(prestadorSeleccionado == null) { throw new Exception("No se ha seleccionado ningun prestador."); }
 
-                autorizacion = new BEAutorizacion();
-                autorizacion.Prestador = prestadorSeleccionado;
+                autorizacion = new BEAutorizacion
+                {
+                    Prestador = prestadorSeleccionado
+                };
 
                 MessageBox.Show("Prestador asignado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btn_asignar.Enabled = false;
@@ -149,23 +170,13 @@ namespace UI
             try {
                 if(autorizacion == null || autorizacion.Prestador == null) { throw new Exception("No se ha asignado ningun prestador."); }
 
-                // asignamos afiliado y practica
-                autorizacion.Afiliado = solicitudSeleccionada.Afiliado;
-                autorizacion.Practica = solicitudSeleccionada.Practica;
-                autorizacion.FechaAutorizacion = DateTime.Now;
-                autorizacion.Facturada = false;
-
-                autorizacion = bllAutorizacion.CrearAutorizacion(autorizacion);
-
-                // actualizamos estado de la solicitud
-                solicitudSeleccionada.Estado = "Aceptado";
-                bllSolicitud.ModificarSolicitud(solicitudSeleccionada);
+                autorizacion = bllSolicitud.AutorizarSolicitud(solicitudSeleccionada, autorizacion.Prestador);
 
                 // generamos el pdf de la autorizacion
                 string rutaPDF = ServicioPDF.GenerarPDFAutorizacion(autorizacion);
 
                 // actualizamos la vista
-                txt_solicitud_estado.Text = solicitudSeleccionada.Estado;
+                txt_solicitud_estado.Text = "Aceptado";
                 btn_autorizar.Enabled = false;
                 btn_rechazar.Enabled = false;
                 txt_nro_autorizacion.Text = autorizacion.NumeroAutorizacion.ToString();

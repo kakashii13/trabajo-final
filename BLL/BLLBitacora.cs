@@ -50,5 +50,18 @@ namespace BLL
             }
         }
 
+        public List<BEBitacora> ListarBackups()
+        {
+            try
+            {
+                return mppBitacora.ListarTodo()
+                .Where(b => b.Operacion == "Backup")
+                .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar los backups: " + ex.Message);
+            }
+        }
     }
 }

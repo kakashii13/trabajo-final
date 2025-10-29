@@ -88,21 +88,21 @@ namespace UI
         {
             try
             {
-                if(txt_permiso.Text == "")
+                if (string.IsNullOrWhiteSpace(txt_permiso.Text)) // ✅ Usar IsNullOrWhiteSpace
                 {
                     throw new Exception("El nombre del permiso no puede estar vacío.");
                 }
-                
-                    BEPermisoSimple nuevoPermiso = new BEPermisoSimple(txt_permiso.Text);
 
-                    // persistimos el permiso
-                    bllPermiso.CrearPermiso(nuevoPermiso, false);
+                BEPermisoSimple nuevoPermiso = new BEPermisoSimple(txt_permiso.Text);
 
-                    // actualizamos la lista
-                    tree_permisos.Nodes.Add(tree_permisos.SelectedNode);
-                    
-                    MessageBox.Show("Permiso creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Resetear();
+                // persistimos el permiso
+                bllPermiso.CrearPermiso(nuevoPermiso, false);
+
+                // actualizamos la lista
+                CargarPermisosDisponibles();
+
+                MessageBox.Show("Permiso creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Resetear();
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace UI
                 bllPermiso.BorrarPermiso(permisoSeleccionado);
 
                 // actualizamos el tree
-                tree_permisos.Nodes.Remove(tree_permisos.SelectedNode);
+                CargarPermisosDisponibles();
 
                 MessageBox.Show("Permiso borrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
@@ -166,6 +166,8 @@ namespace UI
                 permisoSeleccionado.Nombre = nombre;
 
                 bllPermiso.ModificarPermiso(permisoSeleccionado);
+
+                CargarPermisosDisponibles();
 
                 MessageBox.Show("Permiso modificado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Resetear();
@@ -237,7 +239,7 @@ namespace UI
                 bllPermiso.CrearPermiso(nuevoRol, true);
 
                 // actualizar la lista
-                list_roles.Items.Add(nuevoRol);
+                CompletarListados();
 
                 MessageBox.Show("Rol creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Resetear();
@@ -263,7 +265,7 @@ namespace UI
                 bllPermiso.BorrarPermiso(rolSeleccionado);
 
                 // actualizamos la lista
-                list_roles.Items.Remove(rolSeleccionado);
+                CompletarListados();
 
                 MessageBox.Show("Rol borrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Resetear();
@@ -293,6 +295,8 @@ namespace UI
                 rolSeleccionado.Nombre = nombre;
 
                 bllPermiso.ModificarPermiso(rolSeleccionado);
+
+                CompletarListados();
 
                 MessageBox.Show("Rol modificado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Resetear();
@@ -434,9 +438,9 @@ namespace UI
                 BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)tree_permisos_roles.SelectedNode.Tag;
 
                 bllPermiso.RemoverPermiso(rolSeleccionado, permisoSeleccionado);
-                
+
                 // actualizamos la lista
-                tree_permisos_roles.Nodes.Remove(tree_permisos_roles.SelectedNode);
+                list_roles_SelectedValueChanged(null, null);
 
                 MessageBox.Show("Permiso removido del rol exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Resetear();
@@ -618,13 +622,13 @@ namespace UI
                     throw new Exception("Debe seleccionar un usuario.");
                 }
 
-                if (!check_encriptacion.Checked)
-                {
-                    txt_password.Text = usuarioSeleccionado.Password;
-                }
-                else
+                if (check_encriptacion.Checked) 
                 {
                     txt_password.Text = ServicioSeguridad.Desencriptar(usuarioSeleccionado.Password);
+                }
+                else 
+                {
+                    txt_password.Text = usuarioSeleccionado.Password;
                 }
             }
             catch (Exception ex)
@@ -636,7 +640,7 @@ namespace UI
         private void btn_asignar_rol_Click(object sender, EventArgs e)
         {
             try {
-                if(usuarioSeleccionado == null || list_roles.SelectedItems == null)
+                if(usuarioSeleccionado == null || list_roles.SelectedItem == null)
                 {
                     throw new Exception("Debe seleccionar un usuario y un rol.");
                 }
@@ -657,10 +661,16 @@ namespace UI
         {
             try
             {
-               if(usuarioSeleccionado == null || tree_user_permisos.SelectedNode == null || tree_user_permisos.SelectedNode.Level != 1)
+                if (usuarioSeleccionado == null || tree_user_permisos.SelectedNode == null)
                 {
-                    throw new Exception("Debe seleccionar un usuario y un rol del árbol.");
+                    throw new Exception("Debe seleccionar un usuario y un nodo del árbol.");
                 }
+
+                if (!(tree_user_permisos.SelectedNode.Tag is BERol))
+                {
+                    throw new Exception("Debe seleccionar un rol del árbol.");
+                }
+
                 BERol rolSeleccionado = (BERol)tree_user_permisos.SelectedNode.Tag;
 
                 if (rolSeleccionado == null)
@@ -739,6 +749,12 @@ namespace UI
             {
                 txt_permiso_usuario_seleccionado.Text = "";
                 txt_rol_usuario_seleccionado.Text = "";
+
+                if (tree_user_permisos.SelectedNode == null ||
+                    tree_user_permisos.SelectedNode.Tag == null) 
+                {
+                    return;
+                }
 
                 if (tree_user_permisos.SelectedNode.Tag is BERol)
                 {

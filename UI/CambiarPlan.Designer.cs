@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class CambioPlan
+    partial class CambiarPlan
     {
         /// <summary>
         /// Required designer variable.

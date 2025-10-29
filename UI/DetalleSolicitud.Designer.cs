@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class SolicitudDetalle
+    partial class DetalleSolicitud
     {
         /// <summary>
         /// Required designer variable.

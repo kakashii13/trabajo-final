@@ -54,7 +54,7 @@
             // 
             // btn_listar
             // 
-            this.btn_listar.Location = new System.Drawing.Point(336, 220);
+            this.btn_listar.Location = new System.Drawing.Point(403, 220);
             this.btn_listar.Name = "btn_listar";
             this.btn_listar.Size = new System.Drawing.Size(132, 41);
             this.btn_listar.TabIndex = 47;
@@ -65,9 +65,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lista_practicas);
-            this.groupBox3.Location = new System.Drawing.Point(336, 12);
+            this.groupBox3.Location = new System.Drawing.Point(383, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(132, 200);
+            this.groupBox3.Size = new System.Drawing.Size(152, 200);
             this.groupBox3.TabIndex = 46;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Practicas disponibles";
@@ -77,16 +77,16 @@
             this.lista_practicas.FormattingEnabled = true;
             this.lista_practicas.Location = new System.Drawing.Point(6, 19);
             this.lista_practicas.Name = "lista_practicas";
-            this.lista_practicas.Size = new System.Drawing.Size(120, 173);
+            this.lista_practicas.Size = new System.Drawing.Size(140, 173);
             this.lista_practicas.TabIndex = 2;
             this.lista_practicas.SelectedValueChanged += new System.EventHandler(this.lista_practicas_SelectedValueChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lista_practicas_prestador);
-            this.groupBox2.Location = new System.Drawing.Point(169, 12);
+            this.groupBox2.Location = new System.Drawing.Point(197, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(140, 200);
+            this.groupBox2.Size = new System.Drawing.Size(166, 200);
             this.groupBox2.TabIndex = 45;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Practicas por prestador";
@@ -96,7 +96,7 @@
             this.lista_practicas_prestador.FormattingEnabled = true;
             this.lista_practicas_prestador.Location = new System.Drawing.Point(6, 19);
             this.lista_practicas_prestador.Name = "lista_practicas_prestador";
-            this.lista_practicas_prestador.Size = new System.Drawing.Size(124, 173);
+            this.lista_practicas_prestador.Size = new System.Drawing.Size(154, 173);
             this.lista_practicas_prestador.TabIndex = 1;
             this.lista_practicas_prestador.SelectedValueChanged += new System.EventHandler(this.lista_practicas_prestador_SelectedValueChanged);
             // 
@@ -105,7 +105,7 @@
             this.groupBox1.Controls.Add(this.lista_prestadores);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(132, 200);
+            this.groupBox1.Size = new System.Drawing.Size(164, 200);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Prestadores";
@@ -115,7 +115,7 @@
             this.lista_prestadores.FormattingEnabled = true;
             this.lista_prestadores.Location = new System.Drawing.Point(6, 19);
             this.lista_prestadores.Name = "lista_prestadores";
-            this.lista_prestadores.Size = new System.Drawing.Size(120, 173);
+            this.lista_prestadores.Size = new System.Drawing.Size(152, 173);
             this.lista_prestadores.TabIndex = 0;
             this.lista_prestadores.SelectedValueChanged += new System.EventHandler(this.lista_prestadores_SelectedValueChanged);
             // 
@@ -225,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 415);
+            this.ClientSize = new System.Drawing.Size(547, 415);
             this.Controls.Add(this.btn_listar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);

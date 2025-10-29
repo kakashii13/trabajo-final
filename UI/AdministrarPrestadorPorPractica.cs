@@ -34,12 +34,10 @@ namespace UI
             {
                 practicas = bllPractica.ListarPracticas();
 
-                List<BEPrestador> prestadores = bllPrestador.ListarPrestadores();
+                List<BEPrestador> prestadores = bllPrestador.ListarPrestadoresCompletos();
 
-                // aprovechamos el listado de practicas para hidratar las practicas de cada prestador
                 foreach (var prestador in prestadores)
                 {
-                    prestador.Practicas = HidratarPracticasDePrestador(prestador);
                      lista_prestadores.Items.Add(prestador);
                 }
             }
@@ -47,23 +45,6 @@ namespace UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private List<BEPractica> HidratarPracticasDePrestador(BEPrestador prestador)
-        {
-            try
-            {
-                List<int> idsPracticas = bllPrestador.ListarPracticasDelPrestador(prestador);
-
-                // buscamos en la lista que ya cargamos de practicas
-                return practicas
-                    .Where(p => idsPracticas.Contains(p.Id))
-                    .ToList();
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return null;
         }
 
         private void lista_prestadores_SelectedValueChanged(object sender, EventArgs e)
@@ -74,14 +55,15 @@ namespace UI
                 txt_prestador.Clear();
                 txt_practica_prestador.Clear();
 
-                if (lista_prestadores.SelectedIndex == -1) { return; }
+                if (lista_prestadores.SelectedItem == null) {
+                    prestadorSeleccionado = null;
+                    return;
+                }
 
                 prestadorSeleccionado = (BEPrestador)lista_prestadores.SelectedItem;
 
-                // completamos el campo de prestador seleccionado
                 txt_prestador.Text = prestadorSeleccionado.ToString();
 
-                // listamos las practicas del prestador seleccionado
                 foreach (BEPractica practica in prestadorSeleccionado.Practicas)
                 {
                     lista_practicas_prestador.Items.Add(practica);
@@ -97,7 +79,10 @@ namespace UI
         {
             try
             {
-                if (lista_practicas_prestador.SelectedIndex == -1) { return; }
+                if (lista_practicas_prestador.SelectedItem == null) {
+                    practicaSeleccionadoPorPrestador = null; 
+                    return;
+                }
 
                 practicaSeleccionadoPorPrestador = (BEPractica)lista_practicas_prestador.SelectedItem;
                 txt_practica_prestador.Text = practicaSeleccionadoPorPrestador.ToString();
@@ -120,20 +105,31 @@ namespace UI
         {
             try
             {
-                if (prestadorSeleccionado == null && practicaSeleccionadoPorPrestador == null)
+                if (prestadorSeleccionado == null || practicaSeleccionadoPorPrestador == null)
                 {
                     throw new Exception("Debe seleccionar un prestador y una práctica.");
                 }
+
+                DialogResult resultado = MessageBox.Show(
+                $"¿Está seguro que desea eliminar '{practicaSeleccionadoPorPrestador.Nombre}' del prestador '{prestadorSeleccionado.RazonSocial}'?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
+
                 bllPrestador.QuitarPractica(prestadorSeleccionado, practicaSeleccionadoPorPrestador);
 
                 // actualizamos la lista de practicas del prestador
                 lista_practicas_prestador.Items.Remove(practicaSeleccionadoPorPrestador);
-                prestadorSeleccionado.Practicas.Remove(practicaSeleccionadoPorPrestador);
 
                 txt_practica_prestador.Clear();
                 lista_practicas_prestador.ClearSelected();
 
-                MessageBox.Show("Práctica eliminada del prestador correctamente.", "Exito", MessageBoxButtons.OK);
+                MessageBox.Show("Práctica eliminada del prestador correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -144,22 +140,20 @@ namespace UI
         {
             try
             {
-                if (prestadorSeleccionado == null && practicaDisponibleSeleccionada == null)
+                if (prestadorSeleccionado == null || practicaDisponibleSeleccionada == null)
                 {
                     throw new Exception("Debe seleccionar un prestador y una práctica.");
                 }
 
                 bllPrestador.AsignarPractica(prestadorSeleccionado, practicaDisponibleSeleccionada);
 
-                // actualizamos la lista de practicas del prestador
                 lista_practicas_prestador.Items.Add(practicaDisponibleSeleccionada);
-                prestadorSeleccionado.Practicas.Add(practicaDisponibleSeleccionada);
+
+                MessageBox.Show("Práctica asignada al prestador correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 txt_practica.Clear();
                 lista_practicas.ClearSelected();
                 practicaDisponibleSeleccionada = null;
-                
-                MessageBox.Show("Práctica asignada al prestador correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -170,7 +164,12 @@ namespace UI
         {
             try
             {
-                if (lista_practicas.SelectedIndex == -1){ return; }
+                if (lista_practicas.SelectedItem == null)
+                {
+                    practicaDisponibleSeleccionada = null; 
+                    txt_practica.Clear();
+                    return;
+                }
 
                 practicaDisponibleSeleccionada = (BEPractica)lista_practicas.SelectedItem;
 

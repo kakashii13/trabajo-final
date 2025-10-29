@@ -132,7 +132,7 @@ namespace UI
                     throw new Exception("No se ha seleccionado ninguna solicitud.");
                 }
 
-                SolicitudDetalle detalle = new SolicitudDetalle(solicitudSeleccionada);
+                DetalleSolicitud detalle = new DetalleSolicitud(solicitudSeleccionada);
                 detalle.ShowDialog();
                 CargarSolicitudes();
             }
