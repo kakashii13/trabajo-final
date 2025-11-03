@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_cuil = new System.Windows.Forms.TextBox();
+            this.txtCuil = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTime = new System.Windows.Forms.DateTimePicker();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
+            this.fechaPeriodo = new System.Windows.Forms.DateTimePicker();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txt_monto = new System.Windows.Forms.TextBox();
+            this.txtMonto = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.list_afiliados = new System.Windows.Forms.ListBox();
+            this.listaAfiliados = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -52,14 +52,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "CUIL afiliado";
             // 
-            // txt_cuil
+            // txtCuil
             // 
-            this.txt_cuil.Location = new System.Drawing.Point(24, 46);
-            this.txt_cuil.MaxLength = 11;
-            this.txt_cuil.Name = "txt_cuil";
-            this.txt_cuil.ReadOnly = true;
-            this.txt_cuil.Size = new System.Drawing.Size(100, 20);
-            this.txt_cuil.TabIndex = 1;
+            this.txtCuil.Location = new System.Drawing.Point(24, 46);
+            this.txtCuil.MaxLength = 11;
+            this.txtCuil.Name = "txtCuil";
+            this.txtCuil.ReadOnly = true;
+            this.txtCuil.Size = new System.Drawing.Size(100, 20);
+            this.txtCuil.TabIndex = 1;
             // 
             // label2
             // 
@@ -79,46 +79,46 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Periodo";
             // 
-            // dateTime
+            // fechaPeriodo
             // 
-            this.dateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTime.Location = new System.Drawing.Point(147, 46);
-            this.dateTime.Name = "dateTime";
-            this.dateTime.Size = new System.Drawing.Size(105, 20);
-            this.dateTime.TabIndex = 5;
+            this.fechaPeriodo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.fechaPeriodo.Location = new System.Drawing.Point(147, 46);
+            this.fechaPeriodo.Name = "fechaPeriodo";
+            this.fechaPeriodo.Size = new System.Drawing.Size(105, 20);
+            this.fechaPeriodo.TabIndex = 5;
             // 
-            // btn_cancel
+            // btnCancelar
             // 
-            this.btn_cancel.BackColor = System.Drawing.Color.Brown;
-            this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_cancel.Location = new System.Drawing.Point(443, 209);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(120, 32);
-            this.btn_cancel.TabIndex = 46;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.Brown;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(443, 209);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 32);
+            this.btnCancelar.TabIndex = 46;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // btn_save
+            // btnGuardar
             // 
-            this.btn_save.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_save.Location = new System.Drawing.Point(443, 254);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(120, 32);
-            this.btn_save.TabIndex = 45;
-            this.btn_save.Text = "Guardar cambios";
-            this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btnGuardar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Location = new System.Drawing.Point(443, 254);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(120, 32);
+            this.btnGuardar.TabIndex = 45;
+            this.btnGuardar.Text = "Guardar cambios";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txt_monto);
-            this.groupBox1.Controls.Add(this.dateTime);
+            this.groupBox1.Controls.Add(this.txtMonto);
+            this.groupBox1.Controls.Add(this.fechaPeriodo);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txt_cuil);
+            this.groupBox1.Controls.Add(this.txtCuil);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(285, 12);
@@ -128,17 +128,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nuevo aporte";
             // 
-            // txt_monto
+            // txtMonto
             // 
-            this.txt_monto.Location = new System.Drawing.Point(24, 99);
-            this.txt_monto.MaxLength = 11;
-            this.txt_monto.Name = "txt_monto";
-            this.txt_monto.Size = new System.Drawing.Size(100, 20);
-            this.txt_monto.TabIndex = 6;
+            this.txtMonto.Location = new System.Drawing.Point(24, 99);
+            this.txtMonto.MaxLength = 11;
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(100, 20);
+            this.txtMonto.TabIndex = 6;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.list_afiliados);
+            this.groupBox2.Controls.Add(this.listaAfiliados);
             this.groupBox2.Location = new System.Drawing.Point(11, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(264, 274);
@@ -146,14 +146,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Afiliados";
             // 
-            // list_afiliados
+            // listaAfiliados
             // 
-            this.list_afiliados.FormattingEnabled = true;
-            this.list_afiliados.Location = new System.Drawing.Point(6, 19);
-            this.list_afiliados.Name = "list_afiliados";
-            this.list_afiliados.Size = new System.Drawing.Size(252, 238);
-            this.list_afiliados.TabIndex = 0;
-            this.list_afiliados.SelectedValueChanged += new System.EventHandler(this.list_afiliados_SelectedValueChanged);
+            this.listaAfiliados.FormattingEnabled = true;
+            this.listaAfiliados.Location = new System.Drawing.Point(6, 19);
+            this.listaAfiliados.Name = "listaAfiliados";
+            this.listaAfiliados.Size = new System.Drawing.Size(252, 238);
+            this.listaAfiliados.TabIndex = 0;
+            this.listaAfiliados.SelectedValueChanged += new System.EventHandler(this.list_afiliados_SelectedValueChanged);
             // 
             // RegistrarAporte
             // 
@@ -161,8 +161,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 305);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox1);
             this.Name = "RegistrarAporte";
             this.Text = "RegistrarAporte";
@@ -176,15 +176,15 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_cuil;
+        private System.Windows.Forms.TextBox txtCuil;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTime;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.DateTimePicker fechaPeriodo;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox list_afiliados;
-        private System.Windows.Forms.TextBox txt_monto;
+        private System.Windows.Forms.ListBox listaAfiliados;
+        private System.Windows.Forms.TextBox txtMonto;
     }
 }

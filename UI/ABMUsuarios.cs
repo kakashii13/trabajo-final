@@ -31,55 +31,55 @@ namespace UI
         private void ListarUsuarios()
         {
             List<BEUsuario> usuarios = bllUsuario.ListarUsuarios();
-            dgv_users.DataSource = usuarios;
-            dgv_users.Columns["Password"].Visible = false;
-            dgv_users.Columns["Eliminado"].Visible = false;
+            dgvUsuarios.DataSource = usuarios;
+            dgvUsuarios.Columns["Password"].Visible = false;
+            dgvUsuarios.Columns["Eliminado"].Visible = false;
         }
         private void LimpiarInputs()
         {
-            txt_nombre.Enabled = false;
-            txt_apellido.Enabled = false;
-            txt_user_nombre.Enabled = false;
-            txt_password.Enabled = false;
-            txt_nombre.Text = "";
-            txt_apellido.Text = "";
-            txt_user_nombre.Text = "";
-            txt_password.Text = "";
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
+            txtNombreUsuario.Enabled = false;
+            txtPassword.Enabled = false;
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtNombreUsuario.Text = "";
+            txtPassword.Text = "";
         }
         private void HabilitarInputs()
         {
-            txt_nombre.Enabled = true;
-            txt_apellido.Enabled = true;
-            txt_user_nombre.Enabled = true;
+            txtNombre.Enabled = true;
+            txtApellido.Enabled = true;
+            txtNombreUsuario.Enabled = true;
         }
         private void HabilitarAcciones()
         {
-            add_user.Enabled = true;
+            btnCrear.Enabled = true;
             btnInactivar.Enabled = true;
-            mod_user.Enabled = true;
+            btnModificar.Enabled = true;
         }
         private void DeshabilitarAcciones()
         {
-            add_user.Enabled = false;
+            btnCrear.Enabled = false;
             btnInactivar.Enabled = false;
-            mod_user.Enabled = false;
+            btnModificar.Enabled = false;
         }
         private void CargarDatosUsuario(BEUsuario usuario)
         {
-            txt_nombre.Text = usuario.Nombre;
-            txt_apellido.Text = usuario.Apellido;
-            txt_user_nombre.Text = usuario.NombreUsuario;
+            txtNombre.Text = usuario.Nombre;
+            txtApellido.Text = usuario.Apellido;
+            txtNombreUsuario.Text = usuario.NombreUsuario;
         }
         // habilita el formulario para crear un usuario
         private void add_user_Click(object sender, EventArgs e)
         {
             // comportamiento UI
-            btn_cancel.Enabled = true;
-            btn_save.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnGuardar.Enabled = true;
             
             // seteamos una password por default para nuevos usuarios
-            txt_password.Text = "1234";
-            txt_password.Enabled = true;
+            txtPassword.Text = "1234";
+            txtPassword.Enabled = true;
 
             DeshabilitarAcciones();
             HabilitarInputs();
@@ -90,14 +90,14 @@ namespace UI
         {
             try
             {
-                if (dgv_users.CurrentRow == null)
+                if (dgvUsuarios.CurrentRow == null)
                 {
                     MessageBox.Show("Debe seleccionar un usuario para modificar.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
+                usuarioSeleccionado = dgvUsuarios.CurrentRow.DataBoundItem as BEUsuario;
 
                 if (usuarioSeleccionado == null)
                 {
@@ -110,8 +110,8 @@ namespace UI
                 
                 CargarDatosUsuario(usuarioSeleccionado);
 
-                btn_cancel.Enabled = true;
-                btn_save.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnGuardar.Enabled = true;
 
                 DeshabilitarAcciones();
                 HabilitarInputs();
@@ -128,10 +128,10 @@ namespace UI
                 if (!ValidarCamposUI()) { return; }
                     
 
-                var nombre = txt_nombre.Text.Trim();
-                var apellido = txt_apellido.Text.Trim();
-                var nombreUsuario = txt_user_nombre.Text.Trim().ToLower();
-                var password = txt_password.Text;
+                var nombre = txtNombre.Text.Trim();
+                var apellido = txtApellido.Text.Trim();
+                var nombreUsuario = txtNombreUsuario.Text.Trim().ToLower();
+                var password = txtPassword.Text;
 
                 if (modo == "Alta")
                 {
@@ -155,8 +155,8 @@ namespace UI
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                btn_save.Enabled = false;
-                btn_cancel.Enabled = false;
+                btnGuardar.Enabled = false;
+                btnCancelar.Enabled = false;
                 usuarioSeleccionado = null; 
                 modo = null;
                 
@@ -171,8 +171,8 @@ namespace UI
         }
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            btn_save.Enabled = false;
-            btn_cancel.Enabled = false;
+            btnGuardar.Enabled = false;
+            btnCancelar.Enabled = false;
             HabilitarAcciones();
             LimpiarInputs();
             usuarioSeleccionado = null;
@@ -184,30 +184,30 @@ namespace UI
         }
         private bool ValidarCamposUI()
         {
-            if (string.IsNullOrWhiteSpace(txt_nombre.Text))
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                txt_nombre.Focus();
+                txtNombre.Focus();
                 MessageBox.Show("El nombre es requerido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;  
             }
 
-            if (string.IsNullOrWhiteSpace(txt_apellido.Text))
+            if (string.IsNullOrWhiteSpace(txtApellido.Text))
             {
-                txt_apellido.Focus();
+                txtApellido.Focus();
                 MessageBox.Show("El apellido es requerido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
            
-            if (string.IsNullOrWhiteSpace(txt_user_nombre.Text))
+            if (string.IsNullOrWhiteSpace(txtNombreUsuario.Text))
             {
-                txt_user_nombre.Focus();
+                txtNombreUsuario.Focus();
                 MessageBox.Show("El nombre de usuario es requerido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txt_password.Text) && modo == "Alta")
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) && modo == "Alta")
             {
-                txt_password.Focus();
+                txtPassword.Focus();
                 MessageBox.Show("La contraseña es requerida.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -220,14 +220,14 @@ namespace UI
         {
             try
             {
-                if (dgv_users.CurrentRow == null)
+                if (dgvUsuarios.CurrentRow == null)
                 {
                     MessageBox.Show("Debe seleccionar un usuario.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
+                usuarioSeleccionado = dgvUsuarios.CurrentRow.DataBoundItem as BEUsuario;
 
                 if (usuarioSeleccionado == null)
                 {
@@ -254,14 +254,14 @@ namespace UI
         private void btn_activar_Click(object sender, EventArgs e)
         {
             try {
-                if (dgv_users.CurrentRow == null) 
+                if (dgvUsuarios.CurrentRow == null) 
                 {
                     MessageBox.Show("Debe seleccionar un usuario.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
+                usuarioSeleccionado = dgvUsuarios.CurrentRow.DataBoundItem as BEUsuario;
 
                 if (usuarioSeleccionado == null)
                 {
@@ -289,14 +289,14 @@ namespace UI
         {
             try
             {
-                if (dgv_users.CurrentRow == null) 
+                if (dgvUsuarios.CurrentRow == null) 
                 {
                     MessageBox.Show("Debe seleccionar un usuario.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
+                usuarioSeleccionado = dgvUsuarios.CurrentRow.DataBoundItem as BEUsuario;
 
                 if (usuarioSeleccionado == null)
                 {
@@ -333,14 +333,14 @@ namespace UI
         private void btnResetearPass_Click(object sender, EventArgs e)
         {
             try {
-                if (dgv_users.CurrentRow == null) 
+                if (dgvUsuarios.CurrentRow == null) 
                 {
                     MessageBox.Show("Debe seleccionar un usuario.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                usuarioSeleccionado = dgv_users.CurrentRow.DataBoundItem as BEUsuario;
+                usuarioSeleccionado = dgvUsuarios.CurrentRow.DataBoundItem as BEUsuario;
                
                 if (usuarioSeleccionado == null)
                 {

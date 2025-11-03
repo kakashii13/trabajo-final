@@ -28,7 +28,7 @@ namespace UI
         {
             try
             {
-                dg_practicas.DataSource = bllPractica.ListarPracticas();
+                dgvPracticas.DataSource = bllPractica.ListarPracticas();
             }
             catch (Exception ex)
             {
@@ -38,37 +38,37 @@ namespace UI
 
         private void DeshabilitarAcciones()
         {
-            add_practica.Enabled = false;
-            mod_practica.Enabled = false;
+            btnCrear.Enabled = false;
+            btnModificar.Enabled = false;
         }
 
         private void HabilitarAcciones()
         {
-            add_practica.Enabled = true;
-            mod_practica.Enabled = true;
+            btnCrear.Enabled = true;
+            btnModificar.Enabled = true;
         }
 
         private void HabilitarInputs()
         {
-            txt_precio.Enabled = true;
-            txt_nombre.Enabled = true;
-            txt_codigo.Enabled = true;
+            txtPrecio.Enabled = true;
+            txtNombre.Enabled = true;
+            txtCodigo.Enabled = true;
         }
 
         private void LimpiarInputs()
         {
-            txt_nombre.Clear();
-            txt_codigo.Value = 0;
-            txt_precio.Value = 0;
-            txt_precio.Enabled = false;
-            txt_nombre.Enabled = false;
-            txt_codigo.Enabled = false;
+            txtNombre.Clear();
+            txtCodigo.Value = 0;
+            txtPrecio.Value = 0;
+            txtPrecio.Enabled = false;
+            txtNombre.Enabled = false;
+            txtCodigo.Enabled = false;
         }
         private void add_practica_Click_1(object sender, EventArgs e)
         {
             // comportamiento UI
-            btn_cancel.Enabled = true;
-            btn_save.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnGuardar.Enabled = true;
             DeshabilitarAcciones();
             HabilitarInputs();
             modo = "Alta";
@@ -78,13 +78,13 @@ namespace UI
         {
             try
             {
-                if (dg_practicas.CurrentRow == null) {
+                if (dgvPracticas.CurrentRow == null) {
                     MessageBox.Show("Debe seleccionar una práctica para modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 
 
-                practicaSeleccionada = dg_practicas.CurrentRow.DataBoundItem as BEPractica;
+                practicaSeleccionada = dgvPracticas.CurrentRow.DataBoundItem as BEPractica;
 
                 if (practicaSeleccionada == null) {
                     MessageBox.Show("Error al obtener la práctica seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -93,12 +93,12 @@ namespace UI
                 
                 modo = "Modificacion";
                
-                txt_nombre.Text = practicaSeleccionada.Nombre;
-                txt_codigo.Value = practicaSeleccionada.Codigo;
-                txt_precio.Text = practicaSeleccionada.Precio.ToString();
+                txtNombre.Text = practicaSeleccionada.Nombre;
+                txtCodigo.Value = practicaSeleccionada.Codigo;
+                txtPrecio.Text = practicaSeleccionada.Precio.ToString();
 
-                btn_cancel.Enabled = true;
-                btn_save.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnGuardar.Enabled = true;
                 DeshabilitarAcciones();
                 HabilitarInputs();
             }
@@ -110,8 +110,8 @@ namespace UI
 
         private void btn_cancel_Click_1(object sender, EventArgs e)
         {
-            btn_save.Enabled = false;
-            btn_cancel.Enabled = false;
+            btnGuardar.Enabled = false;
+            btnCancelar.Enabled = false;
             practicaSeleccionada = null; 
             modo = null;
             HabilitarAcciones();
@@ -122,23 +122,23 @@ namespace UI
             try
             {
                 // validamos los campos
-                if (string.IsNullOrWhiteSpace(txt_nombre.Text))
+                if (string.IsNullOrWhiteSpace(txtNombre.Text))
                 {
                     throw new Exception("El nombre de la practica es obligatorio.");
                 }
 
-                if (!decimal.TryParse(txt_precio.Text, out decimal precio) || precio <= 0)
+                if (!decimal.TryParse(txtPrecio.Text, out decimal precio) || precio <= 0)
                 {
                     throw new Exception("El precio debe ser un número decimal mayor a 0.");
                 }
 
-                if (txt_codigo.Value <= 0)
+                if (txtCodigo.Value <= 0)
                 {
                     throw new Exception("El código de la practica es obligatorio y debe ser un número mayor a 0.");
                 }
 
-                var nombre = txt_nombre.Text.Trim();
-                var codigo = (int)txt_codigo.Value;
+                var nombre = txtNombre.Text.Trim();
+                var codigo = (int)txtCodigo.Value;
 
                 if (modo == "Alta")
                 {
@@ -165,8 +165,8 @@ namespace UI
                 LimpiarInputs();
                 HabilitarAcciones();
                 
-                btn_save.Enabled = false;
-                btn_cancel.Enabled = false;
+                btnGuardar.Enabled = false;
+                btnCancelar.Enabled = false;
                 practicaSeleccionada = null; 
                 modo = null;
 

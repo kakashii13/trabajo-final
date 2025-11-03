@@ -29,8 +29,8 @@ namespace UI
         private void CargarDatos()
         {
             try { 
-                dgv_backups.DataSource = null;
-                dgv_backups.DataSource = bllBitacora.ListarBackups();
+                dgvBackups.DataSource = null;
+                dgvBackups.DataSource = bllBitacora.ListarBackups();
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace UI
                     return;
                 }
 
-                btn_backup.Enabled = false;
+                btnBackup.Enabled = false;
                 this.Cursor = Cursors.WaitCursor;
 
                 bllBackup.CrearBackup(usuarioLogueado);
@@ -70,7 +70,7 @@ namespace UI
             }
             finally
             {
-                btn_backup.Enabled = true;
+                btnBackup.Enabled = true;
                 this.Cursor = Cursors.Default;
             }
         }

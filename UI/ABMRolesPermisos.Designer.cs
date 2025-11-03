@@ -28,52 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_asignar_permiso_rol = new System.Windows.Forms.Button();
-            this.btn_quitar_permiso_rol = new System.Windows.Forms.Button();
-            this.btn_del_rol = new System.Windows.Forms.Button();
-            this.btn_mod_rol = new System.Windows.Forms.Button();
-            this.btn_crear_role = new System.Windows.Forms.Button();
-            this.list_roles = new System.Windows.Forms.ListBox();
-            this.btn_del_permiso = new System.Windows.Forms.Button();
-            this.btn_mod_permiso = new System.Windows.Forms.Button();
-            this.btn_crear_permiso = new System.Windows.Forms.Button();
-            this.txt_permiso = new System.Windows.Forms.TextBox();
-            this.txt_role = new System.Windows.Forms.TextBox();
+            this.btnAsignarPermisoRol = new System.Windows.Forms.Button();
+            this.btnQuitarPermisoRol = new System.Windows.Forms.Button();
+            this.btnEliminarRol = new System.Windows.Forms.Button();
+            this.btnModificarRol = new System.Windows.Forms.Button();
+            this.btnCrearRol = new System.Windows.Forms.Button();
+            this.listaRoles = new System.Windows.Forms.ListBox();
+            this.btnEliminarPermiso = new System.Windows.Forms.Button();
+            this.btnModificarPermiso = new System.Windows.Forms.Button();
+            this.btnCrearPermiso = new System.Windows.Forms.Button();
+            this.txtPermisoSimple = new System.Windows.Forms.TextBox();
+            this.txtRol = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn_limpiar_permiso = new System.Windows.Forms.Button();
-            this.btn_limpiar_rol = new System.Windows.Forms.Button();
-            this.btn_update = new System.Windows.Forms.Button();
-            this.list_usuarios = new System.Windows.Forms.ListBox();
-            this.tree_user_permisos = new System.Windows.Forms.TreeView();
-            this.btn_asignar_rol = new System.Windows.Forms.Button();
-            this.btn_quitar_rol = new System.Windows.Forms.Button();
-            this.txt_usuario = new System.Windows.Forms.TextBox();
+            this.btnLimpiarPermiso = new System.Windows.Forms.Button();
+            this.btnLimpiarRol = new System.Windows.Forms.Button();
+            this.btnActualizarListados = new System.Windows.Forms.Button();
+            this.listaUsuarios = new System.Windows.Forms.ListBox();
+            this.treeUsuarioRolesPermisos = new System.Windows.Forms.TreeView();
+            this.btnAsignarRol = new System.Windows.Forms.Button();
+            this.btnQuitarRol = new System.Windows.Forms.Button();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txt_password = new System.Windows.Forms.TextBox();
+            this.txtUsuarioPassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txt_id = new System.Windows.Forms.TextBox();
-            this.check_encriptacion = new System.Windows.Forms.CheckBox();
+            this.txtUsuarioId = new System.Windows.Forms.TextBox();
+            this.checkEncriptacion = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tree_permisos = new System.Windows.Forms.TreeView();
+            this.treePermisosSimples = new System.Windows.Forms.TreeView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.tree_permisos_roles = new System.Windows.Forms.TreeView();
+            this.treePermisosRoles = new System.Windows.Forms.TreeView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btn_quitar_permiso_user = new System.Windows.Forms.Button();
-            this.btn_asignar_permiso_user = new System.Windows.Forms.Button();
+            this.btnQuitarPermisoUsuario = new System.Windows.Forms.Button();
+            this.btnAsignarPermisoUsuario = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txt_permiso_usuario_seleccionado = new System.Windows.Forms.TextBox();
+            this.txtPermisoUsuarioSeleccionado = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txt_rol_usuario_seleccionado = new System.Windows.Forms.TextBox();
+            this.txtRolUsuarioSeleccionado = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txt_permiso_rol_seleccionado = new System.Windows.Forms.TextBox();
+            this.txtPermisoRolSeleccionado = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_permiso_seleccionado = new System.Windows.Forms.TextBox();
+            this.txtPermisoSeleccionado = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -83,138 +83,138 @@
             this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btn_asignar_permiso_rol
+            // btnAsignarPermisoRol
             // 
-            this.btn_asignar_permiso_rol.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_asignar_permiso_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_asignar_permiso_rol.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_asignar_permiso_rol.Location = new System.Drawing.Point(6, 387);
-            this.btn_asignar_permiso_rol.Name = "btn_asignar_permiso_rol";
-            this.btn_asignar_permiso_rol.Size = new System.Drawing.Size(230, 32);
-            this.btn_asignar_permiso_rol.TabIndex = 32;
-            this.btn_asignar_permiso_rol.Text = "Asignar permiso al rol";
-            this.btn_asignar_permiso_rol.UseVisualStyleBackColor = false;
-            this.btn_asignar_permiso_rol.Click += new System.EventHandler(this.attach_permiso_Click);
+            this.btnAsignarPermisoRol.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnAsignarPermisoRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsignarPermisoRol.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAsignarPermisoRol.Location = new System.Drawing.Point(6, 387);
+            this.btnAsignarPermisoRol.Name = "btnAsignarPermisoRol";
+            this.btnAsignarPermisoRol.Size = new System.Drawing.Size(230, 32);
+            this.btnAsignarPermisoRol.TabIndex = 32;
+            this.btnAsignarPermisoRol.Text = "Asignar permiso al rol";
+            this.btnAsignarPermisoRol.UseVisualStyleBackColor = false;
+            this.btnAsignarPermisoRol.Click += new System.EventHandler(this.attach_permiso_Click);
             // 
-            // btn_quitar_permiso_rol
+            // btnQuitarPermisoRol
             // 
-            this.btn_quitar_permiso_rol.BackColor = System.Drawing.Color.Brown;
-            this.btn_quitar_permiso_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_quitar_permiso_rol.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_quitar_permiso_rol.Location = new System.Drawing.Point(6, 349);
-            this.btn_quitar_permiso_rol.Name = "btn_quitar_permiso_rol";
-            this.btn_quitar_permiso_rol.Size = new System.Drawing.Size(230, 32);
-            this.btn_quitar_permiso_rol.TabIndex = 31;
-            this.btn_quitar_permiso_rol.Text = "Quitar permiso al rol";
-            this.btn_quitar_permiso_rol.UseVisualStyleBackColor = false;
-            this.btn_quitar_permiso_rol.Click += new System.EventHandler(this.remove_permiso_Click);
+            this.btnQuitarPermisoRol.BackColor = System.Drawing.Color.Brown;
+            this.btnQuitarPermisoRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarPermisoRol.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnQuitarPermisoRol.Location = new System.Drawing.Point(6, 349);
+            this.btnQuitarPermisoRol.Name = "btnQuitarPermisoRol";
+            this.btnQuitarPermisoRol.Size = new System.Drawing.Size(230, 32);
+            this.btnQuitarPermisoRol.TabIndex = 31;
+            this.btnQuitarPermisoRol.Text = "Quitar permiso al rol";
+            this.btnQuitarPermisoRol.UseVisualStyleBackColor = false;
+            this.btnQuitarPermisoRol.Click += new System.EventHandler(this.remove_permiso_Click);
             // 
-            // btn_del_rol
+            // btnEliminarRol
             // 
-            this.btn_del_rol.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_del_rol.Enabled = false;
-            this.btn_del_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_del_rol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_del_rol.Location = new System.Drawing.Point(6, 355);
-            this.btn_del_rol.Name = "btn_del_rol";
-            this.btn_del_rol.Size = new System.Drawing.Size(141, 32);
-            this.btn_del_rol.TabIndex = 29;
-            this.btn_del_rol.Text = "Eliminar";
-            this.btn_del_rol.UseVisualStyleBackColor = false;
-            this.btn_del_rol.Click += new System.EventHandler(this.del_rol_Click);
+            this.btnEliminarRol.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnEliminarRol.Enabled = false;
+            this.btnEliminarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarRol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEliminarRol.Location = new System.Drawing.Point(6, 355);
+            this.btnEliminarRol.Name = "btnEliminarRol";
+            this.btnEliminarRol.Size = new System.Drawing.Size(141, 32);
+            this.btnEliminarRol.TabIndex = 29;
+            this.btnEliminarRol.Text = "Eliminar";
+            this.btnEliminarRol.UseVisualStyleBackColor = false;
+            this.btnEliminarRol.Click += new System.EventHandler(this.del_rol_Click);
             // 
-            // btn_mod_rol
+            // btnModificarRol
             // 
-            this.btn_mod_rol.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_mod_rol.Enabled = false;
-            this.btn_mod_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_mod_rol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_mod_rol.Location = new System.Drawing.Point(6, 317);
-            this.btn_mod_rol.Name = "btn_mod_rol";
-            this.btn_mod_rol.Size = new System.Drawing.Size(141, 32);
-            this.btn_mod_rol.TabIndex = 28;
-            this.btn_mod_rol.Text = "Modificar";
-            this.btn_mod_rol.UseVisualStyleBackColor = false;
-            this.btn_mod_rol.Click += new System.EventHandler(this.btn_mod_rol_Click);
+            this.btnModificarRol.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnModificarRol.Enabled = false;
+            this.btnModificarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificarRol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModificarRol.Location = new System.Drawing.Point(6, 317);
+            this.btnModificarRol.Name = "btnModificarRol";
+            this.btnModificarRol.Size = new System.Drawing.Size(141, 32);
+            this.btnModificarRol.TabIndex = 28;
+            this.btnModificarRol.Text = "Modificar";
+            this.btnModificarRol.UseVisualStyleBackColor = false;
+            this.btnModificarRol.Click += new System.EventHandler(this.btn_mod_rol_Click);
             // 
-            // btn_crear_role
+            // btnCrearRol
             // 
-            this.btn_crear_role.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_crear_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear_role.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_crear_role.Location = new System.Drawing.Point(6, 279);
-            this.btn_crear_role.Name = "btn_crear_role";
-            this.btn_crear_role.Size = new System.Drawing.Size(141, 32);
-            this.btn_crear_role.TabIndex = 27;
-            this.btn_crear_role.Text = "Crear";
-            this.btn_crear_role.UseVisualStyleBackColor = false;
-            this.btn_crear_role.Click += new System.EventHandler(this.add_role_Click);
+            this.btnCrearRol.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCrearRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearRol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCrearRol.Location = new System.Drawing.Point(6, 279);
+            this.btnCrearRol.Name = "btnCrearRol";
+            this.btnCrearRol.Size = new System.Drawing.Size(141, 32);
+            this.btnCrearRol.TabIndex = 27;
+            this.btnCrearRol.Text = "Crear";
+            this.btnCrearRol.UseVisualStyleBackColor = false;
+            this.btnCrearRol.Click += new System.EventHandler(this.add_role_Click);
             // 
-            // list_roles
+            // listaRoles
             // 
-            this.list_roles.FormattingEnabled = true;
-            this.list_roles.Location = new System.Drawing.Point(6, 19);
-            this.list_roles.Name = "list_roles";
-            this.list_roles.Size = new System.Drawing.Size(141, 199);
-            this.list_roles.TabIndex = 26;
-            this.list_roles.SelectedValueChanged += new System.EventHandler(this.list_roles_SelectedValueChanged);
+            this.listaRoles.FormattingEnabled = true;
+            this.listaRoles.Location = new System.Drawing.Point(6, 19);
+            this.listaRoles.Name = "listaRoles";
+            this.listaRoles.Size = new System.Drawing.Size(141, 199);
+            this.listaRoles.TabIndex = 26;
+            this.listaRoles.SelectedValueChanged += new System.EventHandler(this.list_roles_SelectedValueChanged);
             // 
-            // btn_del_permiso
+            // btnEliminarPermiso
             // 
-            this.btn_del_permiso.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_del_permiso.Enabled = false;
-            this.btn_del_permiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_del_permiso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_del_permiso.Location = new System.Drawing.Point(6, 352);
-            this.btn_del_permiso.Name = "btn_del_permiso";
-            this.btn_del_permiso.Size = new System.Drawing.Size(223, 32);
-            this.btn_del_permiso.TabIndex = 24;
-            this.btn_del_permiso.Text = "Eliminar";
-            this.btn_del_permiso.UseVisualStyleBackColor = false;
-            this.btn_del_permiso.Click += new System.EventHandler(this.del_permiso_Click);
+            this.btnEliminarPermiso.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnEliminarPermiso.Enabled = false;
+            this.btnEliminarPermiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarPermiso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEliminarPermiso.Location = new System.Drawing.Point(6, 352);
+            this.btnEliminarPermiso.Name = "btnEliminarPermiso";
+            this.btnEliminarPermiso.Size = new System.Drawing.Size(223, 32);
+            this.btnEliminarPermiso.TabIndex = 24;
+            this.btnEliminarPermiso.Text = "Eliminar";
+            this.btnEliminarPermiso.UseVisualStyleBackColor = false;
+            this.btnEliminarPermiso.Click += new System.EventHandler(this.del_permiso_Click);
             // 
-            // btn_mod_permiso
+            // btnModificarPermiso
             // 
-            this.btn_mod_permiso.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_mod_permiso.Enabled = false;
-            this.btn_mod_permiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_mod_permiso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_mod_permiso.Location = new System.Drawing.Point(6, 314);
-            this.btn_mod_permiso.Name = "btn_mod_permiso";
-            this.btn_mod_permiso.Size = new System.Drawing.Size(223, 32);
-            this.btn_mod_permiso.TabIndex = 23;
-            this.btn_mod_permiso.Text = "Modificar";
-            this.btn_mod_permiso.UseVisualStyleBackColor = false;
-            this.btn_mod_permiso.Click += new System.EventHandler(this.mod_permiso_Click);
+            this.btnModificarPermiso.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnModificarPermiso.Enabled = false;
+            this.btnModificarPermiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificarPermiso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModificarPermiso.Location = new System.Drawing.Point(6, 314);
+            this.btnModificarPermiso.Name = "btnModificarPermiso";
+            this.btnModificarPermiso.Size = new System.Drawing.Size(223, 32);
+            this.btnModificarPermiso.TabIndex = 23;
+            this.btnModificarPermiso.Text = "Modificar";
+            this.btnModificarPermiso.UseVisualStyleBackColor = false;
+            this.btnModificarPermiso.Click += new System.EventHandler(this.mod_permiso_Click);
             // 
-            // btn_crear_permiso
+            // btnCrearPermiso
             // 
-            this.btn_crear_permiso.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_crear_permiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear_permiso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_crear_permiso.Location = new System.Drawing.Point(6, 276);
-            this.btn_crear_permiso.Name = "btn_crear_permiso";
-            this.btn_crear_permiso.Size = new System.Drawing.Size(223, 32);
-            this.btn_crear_permiso.TabIndex = 22;
-            this.btn_crear_permiso.Text = "Crear";
-            this.btn_crear_permiso.UseVisualStyleBackColor = false;
-            this.btn_crear_permiso.Click += new System.EventHandler(this.add_permiso_Click);
+            this.btnCrearPermiso.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCrearPermiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearPermiso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCrearPermiso.Location = new System.Drawing.Point(6, 276);
+            this.btnCrearPermiso.Name = "btnCrearPermiso";
+            this.btnCrearPermiso.Size = new System.Drawing.Size(223, 32);
+            this.btnCrearPermiso.TabIndex = 22;
+            this.btnCrearPermiso.Text = "Crear";
+            this.btnCrearPermiso.UseVisualStyleBackColor = false;
+            this.btnCrearPermiso.Click += new System.EventHandler(this.add_permiso_Click);
             // 
-            // txt_permiso
+            // txtPermisoSimple
             // 
-            this.txt_permiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_permiso.Location = new System.Drawing.Point(6, 250);
-            this.txt_permiso.Name = "txt_permiso";
-            this.txt_permiso.Size = new System.Drawing.Size(223, 22);
-            this.txt_permiso.TabIndex = 37;
+            this.txtPermisoSimple.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPermisoSimple.Location = new System.Drawing.Point(6, 250);
+            this.txtPermisoSimple.Name = "txtPermisoSimple";
+            this.txtPermisoSimple.Size = new System.Drawing.Size(223, 22);
+            this.txtPermisoSimple.TabIndex = 37;
             // 
-            // txt_role
+            // txtRol
             // 
-            this.txt_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_role.Location = new System.Drawing.Point(6, 253);
-            this.txt_role.Name = "txt_role";
-            this.txt_role.Size = new System.Drawing.Size(141, 22);
-            this.txt_role.TabIndex = 38;
+            this.txtRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRol.Location = new System.Drawing.Point(6, 253);
+            this.txtRol.Name = "txtRol";
+            this.txtRol.Size = new System.Drawing.Size(141, 22);
+            this.txtRol.TabIndex = 38;
             // 
             // label3
             // 
@@ -236,97 +236,97 @@
             this.label4.TabIndex = 40;
             this.label4.Text = "Rol";
             // 
-            // btn_limpiar_permiso
+            // btnLimpiarPermiso
             // 
-            this.btn_limpiar_permiso.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_limpiar_permiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar_permiso.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_limpiar_permiso.Location = new System.Drawing.Point(6, 390);
-            this.btn_limpiar_permiso.Name = "btn_limpiar_permiso";
-            this.btn_limpiar_permiso.Size = new System.Drawing.Size(223, 32);
-            this.btn_limpiar_permiso.TabIndex = 41;
-            this.btn_limpiar_permiso.Text = "Limpiar";
-            this.btn_limpiar_permiso.UseVisualStyleBackColor = false;
-            this.btn_limpiar_permiso.Click += new System.EventHandler(this.btn_clear_permiso_Click);
+            this.btnLimpiarPermiso.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnLimpiarPermiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarPermiso.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLimpiarPermiso.Location = new System.Drawing.Point(6, 390);
+            this.btnLimpiarPermiso.Name = "btnLimpiarPermiso";
+            this.btnLimpiarPermiso.Size = new System.Drawing.Size(223, 32);
+            this.btnLimpiarPermiso.TabIndex = 41;
+            this.btnLimpiarPermiso.Text = "Limpiar";
+            this.btnLimpiarPermiso.UseVisualStyleBackColor = false;
+            this.btnLimpiarPermiso.Click += new System.EventHandler(this.btn_clear_permiso_Click);
             // 
-            // btn_limpiar_rol
+            // btnLimpiarRol
             // 
-            this.btn_limpiar_rol.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_limpiar_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar_rol.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_limpiar_rol.Location = new System.Drawing.Point(6, 393);
-            this.btn_limpiar_rol.Name = "btn_limpiar_rol";
-            this.btn_limpiar_rol.Size = new System.Drawing.Size(141, 32);
-            this.btn_limpiar_rol.TabIndex = 42;
-            this.btn_limpiar_rol.Text = "Limpiar";
-            this.btn_limpiar_rol.UseVisualStyleBackColor = false;
-            this.btn_limpiar_rol.Click += new System.EventHandler(this.btn_clear_rol_Click);
+            this.btnLimpiarRol.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnLimpiarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarRol.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLimpiarRol.Location = new System.Drawing.Point(6, 393);
+            this.btnLimpiarRol.Name = "btnLimpiarRol";
+            this.btnLimpiarRol.Size = new System.Drawing.Size(141, 32);
+            this.btnLimpiarRol.TabIndex = 42;
+            this.btnLimpiarRol.Text = "Limpiar";
+            this.btnLimpiarRol.UseVisualStyleBackColor = false;
+            this.btnLimpiarRol.Click += new System.EventHandler(this.btn_clear_rol_Click);
             // 
-            // btn_update
+            // btnActualizarListados
             // 
-            this.btn_update.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_update.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_update.Location = new System.Drawing.Point(809, 98);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(193, 32);
-            this.btn_update.TabIndex = 43;
-            this.btn_update.Text = "Actualizar listados";
-            this.btn_update.UseVisualStyleBackColor = false;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
+            this.btnActualizarListados.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnActualizarListados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarListados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnActualizarListados.Location = new System.Drawing.Point(809, 98);
+            this.btnActualizarListados.Name = "btnActualizarListados";
+            this.btnActualizarListados.Size = new System.Drawing.Size(193, 32);
+            this.btnActualizarListados.TabIndex = 43;
+            this.btnActualizarListados.Text = "Actualizar listados";
+            this.btnActualizarListados.UseVisualStyleBackColor = false;
+            this.btnActualizarListados.Click += new System.EventHandler(this.btn_update_Click);
             // 
-            // list_usuarios
+            // listaUsuarios
             // 
-            this.list_usuarios.FormattingEnabled = true;
-            this.list_usuarios.Location = new System.Drawing.Point(7, 19);
-            this.list_usuarios.Name = "list_usuarios";
-            this.list_usuarios.Size = new System.Drawing.Size(120, 199);
-            this.list_usuarios.TabIndex = 45;
-            this.list_usuarios.SelectedValueChanged += new System.EventHandler(this.list_usuarios_SelectedValueChanged);
+            this.listaUsuarios.FormattingEnabled = true;
+            this.listaUsuarios.Location = new System.Drawing.Point(7, 19);
+            this.listaUsuarios.Name = "listaUsuarios";
+            this.listaUsuarios.Size = new System.Drawing.Size(120, 199);
+            this.listaUsuarios.TabIndex = 45;
+            this.listaUsuarios.SelectedValueChanged += new System.EventHandler(this.list_usuarios_SelectedValueChanged);
             // 
-            // tree_user_permisos
+            // treeUsuarioRolesPermisos
             // 
-            this.tree_user_permisos.Location = new System.Drawing.Point(6, 19);
-            this.tree_user_permisos.Name = "tree_user_permisos";
-            this.tree_user_permisos.Size = new System.Drawing.Size(179, 324);
-            this.tree_user_permisos.TabIndex = 46;
-            this.tree_user_permisos.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_user_permisos_AfterSelect);
+            this.treeUsuarioRolesPermisos.Location = new System.Drawing.Point(6, 19);
+            this.treeUsuarioRolesPermisos.Name = "treeUsuarioRolesPermisos";
+            this.treeUsuarioRolesPermisos.Size = new System.Drawing.Size(179, 324);
+            this.treeUsuarioRolesPermisos.TabIndex = 46;
+            this.treeUsuarioRolesPermisos.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_user_permisos_AfterSelect);
             // 
-            // btn_asignar_rol
+            // btnAsignarRol
             // 
-            this.btn_asignar_rol.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_asignar_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_asignar_rol.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_asignar_rol.Location = new System.Drawing.Point(7, 275);
-            this.btn_asignar_rol.Name = "btn_asignar_rol";
-            this.btn_asignar_rol.Size = new System.Drawing.Size(120, 32);
-            this.btn_asignar_rol.TabIndex = 48;
-            this.btn_asignar_rol.Text = "Asignar rol";
-            this.btn_asignar_rol.UseVisualStyleBackColor = false;
-            this.btn_asignar_rol.Click += new System.EventHandler(this.btn_asignar_rol_Click);
+            this.btnAsignarRol.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnAsignarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsignarRol.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAsignarRol.Location = new System.Drawing.Point(7, 275);
+            this.btnAsignarRol.Name = "btnAsignarRol";
+            this.btnAsignarRol.Size = new System.Drawing.Size(120, 32);
+            this.btnAsignarRol.TabIndex = 48;
+            this.btnAsignarRol.Text = "Asignar rol";
+            this.btnAsignarRol.UseVisualStyleBackColor = false;
+            this.btnAsignarRol.Click += new System.EventHandler(this.btn_asignar_rol_Click);
             // 
-            // btn_quitar_rol
+            // btnQuitarRol
             // 
-            this.btn_quitar_rol.BackColor = System.Drawing.Color.Brown;
-            this.btn_quitar_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_quitar_rol.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_quitar_rol.Location = new System.Drawing.Point(7, 237);
-            this.btn_quitar_rol.Name = "btn_quitar_rol";
-            this.btn_quitar_rol.Size = new System.Drawing.Size(120, 32);
-            this.btn_quitar_rol.TabIndex = 49;
-            this.btn_quitar_rol.Text = "Quitar rol";
-            this.btn_quitar_rol.UseVisualStyleBackColor = false;
-            this.btn_quitar_rol.Click += new System.EventHandler(this.btn_remove_rol_Click);
+            this.btnQuitarRol.BackColor = System.Drawing.Color.Brown;
+            this.btnQuitarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarRol.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnQuitarRol.Location = new System.Drawing.Point(7, 237);
+            this.btnQuitarRol.Name = "btnQuitarRol";
+            this.btnQuitarRol.Size = new System.Drawing.Size(120, 32);
+            this.btnQuitarRol.TabIndex = 49;
+            this.btnQuitarRol.Text = "Quitar rol";
+            this.btnQuitarRol.UseVisualStyleBackColor = false;
+            this.btnQuitarRol.Click += new System.EventHandler(this.btn_remove_rol_Click);
             // 
-            // txt_usuario
+            // txtUsuario
             // 
-            this.txt_usuario.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.txt_usuario.Location = new System.Drawing.Point(6, 36);
-            this.txt_usuario.Name = "txt_usuario";
-            this.txt_usuario.ReadOnly = true;
-            this.txt_usuario.Size = new System.Drawing.Size(100, 20);
-            this.txt_usuario.TabIndex = 50;
-            this.txt_usuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUsuario.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.txtUsuario.Location = new System.Drawing.Point(6, 36);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.ReadOnly = true;
+            this.txtUsuario.Size = new System.Drawing.Size(100, 20);
+            this.txtUsuario.TabIndex = 50;
+            this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -346,15 +346,15 @@
             this.label7.TabIndex = 53;
             this.label7.Text = "Password";
             // 
-            // txt_password
+            // txtUsuarioPassword
             // 
-            this.txt_password.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.txt_password.Location = new System.Drawing.Point(6, 80);
-            this.txt_password.Name = "txt_password";
-            this.txt_password.ReadOnly = true;
-            this.txt_password.Size = new System.Drawing.Size(202, 20);
-            this.txt_password.TabIndex = 52;
-            this.txt_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUsuarioPassword.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.txtUsuarioPassword.Location = new System.Drawing.Point(6, 80);
+            this.txtUsuarioPassword.Name = "txtUsuarioPassword";
+            this.txtUsuarioPassword.ReadOnly = true;
+            this.txtUsuarioPassword.Size = new System.Drawing.Size(202, 20);
+            this.txtUsuarioPassword.TabIndex = 52;
+            this.txtUsuarioPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
@@ -365,36 +365,36 @@
             this.label8.TabIndex = 55;
             this.label8.Text = "ID";
             // 
-            // txt_id
+            // txtUsuarioId
             // 
-            this.txt_id.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.txt_id.Location = new System.Drawing.Point(128, 36);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(100, 20);
-            this.txt_id.TabIndex = 54;
-            this.txt_id.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUsuarioId.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.txtUsuarioId.Location = new System.Drawing.Point(128, 36);
+            this.txtUsuarioId.Name = "txtUsuarioId";
+            this.txtUsuarioId.ReadOnly = true;
+            this.txtUsuarioId.Size = new System.Drawing.Size(100, 20);
+            this.txtUsuarioId.TabIndex = 54;
+            this.txtUsuarioId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // check_encriptacion
+            // checkEncriptacion
             // 
-            this.check_encriptacion.AutoSize = true;
-            this.check_encriptacion.Enabled = false;
-            this.check_encriptacion.Location = new System.Drawing.Point(226, 83);
-            this.check_encriptacion.Name = "check_encriptacion";
-            this.check_encriptacion.Size = new System.Drawing.Size(137, 17);
-            this.check_encriptacion.TabIndex = 56;
-            this.check_encriptacion.Text = "Encriptar / desencriptar";
-            this.check_encriptacion.UseVisualStyleBackColor = true;
-            this.check_encriptacion.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkEncriptacion.AutoSize = true;
+            this.checkEncriptacion.Enabled = false;
+            this.checkEncriptacion.Location = new System.Drawing.Point(226, 83);
+            this.checkEncriptacion.Name = "checkEncriptacion";
+            this.checkEncriptacion.Size = new System.Drawing.Size(137, 17);
+            this.checkEncriptacion.TabIndex = 56;
+            this.checkEncriptacion.Text = "Encriptar / desencriptar";
+            this.checkEncriptacion.UseVisualStyleBackColor = true;
+            this.checkEncriptacion.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.check_encriptacion);
-            this.groupBox1.Controls.Add(this.txt_usuario);
+            this.groupBox1.Controls.Add(this.checkEncriptacion);
+            this.groupBox1.Controls.Add(this.txtUsuario);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txt_id);
-            this.groupBox1.Controls.Add(this.txt_password);
+            this.groupBox1.Controls.Add(this.txtUsuarioId);
+            this.groupBox1.Controls.Add(this.txtUsuarioPassword);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -405,9 +405,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btn_quitar_rol);
-            this.groupBox2.Controls.Add(this.btn_asignar_rol);
-            this.groupBox2.Controls.Add(this.list_usuarios);
+            this.groupBox2.Controls.Add(this.btnQuitarRol);
+            this.groupBox2.Controls.Add(this.btnAsignarRol);
+            this.groupBox2.Controls.Add(this.listaUsuarios);
             this.groupBox2.Location = new System.Drawing.Point(12, 182);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(143, 311);
@@ -417,12 +417,12 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.list_roles);
-            this.groupBox3.Controls.Add(this.btn_crear_role);
-            this.groupBox3.Controls.Add(this.btn_mod_rol);
-            this.groupBox3.Controls.Add(this.btn_del_rol);
-            this.groupBox3.Controls.Add(this.btn_limpiar_rol);
-            this.groupBox3.Controls.Add(this.txt_role);
+            this.groupBox3.Controls.Add(this.listaRoles);
+            this.groupBox3.Controls.Add(this.btnCrearRol);
+            this.groupBox3.Controls.Add(this.btnModificarRol);
+            this.groupBox3.Controls.Add(this.btnEliminarRol);
+            this.groupBox3.Controls.Add(this.btnLimpiarRol);
+            this.groupBox3.Controls.Add(this.txtRol);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Location = new System.Drawing.Point(359, 180);
             this.groupBox3.Name = "groupBox3";
@@ -433,13 +433,13 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.tree_permisos);
-            this.groupBox4.Controls.Add(this.btn_limpiar_permiso);
+            this.groupBox4.Controls.Add(this.treePermisosSimples);
+            this.groupBox4.Controls.Add(this.btnLimpiarPermiso);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.txt_permiso);
-            this.groupBox4.Controls.Add(this.btn_del_permiso);
-            this.groupBox4.Controls.Add(this.btn_mod_permiso);
-            this.groupBox4.Controls.Add(this.btn_crear_permiso);
+            this.groupBox4.Controls.Add(this.txtPermisoSimple);
+            this.groupBox4.Controls.Add(this.btnEliminarPermiso);
+            this.groupBox4.Controls.Add(this.btnModificarPermiso);
+            this.groupBox4.Controls.Add(this.btnCrearPermiso);
             this.groupBox4.Location = new System.Drawing.Point(766, 182);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(235, 434);
@@ -447,19 +447,19 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Permisos";
             // 
-            // tree_permisos
+            // treePermisosSimples
             // 
-            this.tree_permisos.Location = new System.Drawing.Point(6, 19);
-            this.tree_permisos.Name = "tree_permisos";
-            this.tree_permisos.Size = new System.Drawing.Size(223, 210);
-            this.tree_permisos.TabIndex = 63;
-            this.tree_permisos.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_permisos_AfterSelect);
+            this.treePermisosSimples.Location = new System.Drawing.Point(6, 19);
+            this.treePermisosSimples.Name = "treePermisosSimples";
+            this.treePermisosSimples.Size = new System.Drawing.Size(223, 210);
+            this.treePermisosSimples.TabIndex = 63;
+            this.treePermisosSimples.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_permisos_AfterSelect);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.tree_permisos_roles);
-            this.groupBox5.Controls.Add(this.btn_quitar_permiso_rol);
-            this.groupBox5.Controls.Add(this.btn_asignar_permiso_rol);
+            this.groupBox5.Controls.Add(this.treePermisosRoles);
+            this.groupBox5.Controls.Add(this.btnQuitarPermisoRol);
+            this.groupBox5.Controls.Add(this.btnAsignarPermisoRol);
             this.groupBox5.Location = new System.Drawing.Point(518, 180);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(242, 436);
@@ -467,19 +467,19 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Permisos por rol";
             // 
-            // tree_permisos_roles
+            // treePermisosRoles
             // 
-            this.tree_permisos_roles.Location = new System.Drawing.Point(6, 19);
-            this.tree_permisos_roles.Name = "tree_permisos_roles";
-            this.tree_permisos_roles.Size = new System.Drawing.Size(230, 324);
-            this.tree_permisos_roles.TabIndex = 63;
-            this.tree_permisos_roles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_permisos_roles_AfterSelect);
+            this.treePermisosRoles.Location = new System.Drawing.Point(6, 19);
+            this.treePermisosRoles.Name = "treePermisosRoles";
+            this.treePermisosRoles.Size = new System.Drawing.Size(230, 324);
+            this.treePermisosRoles.TabIndex = 63;
+            this.treePermisosRoles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_permisos_roles_AfterSelect);
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.btn_quitar_permiso_user);
-            this.groupBox6.Controls.Add(this.btn_asignar_permiso_user);
-            this.groupBox6.Controls.Add(this.tree_user_permisos);
+            this.groupBox6.Controls.Add(this.btnQuitarPermisoUsuario);
+            this.groupBox6.Controls.Add(this.btnAsignarPermisoUsuario);
+            this.groupBox6.Controls.Add(this.treeUsuarioRolesPermisos);
             this.groupBox6.Location = new System.Drawing.Point(161, 182);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(192, 434);
@@ -487,42 +487,42 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Roles y permisos del usuario";
             // 
-            // btn_quitar_permiso_user
+            // btnQuitarPermisoUsuario
             // 
-            this.btn_quitar_permiso_user.BackColor = System.Drawing.Color.Brown;
-            this.btn_quitar_permiso_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_quitar_permiso_user.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_quitar_permiso_user.Location = new System.Drawing.Point(6, 349);
-            this.btn_quitar_permiso_user.Name = "btn_quitar_permiso_user";
-            this.btn_quitar_permiso_user.Size = new System.Drawing.Size(180, 32);
-            this.btn_quitar_permiso_user.TabIndex = 64;
-            this.btn_quitar_permiso_user.Text = "Quitar permiso al usuario";
-            this.btn_quitar_permiso_user.UseVisualStyleBackColor = false;
-            this.btn_quitar_permiso_user.Click += new System.EventHandler(this.btn_quitar_permiso_user_Click);
+            this.btnQuitarPermisoUsuario.BackColor = System.Drawing.Color.Brown;
+            this.btnQuitarPermisoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarPermisoUsuario.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnQuitarPermisoUsuario.Location = new System.Drawing.Point(6, 349);
+            this.btnQuitarPermisoUsuario.Name = "btnQuitarPermisoUsuario";
+            this.btnQuitarPermisoUsuario.Size = new System.Drawing.Size(180, 32);
+            this.btnQuitarPermisoUsuario.TabIndex = 64;
+            this.btnQuitarPermisoUsuario.Text = "Quitar permiso al usuario";
+            this.btnQuitarPermisoUsuario.UseVisualStyleBackColor = false;
+            this.btnQuitarPermisoUsuario.Click += new System.EventHandler(this.btn_quitar_permiso_user_Click);
             // 
-            // btn_asignar_permiso_user
+            // btnAsignarPermisoUsuario
             // 
-            this.btn_asignar_permiso_user.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_asignar_permiso_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_asignar_permiso_user.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_asignar_permiso_user.Location = new System.Drawing.Point(6, 387);
-            this.btn_asignar_permiso_user.Name = "btn_asignar_permiso_user";
-            this.btn_asignar_permiso_user.Size = new System.Drawing.Size(180, 32);
-            this.btn_asignar_permiso_user.TabIndex = 64;
-            this.btn_asignar_permiso_user.Text = "Asignar permiso al usuario";
-            this.btn_asignar_permiso_user.UseVisualStyleBackColor = false;
-            this.btn_asignar_permiso_user.Click += new System.EventHandler(this.btn_asignar_permiso_user_Click);
+            this.btnAsignarPermisoUsuario.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnAsignarPermisoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsignarPermisoUsuario.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAsignarPermisoUsuario.Location = new System.Drawing.Point(6, 387);
+            this.btnAsignarPermisoUsuario.Name = "btnAsignarPermisoUsuario";
+            this.btnAsignarPermisoUsuario.Size = new System.Drawing.Size(180, 32);
+            this.btnAsignarPermisoUsuario.TabIndex = 64;
+            this.btnAsignarPermisoUsuario.Text = "Asignar permiso al usuario";
+            this.btnAsignarPermisoUsuario.UseVisualStyleBackColor = false;
+            this.btnAsignarPermisoUsuario.Click += new System.EventHandler(this.btn_asignar_permiso_user_Click);
             // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.label10);
-            this.groupBox7.Controls.Add(this.txt_permiso_usuario_seleccionado);
+            this.groupBox7.Controls.Add(this.txtPermisoUsuarioSeleccionado);
             this.groupBox7.Controls.Add(this.label9);
-            this.groupBox7.Controls.Add(this.txt_rol_usuario_seleccionado);
+            this.groupBox7.Controls.Add(this.txtRolUsuarioSeleccionado);
             this.groupBox7.Controls.Add(this.label5);
-            this.groupBox7.Controls.Add(this.txt_permiso_rol_seleccionado);
+            this.groupBox7.Controls.Add(this.txtPermisoRolSeleccionado);
             this.groupBox7.Controls.Add(this.label2);
-            this.groupBox7.Controls.Add(this.txt_permiso_seleccionado);
+            this.groupBox7.Controls.Add(this.txtPermisoSeleccionado);
             this.groupBox7.Location = new System.Drawing.Point(414, 12);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(5, 3, 3, 3);
@@ -541,15 +541,15 @@
             this.label10.TabIndex = 64;
             this.label10.Text = "Permiso de usuario seleccionado";
             // 
-            // txt_permiso_usuario_seleccionado
+            // txtPermisoUsuarioSeleccionado
             // 
-            this.txt_permiso_usuario_seleccionado.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.txt_permiso_usuario_seleccionado.Location = new System.Drawing.Point(213, 80);
-            this.txt_permiso_usuario_seleccionado.Name = "txt_permiso_usuario_seleccionado";
-            this.txt_permiso_usuario_seleccionado.ReadOnly = true;
-            this.txt_permiso_usuario_seleccionado.Size = new System.Drawing.Size(153, 20);
-            this.txt_permiso_usuario_seleccionado.TabIndex = 65;
-            this.txt_permiso_usuario_seleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPermisoUsuarioSeleccionado.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.txtPermisoUsuarioSeleccionado.Location = new System.Drawing.Point(213, 80);
+            this.txtPermisoUsuarioSeleccionado.Name = "txtPermisoUsuarioSeleccionado";
+            this.txtPermisoUsuarioSeleccionado.ReadOnly = true;
+            this.txtPermisoUsuarioSeleccionado.Size = new System.Drawing.Size(153, 20);
+            this.txtPermisoUsuarioSeleccionado.TabIndex = 65;
+            this.txtPermisoUsuarioSeleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -561,15 +561,15 @@
             this.label9.TabIndex = 62;
             this.label9.Text = "Rol de usuario seleccionado";
             // 
-            // txt_rol_usuario_seleccionado
+            // txtRolUsuarioSeleccionado
             // 
-            this.txt_rol_usuario_seleccionado.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.txt_rol_usuario_seleccionado.Location = new System.Drawing.Point(8, 80);
-            this.txt_rol_usuario_seleccionado.Name = "txt_rol_usuario_seleccionado";
-            this.txt_rol_usuario_seleccionado.ReadOnly = true;
-            this.txt_rol_usuario_seleccionado.Size = new System.Drawing.Size(190, 20);
-            this.txt_rol_usuario_seleccionado.TabIndex = 63;
-            this.txt_rol_usuario_seleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRolUsuarioSeleccionado.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.txtRolUsuarioSeleccionado.Location = new System.Drawing.Point(8, 80);
+            this.txtRolUsuarioSeleccionado.Name = "txtRolUsuarioSeleccionado";
+            this.txtRolUsuarioSeleccionado.ReadOnly = true;
+            this.txtRolUsuarioSeleccionado.Size = new System.Drawing.Size(190, 20);
+            this.txtRolUsuarioSeleccionado.TabIndex = 63;
+            this.txtRolUsuarioSeleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
@@ -581,15 +581,15 @@
             this.label5.TabIndex = 60;
             this.label5.Text = "Permiso de rol seleccionado";
             // 
-            // txt_permiso_rol_seleccionado
+            // txtPermisoRolSeleccionado
             // 
-            this.txt_permiso_rol_seleccionado.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.txt_permiso_rol_seleccionado.Location = new System.Drawing.Point(213, 36);
-            this.txt_permiso_rol_seleccionado.Name = "txt_permiso_rol_seleccionado";
-            this.txt_permiso_rol_seleccionado.ReadOnly = true;
-            this.txt_permiso_rol_seleccionado.Size = new System.Drawing.Size(153, 20);
-            this.txt_permiso_rol_seleccionado.TabIndex = 61;
-            this.txt_permiso_rol_seleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPermisoRolSeleccionado.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.txtPermisoRolSeleccionado.Location = new System.Drawing.Point(213, 36);
+            this.txtPermisoRolSeleccionado.Name = "txtPermisoRolSeleccionado";
+            this.txtPermisoRolSeleccionado.ReadOnly = true;
+            this.txtPermisoRolSeleccionado.Size = new System.Drawing.Size(153, 20);
+            this.txtPermisoRolSeleccionado.TabIndex = 61;
+            this.txtPermisoRolSeleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -601,15 +601,15 @@
             this.label2.TabIndex = 58;
             this.label2.Text = "Permiso seleccionado";
             // 
-            // txt_permiso_seleccionado
+            // txtPermisoSeleccionado
             // 
-            this.txt_permiso_seleccionado.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.txt_permiso_seleccionado.Location = new System.Drawing.Point(9, 36);
-            this.txt_permiso_seleccionado.Name = "txt_permiso_seleccionado";
-            this.txt_permiso_seleccionado.ReadOnly = true;
-            this.txt_permiso_seleccionado.Size = new System.Drawing.Size(189, 20);
-            this.txt_permiso_seleccionado.TabIndex = 59;
-            this.txt_permiso_seleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPermisoSeleccionado.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.txtPermisoSeleccionado.Location = new System.Drawing.Point(9, 36);
+            this.txtPermisoSeleccionado.Name = "txtPermisoSeleccionado";
+            this.txtPermisoSeleccionado.ReadOnly = true;
+            this.txtPermisoSeleccionado.Size = new System.Drawing.Size(189, 20);
+            this.txtPermisoSeleccionado.TabIndex = 59;
+            this.txtPermisoSeleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ABMRolesPermisos
             // 
@@ -619,7 +619,7 @@
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btn_update);
+            this.Controls.Add(this.btnActualizarListados);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox5);
@@ -643,51 +643,51 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btn_asignar_permiso_rol;
-        private System.Windows.Forms.Button btn_quitar_permiso_rol;
-        private System.Windows.Forms.Button btn_del_rol;
-        private System.Windows.Forms.Button btn_mod_rol;
-        private System.Windows.Forms.Button btn_crear_role;
-        private System.Windows.Forms.ListBox list_roles;
-        private System.Windows.Forms.Button btn_del_permiso;
-        private System.Windows.Forms.Button btn_mod_permiso;
-        private System.Windows.Forms.Button btn_crear_permiso;
-        private System.Windows.Forms.TextBox txt_permiso;
-        private System.Windows.Forms.TextBox txt_role;
+        private System.Windows.Forms.Button btnAsignarPermisoRol;
+        private System.Windows.Forms.Button btnQuitarPermisoRol;
+        private System.Windows.Forms.Button btnEliminarRol;
+        private System.Windows.Forms.Button btnModificarRol;
+        private System.Windows.Forms.Button btnCrearRol;
+        private System.Windows.Forms.ListBox listaRoles;
+        private System.Windows.Forms.Button btnEliminarPermiso;
+        private System.Windows.Forms.Button btnModificarPermiso;
+        private System.Windows.Forms.Button btnCrearPermiso;
+        private System.Windows.Forms.TextBox txtPermisoSimple;
+        private System.Windows.Forms.TextBox txtRol;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btn_limpiar_permiso;
-        private System.Windows.Forms.Button btn_limpiar_rol;
-        private System.Windows.Forms.Button btn_update;
-        private System.Windows.Forms.ListBox list_usuarios;
-        private System.Windows.Forms.TreeView tree_user_permisos;
-        private System.Windows.Forms.Button btn_asignar_rol;
-        private System.Windows.Forms.Button btn_quitar_rol;
-        private System.Windows.Forms.TextBox txt_usuario;
+        private System.Windows.Forms.Button btnLimpiarPermiso;
+        private System.Windows.Forms.Button btnLimpiarRol;
+        private System.Windows.Forms.Button btnActualizarListados;
+        private System.Windows.Forms.ListBox listaUsuarios;
+        private System.Windows.Forms.TreeView treeUsuarioRolesPermisos;
+        private System.Windows.Forms.Button btnAsignarRol;
+        private System.Windows.Forms.Button btnQuitarRol;
+        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_password;
+        private System.Windows.Forms.TextBox txtUsuarioPassword;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txt_id;
-        private System.Windows.Forms.CheckBox check_encriptacion;
+        private System.Windows.Forms.TextBox txtUsuarioId;
+        private System.Windows.Forms.CheckBox checkEncriptacion;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TreeView tree_permisos;
-        private System.Windows.Forms.TreeView tree_permisos_roles;
-        private System.Windows.Forms.Button btn_quitar_permiso_user;
-        private System.Windows.Forms.Button btn_asignar_permiso_user;
+        private System.Windows.Forms.TreeView treePermisosSimples;
+        private System.Windows.Forms.TreeView treePermisosRoles;
+        private System.Windows.Forms.Button btnQuitarPermisoUsuario;
+        private System.Windows.Forms.Button btnAsignarPermisoUsuario;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_permiso_seleccionado;
+        private System.Windows.Forms.TextBox txtPermisoSeleccionado;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txt_permiso_usuario_seleccionado;
+        private System.Windows.Forms.TextBox txtPermisoUsuarioSeleccionado;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txt_rol_usuario_seleccionado;
+        private System.Windows.Forms.TextBox txtRolUsuarioSeleccionado;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txt_permiso_rol_seleccionado;
+        private System.Windows.Forms.TextBox txtPermisoRolSeleccionado;
     }
 }

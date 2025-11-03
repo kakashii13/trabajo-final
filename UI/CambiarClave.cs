@@ -30,9 +30,9 @@ namespace UI
         private void btn_save_Click(object sender, EventArgs e)
         {
             try { 
-                string claveActual = txt_current_pass.Text;
-                string nuevaClave = txt_new_pass.Text;
-                string confirmarClave = txt_confirm_pass.Text;
+                string claveActual = txtClaveActual.Text;
+                string nuevaClave = txtNuevaClave.Text;
+                string confirmarClave = txtClaveConfirmacion.Text;
 
                 if(string.IsNullOrEmpty(claveActual) || string.IsNullOrEmpty(nuevaClave) || string.IsNullOrEmpty(confirmarClave))
                 {
@@ -56,9 +56,9 @@ namespace UI
 
                 MessageBox.Show("Clave cambiada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
-                txt_current_pass.Clear();
-                txt_new_pass.Clear();
-                txt_confirm_pass.Clear();
+                txtClaveActual.Clear();
+                txtNuevaClave.Clear();
+                txtClaveConfirmacion.Clear();
             }
             catch (Exception ex) { MessageBox.Show("Error al cambiar la clave: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }

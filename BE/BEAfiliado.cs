@@ -12,7 +12,6 @@ namespace BE
         public string NombreApellido { get; set; }
         public string Cuil { get; set; }
         public bool Activo { get; set; }
-        public int NroAfiliado { get; set; }
         public string Telefono { get; set; }
         public List<BEHistorialPlan> HistorialPlanes { get; set; }
         public List<BEAporte> Aportes { get; set; }
@@ -32,13 +31,12 @@ namespace BE
         {
             Id = id;
         }
-        public BEAfiliado(int id, string nombreApellido, string cuil, bool activo, int nroAfiliado, string telefono)
+        public BEAfiliado(int id, string nombreApellido, string cuil, bool activo, string telefono)
         {
             Id = id;
             NombreApellido = nombreApellido;
             Cuil = cuil;
             Activo = activo;
-            NroAfiliado = nroAfiliado;
             Telefono = telefono;
         }
 

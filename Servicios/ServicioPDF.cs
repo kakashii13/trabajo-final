@@ -88,7 +88,6 @@ namespace Servicios
 
             AgregarLinea(documento, "Nombre y Apellido:", autorizacion.Afiliado.NombreApellido, fuenteNegrita, fuenteNormal);
             AgregarLinea(documento, "CUIL:", autorizacion.Afiliado.Cuil, fuenteNegrita, fuenteNormal);
-            AgregarLinea(documento, "Nº de Afiliado:", autorizacion.Afiliado.NroAfiliado.ToString(), fuenteNegrita, fuenteNormal);
             AgregarLinea(documento, "Teléfono:", autorizacion.Afiliado.Telefono, fuenteNegrita, fuenteNormal);
 
             documento.Add(new Paragraph(" ")); 

@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_bitacora = new System.Windows.Forms.DataGridView();
-            this.btn_restore = new System.Windows.Forms.Button();
-            this.btn_todo = new System.Windows.Forms.Button();
-            this.btn_backups = new System.Windows.Forms.Button();
+            this.dgvBitacora = new System.Windows.Forms.DataGridView();
+            this.btnRestore = new System.Windows.Forms.Button();
+            this.btnListarTodo = new System.Windows.Forms.Button();
+            this.btnBackups = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_bitacora)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBitacora)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_bitacora);
+            this.groupBox1.Controls.Add(this.dgvBitacora);
             this.groupBox1.Location = new System.Drawing.Point(22, 17);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(811, 260);
@@ -47,57 +47,57 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bitacora";
             // 
-            // dgv_bitacora
+            // dgvBitacora
             // 
-            this.dgv_bitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_bitacora.Location = new System.Drawing.Point(6, 19);
-            this.dgv_bitacora.Name = "dgv_bitacora";
-            this.dgv_bitacora.Size = new System.Drawing.Size(799, 235);
-            this.dgv_bitacora.TabIndex = 0;
+            this.dgvBitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBitacora.Location = new System.Drawing.Point(6, 19);
+            this.dgvBitacora.Name = "dgvBitacora";
+            this.dgvBitacora.Size = new System.Drawing.Size(799, 235);
+            this.dgvBitacora.TabIndex = 0;
             // 
-            // btn_restore
+            // btnRestore
             // 
-            this.btn_restore.Location = new System.Drawing.Point(603, 283);
-            this.btn_restore.Name = "btn_restore";
-            this.btn_restore.Size = new System.Drawing.Size(112, 33);
-            this.btn_restore.TabIndex = 1;
-            this.btn_restore.Text = "Restores";
-            this.btn_restore.UseVisualStyleBackColor = true;
-            this.btn_restore.Click += new System.EventHandler(this.btn_restore_Click);
+            this.btnRestore.Location = new System.Drawing.Point(603, 283);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(112, 33);
+            this.btnRestore.TabIndex = 1;
+            this.btnRestore.Text = "Restores";
+            this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btn_restore_Click);
             // 
-            // btn_todo
+            // btnListarTodo
             // 
-            this.btn_todo.Location = new System.Drawing.Point(721, 283);
-            this.btn_todo.Name = "btn_todo";
-            this.btn_todo.Size = new System.Drawing.Size(112, 33);
-            this.btn_todo.TabIndex = 2;
-            this.btn_todo.Text = "Listar todo";
-            this.btn_todo.UseVisualStyleBackColor = true;
-            this.btn_todo.Click += new System.EventHandler(this.btn_todo_Click);
+            this.btnListarTodo.Location = new System.Drawing.Point(721, 283);
+            this.btnListarTodo.Name = "btnListarTodo";
+            this.btnListarTodo.Size = new System.Drawing.Size(112, 33);
+            this.btnListarTodo.TabIndex = 2;
+            this.btnListarTodo.Text = "Listar todo";
+            this.btnListarTodo.UseVisualStyleBackColor = true;
+            this.btnListarTodo.Click += new System.EventHandler(this.btn_todo_Click);
             // 
-            // btn_backups
+            // btnBackups
             // 
-            this.btn_backups.Location = new System.Drawing.Point(485, 283);
-            this.btn_backups.Name = "btn_backups";
-            this.btn_backups.Size = new System.Drawing.Size(112, 33);
-            this.btn_backups.TabIndex = 3;
-            this.btn_backups.Text = "Backups";
-            this.btn_backups.UseVisualStyleBackColor = true;
-            this.btn_backups.Click += new System.EventHandler(this.btn_backups_Click);
+            this.btnBackups.Location = new System.Drawing.Point(485, 283);
+            this.btnBackups.Name = "btnBackups";
+            this.btnBackups.Size = new System.Drawing.Size(112, 33);
+            this.btnBackups.TabIndex = 3;
+            this.btnBackups.Text = "Backups";
+            this.btnBackups.UseVisualStyleBackColor = true;
+            this.btnBackups.Click += new System.EventHandler(this.btn_backups_Click);
             // 
-            // Bitacora
+            // ConsultarBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(845, 328);
-            this.Controls.Add(this.btn_backups);
-            this.Controls.Add(this.btn_todo);
-            this.Controls.Add(this.btn_restore);
+            this.Controls.Add(this.btnBackups);
+            this.Controls.Add(this.btnListarTodo);
+            this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Bitacora";
+            this.Name = "ConsultarBitacora";
             this.Text = "Bitacora";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_bitacora)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBitacora)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -105,9 +105,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_bitacora;
-        private System.Windows.Forms.Button btn_restore;
-        private System.Windows.Forms.Button btn_todo;
-        private System.Windows.Forms.Button btn_backups;
+        private System.Windows.Forms.DataGridView dgvBitacora;
+        private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.Button btnListarTodo;
+        private System.Windows.Forms.Button btnBackups;
     }
 }

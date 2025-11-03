@@ -30,11 +30,14 @@ namespace UI
 
         private void CargarDatos()
         {
-            try { 
-                List<BEPrestador> prestadores = bllPrestadores.ListarPrestadores();
-                foreach(BEPrestador prestador in prestadores)
+            try {
+                List<BEPrestador> prestadores = bllPrestadores.ListarPrestadores()
+                    .OrderBy(p => p.RazonSocial) 
+                    .ToList();
+
+                foreach (BEPrestador prestador in prestadores)
                 {
-                    lista_prestadores.Items.Add(prestador);
+                    listaPrestadores.Items.Add(prestador);
                 }
             }
             catch(Exception ex)
@@ -45,11 +48,16 @@ namespace UI
 
         private void lista_prestadores_SelectedValueChanged(object sender, EventArgs e)
         {
-            try { 
-                if(lista_prestadores.SelectedItems == null) { return; }
-                prestadorSeleccionado = (BEPrestador)lista_prestadores.SelectedItem;
-                if(prestadorSeleccionado == null) { return; }
-                txt_prestador.Text = prestadorSeleccionado.ToString();
+            try {
+                if (listaPrestadores.SelectedItem == null) 
+                {
+                    prestadorSeleccionado = null;
+                    txtPrestador.Clear();
+                    return;
+                }
+
+                prestadorSeleccionado = (BEPrestador)listaPrestadores.SelectedItem;
+                txtPrestador.Text = prestadorSeleccionado.ToString();
             }
             catch (Exception ex)
             {
@@ -64,17 +72,15 @@ namespace UI
                 if (!ValidarCamposUI())
                     return;
 
-                int numero_autorizacion = int.Parse(txt_numero_autorizacion.Text.Trim());
-                int numero_factura = int.Parse(txt_numero_factura.Text.Trim());
-                decimal monto = decimal.Parse(txt_monto.Text.Trim());
-                DateTime fecha = fecha_factura.Value.Date;
-                string observacion = txt_observacion.Text.Trim();
+                int numero_autorizacion = (int)txtNumeroAutorizacion.Value;
+                int numero_factura = (int)txtNumeroFactura.Value;
+                decimal monto = txtMonto.Value;
+                DateTime fecha = fechaFactura.Value.Date;
+                string observacion = txtObservacion.Text.Trim();
 
                 string rutaPDFGuardado = null;
-                if (!string.IsNullOrEmpty(rutaPDFSeleccionado))
-                {
-                    rutaPDFGuardado = CopiarPDFFactura(numero_factura, rutaPDFSeleccionado);
-                }
+               
+                rutaPDFGuardado = CopiarPDFFactura(numero_factura, rutaPDFSeleccionado);
 
                 BEAutorizacion autorizacion = new BEAutorizacion(numero_autorizacion);
                 BEFactura factura = new BEFactura(0, fecha, monto, numero_factura, observacion, null, prestadorSeleccionado, autorizacion, rutaPDFGuardado, false, false);
@@ -93,12 +99,12 @@ namespace UI
 
         private void LimpiarInputs()
         {
-            txt_monto.Value = 0;
-            txt_numero_autorizacion.Value = 0;
-            txt_numero_factura.Value = 0;
-            txt_observacion.Clear();
-            txt_prestador.Clear();
-            lista_prestadores.ClearSelected();
+            txtMonto.Value = 0;
+            txtNumeroAutorizacion.Value = 0;
+            txtNumeroFactura.Value = 0;
+            txtObservacion.Clear();
+            txtPrestador.Clear();
+            listaPrestadores.ClearSelected();
             prestadorSeleccionado = null;
             rutaPDFSeleccionado = null;
             txtArchivo.Text = "";
@@ -141,22 +147,31 @@ namespace UI
                 MessageBox.Show("Debe seleccionar un prestador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (!int.TryParse(txt_numero_autorizacion.Text.Trim(), out int numero_autorizacion) || numero_autorizacion <= 0)
+            if (txtNumeroAutorizacion.Value <= 0)
             {
-                MessageBox.Show("El número de autorización es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El número de autorización debe ser mayor a cero.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNumeroAutorizacion.Focus();
                 return false;
             }
-            if (!int.TryParse(txt_numero_factura.Text.Trim(), out int numero_factura) || numero_factura <= 0)
+
+            if (txtNumeroFactura.Value <= 0)
             {
-                MessageBox.Show("El número de factura es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El número de factura debe ser mayor a cero.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNumeroFactura.Focus();
                 return false;
             }
-            if (!decimal.TryParse(txt_monto.Text.Trim(), out decimal monto) || monto <= 0)
+
+            if (txtMonto.Value <= 0)
             {
-                MessageBox.Show("El monto debe ser un número decimal positivo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El monto debe ser mayor a cero.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMonto.Focus();
                 return false;
             }
-            if (fecha_factura.Value.Date > DateTime.Now.Date)
+
+            if (fechaFactura.Value.Date > DateTime.Now.Date)
             {
                 MessageBox.Show("La fecha de la factura no puede ser futura.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -189,6 +204,21 @@ namespace UI
                     MessageBox.Show($"Archivo seleccionado: {Path.GetFileName(rutaPDFSeleccionado)}",
                         "Archivo cargado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+        }
+
+        private void btnRemoverPdf_Click(object sender, EventArgs e)
+        {
+           if(rutaPDFSeleccionado != null)
+            {
+                rutaPDFSeleccionado = null;
+                txtArchivo.Text = "";
+                MessageBox.Show("Archivo removido.", "Información",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }else
+            {
+                MessageBox.Show("No hay ningún archivo seleccionado.", "Información",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

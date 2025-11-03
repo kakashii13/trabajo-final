@@ -33,9 +33,9 @@ namespace UI
                 List<BEAfiliado> afiliados = bllAfiliado.ListarAfiliados();
                 foreach (BEAfiliado afiliado in afiliados)
                 {
-                    lista_afiliados.Items.Add(afiliado);
+                    listaAfiliados.Items.Add(afiliado);
                 }
-                combo_practicas.DataSource = bllPractica.ListarPracticas(); 
+                selectPracticas.DataSource = bllPractica.ListarPracticas(); 
             }
             catch(Exception ex)
             {
@@ -45,10 +45,10 @@ namespace UI
         private void LimpiarFormulario()
         {
             afiliadoSeleccionado = null;
-            txt_cuil.Clear();
-            lista_afiliados.ClearSelected(); 
-            combo_practicas.SelectedIndex = -1; 
-            date_solicitud.Value = DateTime.Now;
+            txtCuil.Clear();
+            listaAfiliados.ClearSelected(); 
+            selectPracticas.SelectedIndex = -1; 
+            fechaSolicitud.Value = DateTime.Now;
         }
         private void btn_guardar_Click(object sender, EventArgs e)
         {
@@ -59,24 +59,24 @@ namespace UI
                "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (combo_practicas.SelectedItem == null)
+                if (selectPracticas.SelectedItem == null)
                 {
                     MessageBox.Show("Debe seleccionar una práctica.",
                  "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                if (date_solicitud.Value > DateTime.Now)
+                if (this.fechaSolicitud.Value > DateTime.Now)
                 {
                     MessageBox.Show("La fecha de solicitud no puede ser futura.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                DateTime fechaSolicitud = date_solicitud.Value;
-                BEPractica practicaSeleccionada = (BEPractica)combo_practicas.SelectedItem;
+                DateTime fecha = fechaSolicitud.Value.Date;
+                BEPractica practicaSeleccionada = (BEPractica)selectPracticas.SelectedItem;
 
-                BESolicitud solicitud = new BESolicitud(0, fechaSolicitud, null, null, afiliadoSeleccionado, practicaSeleccionada);
+                BESolicitud solicitud = new BESolicitud(0, fecha, null, null, afiliadoSeleccionado, practicaSeleccionada);
 
                 bllSolicitud.CrearSolicitud(solicitud);
 
@@ -98,14 +98,14 @@ namespace UI
         private void lista_afiliados_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if (lista_afiliados.SelectedItem == null)
+                if (listaAfiliados.SelectedItem == null)
                 {
                     afiliadoSeleccionado = null; 
-                    txt_cuil.Clear();            
+                    txtCuil.Clear();            
                     return;
                 }
-                afiliadoSeleccionado = (BEAfiliado)lista_afiliados.SelectedItem;
-                txt_cuil.Text = afiliadoSeleccionado.Cuil;
+                afiliadoSeleccionado = (BEAfiliado)listaAfiliados.SelectedItem;
+                txtCuil.Text = afiliadoSeleccionado.Cuil;
             }
             catch (Exception ex)
             {

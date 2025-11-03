@@ -30,20 +30,20 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_nombre = new System.Windows.Forms.TextBox();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.mod_practica = new System.Windows.Forms.Button();
-            this.add_practica = new System.Windows.Forms.Button();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnCrear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dg_practicas = new System.Windows.Forms.DataGridView();
+            this.dgvPracticas = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_codigo = new System.Windows.Forms.NumericUpDown();
-            this.txt_precio = new System.Windows.Forms.NumericUpDown();
+            this.txtCodigo = new System.Windows.Forms.NumericUpDown();
+            this.txtPrecio = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_practicas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_codigo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_precio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPracticas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -64,71 +64,71 @@
             this.label2.TabIndex = 59;
             this.label2.Text = "Nombre";
             // 
-            // txt_nombre
+            // txtNombre
             // 
-            this.txt_nombre.Enabled = false;
-            this.txt_nombre.Location = new System.Drawing.Point(15, 218);
-            this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(100, 20);
-            this.txt_nombre.TabIndex = 58;
+            this.txtNombre.Enabled = false;
+            this.txtNombre.Location = new System.Drawing.Point(15, 218);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.TabIndex = 58;
             // 
-            // btn_cancel
+            // btnCancelar
             // 
-            this.btn_cancel.BackColor = System.Drawing.Color.Brown;
-            this.btn_cancel.Enabled = false;
-            this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_cancel.Location = new System.Drawing.Point(516, 162);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(120, 32);
-            this.btn_cancel.TabIndex = 57;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click_1);
+            this.btnCancelar.BackColor = System.Drawing.Color.Brown;
+            this.btnCancelar.Enabled = false;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(516, 162);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 32);
+            this.btnCancelar.TabIndex = 57;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btn_cancel_Click_1);
             // 
-            // btn_save
+            // btnGuardar
             // 
-            this.btn_save.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_save.Enabled = false;
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_save.Location = new System.Drawing.Point(516, 207);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(120, 32);
-            this.btn_save.TabIndex = 56;
-            this.btn_save.Text = "Guardar cambios";
-            this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click_1);
+            this.btnGuardar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Location = new System.Drawing.Point(516, 207);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(120, 32);
+            this.btnGuardar.TabIndex = 56;
+            this.btnGuardar.Text = "Guardar cambios";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btn_save_Click_1);
             // 
-            // mod_practica
+            // btnModificar
             // 
-            this.mod_practica.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.mod_practica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mod_practica.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.mod_practica.Location = new System.Drawing.Point(516, 62);
-            this.mod_practica.Name = "mod_practica";
-            this.mod_practica.Size = new System.Drawing.Size(120, 32);
-            this.mod_practica.TabIndex = 54;
-            this.mod_practica.Text = "Modificar";
-            this.mod_practica.UseVisualStyleBackColor = false;
-            this.mod_practica.Click += new System.EventHandler(this.mod_practica_Click_1);
+            this.btnModificar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModificar.Location = new System.Drawing.Point(516, 62);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(120, 32);
+            this.btnModificar.TabIndex = 54;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.mod_practica_Click_1);
             // 
-            // add_practica
+            // btnCrear
             // 
-            this.add_practica.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.add_practica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_practica.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.add_practica.Location = new System.Drawing.Point(516, 14);
-            this.add_practica.Name = "add_practica";
-            this.add_practica.Size = new System.Drawing.Size(120, 32);
-            this.add_practica.TabIndex = 53;
-            this.add_practica.Text = "Crear";
-            this.add_practica.UseVisualStyleBackColor = false;
-            this.add_practica.Click += new System.EventHandler(this.add_practica_Click_1);
+            this.btnCrear.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCrear.Location = new System.Drawing.Point(516, 14);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(120, 32);
+            this.btnCrear.TabIndex = 53;
+            this.btnCrear.Text = "Crear";
+            this.btnCrear.UseVisualStyleBackColor = false;
+            this.btnCrear.Click += new System.EventHandler(this.add_practica_Click_1);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dg_practicas);
+            this.groupBox1.Controls.Add(this.dgvPracticas);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(468, 173);
@@ -136,14 +136,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Practicas";
             // 
-            // dg_practicas
+            // dgvPracticas
             // 
-            this.dg_practicas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_practicas.Location = new System.Drawing.Point(5, 17);
-            this.dg_practicas.Name = "dg_practicas";
-            this.dg_practicas.ReadOnly = true;
-            this.dg_practicas.Size = new System.Drawing.Size(457, 139);
-            this.dg_practicas.TabIndex = 0;
+            this.dgvPracticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPracticas.Location = new System.Drawing.Point(5, 17);
+            this.dgvPracticas.Name = "dgvPracticas";
+            this.dgvPracticas.ReadOnly = true;
+            this.dgvPracticas.Size = new System.Drawing.Size(457, 139);
+            this.dgvPracticas.TabIndex = 0;
             // 
             // label3
             // 
@@ -154,55 +154,55 @@
             this.label3.TabIndex = 63;
             this.label3.Text = "Codigo";
             // 
-            // txt_codigo
+            // txtCodigo
             // 
-            this.txt_codigo.Enabled = false;
-            this.txt_codigo.Location = new System.Drawing.Point(270, 219);
-            this.txt_codigo.Maximum = new decimal(new int[] {
+            this.txtCodigo.Enabled = false;
+            this.txtCodigo.Location = new System.Drawing.Point(270, 219);
+            this.txtCodigo.Maximum = new decimal(new int[] {
             99999999,
             0,
             0,
             0});
-            this.txt_codigo.Name = "txt_codigo";
-            this.txt_codigo.Size = new System.Drawing.Size(112, 20);
-            this.txt_codigo.TabIndex = 64;
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(112, 20);
+            this.txtCodigo.TabIndex = 64;
             // 
-            // txt_precio
+            // txtPrecio
             // 
-            this.txt_precio.DecimalPlaces = 2;
-            this.txt_precio.Enabled = false;
-            this.txt_precio.Location = new System.Drawing.Point(136, 219);
-            this.txt_precio.Maximum = new decimal(new int[] {
+            this.txtPrecio.DecimalPlaces = 2;
+            this.txtPrecio.Enabled = false;
+            this.txtPrecio.Location = new System.Drawing.Point(136, 219);
+            this.txtPrecio.Maximum = new decimal(new int[] {
             99999999,
             0,
             0,
             0});
-            this.txt_precio.Name = "txt_precio";
-            this.txt_precio.Size = new System.Drawing.Size(112, 20);
-            this.txt_precio.TabIndex = 65;
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(112, 20);
+            this.txtPrecio.TabIndex = 65;
             // 
             // ABMPracticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 259);
-            this.Controls.Add(this.txt_precio);
-            this.Controls.Add(this.txt_codigo);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_nombre);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_save);
-            this.Controls.Add(this.mod_practica);
-            this.Controls.Add(this.add_practica);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.groupBox1);
             this.Name = "ABMPracticas";
             this.Text = "ABMPracticas";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dg_practicas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_codigo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_precio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPracticas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,15 +212,15 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_nombre;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.Button mod_practica;
-        private System.Windows.Forms.Button add_practica;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dg_practicas;
+        private System.Windows.Forms.DataGridView dgvPracticas;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown txt_codigo;
-        private System.Windows.Forms.NumericUpDown txt_precio;
+        private System.Windows.Forms.NumericUpDown txtCodigo;
+        private System.Windows.Forms.NumericUpDown txtPrecio;
     }
 }

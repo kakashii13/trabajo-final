@@ -43,7 +43,7 @@
             this.autorizaciones = new System.Windows.Forms.ToolStripMenuItem();
             this.crearSolicitud = new System.Windows.Forms.ToolStripMenuItem();
             this.resolverSolicitud = new System.Windows.Forms.ToolStripMenuItem();
-            this.listarAutorizaciones = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarAutorizaciones = new System.Windows.Forms.ToolStripMenuItem();
             this.facturacion = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarFactura = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarFacturas = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,14 +114,14 @@
             // usuarios
             // 
             this.usuarios.Name = "usuarios";
-            this.usuarios.Size = new System.Drawing.Size(162, 22);
+            this.usuarios.Size = new System.Drawing.Size(180, 22);
             this.usuarios.Text = "Usuarios";
             this.usuarios.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // rolesPermisos
             // 
             this.rolesPermisos.Name = "rolesPermisos";
-            this.rolesPermisos.Size = new System.Drawing.Size(162, 22);
+            this.rolesPermisos.Size = new System.Drawing.Size(180, 22);
             this.rolesPermisos.Text = "Roles y permisos";
             this.rolesPermisos.Click += new System.EventHandler(this.rolesYPermisosToolStripMenuItem_Click);
             // 
@@ -139,28 +139,28 @@
             // registrarAfiliado
             // 
             this.registrarAfiliado.Name = "registrarAfiliado";
-            this.registrarAfiliado.Size = new System.Drawing.Size(167, 22);
+            this.registrarAfiliado.Size = new System.Drawing.Size(180, 22);
             this.registrarAfiliado.Text = "Registrar afiliado";
             this.registrarAfiliado.Click += new System.EventHandler(this.registrarAfiliadoToolStripMenuItem_Click);
             // 
             // listadoAfiliados
             // 
             this.listadoAfiliados.Name = "listadoAfiliados";
-            this.listadoAfiliados.Size = new System.Drawing.Size(167, 22);
+            this.listadoAfiliados.Size = new System.Drawing.Size(180, 22);
             this.listadoAfiliados.Text = "Listado afiliados";
             this.listadoAfiliados.Click += new System.EventHandler(this.listadoAfiliados_Click);
             // 
             // registrarAporte
             // 
             this.registrarAporte.Name = "registrarAporte";
-            this.registrarAporte.Size = new System.Drawing.Size(167, 22);
+            this.registrarAporte.Size = new System.Drawing.Size(180, 22);
             this.registrarAporte.Text = "Registrar aporte";
             this.registrarAporte.Click += new System.EventHandler(this.registrarAporteToolStripMenuItem_Click);
             // 
             // consultarAportes
             // 
             this.consultarAportes.Name = "consultarAportes";
-            this.consultarAportes.Size = new System.Drawing.Size(167, 22);
+            this.consultarAportes.Size = new System.Drawing.Size(180, 22);
             this.consultarAportes.Text = "Consultar aportes";
             this.consultarAportes.Click += new System.EventHandler(this.consultarAportes_Click);
             // 
@@ -169,7 +169,7 @@
             this.autorizaciones.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearSolicitud,
             this.resolverSolicitud,
-            this.listarAutorizaciones});
+            this.consultarAutorizaciones});
             this.autorizaciones.Name = "autorizaciones";
             this.autorizaciones.Size = new System.Drawing.Size(97, 20);
             this.autorizaciones.Text = "Autorizaciones";
@@ -177,23 +177,23 @@
             // crearSolicitud
             // 
             this.crearSolicitud.Name = "crearSolicitud";
-            this.crearSolicitud.Size = new System.Drawing.Size(181, 22);
+            this.crearSolicitud.Size = new System.Drawing.Size(204, 22);
             this.crearSolicitud.Text = "Crear solicitud";
             this.crearSolicitud.Click += new System.EventHandler(this.crearSolicitud_Click);
             // 
             // resolverSolicitud
             // 
             this.resolverSolicitud.Name = "resolverSolicitud";
-            this.resolverSolicitud.Size = new System.Drawing.Size(181, 22);
+            this.resolverSolicitud.Size = new System.Drawing.Size(204, 22);
             this.resolverSolicitud.Text = "Resolver solicitud";
             this.resolverSolicitud.Click += new System.EventHandler(this.resolverSolicitud_Click);
             // 
-            // listarAutorizaciones
+            // consultarAutorizaciones
             // 
-            this.listarAutorizaciones.Name = "listarAutorizaciones";
-            this.listarAutorizaciones.Size = new System.Drawing.Size(181, 22);
-            this.listarAutorizaciones.Text = "Listar autorizaciones";
-            this.listarAutorizaciones.Click += new System.EventHandler(this.listarAutorizaciones_Click);
+            this.consultarAutorizaciones.Name = "consultarAutorizaciones";
+            this.consultarAutorizaciones.Size = new System.Drawing.Size(204, 22);
+            this.consultarAutorizaciones.Text = "Consultar autorizaciones";
+            this.consultarAutorizaciones.Click += new System.EventHandler(this.listarAutorizaciones_Click);
             // 
             // facturacion
             // 
@@ -361,7 +361,7 @@
         private System.Windows.Forms.ToolStripMenuItem dashboard;
         private System.Windows.Forms.ToolStripMenuItem abmPlanes;
         private System.Windows.Forms.ToolStripMenuItem abmPracticas;
-        private System.Windows.Forms.ToolStripMenuItem listarAutorizaciones;
+        private System.Windows.Forms.ToolStripMenuItem consultarAutorizaciones;
     }
 }
 

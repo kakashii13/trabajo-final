@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_cuil = new System.Windows.Forms.TextBox();
+            this.txtCuil = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_nombre = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_tel = new System.Windows.Forms.TextBox();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.select_plan = new System.Windows.Forms.ComboBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.selectPlan = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.check_activo = new System.Windows.Forms.CheckBox();
+            this.checkActivo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // txt_cuil
+            // txtCuil
             // 
-            this.txt_cuil.Location = new System.Drawing.Point(12, 42);
-            this.txt_cuil.MaxLength = 11;
-            this.txt_cuil.Name = "txt_cuil";
-            this.txt_cuil.Size = new System.Drawing.Size(100, 20);
-            this.txt_cuil.TabIndex = 0;
+            this.txtCuil.Location = new System.Drawing.Point(12, 42);
+            this.txtCuil.MaxLength = 11;
+            this.txtCuil.Name = "txtCuil";
+            this.txtCuil.Size = new System.Drawing.Size(100, 20);
+            this.txtCuil.TabIndex = 0;
             // 
             // label1
             // 
@@ -67,12 +67,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nombre y apellido";
             // 
-            // txt_nombre
+            // txtNombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(131, 42);
-            this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(221, 20);
-            this.txt_nombre.TabIndex = 2;
+            this.txtNombre.Location = new System.Drawing.Point(131, 42);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(221, 20);
+            this.txtNombre.TabIndex = 2;
             // 
             // label3
             // 
@@ -83,46 +83,46 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Telefono";
             // 
-            // txt_tel
+            // txtTelefono
             // 
-            this.txt_tel.Location = new System.Drawing.Point(12, 93);
-            this.txt_tel.Name = "txt_tel";
-            this.txt_tel.Size = new System.Drawing.Size(100, 20);
-            this.txt_tel.TabIndex = 4;
+            this.txtTelefono.Location = new System.Drawing.Point(12, 93);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefono.TabIndex = 4;
             // 
-            // btn_cancel
+            // btnCancelar
             // 
-            this.btn_cancel.BackColor = System.Drawing.Color.Brown;
-            this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_cancel.Location = new System.Drawing.Point(253, 153);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(120, 32);
-            this.btn_cancel.TabIndex = 44;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.Brown;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(253, 153);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 32);
+            this.btnCancelar.TabIndex = 44;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // btn_save
+            // btnGuardar
             // 
-            this.btn_save.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_save.Location = new System.Drawing.Point(253, 198);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(120, 32);
-            this.btn_save.TabIndex = 43;
-            this.btn_save.Text = "Guardar cambios";
-            this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btnGuardar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Location = new System.Drawing.Point(253, 198);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(120, 32);
+            this.btnGuardar.TabIndex = 43;
+            this.btnGuardar.Text = "Guardar cambios";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // select_plan
+            // selectPlan
             // 
-            this.select_plan.FormattingEnabled = true;
-            this.select_plan.Location = new System.Drawing.Point(131, 92);
-            this.select_plan.Name = "select_plan";
-            this.select_plan.Size = new System.Drawing.Size(121, 21);
-            this.select_plan.TabIndex = 49;
+            this.selectPlan.FormattingEnabled = true;
+            this.selectPlan.Location = new System.Drawing.Point(131, 92);
+            this.selectPlan.Name = "selectPlan";
+            this.selectPlan.Size = new System.Drawing.Size(121, 21);
+            this.selectPlan.TabIndex = 49;
             // 
             // label6
             // 
@@ -133,35 +133,35 @@
             this.label6.TabIndex = 50;
             this.label6.Text = "Plan";
             // 
-            // check_activo
+            // checkActivo
             // 
-            this.check_activo.AutoSize = true;
-            this.check_activo.Checked = true;
-            this.check_activo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_activo.Enabled = false;
-            this.check_activo.Location = new System.Drawing.Point(296, 96);
-            this.check_activo.Name = "check_activo";
-            this.check_activo.Size = new System.Drawing.Size(56, 17);
-            this.check_activo.TabIndex = 51;
-            this.check_activo.Text = "Activo";
-            this.check_activo.UseVisualStyleBackColor = true;
+            this.checkActivo.AutoSize = true;
+            this.checkActivo.Checked = true;
+            this.checkActivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkActivo.Enabled = false;
+            this.checkActivo.Location = new System.Drawing.Point(296, 96);
+            this.checkActivo.Name = "checkActivo";
+            this.checkActivo.Size = new System.Drawing.Size(56, 17);
+            this.checkActivo.TabIndex = 51;
+            this.checkActivo.Text = "Activo";
+            this.checkActivo.UseVisualStyleBackColor = true;
             // 
             // RegistrarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 241);
-            this.Controls.Add(this.check_activo);
+            this.Controls.Add(this.checkActivo);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.select_plan);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.selectPlan);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txt_tel);
+            this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_nombre);
+            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_cuil);
+            this.Controls.Add(this.txtCuil);
             this.Name = "RegistrarAfiliado";
             this.Text = "RegistrarAfiliado";
             this.ResumeLayout(false);
@@ -171,16 +171,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txt_cuil;
+        private System.Windows.Forms.TextBox txtCuil;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_nombre;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_tel;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.ComboBox select_plan;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.ComboBox selectPlan;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox check_activo;
+        private System.Windows.Forms.CheckBox checkActivo;
     }
 }

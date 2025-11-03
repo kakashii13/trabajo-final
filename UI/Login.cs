@@ -24,10 +24,10 @@ namespace UI
         {
             try
             {
-                var usuarioTxt = textBox1.Text;
-                var passwordTxt = textBox2.Text;
+                var usuarioTxt = txtUsuario.Text;
+                var passwordTxt = txtPassword.Text;
 
-                if (string.IsNullOrEmpty(usuarioTxt) || string.IsNullOrEmpty(passwordTxt))
+                if (string.IsNullOrWhiteSpace(usuarioTxt) || string.IsNullOrWhiteSpace(passwordTxt))
                 {
                     throw new Exception("Debe ingresar usuario y contraseña.");
                 }
@@ -37,7 +37,6 @@ namespace UI
 
                 BEUsuario usuarioLogueado = bllUsuario.ValidarLogin(usuario);
 
-                // si el login es exitoso, retornamos OK y cerramos el formulario
                 if(usuarioLogueado == null)
                 {
                     throw new Exception("Usuario o contraseña incorrecta.");

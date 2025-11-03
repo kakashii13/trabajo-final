@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgv_users = new System.Windows.Forms.DataGridView();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.add_user = new System.Windows.Forms.Button();
-            this.txt_nombre = new System.Windows.Forms.TextBox();
+            this.btnCrear = new System.Windows.Forms.Button();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_apellido = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txt_user_nombre = new System.Windows.Forms.TextBox();
-            this.mod_user = new System.Windows.Forms.Button();
+            this.txtNombreUsuario = new System.Windows.Forms.TextBox();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.btnInactivar = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_update = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnActualizarListado = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.txt_password = new System.Windows.Forms.TextBox();
-            this.btn_activar = new System.Windows.Forms.Button();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnActivar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnResetearPass = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_users)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgv_users
+            // dgvUsuarios
             // 
-            this.dgv_users.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_users.Location = new System.Drawing.Point(12, 33);
-            this.dgv_users.MultiSelect = false;
-            this.dgv_users.Name = "dgv_users";
-            this.dgv_users.ReadOnly = true;
-            this.dgv_users.Size = new System.Drawing.Size(604, 191);
-            this.dgv_users.TabIndex = 0;
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Location = new System.Drawing.Point(12, 33);
+            this.dgvUsuarios.MultiSelect = false;
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
+            this.dgvUsuarios.Size = new System.Drawing.Size(604, 191);
+            this.dgvUsuarios.TabIndex = 0;
             // 
             // label1
             // 
@@ -70,26 +70,26 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Usuarios";
             // 
-            // add_user
+            // btnCrear
             // 
-            this.add_user.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.add_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_user.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.add_user.Location = new System.Drawing.Point(655, 33);
-            this.add_user.Name = "add_user";
-            this.add_user.Size = new System.Drawing.Size(120, 32);
-            this.add_user.TabIndex = 28;
-            this.add_user.Text = "Crear";
-            this.add_user.UseVisualStyleBackColor = false;
-            this.add_user.Click += new System.EventHandler(this.add_user_Click);
+            this.btnCrear.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCrear.Location = new System.Drawing.Point(655, 33);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(120, 32);
+            this.btnCrear.TabIndex = 28;
+            this.btnCrear.Text = "Crear";
+            this.btnCrear.UseVisualStyleBackColor = false;
+            this.btnCrear.Click += new System.EventHandler(this.add_user_Click);
             // 
-            // txt_nombre
+            // txtNombre
             // 
-            this.txt_nombre.Enabled = false;
-            this.txt_nombre.Location = new System.Drawing.Point(17, 269);
-            this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(100, 20);
-            this.txt_nombre.TabIndex = 29;
+            this.txtNombre.Enabled = false;
+            this.txtNombre.Location = new System.Drawing.Point(17, 269);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.TabIndex = 29;
             // 
             // label2
             // 
@@ -109,13 +109,13 @@
             this.label3.TabIndex = 32;
             this.label3.Text = "Apellido";
             // 
-            // txt_apellido
+            // txtApellido
             // 
-            this.txt_apellido.Enabled = false;
-            this.txt_apellido.Location = new System.Drawing.Point(135, 269);
-            this.txt_apellido.Name = "txt_apellido";
-            this.txt_apellido.Size = new System.Drawing.Size(100, 20);
-            this.txt_apellido.TabIndex = 31;
+            this.txtApellido.Enabled = false;
+            this.txtApellido.Location = new System.Drawing.Point(135, 269);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(100, 20);
+            this.txtApellido.TabIndex = 31;
             // 
             // label5
             // 
@@ -126,26 +126,26 @@
             this.label5.TabIndex = 36;
             this.label5.Text = "Nombre de usuario";
             // 
-            // txt_user_nombre
+            // txtNombreUsuario
             // 
-            this.txt_user_nombre.Enabled = false;
-            this.txt_user_nombre.Location = new System.Drawing.Point(256, 269);
-            this.txt_user_nombre.Name = "txt_user_nombre";
-            this.txt_user_nombre.Size = new System.Drawing.Size(100, 20);
-            this.txt_user_nombre.TabIndex = 35;
+            this.txtNombreUsuario.Enabled = false;
+            this.txtNombreUsuario.Location = new System.Drawing.Point(256, 269);
+            this.txtNombreUsuario.Name = "txtNombreUsuario";
+            this.txtNombreUsuario.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreUsuario.TabIndex = 35;
             // 
-            // mod_user
+            // btnModificar
             // 
-            this.mod_user.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.mod_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mod_user.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.mod_user.Location = new System.Drawing.Point(781, 33);
-            this.mod_user.Name = "mod_user";
-            this.mod_user.Size = new System.Drawing.Size(120, 32);
-            this.mod_user.TabIndex = 39;
-            this.mod_user.Text = "Modificar";
-            this.mod_user.UseVisualStyleBackColor = false;
-            this.mod_user.Click += new System.EventHandler(this.mod_user_Click);
+            this.btnModificar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModificar.Location = new System.Drawing.Point(781, 33);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(120, 32);
+            this.btnModificar.TabIndex = 39;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.mod_user_Click);
             // 
             // btnInactivar
             // 
@@ -160,46 +160,46 @@
             this.btnInactivar.UseVisualStyleBackColor = false;
             this.btnInactivar.Click += new System.EventHandler(this.btnInactivar_Click);
             // 
-            // btn_save
+            // btnGuardar
             // 
-            this.btn_save.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_save.Enabled = false;
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_save.Location = new System.Drawing.Point(781, 262);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(120, 32);
-            this.btn_save.TabIndex = 41;
-            this.btn_save.Text = "Guardar cambios";
-            this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btnGuardar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Location = new System.Drawing.Point(781, 262);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(120, 32);
+            this.btnGuardar.TabIndex = 41;
+            this.btnGuardar.Text = "Guardar cambios";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // btn_cancel
+            // btnCancelar
             // 
-            this.btn_cancel.BackColor = System.Drawing.Color.Brown;
-            this.btn_cancel.Enabled = false;
-            this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_cancel.Location = new System.Drawing.Point(655, 262);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(120, 32);
-            this.btn_cancel.TabIndex = 42;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.Brown;
+            this.btnCancelar.Enabled = false;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(655, 262);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 32);
+            this.btnCancelar.TabIndex = 42;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // btn_update
+            // btnActualizarListado
             // 
-            this.btn_update.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_update.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_update.Location = new System.Drawing.Point(99, 5);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(136, 24);
-            this.btn_update.TabIndex = 43;
-            this.btn_update.Text = "Actualizar listado";
-            this.btn_update.UseVisualStyleBackColor = false;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
+            this.btnActualizarListado.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnActualizarListado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarListado.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnActualizarListado.Location = new System.Drawing.Point(99, 5);
+            this.btnActualizarListado.Name = "btnActualizarListado";
+            this.btnActualizarListado.Size = new System.Drawing.Size(136, 24);
+            this.btnActualizarListado.TabIndex = 43;
+            this.btnActualizarListado.Text = "Actualizar listado";
+            this.btnActualizarListado.UseVisualStyleBackColor = false;
+            this.btnActualizarListado.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // label6
             // 
@@ -210,26 +210,26 @@
             this.label6.TabIndex = 45;
             this.label6.Text = "Password default";
             // 
-            // txt_password
+            // txtPassword
             // 
-            this.txt_password.Enabled = false;
-            this.txt_password.Location = new System.Drawing.Point(379, 269);
-            this.txt_password.Name = "txt_password";
-            this.txt_password.Size = new System.Drawing.Size(100, 20);
-            this.txt_password.TabIndex = 44;
+            this.txtPassword.Enabled = false;
+            this.txtPassword.Location = new System.Drawing.Point(379, 269);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 44;
             // 
-            // btn_activar
+            // btnActivar
             // 
-            this.btn_activar.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_activar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_activar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_activar.Location = new System.Drawing.Point(781, 71);
-            this.btn_activar.Name = "btn_activar";
-            this.btn_activar.Size = new System.Drawing.Size(120, 32);
-            this.btn_activar.TabIndex = 46;
-            this.btn_activar.Text = "Activar";
-            this.btn_activar.UseVisualStyleBackColor = false;
-            this.btn_activar.Click += new System.EventHandler(this.btn_activar_Click);
+            this.btnActivar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnActivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActivar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnActivar.Location = new System.Drawing.Point(781, 71);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(120, 32);
+            this.btnActivar.TabIndex = 46;
+            this.btnActivar.Text = "Activar";
+            this.btnActivar.UseVisualStyleBackColor = false;
+            this.btnActivar.Click += new System.EventHandler(this.btn_activar_Click);
             // 
             // btnEliminar
             // 
@@ -264,26 +264,26 @@
             this.ClientSize = new System.Drawing.Size(916, 306);
             this.Controls.Add(this.btnResetearPass);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btn_activar);
+            this.Controls.Add(this.btnActivar);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txt_password);
-            this.Controls.Add(this.btn_update);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.btnActualizarListado);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnInactivar);
-            this.Controls.Add(this.mod_user);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txt_user_nombre);
+            this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txt_apellido);
+            this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_nombre);
-            this.Controls.Add(this.add_user);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgv_users);
+            this.Controls.Add(this.dgvUsuarios);
             this.Name = "ABMUsuarios";
             this.Text = "ABMUsuarios";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_users)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,23 +291,23 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgv_users;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button add_user;
-        private System.Windows.Forms.TextBox txt_nombre;
+        private System.Windows.Forms.Button btnCrear;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_apellido;
+        private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txt_user_nombre;
-        private System.Windows.Forms.Button mod_user;
+        private System.Windows.Forms.TextBox txtNombreUsuario;
+        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnInactivar;
-        private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_update;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnActualizarListado;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txt_password;
-        private System.Windows.Forms.Button btn_activar;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnActivar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnResetearPass;
     }

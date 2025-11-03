@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dg_planes = new System.Windows.Forms.DataGridView();
+            this.dgvPlanes = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.mod_plan = new System.Windows.Forms.Button();
-            this.add_plan = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnCrear = new System.Windows.Forms.Button();
             this.txt_tope = new System.Windows.Forms.Label();
-            this.txt_monto = new System.Windows.Forms.TextBox();
+            this.txtMonto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_nombre = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_planes)).BeginInit();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlanes)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dg_planes
+            // dgvPlanes
             // 
-            this.dg_planes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_planes.Location = new System.Drawing.Point(13, 17);
-            this.dg_planes.Name = "dg_planes";
-            this.dg_planes.ReadOnly = true;
-            this.dg_planes.Size = new System.Drawing.Size(351, 139);
-            this.dg_planes.TabIndex = 0;
+            this.dgvPlanes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPlanes.Location = new System.Drawing.Point(13, 17);
+            this.dgvPlanes.Name = "dgvPlanes";
+            this.dgvPlanes.ReadOnly = true;
+            this.dgvPlanes.Size = new System.Drawing.Size(351, 139);
+            this.dgvPlanes.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dg_planes);
+            this.groupBox1.Controls.Add(this.dgvPlanes);
             this.groupBox1.Location = new System.Drawing.Point(10, 9);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 173);
@@ -61,59 +61,59 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Planes";
             // 
-            // btn_cancel
+            // btnCancelar
             // 
-            this.btn_cancel.BackColor = System.Drawing.Color.Brown;
-            this.btn_cancel.Enabled = false;
-            this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_cancel.Location = new System.Drawing.Point(418, 157);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(120, 32);
-            this.btn_cancel.TabIndex = 47;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.Brown;
+            this.btnCancelar.Enabled = false;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(418, 157);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 32);
+            this.btnCancelar.TabIndex = 47;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // btn_save
+            // btnGuardar
             // 
-            this.btn_save.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_save.Enabled = false;
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_save.Location = new System.Drawing.Point(418, 202);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(120, 32);
-            this.btn_save.TabIndex = 46;
-            this.btn_save.Text = "Guardar cambios";
-            this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btnGuardar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Location = new System.Drawing.Point(418, 202);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(120, 32);
+            this.btnGuardar.TabIndex = 46;
+            this.btnGuardar.Text = "Guardar cambios";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // mod_plan
+            // btnModificar
             // 
-            this.mod_plan.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.mod_plan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mod_plan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.mod_plan.Location = new System.Drawing.Point(418, 57);
-            this.mod_plan.Name = "mod_plan";
-            this.mod_plan.Size = new System.Drawing.Size(120, 32);
-            this.mod_plan.TabIndex = 44;
-            this.mod_plan.Text = "Modificar";
-            this.mod_plan.UseVisualStyleBackColor = false;
-            this.mod_plan.Click += new System.EventHandler(this.mod_plan_Click);
+            this.btnModificar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModificar.Location = new System.Drawing.Point(418, 57);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(120, 32);
+            this.btnModificar.TabIndex = 44;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.mod_plan_Click);
             // 
-            // add_plan
+            // btnCrear
             // 
-            this.add_plan.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.add_plan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_plan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.add_plan.Location = new System.Drawing.Point(418, 9);
-            this.add_plan.Name = "add_plan";
-            this.add_plan.Size = new System.Drawing.Size(120, 32);
-            this.add_plan.TabIndex = 43;
-            this.add_plan.Text = "Crear";
-            this.add_plan.UseVisualStyleBackColor = false;
-            this.add_plan.Click += new System.EventHandler(this.add_plan_Click);
+            this.btnCrear.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCrear.Location = new System.Drawing.Point(418, 9);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(120, 32);
+            this.btnCrear.TabIndex = 43;
+            this.btnCrear.Text = "Crear";
+            this.btnCrear.UseVisualStyleBackColor = false;
+            this.btnCrear.Click += new System.EventHandler(this.add_plan_Click);
             // 
             // txt_tope
             // 
@@ -124,13 +124,13 @@
             this.txt_tope.TabIndex = 51;
             this.txt_tope.Text = "Monto tope";
             // 
-            // txt_monto
+            // txtMonto
             // 
-            this.txt_monto.Enabled = false;
-            this.txt_monto.Location = new System.Drawing.Point(130, 214);
-            this.txt_monto.Name = "txt_monto";
-            this.txt_monto.Size = new System.Drawing.Size(100, 20);
-            this.txt_monto.TabIndex = 50;
+            this.txtMonto.Enabled = false;
+            this.txtMonto.Location = new System.Drawing.Point(130, 214);
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(100, 20);
+            this.txtMonto.TabIndex = 50;
             // 
             // label2
             // 
@@ -141,13 +141,13 @@
             this.label2.TabIndex = 49;
             this.label2.Text = "Nombre";
             // 
-            // txt_nombre
+            // txtNombre
             // 
-            this.txt_nombre.Enabled = false;
-            this.txt_nombre.Location = new System.Drawing.Point(12, 214);
-            this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(100, 20);
-            this.txt_nombre.TabIndex = 48;
+            this.txtNombre.Enabled = false;
+            this.txtNombre.Location = new System.Drawing.Point(12, 214);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.TabIndex = 48;
             // 
             // ABMPlanes
             // 
@@ -155,17 +155,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 245);
             this.Controls.Add(this.txt_tope);
-            this.Controls.Add(this.txt_monto);
+            this.Controls.Add(this.txtMonto);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_nombre);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_save);
-            this.Controls.Add(this.mod_plan);
-            this.Controls.Add(this.add_plan);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.groupBox1);
             this.Name = "ABMPlanes";
             this.Text = "ABMPlanes";
-            ((System.ComponentModel.ISupportInitialize)(this.dg_planes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlanes)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -174,15 +174,15 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dg_planes;
+        private System.Windows.Forms.DataGridView dgvPlanes;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.Button mod_plan;
-        private System.Windows.Forms.Button add_plan;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Label txt_tope;
-        private System.Windows.Forms.TextBox txt_monto;
+        private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_nombre;
+        private System.Windows.Forms.TextBox txtNombre;
     }
 }

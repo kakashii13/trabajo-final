@@ -37,7 +37,6 @@ namespace MPP
                     new XElement("NombreApellido", afiliado.NombreApellido),
                     new XElement("Cuil", afiliado.Cuil),
                     new XElement("Activo", afiliado.Activo.ToString().ToLower()),
-                    new XElement("NroAfiliado", afiliado.NroAfiliado),
                     new XElement("Telefono", afiliado.Telefono)
                 )
             );
@@ -109,7 +108,6 @@ namespace MPP
                  elemento.Element("NombreApellido").Value,
                  elemento.Element("Cuil").Value,
                  bool.Parse(elemento.Element("Activo").Value),
-                 (int)elemento.Element("NroAfiliado"),
                  elemento.Element("Telefono").Value
              );
         }

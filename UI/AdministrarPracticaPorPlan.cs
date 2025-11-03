@@ -38,7 +38,7 @@ namespace UI
 
                 foreach (var plan in planes)
                 {
-                    lista_planes.Items.Add(plan);
+                    listaPlanes.Items.Add(plan);
                 }
             }
             catch(Exception ex)
@@ -49,34 +49,34 @@ namespace UI
 
         private void btn_listar_Click(object sender, EventArgs e)
         {
-            lista_practicas.Items.Clear();
+            listaPracticas.Items.Clear();
             foreach (var practica in practicas)
             {
-                lista_practicas.Items.Add(practica);
+                listaPracticas.Items.Add(practica);
             }
         }
 
         private void lista_planes_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                lista_practicas_plan.Items.Clear();
-                txt_plan.Clear();
-                txt_practica_plan.Clear();
+                listaPracticasPlan.Items.Clear();
+                txtPlanSeleccionado.Clear();
+                txtPracticaPlan.Clear();
 
-                if (lista_planes.SelectedItem == null) { 
+                if (listaPlanes.SelectedItem == null) { 
                     planSeleccionado = null;
                     return;
                 }
 
-                planSeleccionado = (BEPlan)lista_planes.SelectedItem;
+                planSeleccionado = (BEPlan)listaPlanes.SelectedItem;
                 
                 
-                txt_plan.Text = planSeleccionado.ToString();
+                txtPlanSeleccionado.Text = planSeleccionado.ToString();
 
                 
                 foreach(BEPractica practica in planSeleccionado.Practicas)
                 {
-                    lista_practicas_plan.Items.Add(practica);
+                    listaPracticasPlan.Items.Add(practica);
                 }
             }
             catch(Exception ex)
@@ -88,15 +88,15 @@ namespace UI
         private void lista_practicas_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if (lista_practicas.SelectedItem == null) {
+                if (listaPracticas.SelectedItem == null) {
                     practicaDisponibleSeleccionada = null; 
-                    txt_practica.Clear();
+                    txtPracticaSeleccionada.Clear();
                     return;
                 }
 
-                practicaDisponibleSeleccionada = (BEPractica)lista_practicas.SelectedItem;
+                practicaDisponibleSeleccionada = (BEPractica)listaPracticas.SelectedItem;
 
-                txt_practica.Text = practicaDisponibleSeleccionada.ToString();
+                txtPracticaSeleccionada.Text = practicaDisponibleSeleccionada.ToString();
             }
             catch (Exception ex)
             {
@@ -114,11 +114,11 @@ namespace UI
 
                 bllPlan.AsignarPractica(planSeleccionado, practicaDisponibleSeleccionada);
 
-                lista_practicas_plan.Items.Add(practicaDisponibleSeleccionada);
+                listaPracticasPlan.Items.Add(practicaDisponibleSeleccionada);
 
                 MessageBox.Show("Práctica asignada al plan correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txt_practica.Clear();
-                lista_practicas.ClearSelected();
+                txtPracticaSeleccionada.Clear();
+                listaPracticas.ClearSelected();
                 practicaDisponibleSeleccionada = null;
             }
             catch (Exception ex)
@@ -130,15 +130,15 @@ namespace UI
         private void lista_practicas_plan_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if(lista_practicas_plan.SelectedItem == null)
+                if(listaPracticasPlan.SelectedItem == null)
                 {
                     practicaSeleccionadoPorPlan = null; 
-                    txt_practica_plan.Clear();
+                    txtPracticaPlan.Clear();
                     return;
                 }
                
-                practicaSeleccionadoPorPlan = (BEPractica)lista_practicas_plan.SelectedItem;
-                txt_practica_plan.Text = practicaSeleccionadoPorPlan.ToString();
+                practicaSeleccionadoPorPlan = (BEPractica)listaPracticasPlan.SelectedItem;
+                txtPracticaPlan.Text = practicaSeleccionadoPorPlan.ToString();
             }
             catch (Exception ex)
             {
@@ -167,12 +167,12 @@ namespace UI
 
                 bllPlan.QuitarPractica(planSeleccionado, practicaSeleccionadoPorPlan);
 
-                lista_practicas_plan.Items.Remove(practicaSeleccionadoPorPlan);
+                listaPracticasPlan.Items.Remove(practicaSeleccionadoPorPlan);
 
                 MessageBox.Show("Práctica eliminada del plan correctamente.", "Exito", MessageBoxButtons.OK);
                 
-                txt_practica_plan.Clear();
-                lista_practicas_plan.ClearSelected();
+                txtPracticaPlan.Clear();
+                listaPracticasPlan.ClearSelected();
                 practicaSeleccionadoPorPlan = null;
             }
             catch (Exception ex)

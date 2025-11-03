@@ -25,9 +25,9 @@ namespace UI
             CargarDatos();
 
             // formateo el dateTimePicker para que solo muestre mes y año
-            dateTime.Format = DateTimePickerFormat.Custom;
-            dateTime.CustomFormat = "MM/yyyy";  
-            dateTime.ShowUpDown = true;
+            fechaPeriodo.Format = DateTimePickerFormat.Custom;
+            fechaPeriodo.CustomFormat = "MM/yyyy";  
+            fechaPeriodo.ShowUpDown = true;
         }
 
         private void CargarDatos()
@@ -38,7 +38,7 @@ namespace UI
                 List<BEAfiliado> afiliados = bllAfiliado.ListarAfiliados();
                 foreach (BEAfiliado af in afiliados)
                 {
-                    list_afiliados.Items.Add(af);
+                    listaAfiliados.Items.Add(af);
                 }
             }
             catch (Exception ex)
@@ -55,9 +55,9 @@ namespace UI
         private void btn_save_Click(object sender, EventArgs e)
         {
             try { 
-                var cuil = txt_cuil.Text;
-                var periodo = dateTime.Value;
-                var monto = Convert.ToDecimal(txt_monto.Text);
+                var cuil = txtCuil.Text;
+                var periodo = fechaPeriodo.Value;
+                var monto = Convert.ToDecimal(txtMonto.Text);
 
                 if(string.IsNullOrEmpty(cuil) || monto <= 0)
                 {
@@ -71,9 +71,9 @@ namespace UI
 
                 MessageBox.Show("Aporte registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // limpiamos los campos
-                txt_cuil.Clear();
-                txt_monto.Clear();
-                dateTime.Value = DateTime.Now;
+                txtCuil.Clear();
+                txtMonto.Clear();
+                fechaPeriodo.Value = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -84,10 +84,10 @@ namespace UI
         private void list_afiliados_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if(list_afiliados.SelectedItem == null) { return; }
+                if(listaAfiliados.SelectedItem == null) { return; }
 
-                var cuilSeleccionado = (BEAfiliado)list_afiliados.SelectedItem;
-                txt_cuil.Text = cuilSeleccionado.Cuil;
+                var cuilSeleccionado = (BEAfiliado)listaAfiliados.SelectedItem;
+                txtCuil.Text = cuilSeleccionado.Cuil;
             }
             catch (Exception ex)
             {

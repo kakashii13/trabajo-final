@@ -36,20 +36,20 @@ namespace UI
             try
             {
                 // aportes del afiliado
-                list_aportes.DataSource = bllAporte.ObtenerAportesPorAfiliado(afiliadoSeleccionado);
+                dgvAportes.DataSource = bllAporte.ObtenerAportesPorAfiliado(afiliadoSeleccionado);
 
                 // fecha sugerida
-                date_time.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1);
+                fechaVigencia.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1);
 
                 // plan actual
                 BEPlan planActual = afiliadoSeleccionado.ObtenerPlanActual().Plan;
-                txt_plan.Text = planActual?.Nombre ?? "Sin plan";
+                txtPlanActual.Text = planActual?.Nombre ?? "Sin plan";
 
                 // plan sugerido
                 planSugerido = bllPlan.ObtenerPlanPorId(afiliadoSeleccionado.PlanSugeridoId ?? 0);
-                txt_nuevo_plan.Text = planSugerido?.Nombre ?? "No disponible";
+                txtNuevoPlan.Text = planSugerido?.Nombre ?? "No disponible";
                
-                btn_save.Enabled = planSugerido != null;
+                btnGuardar.Enabled = planSugerido != null;
             }
             catch (Exception ex)
             {

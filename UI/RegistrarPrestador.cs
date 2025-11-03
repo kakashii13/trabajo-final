@@ -29,8 +29,8 @@ namespace UI
         private void btn_save_Click(object sender, EventArgs e)
         {
             try {
-                string cuit = txt_cuit.Text;
-                string razonSocial = txt_razon_social.Text;
+                string cuit = txtCuit.Text;
+                string razonSocial = txtRazonSocial.Text;
 
                 if(string.IsNullOrWhiteSpace(cuit) || string.IsNullOrWhiteSpace(razonSocial))
                 {
@@ -43,8 +43,8 @@ namespace UI
 
                 MessageBox.Show("Prestador creado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                txt_cuit.Clear();
-                txt_razon_social.Clear();
+                txtCuit.Clear();
+                txtRazonSocial.Clear();
             }
             catch(Exception ex)
             {

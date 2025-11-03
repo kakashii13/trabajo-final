@@ -20,9 +20,9 @@ namespace UI
             InitializeComponent();
             bllAfiliado = new BLLAfiliado();
 
-            btn_cambio.Enabled = false;
-            btn_activar.Enabled = false;
-            btn_inactivar.Enabled = false;
+            btnCambiarPlan.Enabled = false;
+            btnActivar.Enabled = false;
+            btnInactivar.Enabled = false;
 
             ConfigurarDataGrid();
             CargarAfiliados();
@@ -31,41 +31,41 @@ namespace UI
         private void ConfigurarDataGrid()
         {
             // ocultamos columnas no deseadas
-            dg_afiliados.AutoGenerateColumns = false;
+            dgvAfiliados.AutoGenerateColumns = false;
 
             // configuramos columnas visibles
-            dg_afiliados.Columns.Add(new DataGridViewTextBoxColumn
+            dgvAfiliados.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "Cuil",
                 HeaderText = "Cuil"
             });
-            dg_afiliados.Columns.Add(new DataGridViewTextBoxColumn
+            dgvAfiliados.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "NombreApellido",
                 HeaderText = "Nombre y apellido"
             });
-            dg_afiliados.Columns.Add(new DataGridViewTextBoxColumn
+            dgvAfiliados.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "NroAfiliado",
                 HeaderText = "Numero de afiliado"
             });
-            dg_afiliados.Columns.Add(new DataGridViewCheckBoxColumn
+            dgvAfiliados.Columns.Add(new DataGridViewCheckBoxColumn
             {
                 DataPropertyName = "Activo",
                 HeaderText = "Activo"
             });
-            dg_afiliados.Columns.Add(new DataGridViewTextBoxColumn
+            dgvAfiliados.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "Telefono",
                 HeaderText = "Telefono"
             });
-            dg_afiliados.Columns.Add(new DataGridViewTextBoxColumn
+            dgvAfiliados.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "UltimoAporteMonto",
                 HeaderText = "Último Aporte",
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
             });
-            dg_afiliados.Columns.Add(new DataGridViewCheckBoxColumn
+            dgvAfiliados.Columns.Add(new DataGridViewCheckBoxColumn
             {
                 DataPropertyName = "CorrespondeCambioPlan",
                 HeaderText = "Cambio Plan"
@@ -77,7 +77,7 @@ namespace UI
             try
             {
                 List<BEAfiliado> afiliados = bllAfiliado.ListarAfiliadosConDatosCambioPlan();
-                dg_afiliados.DataSource = afiliados;
+                dgvAfiliados.DataSource = afiliados;
             }
             catch (Exception ex)
             {
@@ -88,14 +88,14 @@ namespace UI
         private void button1_Click(object sender, EventArgs e)
         {
             try {
-                if (dg_afiliados.CurrentRow == null)
+                if (dgvAfiliados.CurrentRow == null)
                 {
                     MessageBox.Show("Debe seleccionar un afiliado.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                BEAfiliado afiliadoSeleccionado = dg_afiliados.CurrentRow.DataBoundItem as BEAfiliado;
+                BEAfiliado afiliadoSeleccionado = dgvAfiliados.CurrentRow.DataBoundItem as BEAfiliado;
 
                 if (afiliadoSeleccionado == null)
                 {
@@ -128,27 +128,27 @@ namespace UI
         {
             try
             {
-                if (dg_afiliados.CurrentRow == null)
+                if (dgvAfiliados.CurrentRow == null)
                 {
-                    btn_cambio.Enabled = false;
-                    btn_activar.Enabled = false;    
-                    btn_inactivar.Enabled = false;  
+                    btnCambiarPlan.Enabled = false;
+                    btnActivar.Enabled = false;    
+                    btnInactivar.Enabled = false;  
                     return;
                 }
 
-                BEAfiliado afiliadoSeleccionado = dg_afiliados.CurrentRow.DataBoundItem as BEAfiliado;
+                BEAfiliado afiliadoSeleccionado = dgvAfiliados.CurrentRow.DataBoundItem as BEAfiliado;
 
                 if (afiliadoSeleccionado == null)
                 {
-                    btn_cambio.Enabled = false;
-                    btn_activar.Enabled = false;
-                    btn_inactivar.Enabled = false;
+                    btnCambiarPlan.Enabled = false;
+                    btnActivar.Enabled = false;
+                    btnInactivar.Enabled = false;
                     return;
                 }
 
-                btn_cambio.Enabled = afiliadoSeleccionado.CorrespondeCambioPlan;
-                btn_activar.Enabled = !afiliadoSeleccionado.Activo;  
-                btn_inactivar.Enabled = afiliadoSeleccionado.Activo;  
+                btnCambiarPlan.Enabled = afiliadoSeleccionado.CorrespondeCambioPlan;
+                btnActivar.Enabled = !afiliadoSeleccionado.Activo;  
+                btnInactivar.Enabled = afiliadoSeleccionado.Activo;  
             }
             catch (Exception ex)
             {
@@ -159,14 +159,14 @@ namespace UI
         private void btn_activar_Click(object sender, EventArgs e)
         {
             try {
-                if (dg_afiliados.CurrentRow == null)
+                if (dgvAfiliados.CurrentRow == null)
                 {
                     MessageBox.Show("Debe seleccionar un afiliado.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                BEAfiliado afiliadoSeleccionado = dg_afiliados.CurrentRow.DataBoundItem as BEAfiliado;
+                BEAfiliado afiliadoSeleccionado = dgvAfiliados.CurrentRow.DataBoundItem as BEAfiliado;
 
                 if (afiliadoSeleccionado == null)
                 {
@@ -191,14 +191,14 @@ namespace UI
         {
             try
             {
-                if (dg_afiliados.CurrentRow == null)
+                if (dgvAfiliados.CurrentRow == null)
                 {
                     MessageBox.Show("Debe seleccionar un afiliado.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                BEAfiliado afiliadoSeleccionado = dg_afiliados.CurrentRow.DataBoundItem as BEAfiliado;
+                BEAfiliado afiliadoSeleccionado = dgvAfiliados.CurrentRow.DataBoundItem as BEAfiliado;
 
                 if (afiliadoSeleccionado == null)
                 {

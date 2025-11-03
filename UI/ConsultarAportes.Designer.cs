@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dg_aportes = new System.Windows.Forms.DataGridView();
+            this.dgvAportes = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.list_afiliados = new System.Windows.Forms.ListBox();
+            this.listaAfiliados = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_clear = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_aportes)).BeginInit();
+            this.btnMostrarTodos = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAportes)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dg_aportes
+            // dgvAportes
             // 
-            this.dg_aportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_aportes.Location = new System.Drawing.Point(6, 19);
-            this.dg_aportes.Name = "dg_aportes";
-            this.dg_aportes.Size = new System.Drawing.Size(487, 270);
-            this.dg_aportes.TabIndex = 0;
+            this.dgvAportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAportes.Location = new System.Drawing.Point(6, 19);
+            this.dgvAportes.Name = "dgvAportes";
+            this.dgvAportes.Size = new System.Drawing.Size(487, 270);
+            this.dgvAportes.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.list_afiliados);
+            this.groupBox1.Controls.Add(this.listaAfiliados);
             this.groupBox1.Location = new System.Drawing.Point(13, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(193, 216);
@@ -56,18 +56,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Afiliados";
             // 
-            // list_afiliados
+            // listaAfiliados
             // 
-            this.list_afiliados.FormattingEnabled = true;
-            this.list_afiliados.Location = new System.Drawing.Point(6, 19);
-            this.list_afiliados.Name = "list_afiliados";
-            this.list_afiliados.Size = new System.Drawing.Size(181, 186);
-            this.list_afiliados.TabIndex = 0;
-            this.list_afiliados.SelectedValueChanged += new System.EventHandler(this.list_afiliados_SelectedValueChanged);
+            this.listaAfiliados.FormattingEnabled = true;
+            this.listaAfiliados.Location = new System.Drawing.Point(6, 19);
+            this.listaAfiliados.Name = "listaAfiliados";
+            this.listaAfiliados.Size = new System.Drawing.Size(181, 186);
+            this.listaAfiliados.TabIndex = 0;
+            this.listaAfiliados.SelectedValueChanged += new System.EventHandler(this.list_afiliados_SelectedValueChanged);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dg_aportes);
+            this.groupBox2.Controls.Add(this.dgvAportes);
             this.groupBox2.Location = new System.Drawing.Point(225, 5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(499, 295);
@@ -75,27 +75,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Aportes";
             // 
-            // btn_clear
+            // btnMostrarTodos
             // 
-            this.btn_clear.Location = new System.Drawing.Point(600, 306);
-            this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(124, 33);
-            this.btn_clear.TabIndex = 1;
-            this.btn_clear.Text = "Mostrar todos";
-            this.btn_clear.UseVisualStyleBackColor = true;
-            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            this.btnMostrarTodos.Location = new System.Drawing.Point(600, 306);
+            this.btnMostrarTodos.Name = "btnMostrarTodos";
+            this.btnMostrarTodos.Size = new System.Drawing.Size(124, 33);
+            this.btnMostrarTodos.TabIndex = 1;
+            this.btnMostrarTodos.Text = "Mostrar todos";
+            this.btnMostrarTodos.UseVisualStyleBackColor = true;
+            this.btnMostrarTodos.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // ConsultarAportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 351);
-            this.Controls.Add(this.btn_clear);
+            this.Controls.Add(this.btnMostrarTodos);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "ConsultarAportes";
             this.Text = "ConsultarAportes";
-            ((System.ComponentModel.ISupportInitialize)(this.dg_aportes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAportes)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -104,10 +104,10 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dg_aportes;
+        private System.Windows.Forms.DataGridView dgvAportes;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox list_afiliados;
+        private System.Windows.Forms.ListBox listaAfiliados;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Button btnMostrarTodos;
     }
 }

@@ -21,7 +21,7 @@ namespace UI
         {
             InitializeComponent();
             bllSolicitud = new BLLSolicitud();
-            dg_solicitudes.DataBindingComplete += Dgv_solicitudes_DataBindingComplete;
+            dgvSolicitudes.DataBindingComplete += Dgv_solicitudes_DataBindingComplete;
 
             CargarSolicitudes();
         }
@@ -30,11 +30,14 @@ namespace UI
         {
             try
             {
-                solicitudes = bllSolicitud.ListarSolicitudes();
-                dg_solicitudes.AutoGenerateColumns = false;
-                dg_solicitudes.Columns.Clear();
+                solicitudes = bllSolicitud.ListarSolicitudes()
+                            .OrderByDescending(s => s.FechaSolicitud)
+                            .ToList();
 
-                dg_solicitudes.Columns.Add(new DataGridViewTextBoxColumn
+                dgvSolicitudes.AutoGenerateColumns = false;
+                dgvSolicitudes.Columns.Clear();
+
+                dgvSolicitudes.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     DataPropertyName = "Estado",
                     HeaderText = "Estado",
@@ -42,7 +45,7 @@ namespace UI
                 });
 
 
-                dg_solicitudes.Columns.Add(new DataGridViewTextBoxColumn
+                dgvSolicitudes.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     DataPropertyName = "FechaSolicitud",
                     HeaderText = "Fecha",
@@ -51,44 +54,33 @@ namespace UI
                 });
 
 
-                dg_solicitudes.Columns.Add(new DataGridViewTextBoxColumn
+                dgvSolicitudes.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Afiliado",
                     Name = "Afiliado"
                 });
 
-                dg_solicitudes.Columns.Add(new DataGridViewTextBoxColumn
+                dgvSolicitudes.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Práctica",
                     Name = "Practica"
                 });
 
-                dg_solicitudes.Columns.Add(new DataGridViewTextBoxColumn
+                dgvSolicitudes.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Precio",
                     Name = "Precio",
                     DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
                 });
 
-                dg_solicitudes.Columns.Add(new DataGridViewTextBoxColumn
+                dgvSolicitudes.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     DataPropertyName = "MotivoRechazo",
                     HeaderText = "Motivo de rechazo",
                     Name = "MotivoRechazo"
                 });
 
-                dg_solicitudes.DataSource = solicitudes;
-                dg_solicitudes.Refresh();
-
-                foreach (DataGridViewRow row in dg_solicitudes.Rows)
-                {
-                    if (row.DataBoundItem is BESolicitud solicitud)
-                    {
-                        row.Cells["Afiliado"].Value = solicitud.Afiliado?.NombreApellido;
-                        row.Cells["Practica"].Value = solicitud.Practica?.Nombre;
-                        row.Cells["Precio"].Value = solicitud.Practica?.Precio;
-                    }
-                }
+                dgvSolicitudes.DataSource = solicitudes;
             }
             catch (Exception ex)
             {
@@ -98,30 +90,44 @@ namespace UI
 
         private void Dgv_solicitudes_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            foreach (DataGridViewRow row in dg_solicitudes.Rows)
+            foreach (DataGridViewRow row in dgvSolicitudes.Rows)
             {
                 if (row.DataBoundItem is BESolicitud solicitud)
                 {
-                    row.Cells["Afiliado"].Value = solicitud.Afiliado.NombreApellido;
-                    row.Cells["Practica"].Value = solicitud.Practica.Nombre;
-                    row.Cells["Precio"].Value = solicitud.Practica.Precio;
+                    row.Cells["Afiliado"].Value = solicitud.Afiliado?.NombreApellido ?? "N/A";
+                    row.Cells["Practica"].Value = solicitud.Practica?.Nombre ?? "N/A";
+                    row.Cells["Precio"].Value = solicitud.Practica?.Precio ?? 0;
                 }
+            }
+        }
+
+        private void FiltrarPorEstado(string estado)
+        {
+            if (string.IsNullOrEmpty(estado))
+            {
+                dgvSolicitudes.DataSource = solicitudes; 
+            }
+            else
+            {
+                dgvSolicitudes.DataSource = solicitudes
+                    .Where(s => s.Estado == estado)
+                    .ToList();
             }
         }
 
         private void btn_pendientes_Click(object sender, EventArgs e)
         {
-            dg_solicitudes.DataSource = bllSolicitud.ListarSolicitudes().Where(s => s.Estado == "Pendiente").ToList();
+            FiltrarPorEstado("Pendiente");
         }
 
         private void btn_aceptadas_Click(object sender, EventArgs e)
         {
-            dg_solicitudes.DataSource = bllSolicitud.ListarSolicitudes().Where(s => s.Estado == "Aceptado").ToList();
+            FiltrarPorEstado("Aceptado");
         }
 
         private void btn_rechazadas_Click(object sender, EventArgs e)
         {
-            dg_solicitudes.DataSource = bllSolicitud.ListarSolicitudes().Where(s => s.Estado == "Rechazado").ToList();
+            FiltrarPorEstado("Rechazado");
         }
 
         private void btn_analizar_Click(object sender, EventArgs e)
@@ -145,15 +151,18 @@ namespace UI
         private void dg_solicitudes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try {
-                btn_analizar.Enabled = false;
+                btnAnalizar.Enabled = false;
                 solicitudSeleccionada = null;
 
-                if (dg_solicitudes.CurrentRow == null) { return; }
-                solicitudSeleccionada = (BESolicitud)dg_solicitudes.CurrentRow.DataBoundItem;
+                if (dgvSolicitudes.CurrentRow == null) { return; }
 
-                if(solicitudSeleccionada.Estado == "Pendiente")
+                solicitudSeleccionada = (BESolicitud)dgvSolicitudes.CurrentRow.DataBoundItem;
+
+                if (solicitudSeleccionada == null) { return; }
+
+                if (solicitudSeleccionada.Estado == "Pendiente")
                 {
-                    btn_analizar.Enabled = true;
+                    btnAnalizar.Enabled = true;
                 }
             }
             catch(Exception ex) { 

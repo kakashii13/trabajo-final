@@ -26,12 +26,12 @@ namespace UI
         private void btn_guardar_Click(object sender, EventArgs e)
         {
             try {
-                if(txt_observacion == null || string.IsNullOrWhiteSpace(txt_observacion.Text))
+                if(txtObservacion == null || string.IsNullOrWhiteSpace(txtObservacion.Text))
                 {
                     throw new Exception("Debe ingresar una observacion.");
                 }
 
-                Observacion = txt_observacion.Text;
+                Observacion = txtObservacion.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

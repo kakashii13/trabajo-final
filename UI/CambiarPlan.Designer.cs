@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.list_aportes = new System.Windows.Forms.DataGridView();
-            this.txt_nuevo_plan = new System.Windows.Forms.TextBox();
+            this.dgvAportes = new System.Windows.Forms.DataGridView();
+            this.txtNuevoPlan = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_plan = new System.Windows.Forms.TextBox();
-            this.date_time = new System.Windows.Forms.DateTimePicker();
+            this.txtPlanActual = new System.Windows.Forms.TextBox();
+            this.fechaVigencia = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.list_aportes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAportes)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.list_aportes);
+            this.groupBox1.Controls.Add(this.dgvAportes);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(436, 178);
@@ -56,24 +56,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Aportes";
             // 
-            // list_aportes
+            // dgvAportes
             // 
-            this.list_aportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.list_aportes.Location = new System.Drawing.Point(6, 19);
-            this.list_aportes.Name = "list_aportes";
-            this.list_aportes.ReadOnly = true;
-            this.list_aportes.Size = new System.Drawing.Size(424, 150);
-            this.list_aportes.TabIndex = 0;
+            this.dgvAportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAportes.Location = new System.Drawing.Point(6, 19);
+            this.dgvAportes.Name = "dgvAportes";
+            this.dgvAportes.ReadOnly = true;
+            this.dgvAportes.Size = new System.Drawing.Size(424, 150);
+            this.dgvAportes.TabIndex = 0;
             // 
-            // txt_nuevo_plan
+            // txtNuevoPlan
             // 
-            this.txt_nuevo_plan.BackColor = System.Drawing.Color.OliveDrab;
-            this.txt_nuevo_plan.ForeColor = System.Drawing.SystemColors.Window;
-            this.txt_nuevo_plan.Location = new System.Drawing.Point(6, 37);
-            this.txt_nuevo_plan.Name = "txt_nuevo_plan";
-            this.txt_nuevo_plan.ReadOnly = true;
-            this.txt_nuevo_plan.Size = new System.Drawing.Size(108, 20);
-            this.txt_nuevo_plan.TabIndex = 1;
+            this.txtNuevoPlan.BackColor = System.Drawing.Color.OliveDrab;
+            this.txtNuevoPlan.ForeColor = System.Drawing.SystemColors.Window;
+            this.txtNuevoPlan.Location = new System.Drawing.Point(6, 37);
+            this.txtNuevoPlan.Name = "txtNuevoPlan";
+            this.txtNuevoPlan.ReadOnly = true;
+            this.txtNuevoPlan.Size = new System.Drawing.Size(108, 20);
+            this.txtNuevoPlan.TabIndex = 1;
             // 
             // label1
             // 
@@ -93,22 +93,22 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Id plan";
             // 
-            // txt_plan
+            // txtPlanActual
             // 
-            this.txt_plan.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txt_plan.Location = new System.Drawing.Point(5, 37);
-            this.txt_plan.Name = "txt_plan";
-            this.txt_plan.ReadOnly = true;
-            this.txt_plan.Size = new System.Drawing.Size(108, 20);
-            this.txt_plan.TabIndex = 3;
+            this.txtPlanActual.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.txtPlanActual.Location = new System.Drawing.Point(5, 37);
+            this.txtPlanActual.Name = "txtPlanActual";
+            this.txtPlanActual.ReadOnly = true;
+            this.txtPlanActual.Size = new System.Drawing.Size(108, 20);
+            this.txtPlanActual.TabIndex = 3;
             // 
-            // date_time
+            // fechaVigencia
             // 
-            this.date_time.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_time.Location = new System.Drawing.Point(133, 37);
-            this.date_time.Name = "date_time";
-            this.date_time.Size = new System.Drawing.Size(114, 20);
-            this.date_time.TabIndex = 5;
+            this.fechaVigencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaVigencia.Location = new System.Drawing.Point(133, 37);
+            this.fechaVigencia.Name = "fechaVigencia";
+            this.fechaVigencia.Size = new System.Drawing.Size(114, 20);
+            this.fechaVigencia.TabIndex = 5;
             // 
             // label3
             // 
@@ -122,9 +122,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.date_time);
+            this.groupBox2.Controls.Add(this.fechaVigencia);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.txt_nuevo_plan);
+            this.groupBox2.Controls.Add(this.txtNuevoPlan);
             this.groupBox2.Location = new System.Drawing.Point(141, 224);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(253, 63);
@@ -132,34 +132,34 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nuevo plan";
             // 
-            // btn_cancel
+            // btnCancelar
             // 
-            this.btn_cancel.BackColor = System.Drawing.Color.Brown;
-            this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_cancel.Location = new System.Drawing.Point(322, 332);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(120, 32);
-            this.btn_cancel.TabIndex = 44;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btnCancelar.BackColor = System.Drawing.Color.Brown;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(322, 332);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 32);
+            this.btnCancelar.TabIndex = 44;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // btn_save
+            // btnGuardar
             // 
-            this.btn_save.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_save.Location = new System.Drawing.Point(322, 377);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(120, 32);
-            this.btn_save.TabIndex = 43;
-            this.btn_save.Text = "Guardar cambios";
-            this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btnGuardar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Location = new System.Drawing.Point(322, 377);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(120, 32);
+            this.btnGuardar.TabIndex = 43;
+            this.btnGuardar.Text = "Guardar cambios";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txt_plan);
+            this.groupBox3.Controls.Add(this.txtPlanActual);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(12, 224);
             this.groupBox3.Name = "groupBox3";
@@ -168,20 +168,20 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Plan actual";
             // 
-            // CambioPlan
+            // CambiarPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 424);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
-            this.Name = "CambioPlan";
+            this.Name = "CambiarPlan";
             this.Text = "CambioPlan";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.list_aportes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAportes)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -193,16 +193,16 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView list_aportes;
-        private System.Windows.Forms.TextBox txt_nuevo_plan;
+        private System.Windows.Forms.DataGridView dgvAportes;
+        private System.Windows.Forms.TextBox txtNuevoPlan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_plan;
-        private System.Windows.Forms.DateTimePicker date_time;
+        private System.Windows.Forms.TextBox txtPlanActual;
+        private System.Windows.Forms.DateTimePicker fechaVigencia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.GroupBox groupBox3;
     }
 }

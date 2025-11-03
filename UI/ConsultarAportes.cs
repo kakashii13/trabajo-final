@@ -36,15 +36,15 @@ namespace UI
                 aportes = bllAporte.ListarAportes()
                 .OrderByDescending(a => a.FechaRecibido)
                 .ToList();
-                dg_aportes.DataSource = aportes;
+                dgvAportes.DataSource = aportes;
 
                 afiliados = bllAfiliado.ListarAfiliados();
                 foreach(var afiliado in afiliados)
                 {
-                    list_afiliados.Items.Add(afiliado);
+                    listaAfiliados.Items.Add(afiliado);
                 }
 
-                list_afiliados.SelectedIndex = -1; 
+                listaAfiliados.SelectedIndex = -1; 
             }
             catch (Exception ex)
             {
@@ -56,14 +56,14 @@ namespace UI
         {
             try
             {
-                if (list_afiliados.SelectedItem == null) { return; }
+                if (listaAfiliados.SelectedItem == null) { return; }
 
-                BEAfiliado afiliadoSeleccionado = (BEAfiliado)list_afiliados.SelectedItem;
+                BEAfiliado afiliadoSeleccionado = (BEAfiliado)listaAfiliados.SelectedItem;
 
                 // filtramos los aportes del afiliado seleccionado
                 var aportesFiltrados = aportes.Where(a => a.AfiliadoId == afiliadoSeleccionado.Id).ToList();
 
-                dg_aportes.DataSource = aportesFiltrados;
+                dgvAportes.DataSource = aportesFiltrados;
             }
             catch (Exception ex)
             {
@@ -73,10 +73,10 @@ namespace UI
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            list_afiliados.SelectedIndex = -1;
+            listaAfiliados.SelectedIndex = -1;
 
             // mostramos todos los aportes
-            dg_aportes.DataSource = aportes;
+            dgvAportes.DataSource = aportes;
         }
     }
 }

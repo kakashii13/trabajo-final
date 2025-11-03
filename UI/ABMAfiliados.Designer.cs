@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dg_afiliados = new System.Windows.Forms.DataGridView();
+            this.dgvAfiliados = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_cambio = new System.Windows.Forms.Button();
-            this.btn_inactivar = new System.Windows.Forms.Button();
-            this.btn_activar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_afiliados)).BeginInit();
+            this.btnCambiarPlan = new System.Windows.Forms.Button();
+            this.btnInactivar = new System.Windows.Forms.Button();
+            this.btnActivar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAfiliados)).BeginInit();
             this.SuspendLayout();
             // 
-            // dg_afiliados
+            // dgvAfiliados
             // 
-            this.dg_afiliados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_afiliados.Location = new System.Drawing.Point(12, 35);
-            this.dg_afiliados.Name = "dg_afiliados";
-            this.dg_afiliados.ReadOnly = true;
-            this.dg_afiliados.Size = new System.Drawing.Size(856, 229);
-            this.dg_afiliados.TabIndex = 0;
-            this.dg_afiliados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_afiliados_CellClick);
+            this.dgvAfiliados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAfiliados.Location = new System.Drawing.Point(12, 35);
+            this.dgvAfiliados.Name = "dgvAfiliados";
+            this.dgvAfiliados.ReadOnly = true;
+            this.dgvAfiliados.Size = new System.Drawing.Size(856, 229);
+            this.dgvAfiliados.TabIndex = 0;
+            this.dgvAfiliados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_afiliados_CellClick);
             // 
             // label1
             // 
@@ -55,57 +55,57 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Listado afiliados";
             // 
-            // btn_cambio
+            // btnCambiarPlan
             // 
-            this.btn_cambio.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_cambio.Enabled = false;
-            this.btn_cambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cambio.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_cambio.Location = new System.Drawing.Point(728, 270);
-            this.btn_cambio.Name = "btn_cambio";
-            this.btn_cambio.Size = new System.Drawing.Size(140, 34);
-            this.btn_cambio.TabIndex = 5;
-            this.btn_cambio.Text = "Cambiar plan";
-            this.btn_cambio.UseVisualStyleBackColor = false;
-            this.btn_cambio.Click += new System.EventHandler(this.button1_Click);
+            this.btnCambiarPlan.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnCambiarPlan.Enabled = false;
+            this.btnCambiarPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarPlan.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCambiarPlan.Location = new System.Drawing.Point(728, 270);
+            this.btnCambiarPlan.Name = "btnCambiarPlan";
+            this.btnCambiarPlan.Size = new System.Drawing.Size(140, 34);
+            this.btnCambiarPlan.TabIndex = 5;
+            this.btnCambiarPlan.Text = "Cambiar plan";
+            this.btnCambiarPlan.UseVisualStyleBackColor = false;
+            this.btnCambiarPlan.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btn_inactivar
+            // btnInactivar
             // 
-            this.btn_inactivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_inactivar.ForeColor = System.Drawing.Color.Brown;
-            this.btn_inactivar.Location = new System.Drawing.Point(595, 270);
-            this.btn_inactivar.Name = "btn_inactivar";
-            this.btn_inactivar.Size = new System.Drawing.Size(123, 34);
-            this.btn_inactivar.TabIndex = 6;
-            this.btn_inactivar.Text = "Inactivar";
-            this.btn_inactivar.UseVisualStyleBackColor = true;
-            this.btn_inactivar.Click += new System.EventHandler(this.btn_inactivar_Click);
+            this.btnInactivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInactivar.ForeColor = System.Drawing.Color.Brown;
+            this.btnInactivar.Location = new System.Drawing.Point(595, 270);
+            this.btnInactivar.Name = "btnInactivar";
+            this.btnInactivar.Size = new System.Drawing.Size(123, 34);
+            this.btnInactivar.TabIndex = 6;
+            this.btnInactivar.Text = "Inactivar";
+            this.btnInactivar.UseVisualStyleBackColor = true;
+            this.btnInactivar.Click += new System.EventHandler(this.btn_inactivar_Click);
             // 
-            // btn_activar
+            // btnActivar
             // 
-            this.btn_activar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_activar.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btn_activar.Location = new System.Drawing.Point(466, 270);
-            this.btn_activar.Name = "btn_activar";
-            this.btn_activar.Size = new System.Drawing.Size(123, 34);
-            this.btn_activar.TabIndex = 7;
-            this.btn_activar.Text = "Activar";
-            this.btn_activar.UseVisualStyleBackColor = true;
-            this.btn_activar.Click += new System.EventHandler(this.btn_activar_Click);
+            this.btnActivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActivar.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnActivar.Location = new System.Drawing.Point(466, 270);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(123, 34);
+            this.btnActivar.TabIndex = 7;
+            this.btnActivar.Text = "Activar";
+            this.btnActivar.UseVisualStyleBackColor = true;
+            this.btnActivar.Click += new System.EventHandler(this.btn_activar_Click);
             // 
-            // ListadoAfiliados
+            // ABMAfiliados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 316);
-            this.Controls.Add(this.btn_activar);
-            this.Controls.Add(this.btn_inactivar);
-            this.Controls.Add(this.btn_cambio);
+            this.Controls.Add(this.btnActivar);
+            this.Controls.Add(this.btnInactivar);
+            this.Controls.Add(this.btnCambiarPlan);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dg_afiliados);
-            this.Name = "ListadoAfiliados";
+            this.Controls.Add(this.dgvAfiliados);
+            this.Name = "ABMAfiliados";
             this.Text = "ListadoAfiliados";
-            ((System.ComponentModel.ISupportInitialize)(this.dg_afiliados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAfiliados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,10 +113,10 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dg_afiliados;
+        private System.Windows.Forms.DataGridView dgvAfiliados;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn_cambio;
-        private System.Windows.Forms.Button btn_inactivar;
-        private System.Windows.Forms.Button btn_activar;
+        private System.Windows.Forms.Button btnCambiarPlan;
+        private System.Windows.Forms.Button btnInactivar;
+        private System.Windows.Forms.Button btnActivar;
     }
 }

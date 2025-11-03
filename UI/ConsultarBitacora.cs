@@ -26,9 +26,9 @@ namespace UI
         private void CargarDatos()
         {
             try { 
-                dgv_bitacora.DataSource = null;
+                dgvBitacora.DataSource = null;
                 bitacoras = bllBitacora.ListarTodo();
-                dgv_bitacora.DataSource = bitacoras;
+                dgvBitacora.DataSource = bitacoras;
             }
             catch(Exception ex)
             {
@@ -38,17 +38,17 @@ namespace UI
 
         private void btn_backups_Click(object sender, EventArgs e)
         {
-            dgv_bitacora.DataSource = bitacoras.Where(b => b.Operacion == "Backup").ToList();
+            dgvBitacora.DataSource = bitacoras.Where(b => b.Operacion == "Backup").ToList();
         }
 
         private void btn_restore_Click(object sender, EventArgs e)
         {
-            dgv_bitacora.DataSource = bitacoras.Where(b => b.Operacion == "Restore").ToList();
+            dgvBitacora.DataSource = bitacoras.Where(b => b.Operacion == "Restore").ToList();
         }
 
         private void btn_todo_Click(object sender, EventArgs e)
         {
-            dgv_bitacora.DataSource = bitacoras;
+            dgvBitacora.DataSource = bitacoras;
         }
     }
 }

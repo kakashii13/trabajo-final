@@ -23,7 +23,7 @@ namespace UI
             InitializeComponent();
             bllAutorizaciones = new BLLAutorizacion();
             bllAfiliado = new BLLAfiliado();
-            dgv_autorizaciones.DataBindingComplete += Dgv_autorizaciones_DataBindingComplete;
+            dgvAutorizaciones.DataBindingComplete += Dgv_autorizaciones_DataBindingComplete;
 
             CargarAfiliados();
             CargarAutorizaciones();
@@ -37,7 +37,7 @@ namespace UI
                 List<BEAfiliado> afiliados = bllAfiliado.ListarAfiliados();
                 foreach(BEAfiliado afiliado in afiliados)
                 {
-                   lista_afiliados.Items.Add(afiliado);
+                   listaAfiliados.Items.Add(afiliado);
                 }
             }
             catch (Exception ex)
@@ -53,17 +53,17 @@ namespace UI
                                 .OrderByDescending(a => a.FechaAutorizacion) 
                                 .ToList();
 
-                dgv_autorizaciones.AutoGenerateColumns = false;
-                dgv_autorizaciones.Columns.Clear();
+                dgvAutorizaciones.AutoGenerateColumns = false;
+                dgvAutorizaciones.Columns.Clear();
 
-                dgv_autorizaciones.Columns.Add(new DataGridViewTextBoxColumn
+                dgvAutorizaciones.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     DataPropertyName = "NumeroAutorizacion",
                     HeaderText = "Nº Autorización",
                     Name = "NumeroAutorizacion"
                 });
 
-                dgv_autorizaciones.Columns.Add(new DataGridViewTextBoxColumn
+                dgvAutorizaciones.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     DataPropertyName = "FechaAutorizacion",
                     HeaderText = "Fecha",
@@ -76,21 +76,21 @@ namespace UI
                     HeaderText = "Afiliado",
                     Name = "Afiliado"
                 };
-                dgv_autorizaciones.Columns.Add(colAfiliado);
+                dgvAutorizaciones.Columns.Add(colAfiliado);
 
                 DataGridViewTextBoxColumn colPractica = new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Práctica",
                     Name = "Practica"
                 };
-                dgv_autorizaciones.Columns.Add(colPractica);
+                dgvAutorizaciones.Columns.Add(colPractica);
 
                 DataGridViewTextBoxColumn colPrestador = new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Prestador",
                     Name = "Prestador"
                 };
-                dgv_autorizaciones.Columns.Add(colPrestador);
+                dgvAutorizaciones.Columns.Add(colPrestador);
 
                 DataGridViewTextBoxColumn colPrecio = new DataGridViewTextBoxColumn
                 {
@@ -98,16 +98,16 @@ namespace UI
                     Name = "Precio",
                     DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
                 };
-                dgv_autorizaciones.Columns.Add(colPrecio);
+                dgvAutorizaciones.Columns.Add(colPrecio);
 
-                dgv_autorizaciones.Columns.Add(new DataGridViewCheckBoxColumn
+                dgvAutorizaciones.Columns.Add(new DataGridViewCheckBoxColumn
                 {
                     DataPropertyName = "Facturada",
                     HeaderText = "Facturada",
                     Name = "Facturada"
                 });
 
-                dgv_autorizaciones.DataSource = autorizaciones;
+                dgvAutorizaciones.DataSource = autorizaciones;
             }
             catch (Exception ex)
             {
@@ -117,7 +117,7 @@ namespace UI
 
         private void Dgv_autorizaciones_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            foreach (DataGridViewRow row in dgv_autorizaciones.Rows)
+            foreach (DataGridViewRow row in dgvAutorizaciones.Rows)
             {
                 if (row.DataBoundItem is BEAutorizacion autorizacion)
                 {
@@ -132,15 +132,15 @@ namespace UI
         private void lista_afiliados_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
-                if (lista_afiliados.SelectedItem == null) 
+                if (listaAfiliados.SelectedItem == null) 
                 {
                     afiliadoSeleccionado = null; 
-                    dgv_autorizaciones.DataSource = autorizaciones; 
+                    dgvAutorizaciones.DataSource = autorizaciones; 
                     return;
                 }
 
-                afiliadoSeleccionado = (BEAfiliado)lista_afiliados.SelectedItem;
-                dgv_autorizaciones.DataSource = autorizaciones.Where(a => a.Afiliado.Id == afiliadoSeleccionado.Id).ToList();
+                afiliadoSeleccionado = (BEAfiliado)listaAfiliados.SelectedItem;
+                dgvAutorizaciones.DataSource = autorizaciones.Where(a => a.Afiliado.Id == afiliadoSeleccionado.Id).ToList();
             }
             catch (Exception ex)
             {
@@ -150,8 +150,8 @@ namespace UI
 
         private void btn_listar_Click(object sender, EventArgs e)
         {
-            lista_afiliados.SelectedIndex = -1;
-            dgv_autorizaciones.DataSource = autorizaciones;
+            listaAfiliados.SelectedIndex = -1;
+            dgvAutorizaciones.DataSource = autorizaciones;
         }
     }
 }

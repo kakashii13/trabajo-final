@@ -32,11 +32,15 @@ namespace UI
         private void CargarDatos()
         {
             try {
-                lista_facturas.Items.Clear();
-                List<BEFactura> facturas = bllFactura.ListarFacturas().Where(f => f.Estado == "Aceptada").ToList();
-                foreach(BEFactura factura in facturas)
+                listaFacturas.Items.Clear();
+                List<BEFactura> facturas = bllFactura.ListarFacturas()
+                .Where(f => f.Estado == "Aceptada")
+                .OrderByDescending(f => f.FechaRecibida) 
+                .ToList();
+
+                foreach (BEFactura factura in facturas)
                 {
-                    lista_facturas.Items.Add(factura);
+                    listaFacturas.Items.Add(factura);
                 }
             }
             catch (Exception ex)
@@ -52,10 +56,17 @@ namespace UI
 
         private void lista_facturas_SelectedValueChanged(object sender, EventArgs e)
         {
-            try { 
-                if(lista_facturas.SelectedItem == null) { return; }
-                txt_factura.Text = ((BEFactura)lista_facturas.SelectedItem).Numero.ToString();
-                txt_importe.Value = ((BEFactura)lista_facturas.SelectedItem).Monto;
+            try {
+                if (listaFacturas.SelectedItem == null)
+                {
+                    txtFactura.Clear();
+                    txtImporte.Value = 0;
+                    return;
+                }
+
+                BEFactura factura = (BEFactura)listaFacturas.SelectedItem; 
+                txtFactura.Text = factura.Numero.ToString();
+                txtImporte.Value = factura.Monto;
             }
             catch (Exception ex)
             {
@@ -65,35 +76,50 @@ namespace UI
 
         private void CargarFormasDePago()
         {
-            comboFormaPago.Items.Add("Cheque");
-            comboFormaPago.Items.Add("Transferencia Bancaria");
-            comboFormaPago.SelectedIndex = 0; 
+            selectFormaPago.Items.Add("Cheque");
+            selectFormaPago.Items.Add("Transferencia Bancaria");
+            selectFormaPago.SelectedIndex = 0; 
         }
 
         private void btnGenerarRecibo_Click(object sender, EventArgs e)
         {
             try { 
-                if(lista_facturas.SelectedItem == null)
+                if(listaFacturas.SelectedItem == null)
                 {
                     throw new Exception("Debe seleccionar una factura.");
                 }
 
-                if(string.IsNullOrWhiteSpace(txt_importe.Text))
+                if (txtImporte.Value <= 0)
                 {
-                    throw new Exception("Debe completar todos los campos.");
+                    throw new Exception("El importe debe ser mayor a cero.");
                 }
 
-                if(!decimal.TryParse(txt_importe.Text, out decimal importeFactura))
+                if (selectFormaPago.SelectedItem == null)
                 {
-                    throw new Exception("El importe debe ser un número válido.");
+                    throw new Exception("Debe seleccionar una forma de pago.");
                 }
 
-                var importe = decimal.Parse(txt_importe.Text);
-                
-                var fechaPago = fecha_pago.Value;
-                BEFactura factura = (BEFactura)lista_facturas.SelectedItem;
+                decimal importe = txtImporte.Value;
+                BEFactura factura = (BEFactura)listaFacturas.SelectedItem;
 
-                BEPago nuevoPago = new BEPago(0, fechaPago, importe, 0, factura.Id, comboFormaPago.SelectedItem.ToString());
+
+                if (importe != factura.Monto)
+                {
+                    DialogResult resultado = MessageBox.Show(
+                        $"El importe ingresado ({importe:C2}) no coincide con el monto de la factura ({factura.Monto:C2}).\n\n¿Desea continuar de todos modos?",
+                        "Advertencia",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (resultado != DialogResult.Yes)
+                    {
+                        return;
+                    }
+                }
+
+                var fechaPago = this.fechaPago.Value;
+
+                BEPago nuevoPago = new BEPago(0, fechaPago, importe, 0, factura.Id, selectFormaPago.SelectedItem.ToString());
 
                 BEPago pago = bllPago.RegistrarPago(nuevoPago);
 
@@ -101,21 +127,23 @@ namespace UI
 
                 string rutaPDF = ServicioPDF.GenerarPDFRecibo(factura);
 
-                DialogResult resultado = MessageBox.Show(
-                    $"Recibo generado correctamente.\nNúmero de recibo: {nuevoPago.NumeroRecibo}\n\n¿Desea abrir el PDF generado?",
+                DialogResult resultadoPDF = MessageBox.Show(
+                    $"Recibo generado correctamente.\nNúmero de recibo: {pago.NumeroRecibo}\n\n¿Desea abrir el PDF generado?",
                     "Éxito",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information
         );
 
-                if (resultado == DialogResult.Yes)
+                if (resultadoPDF == DialogResult.Yes)
                 {
                     // abrimos el pdf con el lector default
                     System.Diagnostics.Process.Start(rutaPDF);
                 }
 
-                txt_factura.Clear();
-                txt_importe.Value = 0;
+                txtFactura.Clear();
+                txtImporte.Value = 0;
+                listaFacturas.ClearSelected();
+                selectFormaPago.SelectedIndex = 0; 
             }
             catch (Exception ex)
             {

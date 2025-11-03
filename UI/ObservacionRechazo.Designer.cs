@@ -29,49 +29,49 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txt_observacion = new System.Windows.Forms.TextBox();
+            this.txtObservacion = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btn_guardar = new System.Windows.Forms.Button();
-            this.btn_cancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txt_observacion
+            // txtObservacion
             // 
-            this.txt_observacion.Location = new System.Drawing.Point(12, 37);
-            this.txt_observacion.Multiline = true;
-            this.txt_observacion.Name = "txt_observacion";
-            this.txt_observacion.Size = new System.Drawing.Size(259, 89);
-            this.txt_observacion.TabIndex = 0;
+            this.txtObservacion.Location = new System.Drawing.Point(12, 37);
+            this.txtObservacion.Multiline = true;
+            this.txtObservacion.Name = "txtObservacion";
+            this.txtObservacion.Size = new System.Drawing.Size(259, 89);
+            this.txtObservacion.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // btn_guardar
+            // btnGuardar
             // 
-            this.btn_guardar.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_guardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_guardar.Location = new System.Drawing.Point(171, 141);
-            this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(100, 28);
-            this.btn_guardar.TabIndex = 2;
-            this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.UseVisualStyleBackColor = false;
-            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
+            this.btnGuardar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGuardar.Location = new System.Drawing.Point(171, 141);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(100, 28);
+            this.btnGuardar.TabIndex = 2;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
-            // btn_cancelar
+            // btnCancelar
             // 
-            this.btn_cancelar.BackColor = System.Drawing.Color.Brown;
-            this.btn_cancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_cancelar.Location = new System.Drawing.Point(65, 141);
-            this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(100, 28);
-            this.btn_cancelar.TabIndex = 3;
-            this.btn_cancelar.Text = "Cancelar";
-            this.btn_cancelar.UseVisualStyleBackColor = false;
-            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.Brown;
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancelar.Location = new System.Drawing.Point(65, 141);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(100, 28);
+            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // label1
             // 
@@ -88,9 +88,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 181);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_cancelar);
-            this.Controls.Add(this.btn_guardar);
-            this.Controls.Add(this.txt_observacion);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.txtObservacion);
             this.Name = "ObservacionRechazo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ObservacionRechazo";
@@ -101,10 +101,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txt_observacion;
+        private System.Windows.Forms.TextBox txtObservacion;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Button btn_guardar;
-        private System.Windows.Forms.Button btn_cancelar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label1;
     }
 }

@@ -30,7 +30,7 @@ namespace UI
             {
                 facturas = bllFactura.ListarFacturas();
 
-                dgv_facturas.DataSource = facturas;
+                dgvFacturas.DataSource = facturas;
             }
             catch (Exception ex)
             {
@@ -41,7 +41,7 @@ namespace UI
         {
             try
             {
-                dgv_facturas.DataSource = facturas
+                dgvFacturas.DataSource = facturas
                     .Where(f => f.Estado == estado)
                     .ToList();
             }
@@ -136,7 +136,7 @@ namespace UI
                 CargarDatos();
 
                 facturaSeleccionada = null;
-                btn_rechazar.Enabled = false;
+                btnRechazar.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -169,17 +169,17 @@ namespace UI
         private void dgv_facturas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try {
-                if (dgv_facturas.CurrentRow == null) { return; }
+                if (dgvFacturas.CurrentRow == null) { return; }
 
-                facturaSeleccionada = dgv_facturas.CurrentRow.DataBoundItem as BEFactura;
+                facturaSeleccionada = dgvFacturas.CurrentRow.DataBoundItem as BEFactura;
 
                 if(facturaSeleccionada.ImporteValidado && facturaSeleccionada.AutorizacionValidada && facturaSeleccionada.Estado == "Pendiente")
                 {
-                    btn_aceptar.Enabled = true;
+                    btnAceptar.Enabled = true;
                 }
                 else
                 {
-                    btn_aceptar.Enabled = false;
+                    btnAceptar.Enabled = false;
                 }
             }
             catch (Exception ex)

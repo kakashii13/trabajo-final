@@ -37,11 +37,11 @@ namespace UI
             try {
                 CargarPermisosDisponibles();
 
-                list_roles.Items.Clear();
+                listaRoles.Items.Clear();
                 List<BERol> roles = bllPermiso.ListarRolesConPermisos();
                 foreach (BERol rol in roles)
                 {
-                    list_roles.Items.Add(rol);
+                    listaRoles.Items.Add(rol);
                 }
 
                 ListarUsuarios();
@@ -56,11 +56,11 @@ namespace UI
         {
             try
             {
-                list_usuarios.Items.Clear();
+                listaUsuarios.Items.Clear();
                 List<BEUsuario> usuarios = bllUsuario.ListarUsuarios();
                 foreach (BEUsuario usuario in usuarios)
                 {
-                    list_usuarios.Items.Add(usuario);
+                    listaUsuarios.Items.Add(usuario);
                 }
             }
             catch (Exception ex)
@@ -72,14 +72,14 @@ namespace UI
         // resetear campos y botones
         private void Resetear()
         {
-            txt_permiso.Text = "";
-            txt_role.Text = "";
-            btn_crear_permiso.Enabled = true;
-            btn_del_permiso.Enabled = false;
-            btn_mod_permiso.Enabled = false;
-            btn_crear_role.Enabled = true;
-            btn_del_rol.Enabled = false;
-            btn_mod_rol.Enabled = false;
+            txtPermisoSimple.Text = "";
+            txtRol.Text = "";
+            btnCrearPermiso.Enabled = true;
+            btnEliminarPermiso.Enabled = false;
+            btnModificarPermiso.Enabled = false;
+            btnCrearRol.Enabled = true;
+            btnEliminarRol.Enabled = false;
+            btnModificarRol.Enabled = false;
         }
 
         #region permisos
@@ -88,12 +88,12 @@ namespace UI
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txt_permiso.Text)) // ✅ Usar IsNullOrWhiteSpace
+                if (string.IsNullOrWhiteSpace(txtPermisoSimple.Text)) // ✅ Usar IsNullOrWhiteSpace
                 {
                     throw new Exception("El nombre del permiso no puede estar vacío.");
                 }
 
-                BEPermisoSimple nuevoPermiso = new BEPermisoSimple(txt_permiso.Text);
+                BEPermisoSimple nuevoPermiso = new BEPermisoSimple(txtPermisoSimple.Text);
 
                 // persistimos el permiso
                 bllPermiso.CrearPermiso(nuevoPermiso, false);
@@ -114,17 +114,17 @@ namespace UI
         private void del_permiso_Click(object sender, EventArgs e)
         {
             try {
-                if (tree_permisos.SelectedNode == null)
+                if (treePermisosSimples.SelectedNode == null)
                 {
                     throw new Exception("Debe seleccionar un permiso.");
                 }
 
-                if (tree_permisos.SelectedNode.Tag == null)
+                if (treePermisosSimples.SelectedNode.Tag == null)
                 {
                     throw new Exception("Debe seleccionar un permiso específico, no un módulo.");
                 }
 
-                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)tree_permisos.SelectedNode.Tag;
+                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)treePermisosSimples.SelectedNode.Tag;
 
                 bllPermiso.BorrarPermiso(permisoSeleccionado);
 
@@ -146,23 +146,23 @@ namespace UI
         {
             try
             {
-                if (tree_permisos.SelectedNode == null)
+                if (treePermisosSimples.SelectedNode == null)
                 {
                     throw new Exception("Debe seleccionar un permiso.");
                 }
 
-                if (tree_permisos.SelectedNode.Tag == null)
+                if (treePermisosSimples.SelectedNode.Tag == null)
                 {
                     throw new Exception("Debe seleccionar un permiso específico, no un módulo.");
                 }
 
-                if (txt_permiso.Text == "")
+                if (txtPermisoSimple.Text == "")
                 {
                     throw new Exception("El nombre del permiso no puede estar vacío.");
                 }
 
-                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)tree_permisos.SelectedNode.Tag;
-                string nombre = txt_permiso.Text;
+                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)treePermisosSimples.SelectedNode.Tag;
+                string nombre = txtPermisoSimple.Text;
                 permisoSeleccionado.Nombre = nombre;
 
                 bllPermiso.ModificarPermiso(permisoSeleccionado);
@@ -181,10 +181,10 @@ namespace UI
         // limpiar campos de permiso
         private void btn_clear_permiso_Click(object sender, EventArgs e)
         {
-            btn_crear_permiso.Enabled = true;
-            btn_del_permiso.Enabled = false;
-            btn_mod_permiso.Enabled = false;
-            txt_permiso.Text = "";
+            btnCrearPermiso.Enabled = true;
+            btnEliminarPermiso.Enabled = false;
+            btnModificarPermiso.Enabled = false;
+            txtPermisoSimple.Text = "";
         }
 
         // seleccionar permiso
@@ -192,27 +192,27 @@ namespace UI
         {
             try
             {
-                txt_permiso_seleccionado.Text = "";
-                if (tree_permisos.SelectedNode == null) { return; }
+                txtPermisoSeleccionado.Text = "";
+                if (treePermisosSimples.SelectedNode == null) { return; }
 
                 // si es un modulo, deshabilitamos edicion/borrado
-                if (tree_permisos.SelectedNode.Tag == null)
+                if (treePermisosSimples.SelectedNode.Tag == null)
                 {
-                    txt_permiso.Text = "";
-                    btn_crear_permiso.Enabled = true;
-                    btn_del_permiso.Enabled = false;
-                    btn_mod_permiso.Enabled = false;
+                    txtPermisoSimple.Text = "";
+                    btnCrearPermiso.Enabled = true;
+                    btnEliminarPermiso.Enabled = false;
+                    btnModificarPermiso.Enabled = false;
                     return;
                 }
 
                 // si es un nodo de permiso, habilitamos edicion/borrado
-                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)tree_permisos.SelectedNode.Tag;
-                txt_permiso_seleccionado.Text = permisoSeleccionado.Nombre;
-                txt_permiso.Text = permisoSeleccionado.Nombre;
+                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)treePermisosSimples.SelectedNode.Tag;
+                txtPermisoSeleccionado.Text = permisoSeleccionado.Nombre;
+                txtPermisoSimple.Text = permisoSeleccionado.Nombre;
 
-                btn_crear_permiso.Enabled = false;
-                btn_del_permiso.Enabled = true;
-                btn_mod_permiso.Enabled = true;
+                btnCrearPermiso.Enabled = false;
+                btnEliminarPermiso.Enabled = true;
+                btnModificarPermiso.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -228,13 +228,13 @@ namespace UI
         {
             try
             {
-                if(txt_role.Text == "")
+                if(txtRol.Text == "")
                 {
                     throw new Exception("El nombre del rol no puede estar vacío.");
                 }
                
                 // crear rol
-                BERol nuevoRol = new BERol(txt_role.Text.ToLower());
+                BERol nuevoRol = new BERol(txtRol.Text.ToLower());
 
                 bllPermiso.CrearPermiso(nuevoRol, true);
 
@@ -255,12 +255,12 @@ namespace UI
         {
             try
             {
-                if (list_roles.SelectedItem == null)
+                if (listaRoles.SelectedItem == null)
                 {
                     throw new Exception("Debe seleccionar un rol.");
                 }
 
-                BERol rolSeleccionado = (BERol)list_roles.SelectedItem;
+                BERol rolSeleccionado = (BERol)listaRoles.SelectedItem;
 
                 bllPermiso.BorrarPermiso(rolSeleccionado);
 
@@ -281,17 +281,17 @@ namespace UI
         {
             try
             {
-                if (list_roles.SelectedItem == null)
+                if (listaRoles.SelectedItem == null)
                 {
                     throw new Exception("Debe seleccionar un rol.");    
                 }
-                if (txt_role.Text == "")
+                if (txtRol.Text == "")
                 {
                     throw new Exception("El nombre del rol no puede estar vacío.");
                 }
 
-                BERol rolSeleccionado = (BERol)list_roles.SelectedItem;
-                string nombre = txt_role.Text.ToLower();
+                BERol rolSeleccionado = (BERol)listaRoles.SelectedItem;
+                string nombre = txtRol.Text.ToLower();
                 rolSeleccionado.Nombre = nombre;
 
                 bllPermiso.ModificarPermiso(rolSeleccionado);
@@ -312,17 +312,17 @@ namespace UI
         {
             try
             {
-                tree_permisos_roles.Nodes.Clear();
+                treePermisosRoles.Nodes.Clear();
 
-                if (list_roles.SelectedItem == null)
+                if (listaRoles.SelectedItem == null)
                 {
-                    txt_role.Text = "";
-                    btn_crear_role.Enabled = true;
-                    btn_del_rol.Enabled = false;
-                    btn_mod_rol.Enabled = false;
+                    txtRol.Text = "";
+                    btnCrearRol.Enabled = true;
+                    btnEliminarRol.Enabled = false;
+                    btnModificarRol.Enabled = false;
                     return;
                 }
-                BERol rolSeleccionado = (BERol)list_roles.SelectedItem;
+                BERol rolSeleccionado = (BERol)listaRoles.SelectedItem;
 
                 // agrupamos los permisos del rol por modulo
                 var permisosPorModulo = rolSeleccionado.ObtenerPermisos()
@@ -352,13 +352,13 @@ namespace UI
                         moduloNode.Nodes.Add(permisoNode);
                     }
 
-                    tree_permisos_roles.Nodes.Add(moduloNode);
+                    treePermisosRoles.Nodes.Add(moduloNode);
                 }
 
-                txt_role.Text = rolSeleccionado.Nombre;
-                btn_crear_role.Enabled = false;
-                btn_del_rol.Enabled = true;
-                btn_mod_rol.Enabled = true;
+                txtRol.Text = rolSeleccionado.Nombre;
+                btnCrearRol.Enabled = false;
+                btnEliminarRol.Enabled = true;
+                btnModificarRol.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -369,11 +369,11 @@ namespace UI
         // limpiar campos de rol
         private void btn_clear_rol_Click(object sender, EventArgs e)
         {
-            btn_crear_role.Enabled = true;
-            btn_del_rol.Enabled = false;
-            btn_mod_rol.Enabled = false;
-            txt_role.Text = "";
-            list_roles.ClearSelected();
+            btnCrearRol.Enabled = true;
+            btnEliminarRol.Enabled = false;
+            btnModificarRol.Enabled = false;
+            txtRol.Text = "";
+            listaRoles.ClearSelected();
         }
 
         #endregion
@@ -384,23 +384,23 @@ namespace UI
         {
             try
             {
-                if (list_roles.SelectedItem == null)
+                if (listaRoles.SelectedItem == null)
                 {
                     throw new Exception("Debe seleccionar un rol.");
                 }
 
-                if (tree_permisos.SelectedNode == null)
+                if (treePermisosSimples.SelectedNode == null)
                 {
                     throw new Exception("Debe seleccionar un permiso.");
                 }
 
-                if (tree_permisos.SelectedNode.Tag == null)
+                if (treePermisosSimples.SelectedNode.Tag == null)
                 {
                     throw new Exception("Debe seleccionar un permiso específico, no un módulo.");
                 }
 
-                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)tree_permisos.SelectedNode.Tag;
-                BERol rolSeleccionado = (BERol)list_roles.SelectedItem;
+                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)treePermisosSimples.SelectedNode.Tag;
+                BERol rolSeleccionado = (BERol)listaRoles.SelectedItem;
 
                 bllPermiso.AsignarPermiso(rolSeleccionado, permisoSeleccionado);
 
@@ -419,23 +419,23 @@ namespace UI
         {
             try
             {
-                if (tree_permisos_roles.SelectedNode == null)
+                if (treePermisosRoles.SelectedNode == null)
                 {
                     throw new Exception("Debe seleccionar un permiso del rol.");
                 }
 
-                if(tree_permisos_roles.SelectedNode.Tag == null)
+                if(treePermisosRoles.SelectedNode.Tag == null)
                 {
                     throw new Exception("Debe seleccionar un permiso específico, no un módulo.");
                 }
 
-                if (list_roles.SelectedItem == null)
+                if (listaRoles.SelectedItem == null)
                 {
                     throw new Exception("Debe seleccionar un rol.");
                 }
 
-                BERol rolSeleccionado = (BERol)list_roles.SelectedItem;
-                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)tree_permisos_roles.SelectedNode.Tag;
+                BERol rolSeleccionado = (BERol)listaRoles.SelectedItem;
+                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)treePermisosRoles.SelectedNode.Tag;
 
                 bllPermiso.RemoverPermiso(rolSeleccionado, permisoSeleccionado);
 
@@ -462,18 +462,18 @@ namespace UI
         private void list_usuarios_SelectedValueChanged(object sender, EventArgs e)
         {
             try { 
-                check_encriptacion.Checked = false;
-                usuarioSeleccionado = (BEUsuario)list_usuarios.SelectedItem;
+                checkEncriptacion.Checked = false;
+                usuarioSeleccionado = (BEUsuario)listaUsuarios.SelectedItem;
 
                 if (usuarioSeleccionado == null)
                 {
-                    check_encriptacion.Enabled = false;
+                    checkEncriptacion.Enabled = false;
                     return;
                 }
-                txt_usuario.Text = usuarioSeleccionado.NombreUsuario;
-                txt_password.Text = usuarioSeleccionado.Password;
-                txt_id.Text = usuarioSeleccionado.Id.ToString();
-                check_encriptacion.Enabled = true;
+                txtUsuario.Text = usuarioSeleccionado.NombreUsuario;
+                txtUsuarioPassword.Text = usuarioSeleccionado.Password;
+                txtUsuarioId.Text = usuarioSeleccionado.Id.ToString();
+                checkEncriptacion.Enabled = true;
 
                 CargarRolesPermisosUsuario();
             }
@@ -487,7 +487,7 @@ namespace UI
         {
             try
             {
-                tree_permisos.Nodes.Clear();
+                treePermisosSimples.Nodes.Clear();
 
                 // Obtenemos todos los permisos simples
                 List<BEPermisoSimple> permisos = bllPermiso.ListarPermisos();
@@ -518,7 +518,7 @@ namespace UI
                         moduloNode.Nodes.Add(permisoNode);
                     }
 
-                    tree_permisos.Nodes.Add(moduloNode);
+                    treePermisosSimples.Nodes.Add(moduloNode);
                 }
 
             }
@@ -532,7 +532,7 @@ namespace UI
         {
             try
             {
-                tree_user_permisos.Nodes.Clear();
+                treeUsuarioRolesPermisos.Nodes.Clear();
                 TreeNode rootNode = new TreeNode(usuarioSeleccionado.NombreUsuario);
                 rootNode.Tag = usuarioSeleccionado;
 
@@ -602,7 +602,7 @@ namespace UI
                     }
                 }
 
-                tree_user_permisos.Nodes.Add(rootNode);
+                treeUsuarioRolesPermisos.Nodes.Add(rootNode);
             }
             catch (Exception ex)
             {
@@ -618,17 +618,17 @@ namespace UI
             try {
                 if(usuarioSeleccionado == null)
                 {
-                    check_encriptacion.Checked = false;
+                    checkEncriptacion.Checked = false;
                     throw new Exception("Debe seleccionar un usuario.");
                 }
 
-                if (check_encriptacion.Checked) 
+                if (checkEncriptacion.Checked) 
                 {
-                    txt_password.Text = ServicioSeguridad.Desencriptar(usuarioSeleccionado.Password);
+                    txtUsuarioPassword.Text = ServicioSeguridad.Desencriptar(usuarioSeleccionado.Password);
                 }
                 else 
                 {
-                    txt_password.Text = usuarioSeleccionado.Password;
+                    txtUsuarioPassword.Text = usuarioSeleccionado.Password;
                 }
             }
             catch (Exception ex)
@@ -640,12 +640,12 @@ namespace UI
         private void btn_asignar_rol_Click(object sender, EventArgs e)
         {
             try {
-                if(usuarioSeleccionado == null || list_roles.SelectedItem == null)
+                if(usuarioSeleccionado == null || listaRoles.SelectedItem == null)
                 {
                     throw new Exception("Debe seleccionar un usuario y un rol.");
                 }
 
-                BERol rolSeleccionado = (BERol)list_roles.SelectedItem;
+                BERol rolSeleccionado = (BERol)listaRoles.SelectedItem;
                 bllUsuario.AsignarRol(usuarioSeleccionado, rolSeleccionado);
 
                 MessageBox.Show("Rol asignado al usuario exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -661,17 +661,17 @@ namespace UI
         {
             try
             {
-                if (usuarioSeleccionado == null || tree_user_permisos.SelectedNode == null)
+                if (usuarioSeleccionado == null || treeUsuarioRolesPermisos.SelectedNode == null)
                 {
                     throw new Exception("Debe seleccionar un usuario y un nodo del árbol.");
                 }
 
-                if (!(tree_user_permisos.SelectedNode.Tag is BERol))
+                if (!(treeUsuarioRolesPermisos.SelectedNode.Tag is BERol))
                 {
                     throw new Exception("Debe seleccionar un rol del árbol.");
                 }
 
-                BERol rolSeleccionado = (BERol)tree_user_permisos.SelectedNode.Tag;
+                BERol rolSeleccionado = (BERol)treeUsuarioRolesPermisos.SelectedNode.Tag;
 
                 if (rolSeleccionado == null)
                 {
@@ -691,11 +691,11 @@ namespace UI
         private void btn_quitar_permiso_user_Click(object sender, EventArgs e)
         {
             try {
-                if(usuarioSeleccionado == null || tree_user_permisos.SelectedNode == null || !(tree_user_permisos.SelectedNode.Tag is BEPermisoSimple))
+                if(usuarioSeleccionado == null || treeUsuarioRolesPermisos.SelectedNode == null || !(treeUsuarioRolesPermisos.SelectedNode.Tag is BEPermisoSimple))
                 {
                     throw new Exception("Debe seleccionar un usuario y un permiso del válido.");
                 }
-                BEPermiso permisoSeleccionado = (BEPermiso)tree_user_permisos.SelectedNode.Tag;
+                BEPermiso permisoSeleccionado = (BEPermiso)treeUsuarioRolesPermisos.SelectedNode.Tag;
 
                 bllUsuario.QuitarPermiso(usuarioSeleccionado, permisoSeleccionado);
 
@@ -711,15 +711,15 @@ namespace UI
         private void btn_asignar_permiso_user_Click(object sender, EventArgs e)
         {
             try {
-                if(usuarioSeleccionado == null || tree_permisos.SelectedNode == null)
+                if(usuarioSeleccionado == null || treePermisosSimples.SelectedNode == null)
                 {
                     throw new Exception("Debe seleccionar un usuario y un permiso.");
                 }
-                if (tree_permisos.SelectedNode.Tag == null)
+                if (treePermisosSimples.SelectedNode.Tag == null)
                 {
                     throw new Exception("Debe seleccionar un permiso específico, no un módulo.");
                 }
-                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)tree_permisos.SelectedNode.Tag;
+                BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)treePermisosSimples.SelectedNode.Tag;
                 bllUsuario.AsignarPermiso(usuarioSeleccionado, permisoSeleccionado);
                 MessageBox.Show("Permiso asignado al usuario exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarRolesPermisosUsuario();
@@ -733,9 +733,9 @@ namespace UI
         private void tree_permisos_roles_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try{
-                txt_permiso_rol_seleccionado.Text = "";
-                if (tree_permisos_roles.SelectedNode == null) { return; }
-                txt_permiso_rol_seleccionado.Text = tree_permisos_roles.SelectedNode.Text;
+                txtPermisoRolSeleccionado.Text = "";
+                if (treePermisosRoles.SelectedNode == null) { return; }
+                txtPermisoRolSeleccionado.Text = treePermisosRoles.SelectedNode.Text;
             }
             catch (Exception ex)
             {
@@ -747,24 +747,24 @@ namespace UI
         {
             try
             {
-                txt_permiso_usuario_seleccionado.Text = "";
-                txt_rol_usuario_seleccionado.Text = "";
+                txtPermisoUsuarioSeleccionado.Text = "";
+                txtRolUsuarioSeleccionado.Text = "";
 
-                if (tree_user_permisos.SelectedNode == null ||
-                    tree_user_permisos.SelectedNode.Tag == null) 
+                if (treeUsuarioRolesPermisos.SelectedNode == null ||
+                    treeUsuarioRolesPermisos.SelectedNode.Tag == null) 
                 {
                     return;
                 }
 
-                if (tree_user_permisos.SelectedNode.Tag is BERol)
+                if (treeUsuarioRolesPermisos.SelectedNode.Tag is BERol)
                 {
-                    BERol rol = (BERol)tree_user_permisos.SelectedNode.Tag;
-                    txt_rol_usuario_seleccionado.Text = rol.Nombre;
+                    BERol rol = (BERol)treeUsuarioRolesPermisos.SelectedNode.Tag;
+                    txtRolUsuarioSeleccionado.Text = rol.Nombre;
                 }
-                else if (tree_user_permisos.SelectedNode.Tag is BEPermisoSimple)
+                else if (treeUsuarioRolesPermisos.SelectedNode.Tag is BEPermisoSimple)
                 {
-                    BEPermisoSimple permiso = (BEPermisoSimple)tree_user_permisos.SelectedNode.Tag;
-                    txt_permiso_usuario_seleccionado.Text = permiso.Nombre;
+                    BEPermisoSimple permiso = (BEPermisoSimple)treeUsuarioRolesPermisos.SelectedNode.Tag;
+                    txtPermisoUsuarioSeleccionado.Text = permiso.Nombre;
                 }
             }
             catch (Exception ex)

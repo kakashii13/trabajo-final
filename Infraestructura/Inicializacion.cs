@@ -52,8 +52,6 @@ namespace Infraestructura
         {
             List<BEPermiso> permisos = new List<BEPermiso>
         {
-            //new BEPermisoSimple("inicio.cambiarClave"),
-            //new BEPermisoSimple("inicio.cerrarSesion"),
             new BEPermisoSimple("admin.usuarios"),
             new BEPermisoSimple("admin.rolesPermisos"),
             new BEPermisoSimple("padron.registrarAfiliado"),
@@ -62,7 +60,7 @@ namespace Infraestructura
             new BEPermisoSimple("padron.consultarAportes"),
             new BEPermisoSimple("autorizaciones.crearSolicitud"),
             new BEPermisoSimple("autorizaciones.resolverSolicitud"),
-            new BEPermisoSimple("autorizaciones.listarAutorizaciones"),
+            new BEPermisoSimple("autorizaciones.consultarAutorizaciones"),
             new BEPermisoSimple("facturacion.registrarFactura"),
             new BEPermisoSimple("facturacion.consultarFacturas"),
             new BEPermisoSimple("facturacion.registrarPago"),

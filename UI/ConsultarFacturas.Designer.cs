@@ -28,64 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgv_facturas = new System.Windows.Forms.DataGridView();
-            this.btn_aceptadas = new System.Windows.Forms.Button();
-            this.btn_rechazadas = new System.Windows.Forms.Button();
-            this.btn_pendientes = new System.Windows.Forms.Button();
+            this.dgvFacturas = new System.Windows.Forms.DataGridView();
+            this.btnAceptadas = new System.Windows.Forms.Button();
+            this.btnRechazadas = new System.Windows.Forms.Button();
+            this.btnPendientes = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_validar_importe = new System.Windows.Forms.Button();
-            this.btn_validar_autorizacion = new System.Windows.Forms.Button();
-            this.btn_rechazar = new System.Windows.Forms.Button();
-            this.btn_aceptar = new System.Windows.Forms.Button();
+            this.btnValidarImporte = new System.Windows.Forms.Button();
+            this.btnValidarAutorizacion = new System.Windows.Forms.Button();
+            this.btnRechazar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnPagas = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_facturas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgv_facturas
+            // dgvFacturas
             // 
-            this.dgv_facturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_facturas.Location = new System.Drawing.Point(12, 55);
-            this.dgv_facturas.Name = "dgv_facturas";
-            this.dgv_facturas.ReadOnly = true;
-            this.dgv_facturas.Size = new System.Drawing.Size(735, 254);
-            this.dgv_facturas.TabIndex = 0;
-            this.dgv_facturas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_facturas_CellClick);
+            this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFacturas.Location = new System.Drawing.Point(12, 55);
+            this.dgvFacturas.Name = "dgvFacturas";
+            this.dgvFacturas.ReadOnly = true;
+            this.dgvFacturas.Size = new System.Drawing.Size(735, 254);
+            this.dgvFacturas.TabIndex = 0;
+            this.dgvFacturas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_facturas_CellClick);
             // 
-            // btn_aceptadas
+            // btnAceptadas
             // 
-            this.btn_aceptadas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_aceptadas.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btn_aceptadas.Location = new System.Drawing.Point(204, 9);
-            this.btn_aceptadas.Name = "btn_aceptadas";
-            this.btn_aceptadas.Size = new System.Drawing.Size(75, 37);
-            this.btn_aceptadas.TabIndex = 12;
-            this.btn_aceptadas.Text = "Aceptadas";
-            this.btn_aceptadas.UseVisualStyleBackColor = false;
-            this.btn_aceptadas.Click += new System.EventHandler(this.btn_aceptadas_Click);
+            this.btnAceptadas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAceptadas.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnAceptadas.Location = new System.Drawing.Point(204, 9);
+            this.btnAceptadas.Name = "btnAceptadas";
+            this.btnAceptadas.Size = new System.Drawing.Size(75, 37);
+            this.btnAceptadas.TabIndex = 12;
+            this.btnAceptadas.Text = "Aceptadas";
+            this.btnAceptadas.UseVisualStyleBackColor = false;
+            this.btnAceptadas.Click += new System.EventHandler(this.btn_aceptadas_Click);
             // 
-            // btn_rechazadas
+            // btnRechazadas
             // 
-            this.btn_rechazadas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_rechazadas.ForeColor = System.Drawing.Color.Brown;
-            this.btn_rechazadas.Location = new System.Drawing.Point(366, 9);
-            this.btn_rechazadas.Name = "btn_rechazadas";
-            this.btn_rechazadas.Size = new System.Drawing.Size(75, 37);
-            this.btn_rechazadas.TabIndex = 11;
-            this.btn_rechazadas.Text = "Rechazadas";
-            this.btn_rechazadas.UseVisualStyleBackColor = false;
-            this.btn_rechazadas.Click += new System.EventHandler(this.btn_rechazadas_Click);
+            this.btnRechazadas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRechazadas.ForeColor = System.Drawing.Color.Brown;
+            this.btnRechazadas.Location = new System.Drawing.Point(366, 9);
+            this.btnRechazadas.Name = "btnRechazadas";
+            this.btnRechazadas.Size = new System.Drawing.Size(75, 37);
+            this.btnRechazadas.TabIndex = 11;
+            this.btnRechazadas.Text = "Rechazadas";
+            this.btnRechazadas.UseVisualStyleBackColor = false;
+            this.btnRechazadas.Click += new System.EventHandler(this.btn_rechazadas_Click);
             // 
-            // btn_pendientes
+            // btnPendientes
             // 
-            this.btn_pendientes.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_pendientes.ForeColor = System.Drawing.Color.Chocolate;
-            this.btn_pendientes.Location = new System.Drawing.Point(123, 9);
-            this.btn_pendientes.Name = "btn_pendientes";
-            this.btn_pendientes.Size = new System.Drawing.Size(75, 37);
-            this.btn_pendientes.TabIndex = 10;
-            this.btn_pendientes.Text = "Pendientes";
-            this.btn_pendientes.UseVisualStyleBackColor = false;
-            this.btn_pendientes.Click += new System.EventHandler(this.btn_pendientes_Click);
+            this.btnPendientes.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPendientes.ForeColor = System.Drawing.Color.Chocolate;
+            this.btnPendientes.Location = new System.Drawing.Point(123, 9);
+            this.btnPendientes.Name = "btnPendientes";
+            this.btnPendientes.Size = new System.Drawing.Size(75, 37);
+            this.btnPendientes.TabIndex = 10;
+            this.btnPendientes.Text = "Pendientes";
+            this.btnPendientes.UseVisualStyleBackColor = false;
+            this.btnPendientes.Click += new System.EventHandler(this.btn_pendientes_Click);
             // 
             // label1
             // 
@@ -97,56 +97,56 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Facturas";
             // 
-            // btn_validar_importe
+            // btnValidarImporte
             // 
-            this.btn_validar_importe.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_validar_importe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_validar_importe.Location = new System.Drawing.Point(98, 326);
-            this.btn_validar_importe.Name = "btn_validar_importe";
-            this.btn_validar_importe.Size = new System.Drawing.Size(143, 37);
-            this.btn_validar_importe.TabIndex = 13;
-            this.btn_validar_importe.Text = "Validar importe";
-            this.btn_validar_importe.UseVisualStyleBackColor = false;
-            this.btn_validar_importe.Click += new System.EventHandler(this.btn_validar_importe_Click);
+            this.btnValidarImporte.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnValidarImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidarImporte.Location = new System.Drawing.Point(98, 326);
+            this.btnValidarImporte.Name = "btnValidarImporte";
+            this.btnValidarImporte.Size = new System.Drawing.Size(143, 37);
+            this.btnValidarImporte.TabIndex = 13;
+            this.btnValidarImporte.Text = "Validar importe";
+            this.btnValidarImporte.UseVisualStyleBackColor = false;
+            this.btnValidarImporte.Click += new System.EventHandler(this.btn_validar_importe_Click);
             // 
-            // btn_validar_autorizacion
+            // btnValidarAutorizacion
             // 
-            this.btn_validar_autorizacion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_validar_autorizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_validar_autorizacion.Location = new System.Drawing.Point(267, 326);
-            this.btn_validar_autorizacion.Name = "btn_validar_autorizacion";
-            this.btn_validar_autorizacion.Size = new System.Drawing.Size(143, 37);
-            this.btn_validar_autorizacion.TabIndex = 14;
-            this.btn_validar_autorizacion.Text = "Validar autorizacion";
-            this.btn_validar_autorizacion.UseVisualStyleBackColor = false;
-            this.btn_validar_autorizacion.Click += new System.EventHandler(this.btn_validar_autorizacion_Click);
+            this.btnValidarAutorizacion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnValidarAutorizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidarAutorizacion.Location = new System.Drawing.Point(267, 326);
+            this.btnValidarAutorizacion.Name = "btnValidarAutorizacion";
+            this.btnValidarAutorizacion.Size = new System.Drawing.Size(143, 37);
+            this.btnValidarAutorizacion.TabIndex = 14;
+            this.btnValidarAutorizacion.Text = "Validar autorizacion";
+            this.btnValidarAutorizacion.UseVisualStyleBackColor = false;
+            this.btnValidarAutorizacion.Click += new System.EventHandler(this.btn_validar_autorizacion_Click);
             // 
-            // btn_rechazar
+            // btnRechazar
             // 
-            this.btn_rechazar.BackColor = System.Drawing.Color.Brown;
-            this.btn_rechazar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_rechazar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_rechazar.Location = new System.Drawing.Point(437, 326);
-            this.btn_rechazar.Name = "btn_rechazar";
-            this.btn_rechazar.Size = new System.Drawing.Size(143, 37);
-            this.btn_rechazar.TabIndex = 15;
-            this.btn_rechazar.Text = "Rechazar factura";
-            this.btn_rechazar.UseVisualStyleBackColor = false;
-            this.btn_rechazar.Click += new System.EventHandler(this.btn_rechazar_Click);
+            this.btnRechazar.BackColor = System.Drawing.Color.Brown;
+            this.btnRechazar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRechazar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRechazar.Location = new System.Drawing.Point(437, 326);
+            this.btnRechazar.Name = "btnRechazar";
+            this.btnRechazar.Size = new System.Drawing.Size(143, 37);
+            this.btnRechazar.TabIndex = 15;
+            this.btnRechazar.Text = "Rechazar factura";
+            this.btnRechazar.UseVisualStyleBackColor = false;
+            this.btnRechazar.Click += new System.EventHandler(this.btn_rechazar_Click);
             // 
-            // btn_aceptar
+            // btnAceptar
             // 
-            this.btn_aceptar.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_aceptar.Enabled = false;
-            this.btn_aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_aceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_aceptar.Location = new System.Drawing.Point(604, 326);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(143, 37);
-            this.btn_aceptar.TabIndex = 16;
-            this.btn_aceptar.Text = "Aceptar factura";
-            this.btn_aceptar.UseVisualStyleBackColor = false;
-            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
+            this.btnAceptar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnAceptar.Enabled = false;
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAceptar.Location = new System.Drawing.Point(604, 326);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(143, 37);
+            this.btnAceptar.TabIndex = 16;
+            this.btnAceptar.Text = "Aceptar factura";
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
             // 
             // btnPagas
             // 
@@ -166,18 +166,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 375);
             this.Controls.Add(this.btnPagas);
-            this.Controls.Add(this.btn_aceptar);
-            this.Controls.Add(this.btn_rechazar);
-            this.Controls.Add(this.btn_validar_autorizacion);
-            this.Controls.Add(this.btn_validar_importe);
-            this.Controls.Add(this.btn_aceptadas);
-            this.Controls.Add(this.btn_rechazadas);
-            this.Controls.Add(this.btn_pendientes);
+            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.btnRechazar);
+            this.Controls.Add(this.btnValidarAutorizacion);
+            this.Controls.Add(this.btnValidarImporte);
+            this.Controls.Add(this.btnAceptadas);
+            this.Controls.Add(this.btnRechazadas);
+            this.Controls.Add(this.btnPendientes);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgv_facturas);
+            this.Controls.Add(this.dgvFacturas);
             this.Name = "ConsultarFacturas";
             this.Text = "ConsultarFacturas";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_facturas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,15 +185,15 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgv_facturas;
-        private System.Windows.Forms.Button btn_aceptadas;
-        private System.Windows.Forms.Button btn_rechazadas;
-        private System.Windows.Forms.Button btn_pendientes;
+        private System.Windows.Forms.DataGridView dgvFacturas;
+        private System.Windows.Forms.Button btnAceptadas;
+        private System.Windows.Forms.Button btnRechazadas;
+        private System.Windows.Forms.Button btnPendientes;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn_validar_importe;
-        private System.Windows.Forms.Button btn_validar_autorizacion;
-        private System.Windows.Forms.Button btn_rechazar;
-        private System.Windows.Forms.Button btn_aceptar;
+        private System.Windows.Forms.Button btnValidarImporte;
+        private System.Windows.Forms.Button btnValidarAutorizacion;
+        private System.Windows.Forms.Button btnRechazar;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnPagas;
     }
 }

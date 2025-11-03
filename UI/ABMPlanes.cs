@@ -28,7 +28,7 @@ namespace UI
         private void CargarGrid()
         {
             try {
-                dg_planes.DataSource = bllPlan.ListarPlanes();
+                dgvPlanes.DataSource = bllPlan.ListarPlanes();
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -37,35 +37,35 @@ namespace UI
 
         private void DeshabilitarAcciones()
         {
-            add_plan.Enabled = false;
-            mod_plan.Enabled = false;
+            btnCrear.Enabled = false;
+            btnModificar.Enabled = false;
         }
 
         private void HabilitarAcciones()
         {
-            add_plan.Enabled = true;
-            mod_plan.Enabled = true;
+            btnCrear.Enabled = true;
+            btnModificar.Enabled = true;
         }
 
         private void HabilitarInputs()
         {
-            txt_monto.Enabled = true;
-            txt_nombre.Enabled = true;
+            txtMonto.Enabled = true;
+            txtNombre.Enabled = true;
         }
 
         private void LimpiarInputs()
         {
-            txt_nombre.Clear();
-            txt_monto.Clear();
-            txt_monto.Enabled = false;
-            txt_nombre.Enabled = false;
+            txtNombre.Clear();
+            txtMonto.Clear();
+            txtMonto.Enabled = false;
+            txtNombre.Enabled = false;
         }
 
         private void add_plan_Click(object sender, EventArgs e)
         {
             // comportamiento UI
-            btn_cancel.Enabled = true;
-            btn_save.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnGuardar.Enabled = true;
             DeshabilitarAcciones();
             HabilitarInputs();
             modo = "Alta";
@@ -76,13 +76,13 @@ namespace UI
             try
             {
                 // llenamos los campos con datos del plan seleccionado
-                if (dg_planes.CurrentRow == null) {
+                if (dgvPlanes.CurrentRow == null) {
                     MessageBox.Show("Debe seleccionar un plan para modificar.",
                 "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return; 
                 }
 
-                planSeleccionado = dg_planes.CurrentRow.DataBoundItem as BEPlan;
+                planSeleccionado = dgvPlanes.CurrentRow.DataBoundItem as BEPlan;
 
                 if (planSeleccionado == null) {
                     MessageBox.Show("Error al obtener el plan seleccionado.",
@@ -90,11 +90,11 @@ namespace UI
                     return;
                 }
 
-                txt_nombre.Text = planSeleccionado.Nombre;
-                txt_monto.Text = planSeleccionado.AporteTope.ToString();
+                txtNombre.Text = planSeleccionado.Nombre;
+                txtMonto.Text = planSeleccionado.AporteTope.ToString();
 
-                btn_cancel.Enabled = true;
-                btn_save.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnGuardar.Enabled = true;
                 DeshabilitarAcciones();
                 HabilitarInputs();
                 modo = "Modificacion";
@@ -107,8 +107,8 @@ namespace UI
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            btn_save.Enabled = false;
-            btn_cancel.Enabled = false;
+            btnGuardar.Enabled = false;
+            btnCancelar.Enabled = false;
             HabilitarAcciones();
             LimpiarInputs();
             modo = null;
@@ -120,13 +120,13 @@ namespace UI
             try
             {
                 // validamos los campos
-               if(string.IsNullOrWhiteSpace(txt_nombre.Text) ||
-                   string.IsNullOrWhiteSpace(txt_monto.Text))
+               if(string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                   string.IsNullOrWhiteSpace(txtMonto.Text))
                 {
                     throw new Exception("Todos los campos son obligatorios.");
                 }
 
-                if (!int.TryParse(txt_monto.Text, out int aporteTope))
+                if (!int.TryParse(txtMonto.Text, out int aporteTope))
                 {
                     throw new Exception("El monto debe ser un número entero válido.");
                 }
@@ -141,7 +141,7 @@ namespace UI
                     throw new Exception("El monto no puede superar $1.000.000.");
                 }
 
-                var nombre = txt_nombre.Text.Trim();
+                var nombre = txtNombre.Text.Trim();
 
                 if (modo == "Alta")
                 {
@@ -165,8 +165,8 @@ namespace UI
                 LimpiarInputs();
                 HabilitarAcciones();
 
-                btn_save.Enabled = false;
-                btn_cancel.Enabled = false;
+                btnGuardar.Enabled = false;
+                btnCancelar.Enabled = false;
                 planSeleccionado = null;
                 modo = null;
                 
