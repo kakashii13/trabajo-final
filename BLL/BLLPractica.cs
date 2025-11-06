@@ -20,7 +20,6 @@ namespace BLL
         {
             try
             {
-                // verificamos existencia de la practica
                 if (mppPractica.ExistePractica(practica.Codigo, null))
                 {
                     throw new Exception("Ya existe una práctica con el código ingresado.");

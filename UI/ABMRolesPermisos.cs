@@ -22,31 +22,35 @@ namespace UI
 
         private void ABMRolesPermisos_Load(object sender, EventArgs e)
         {
-            CompletarListados();
         }
         public ABMRolesPermisos()
         {
             InitializeComponent();
             bllPermiso = new BLLPermiso();
             bllUsuario = new BLLUsuario();
+
+            CompletarListados();
         }
 
-        // cargar permisos y roles
         private void CompletarListados()
         {
-            try {
-                CargarPermisosDisponibles();
+            ListarPermisos();
+            ListarRoles();
+            ListarUsuarios();
+        }
 
+        private void ListarRoles()
+        {
+            try
+            {
                 listaRoles.Items.Clear();
                 List<BERol> roles = bllPermiso.ListarRolesConPermisos();
                 foreach (BERol rol in roles)
                 {
                     listaRoles.Items.Add(rol);
                 }
-
-                ListarUsuarios();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -58,6 +62,7 @@ namespace UI
             {
                 listaUsuarios.Items.Clear();
                 List<BEUsuario> usuarios = bllUsuario.ListarUsuarios();
+
                 foreach (BEUsuario usuario in usuarios)
                 {
                     listaUsuarios.Items.Add(usuario);
@@ -69,7 +74,6 @@ namespace UI
             }
         }
 
-        // resetear campos y botones
         private void Resetear()
         {
             txtPermisoSimple.Text = "";
@@ -82,24 +86,37 @@ namespace UI
             btnModificarRol.Enabled = false;
         }
 
+        private void ListarPermisos()
+        {
+            try
+            {
+                treePermisosSimples.Nodes.Clear();
+
+                List<BEPermisoSimple> permisos = bllPermiso.ListarPermisos();
+
+                CargarPermisosEnTreeView(treePermisosSimples, permisos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         #region permisos
-        // agregar permiso
         private void add_permiso_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtPermisoSimple.Text)) // ✅ Usar IsNullOrWhiteSpace
+                if (string.IsNullOrWhiteSpace(txtPermisoSimple.Text))
                 {
                     throw new Exception("El nombre del permiso no puede estar vacío.");
                 }
 
                 BEPermisoSimple nuevoPermiso = new BEPermisoSimple(txtPermisoSimple.Text);
 
-                // persistimos el permiso
                 bllPermiso.CrearPermiso(nuevoPermiso, false);
 
-                // actualizamos la lista
-                CargarPermisosDisponibles();
+                ListarPermisos();
 
                 MessageBox.Show("Permiso creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Resetear();
@@ -110,7 +127,6 @@ namespace UI
             }
         }
 
-        // eliminar permiso
         private void del_permiso_Click(object sender, EventArgs e)
         {
             try {
@@ -128,8 +144,7 @@ namespace UI
 
                 bllPermiso.BorrarPermiso(permisoSeleccionado);
 
-                // actualizamos el tree
-                CargarPermisosDisponibles();
+                ListarPermisos();
 
                 MessageBox.Show("Permiso borrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
@@ -141,7 +156,6 @@ namespace UI
             }
         }
 
-        // modificar permiso
         private void mod_permiso_Click(object sender, EventArgs e)
         {
             try
@@ -167,7 +181,7 @@ namespace UI
 
                 bllPermiso.ModificarPermiso(permisoSeleccionado);
 
-                CargarPermisosDisponibles();
+                ListarPermisos();
 
                 MessageBox.Show("Permiso modificado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Resetear();
@@ -178,7 +192,6 @@ namespace UI
             }
         }
 
-        // limpiar campos de permiso
         private void btn_clear_permiso_Click(object sender, EventArgs e)
         {
             btnCrearPermiso.Enabled = true;
@@ -187,7 +200,6 @@ namespace UI
             txtPermisoSimple.Text = "";
         }
 
-        // seleccionar permiso
         private void tree_permisos_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try
@@ -195,7 +207,6 @@ namespace UI
                 txtPermisoSeleccionado.Text = "";
                 if (treePermisosSimples.SelectedNode == null) { return; }
 
-                // si es un modulo, deshabilitamos edicion/borrado
                 if (treePermisosSimples.SelectedNode.Tag == null)
                 {
                     txtPermisoSimple.Text = "";
@@ -205,7 +216,6 @@ namespace UI
                     return;
                 }
 
-                // si es un nodo de permiso, habilitamos edicion/borrado
                 BEPermisoSimple permisoSeleccionado = (BEPermisoSimple)treePermisosSimples.SelectedNode.Tag;
                 txtPermisoSeleccionado.Text = permisoSeleccionado.Nombre;
                 txtPermisoSimple.Text = permisoSeleccionado.Nombre;
@@ -223,7 +233,6 @@ namespace UI
         #endregion
 
         #region roles
-        // agregar rol
         private void add_role_Click(object sender, EventArgs e)
         {
             try
@@ -233,12 +242,10 @@ namespace UI
                     throw new Exception("El nombre del rol no puede estar vacío.");
                 }
                
-                // crear rol
                 BERol nuevoRol = new BERol(txtRol.Text.ToLower());
 
                 bllPermiso.CrearPermiso(nuevoRol, true);
 
-                // actualizar la lista
                 CompletarListados();
 
                 MessageBox.Show("Rol creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -250,7 +257,6 @@ namespace UI
             }
         }
 
-        // eliminar rol
         private void del_rol_Click(object sender, EventArgs e)
         {
             try
@@ -264,7 +270,6 @@ namespace UI
 
                 bllPermiso.BorrarPermiso(rolSeleccionado);
 
-                // actualizamos la lista
                 CompletarListados();
 
                 MessageBox.Show("Rol borrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -276,7 +281,6 @@ namespace UI
             }
         }
 
-        // modificar rol
         private void btn_mod_rol_Click(object sender, EventArgs e)
         {
             try
@@ -307,7 +311,6 @@ namespace UI
             }
         }
 
-        // seleccionar rol
         private void list_roles_SelectedValueChanged(object sender, EventArgs e)
         {
             try
@@ -324,36 +327,9 @@ namespace UI
                 }
                 BERol rolSeleccionado = (BERol)listaRoles.SelectedItem;
 
-                // agrupamos los permisos del rol por modulo
-                var permisosPorModulo = rolSeleccionado.ObtenerPermisos()
-                    .Cast<BEPermisoSimple>()
-                    .GroupBy(p => {
-                        var partes = p.Nombre.Split('.');
-                        return partes.Length > 0 ? partes[0] : "Sin Categoría";
-                    });
+                var permisosRol = rolSeleccionado.ObtenerPermisos().Cast<BEPermisoSimple>();
 
-                // creamos un nodo por cada módulo
-                foreach (var grupoModulo in permisosPorModulo)
-                {
-                    TreeNode moduloNode = new TreeNode(grupoModulo.Key);
-                    moduloNode.Tag = null; // el nodo de modulo no representa un permiso
-
-                    // agregamos cada permiso del módulo
-                    foreach (var permiso in grupoModulo)
-                    {
-                        // quitamos la parte del modulo del nombre para mostrarlo mas limpio
-                        var permisoNombre = permiso.Nombre.Contains('.')
-                            ? permiso.Nombre.Substring(permiso.Nombre.IndexOf('.') + 1)
-                            : permiso.Nombre;
-
-                        TreeNode permisoNode = new TreeNode(permisoNombre);
-                        permisoNode.Tag = permiso; 
-
-                        moduloNode.Nodes.Add(permisoNode);
-                    }
-
-                    treePermisosRoles.Nodes.Add(moduloNode);
-                }
+                CargarPermisosEnTreeView(treePermisosRoles, permisosRol);
 
                 txtRol.Text = rolSeleccionado.Nombre;
                 btnCrearRol.Enabled = false;
@@ -366,7 +342,6 @@ namespace UI
             }
         }
 
-        // limpiar campos de rol
         private void btn_clear_rol_Click(object sender, EventArgs e)
         {
             btnCrearRol.Enabled = true;
@@ -379,7 +354,6 @@ namespace UI
         #endregion
 
         #region asignacion permisos a roles
-        // asignar permiso a rol
         private void attach_permiso_Click(object sender, EventArgs e)
         {
             try
@@ -404,7 +378,6 @@ namespace UI
 
                 bllPermiso.AsignarPermiso(rolSeleccionado, permisoSeleccionado);
 
-                // actualizamos la lista
                 list_roles_SelectedValueChanged(null, null);
 
                 MessageBox.Show("Permiso asignado al rol exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -414,7 +387,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // remover permiso de rol
         private void remove_permiso_Click(object sender, EventArgs e)
         {
             try
@@ -439,7 +411,6 @@ namespace UI
 
                 bllPermiso.RemoverPermiso(rolSeleccionado, permisoSeleccionado);
 
-                // actualizamos la lista
                 list_roles_SelectedValueChanged(null, null);
 
                 MessageBox.Show("Permiso removido del rol exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -452,7 +423,6 @@ namespace UI
         }
         #endregion
 
-        // actualizar listas
         private void btn_update_Click(object sender, EventArgs e)
         {
               CompletarListados();
@@ -483,51 +453,6 @@ namespace UI
             }
         }
 
-        private void CargarPermisosDisponibles()
-        {
-            try
-            {
-                treePermisosSimples.Nodes.Clear();
-
-                // Obtenemos todos los permisos simples
-                List<BEPermisoSimple> permisos = bllPermiso.ListarPermisos();
-
-                // Agrupamos permisos por módulo (parte antes del primer punto)
-                var permisosPorModulo = permisos.GroupBy(p => {
-                    var partes = p.Nombre.Split('.');
-                    return partes.Length > 0 ? partes[0] : "Sin Categoría";
-                });
-
-                // Creamos un nodo por cada módulo
-                foreach (var grupoModulo in permisosPorModulo)
-                {
-                    TreeNode moduloNode = new TreeNode(grupoModulo.Key);
-                    moduloNode.Tag = null; // El nodo de módulo no representa un permiso
-
-                    // Agregamos cada permiso del módulo
-                    foreach (var permiso in grupoModulo)
-                    {
-                        // Quitamos la parte del módulo del nombre para mostrarlo más limpio
-                        var permisoNombre = permiso.Nombre.Contains('.')
-                            ? permiso.Nombre.Substring(permiso.Nombre.IndexOf('.') + 1)
-                            : permiso.Nombre;
-
-                        TreeNode permisoNode = new TreeNode(permisoNombre);
-                        permisoNode.Tag = permiso;
-
-                        moduloNode.Nodes.Add(permisoNode);
-                    }
-
-                    treePermisosSimples.Nodes.Add(moduloNode);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void CargarRolesPermisosUsuario()
         {
             try
@@ -546,60 +471,16 @@ namespace UI
                     TreeNode rolNode = new TreeNode(rol.Nombre);
                     rolNode.Tag = rol;
 
-                    // extraccion del nombre debido a la nomenclatura del permiso
-                    // eg. "facturacion.CrearFactura"
-                    // "Facturacion" seria el menu
-                    // "CrearFactura" seria el permiso dentro del menu
-                    var permisosPorMenu = rol.ObtenerPermisos()
-                        .Cast<BEPermisoSimple>()
-                        .GroupBy(p => {
-                            var partes = p.Nombre.Split('.');
-                            return partes.Length > 0 ? partes[0] : "Sin Categoría";
-                        });
+                    var permisosRol = rol.ObtenerPermisos().Cast<BEPermisoSimple>();
 
-                    foreach (var grupoMenu in permisosPorMenu)
-                    {
-                        TreeNode menuNode = new TreeNode(grupoMenu.Key);
-                        menuNode.Tag = null; 
+                    CargarPermisosEnTreeView(treeUsuarioRolesPermisos, permisosRol, rolNode);
 
-                        foreach (var p in grupoMenu)
-                        {
-                            var permisoNombre = p.Nombre.Contains('.')
-                                ? p.Nombre.Substring(p.Nombre.IndexOf('.') + 1)
-                                : p.Nombre;
-                            TreeNode permisoNode = new TreeNode(permisoNombre);
-                            permisoNode.Tag = p;
-                            menuNode.Nodes.Add(permisoNode);
-                        }
-                        rolNode.Nodes.Add(menuNode);
-                    }
                     rootNode.Nodes.Add(rolNode);
                 }
 
-                // en caso de que el usuario tenga permisos simples asignados directamente
                 if (permisosSimples.Any())
                 {
-                    var permisosSimplesAgrupados = permisosSimples.GroupBy(p => {
-                        var partes = p.Nombre.Split('.');
-                        return partes.Length > 0 ? partes[0] : "Sin Categoría";
-                    });
-
-                    foreach (var grupoModulo in permisosSimplesAgrupados)
-                    {
-                        TreeNode moduloNode = new TreeNode(grupoModulo.Key);
-                        moduloNode.Tag = null;
-
-                        foreach (var permiso in grupoModulo)
-                        {
-                            var permisoNombre = permiso.Nombre.Contains('.')
-                                ? permiso.Nombre.Substring(permiso.Nombre.IndexOf('.') + 1)
-                                : permiso.Nombre;
-                            TreeNode permisoNode = new TreeNode(permisoNombre);
-                            permisoNode.Tag = permiso;
-                            moduloNode.Nodes.Add(permisoNode);
-                        }
-                        rootNode.Nodes.Add(moduloNode);
-                    }
+                    CargarPermisosEnTreeView(treeUsuarioRolesPermisos, permisosSimples, rootNode);
                 }
 
                 treeUsuarioRolesPermisos.Nodes.Add(rootNode);
@@ -612,7 +493,6 @@ namespace UI
 
         #endregion
 
-        // mostrar password desencriptado
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             try {
@@ -770,6 +650,39 @@ namespace UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CargarPermisosEnTreeView(TreeView treeView, IEnumerable<BEPermisoSimple> permisos, TreeNode nodoPadre = null)
+        {
+            treeView.Nodes.Clear();
+            
+            var permisosPorModulo = permisos
+                .OfType<BEPermisoSimple>()
+                .GroupBy(p =>
+                {
+                    var partes = p.Nombre.Split('.');
+                    return partes.Length > 0 ? partes[0] : "Sin Categoría";
+                });
+            
+            foreach (var grupoModulo in permisosPorModulo)
+            {
+                TreeNode moduloNode = new TreeNode(grupoModulo.Key);
+                moduloNode.Tag = null;
+                foreach (var permiso in grupoModulo)
+                {
+                    var permisoNombre = permiso.Nombre.Contains('.')
+                        ? permiso.Nombre.Substring(permiso.Nombre.IndexOf('.') + 1)
+                        : permiso.Nombre;
+                    TreeNode permisoNode = new TreeNode(permisoNombre);
+                    permisoNode.Tag = permiso;
+                    moduloNode.Nodes.Add(permisoNode);
+                }
+
+                if (nodoPadre != null)
+                    nodoPadre.Nodes.Add(moduloNode);
+                else
+                    treeView.Nodes.Add(moduloNode);
             }
         }
     }

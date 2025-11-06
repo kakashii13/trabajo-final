@@ -626,7 +626,6 @@
             this.Controls.Add(this.groupBox6);
             this.Name = "ABMRolesPermisos";
             this.Text = " ";
-            this.Load += new System.EventHandler(this.ABMRolesPermisos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

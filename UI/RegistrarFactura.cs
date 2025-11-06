@@ -113,18 +113,15 @@ namespace UI
         {
             try
             {
-                // creamos la carpeta si no existe
                 string carpetaPDFs = Path.Combine(ServicioDirectorio.RutaPDFs, "Facturas");
 
                 if (!Directory.Exists(carpetaPDFs))
                     Directory.CreateDirectory(carpetaPDFs);
 
-                // nombre unico para el archivo
                 string extension = Path.GetExtension(rutaArchivoOriginal);
                 string nombreArchivo = $"Factura_{numeroFactura}_{DateTime.Now:yyyyMMdd_HHmmss}{extension}";
                 string rutaDestino = Path.Combine(carpetaPDFs, nombreArchivo);
 
-                // copiamos el archivo
                 File.Copy(rutaArchivoOriginal, rutaDestino, true);
 
                 return rutaDestino;

@@ -14,7 +14,6 @@ namespace BE
         public string Password { get; set; }
         public bool Activo { get; set; }
         public bool Eliminado { get; set; }
-
         public List<BEPermiso> Permisos { get; set; }
 
         public BEUsuario() { 

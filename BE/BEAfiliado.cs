@@ -15,8 +15,7 @@ namespace BE
         public string Telefono { get; set; }
         public List<BEHistorialPlan> HistorialPlanes { get; set; }
         public List<BEAporte> Aportes { get; set; }
-
-        // propiedades para facilitar el cambio de plan
+        public BEPlan PlanActual { get; set; }
         public decimal? UltimoAporteMonto { get; set; }
         public bool CorrespondeCambioPlan { get; set; }
         public int? PlanSugeridoId { get; set; }
@@ -40,7 +39,6 @@ namespace BE
             Telefono = telefono;
         }
 
-        // obtener plan actual activo
         public BEHistorialPlan ObtenerPlanActual()
         {
             if (HistorialPlanes == null || !HistorialPlanes.Any())

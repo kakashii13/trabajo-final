@@ -31,7 +31,6 @@ namespace BE
 
             if (_permisos != null)
             {
-                // buscamos permiso por id para eliminarlo
                 var permisoARemover = _permisos.FirstOrDefault(p => p.Id == permiso.Id);
                 if (permisoARemover != null)
                 {

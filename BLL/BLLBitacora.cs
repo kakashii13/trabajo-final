@@ -23,7 +23,6 @@ namespace BLL
         {
             try
             {
-                // asignamos el proximo id 
                 bitacora.Id = mppBitacora.ObtenerProximoId();
 
                 mppBitacora.RegistrarAccion(bitacora);

@@ -30,10 +30,8 @@ namespace UI
 
         private void ConfigurarDataGrid()
         {
-            // ocultamos columnas no deseadas
             dgvAfiliados.AutoGenerateColumns = false;
 
-            // configuramos columnas visibles
             dgvAfiliados.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "Cuil",
@@ -65,6 +63,14 @@ namespace UI
                 HeaderText = "Último Aporte",
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
             });
+
+            dgvAfiliados.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "PlanActual",
+                HeaderText = "Plan Actual",
+                CellTemplate = new DataGridViewTextBoxCell()
+            });
+
             dgvAfiliados.Columns.Add(new DataGridViewCheckBoxColumn
             {
                 DataPropertyName = "CorrespondeCambioPlan",

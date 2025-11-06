@@ -25,10 +25,8 @@ namespace BLL
 
             try
             {
-                // creamos la carpeta nueva
                 Directory.CreateDirectory(rutaDestino);
 
-                // copiamos todos los xml
                 string[] archivos = Directory.GetFiles(ServicioDirectorio.RutaDB, "*.xml");
                 foreach (string archivo in archivos)
                 {
@@ -36,8 +34,6 @@ namespace BLL
                     string destino = Path.Combine(rutaDestino, nombreArchivo);
                     File.Copy(archivo, destino, true);
                 }
-
-
 
                 BEBitacora bitacora = new BEBitacora(
                     DateTime.Now,
@@ -62,11 +58,9 @@ namespace BLL
             {
                 string rutaBackup = Path.Combine(ServicioDirectorio.RutaBackups, nombreBackup);
 
-                // validamos que existe la carpeta
                 if (!Directory.Exists(rutaBackup))
                     throw new Exception("El backup no existe");
 
-                // copiamos todos los xml
                 string[] archivos = Directory.GetFiles(rutaBackup, "*.xml");
                 foreach (string archivo in archivos)
                 {

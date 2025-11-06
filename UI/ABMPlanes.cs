@@ -63,7 +63,6 @@ namespace UI
 
         private void add_plan_Click(object sender, EventArgs e)
         {
-            // comportamiento UI
             btnCancelar.Enabled = true;
             btnGuardar.Enabled = true;
             DeshabilitarAcciones();
@@ -75,7 +74,6 @@ namespace UI
         {
             try
             {
-                // llenamos los campos con datos del plan seleccionado
                 if (dgvPlanes.CurrentRow == null) {
                     MessageBox.Show("Debe seleccionar un plan para modificar.",
                 "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -119,7 +117,6 @@ namespace UI
         {
             try
             {
-                // validamos los campos
                if(string.IsNullOrWhiteSpace(txtNombre.Text) ||
                    string.IsNullOrWhiteSpace(txtMonto.Text))
                 {

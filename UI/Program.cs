@@ -19,10 +19,8 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // inicializar el sistema
             Inicializacion.InicializarSistema();
 
-            // instancia del formulario login
             Login loginForm = new Login();
 
             Application.Run(loginForm);

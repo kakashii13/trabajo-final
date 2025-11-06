@@ -16,7 +16,6 @@ namespace BLL
         public void CrearPermiso(BEPermiso permiso, bool esRol) {
             try
             {
-                // chequeamos que no exista el permiso primero
                 if (mppPermiso.ExistePermiso(permiso))
                 {
                     throw new Exception("El permiso ya existe.");
@@ -69,7 +68,6 @@ namespace BLL
             {
                 List<BERol> roles = mppPermiso.ListarRoles();
 
-                // listamos los permisos asignados a ese rol
                 foreach(BERol rol in roles)
                 {
                     List<BEPermisoSimple> permisos = ListarPermisosDeRol(rol);
@@ -105,7 +103,6 @@ namespace BLL
 
                 mppPermiso.AsignarPermiso(rol, permiso);
 
-                // objeto en memoria
                 rol.AgregarPermiso(permiso);
             }
             catch (Exception ex) { throw new Exception("Error al asignar permiso al rol: " + ex.Message); }
@@ -114,13 +111,12 @@ namespace BLL
         {
             try
             {
-                if(rol.ObtenerPermisos().Any(p => p.Id == permiso.Id)){
+                if(!rol.ObtenerPermisos().Any(p => p.Id == permiso.Id)){
                     throw new Exception("El permiso no está asignado al rol.");
                 }
 
                 mppPermiso.RemoverPermiso(rol, permiso);
 
-                // objeto en memoria
                 rol.RemoverPermiso(permiso);
             }
             catch (Exception ex) { throw new Exception("Error al remover permiso del rol: " + ex.Message); }
@@ -129,7 +125,7 @@ namespace BLL
         {
             try
             {
-                List<int> idsPermisos = mppPermiso.ObtenerIdsPermisosDeRol(rol.Id);
+                List<int> idsPermisos = mppPermiso.ObtenerPermisosIdsDeRol(rol.Id);
                 List<BEPermisoSimple> permisos = new List<BEPermisoSimple>();
 
                 foreach (int id in idsPermisos)

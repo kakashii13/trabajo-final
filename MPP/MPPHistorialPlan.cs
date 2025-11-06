@@ -18,7 +18,6 @@ namespace MPP
         public MPPHistorialPlan()
         {
             rutaArchivo = Path.Combine(ServicioDirectorio.RutaDB, "historial_planes.xml");
-            // si no existe el archivo, crear uno nuevo con la estructura base
             if (!File.Exists(rutaArchivo))
             {
                 xDocument = new XDocument(

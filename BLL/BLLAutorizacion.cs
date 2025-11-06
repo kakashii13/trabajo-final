@@ -27,16 +27,12 @@ namespace BLL
         {
             try
             { 
-                // asignamos el id
                 autorizacion.Id = mppAutorizacion.ObtenerProximoId();
 
-                // generamos un numero de autorizacion 
                 autorizacion.NumeroAutorizacion = mppAutorizacion.ObtenerProximoNumeroAutorizacion();
 
-                // por defecto la autorizacion no esta facturada
                 autorizacion.Facturada = false;
 
-                // guardamos la autorizacion
                 mppAutorizacion.CrearAutorizacion(autorizacion);
 
                 return autorizacion;

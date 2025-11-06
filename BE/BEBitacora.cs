@@ -10,8 +10,8 @@ namespace BE
     {
         public DateTime FechaHora { get; set; }
         public string Operacion { get; set; }
-        public BEUsuario Usuario { get; set; }
         public string Detalle { get; set; }
+        public BEUsuario Usuario { get; set; }
 
         public BEBitacora() { }
         public BEBitacora(DateTime fechaHora, BEUsuario usuario, string operacion, string detalle)

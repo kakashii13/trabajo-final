@@ -136,7 +136,6 @@ namespace UI
 
                 if (resultadoPDF == DialogResult.Yes)
                 {
-                    // abrimos el pdf con el lector default
                     System.Diagnostics.Process.Start(rutaPDF);
                 }
 

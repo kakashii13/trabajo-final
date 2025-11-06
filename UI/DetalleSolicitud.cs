@@ -37,7 +37,6 @@ namespace UI
         private void CargarDatos()
         {
             try { 
-                // afiliado
                 txtCuil.Text = solicitudSeleccionada.Afiliado.Cuil;
                 txtNombreApellido.Text = solicitudSeleccionada.Afiliado.NombreApellido;
                 txtActivo.Text = solicitudSeleccionada.Afiliado.Activo ? "Si" : "No";
@@ -47,7 +46,6 @@ namespace UI
                 
                 txtTelefono.Text = solicitudSeleccionada.Afiliado.Telefono;
 
-                // solicitud
                 fechaSolicitud.Text = solicitudSeleccionada.FechaSolicitud.ToString("dd/MM/yyyy");
                 txtEstadoSolicitud.Text = solicitudSeleccionada.Estado;
                 txtPracticaSolicitada.Text = solicitudSeleccionada.Practica.ToString();
@@ -61,10 +59,8 @@ namespace UI
         private void btn_listar_Click(object sender, EventArgs e)
         {
             try {
-                // limpiamos el listado
                 listaPrestadores.Items.Clear();
 
-                // listamos los prestadores disponibles para la practica
                 prestadores = bllPrestador.ListarPrestadoresSegunPractica(practicaSolicitada);
 
                 if(prestadores == null || prestadores.Count == 0)
@@ -171,10 +167,8 @@ namespace UI
 
                 autorizacion = bllSolicitud.AutorizarSolicitud(solicitudSeleccionada, autorizacion.Prestador);
 
-                // generamos el pdf de la autorizacion
                 string rutaPDF = ServicioPDF.GenerarPDFAutorizacion(autorizacion);
 
-                // actualizamos la vista
                 txtEstadoSolicitud.Text = "Aceptado";
                 btnAutorizar.Enabled = false;
                 btnRechazar.Enabled = false;
@@ -189,7 +183,6 @@ namespace UI
 
                 if (resultado == DialogResult.Yes)
                 {
-                    // abrimos el pdf con el lector default
                     System.Diagnostics.Process.Start(rutaPDF);
                 }
             }

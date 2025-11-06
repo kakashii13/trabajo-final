@@ -33,7 +33,6 @@ namespace BLL
                     throw new Exception("La factura ya existe.");
                 }
 
-                // asignamos el proximo id
                 factura.Id = mppFactura.ObtenerProximoId();
                 factura.Estado = "Pendiente";
                 factura.AutorizacionValidada = false;
@@ -93,7 +92,6 @@ namespace BLL
 
                 MarcarComoFacturada(autorizacion);
 
-                // actualizamos la factura
                 factura.AutorizacionValidada = true;
                 ActualizarFactura(factura);
             }
@@ -152,7 +150,6 @@ namespace BLL
                 if (factura.Monto != autorizacion.Practica.Precio)
                     throw new Exception($"El monto de la factura ({factura.Monto}) difiere del precio de la práctica ({autorizacion.Practica.Precio}).");
 
-                // actualizamos la factura
                 factura.ImporteValidado = true;
                 ActualizarFactura(factura);
             }
@@ -166,7 +163,6 @@ namespace BLL
                 if(factura.Estado != "Pendiente")
                     throw new Exception("Solo se pueden rechazar facturas en estado Pendiente.");
 
-                // liberamos la autorizacion asociada
                 BEAutorizacion autorizacion = bllAutorizacion.ObtenerAutorizacionPorNumero(factura.Autorizacion.NumeroAutorizacion);
                 autorizacion.Facturada = false;
                 bllAutorizacion.ModificarAutorizacion(autorizacion);

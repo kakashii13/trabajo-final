@@ -123,7 +123,6 @@ namespace UI
 
                 bllPrestador.QuitarPractica(prestadorSeleccionado, practicaSeleccionadoPorPrestador);
 
-                // actualizamos la lista de practicas del prestador
                 listaPracticasPrestador.Items.Remove(practicaSeleccionadoPorPrestador);
 
                 txtPracticaPrestador.Clear();

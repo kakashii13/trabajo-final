@@ -210,7 +210,6 @@ namespace BLL
                 List<BEPractica> todasLasPracticas = bllPractica.ListarPracticas();
                 List<BEPractica> practicasDelPlan = ListarPracticasDelPlan(plan);
 
-                // practicas que no estan asignadas al plan
                 return todasLasPracticas
                     .Where(p => !practicasDelPlan.Any(pp => pp.Id == p.Id))
                     .ToList();

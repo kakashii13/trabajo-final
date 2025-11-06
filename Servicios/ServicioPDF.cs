@@ -14,14 +14,11 @@ namespace Servicios
         {
             try
             {
-                // ruta pdfs 
                 string carpetaPDFs = Path.Combine(ServicioDirectorio.RutaPDFs, "Autorizaciones");
 
-                // creamos la carpeta si no existe
                 if (!Directory.Exists(carpetaPDFs))
                     Directory.CreateDirectory(carpetaPDFs);
 
-                // nombre del archivo
                 string nombreArchivo = $"Autorizacion_{autorizacion.NumeroAutorizacion}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
                 string rutaCompleta = Path.Combine(carpetaPDFs, nombreArchivo);
 
@@ -30,7 +27,6 @@ namespace Servicios
 
                 documento.Open();
 
-                // agregamos el contenido
                 AgregarEncabezado(documento);
                 AgregarDatosAutorizacion(documento, autorizacion);
                 AgregarPieDePagina(documento);
@@ -47,7 +43,6 @@ namespace Servicios
 
         private static void AgregarEncabezado(Document documento)
         {
-            // titulo
             Font fuenteTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.DARK_GRAY);
             Paragraph titulo = new Paragraph("AUTORIZACIÓN MÉDICA", fuenteTitulo);
             titulo.Alignment = Element.ALIGN_CENTER;
@@ -63,7 +58,6 @@ namespace Servicios
             Font fuenteNegrita = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
             Font fuenteNormal = FontFactory.GetFont(FontFactory.HELVETICA, 11);
 
-            // nro de autorizacion
             Paragraph nroAutorizacion = new Paragraph();
             nroAutorizacion.Add(new Chunk("Nº de Autorización: ", fuenteNegrita));
             nroAutorizacion.Add(new Chunk(autorizacion.NumeroAutorizacion.ToString(),
@@ -71,7 +65,6 @@ namespace Servicios
             nroAutorizacion.SpacingAfter = 15f;
             documento.Add(nroAutorizacion);
 
-            // fecha
             Paragraph fecha = new Paragraph();
             fecha.Add(new Chunk("Fecha de Autorización: ", fuenteNegrita));
             fecha.Add(new Chunk(autorizacion.FechaAutorizacion.ToString("dd/MM/yyyy HH:mm"), fuenteNormal));
@@ -80,7 +73,6 @@ namespace Servicios
 
             documento.Add(new Paragraph(" ")); 
 
-            // datos del afiliado
             Paragraph tituloAfiliado = new Paragraph("DATOS DEL AFILIADO", fuenteNegrita);
             tituloAfiliado.SpacingBefore = 10f;
             tituloAfiliado.SpacingAfter = 10f;
@@ -92,7 +84,6 @@ namespace Servicios
 
             documento.Add(new Paragraph(" ")); 
 
-            // datos de la practica
             Paragraph tituloPractica = new Paragraph("PRÁCTICA AUTORIZADA", fuenteNegrita);
             tituloPractica.SpacingBefore = 10f;
             tituloPractica.SpacingAfter = 10f;
@@ -103,7 +94,6 @@ namespace Servicios
 
             documento.Add(new Paragraph(" ")); 
 
-            // datos del prestador
             Paragraph tituloPrestador = new Paragraph("PRESTADOR AUTORIZADO", fuenteNegrita);
             tituloPrestador.SpacingBefore = 10f;
             tituloPrestador.SpacingAfter = 10f;
@@ -150,14 +140,11 @@ namespace Servicios
             {
                 BEPago pago = factura.Pago;
 
-                // ruta pdfs 
                 string carpetaPDFs = Path.Combine(ServicioDirectorio.RutaPDFs, "Recibos");
 
-                // creamos la carpeta si no existe
                 if (!Directory.Exists(carpetaPDFs))
                     Directory.CreateDirectory(carpetaPDFs);
 
-                // nombre del archivo
                 string nombreArchivo = $"Recibo_{pago.NumeroRecibo}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
                 string rutaCompleta = Path.Combine(carpetaPDFs, nombreArchivo);
 
@@ -166,7 +153,6 @@ namespace Servicios
 
                 documento.Open();
 
-                // agregamos el contenido
                 AgregarEncabezadoRecibo(documento);
                 AgregarDatosRecibo(documento, factura);
                 AgregarPieDePaginaRecibo(documento);
@@ -183,7 +169,6 @@ namespace Servicios
 
         private static void AgregarEncabezadoRecibo(Document documento)
         {
-            // titulo
             Font fuenteTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.DARK_GRAY);
             Paragraph titulo = new Paragraph("RECIBO DE PAGO", fuenteTitulo);
             titulo.Alignment = Element.ALIGN_CENTER;
@@ -201,7 +186,6 @@ namespace Servicios
             Font fuenteNegrita = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
             Font fuenteNormal = FontFactory.GetFont(FontFactory.HELVETICA, 11);
 
-            // nro de recibo
             Paragraph nroRecibo = new Paragraph();
             nroRecibo.Add(new Chunk("Nº de Recibo: ", fuenteNegrita));
             nroRecibo.Add(new Chunk(pago.NumeroRecibo.ToString(),
@@ -209,14 +193,12 @@ namespace Servicios
             nroRecibo.SpacingAfter = 15f;
             documento.Add(nroRecibo);
 
-            // fecha de pago
             Paragraph fecha = new Paragraph();
             fecha.Add(new Chunk("Fecha de Pago: ", fuenteNegrita));
             fecha.Add(new Chunk(pago.FechaPago.ToString("dd/MM/yyyy HH:mm"), fuenteNormal));
             fecha.SpacingAfter = 10f;
             documento.Add(fecha);
 
-            // forma de pago
             Paragraph formaPago = new Paragraph();
             formaPago.Add(new Chunk("Forma de Pago: ", fuenteNegrita));
             formaPago.Add(new Chunk(pago.FormaPago, fuenteNormal));
@@ -225,7 +207,6 @@ namespace Servicios
 
             documento.Add(new Paragraph(" "));
 
-            // datos del prestador
             Paragraph tituloPrestador = new Paragraph("DATOS DEL PRESTADOR", fuenteNegrita);
             tituloPrestador.SpacingBefore = 10f;
             tituloPrestador.SpacingAfter = 10f;
@@ -236,7 +217,6 @@ namespace Servicios
 
             documento.Add(new Paragraph(" "));
 
-            // datos de la factura
             Paragraph tituloFactura = new Paragraph("DETALLE DE FACTURA CANCELADA", fuenteNegrita);
             tituloFactura.SpacingBefore = 10f;
             tituloFactura.SpacingAfter = 10f;
@@ -245,7 +225,6 @@ namespace Servicios
             AgregarLinea(documento, "Nº de Factura:", factura.Numero.ToString(), fuenteNegrita, fuenteNormal);
             AgregarLinea(documento, "Fecha Factura:", factura.FechaRecibida.ToString("dd/MM/yyyy"), fuenteNegrita, fuenteNormal);
 
-            // Autorización asociada
             if (factura.Autorizacion != null)
             {
                 AgregarLinea(documento, "Nº Autorización:", factura.Autorizacion.NumeroAutorizacion.ToString(), fuenteNegrita, fuenteNormal);
@@ -253,7 +232,6 @@ namespace Servicios
 
             documento.Add(new Paragraph(" "));
 
-            // monto destacado
             PdfPTable tablaMonto = new PdfPTable(2);
             tablaMonto.WidthPercentage = 100;
             tablaMonto.SpacingBefore = 20f;
@@ -295,7 +273,6 @@ namespace Servicios
             pie.SpacingBefore = 10f;
             documento.Add(pie);
 
-            // firma digital (opcional)
             documento.Add(new Paragraph(" "));
             Font fuenteFirma = FontFactory.GetFont(FontFactory.HELVETICA_OBLIQUE, 8, BaseColor.LIGHT_GRAY);
             Paragraph firma = new Paragraph(

@@ -70,14 +70,11 @@ namespace UI
             txtApellido.Text = usuario.Apellido;
             txtNombreUsuario.Text = usuario.NombreUsuario;
         }
-        // habilita el formulario para crear un usuario
         private void add_user_Click(object sender, EventArgs e)
         {
-            // comportamiento UI
             btnCancelar.Enabled = true;
             btnGuardar.Enabled = true;
             
-            // seteamos una password por default para nuevos usuarios
             txtPassword.Text = "1234";
             txtPassword.Enabled = true;
 
@@ -85,7 +82,6 @@ namespace UI
             HabilitarInputs();
             modo = "Alta";
         }
-        // habilita el formulario para modificar un usuario
         private void mod_user_Click(object sender, EventArgs e)
         {
             try
@@ -124,7 +120,6 @@ namespace UI
         private void btn_save_Click(object sender, EventArgs e)
         {
             try {
-                // validamos los campos
                 if (!ValidarCamposUI()) { return; }
                     
 

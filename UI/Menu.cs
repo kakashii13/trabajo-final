@@ -25,11 +25,13 @@ namespace UI
 
             bllUsuario = new BLLUsuario();
             permisosUsuario = bllUsuario.ListarPermisosDeUsuario(usuarioLogueado);
+
             AplanarPermisos(permisosUsuario);
-            ConfigurarMenusSegunPermisos();
+
+            OcultarTodosLosItemsDelMenu(menuStrip1.Items);
+            MostrarItemsSegunPermisos(menuStrip1.Items, permisosUsuario);
         }
 
-        // metodo recursivo para obtener los permisos del rol y guardarlos como permisos simples del usuario
         private void AplanarPermisos(List<BEPermiso> permisos)
         {
             var permisosACopiar = permisos.ToList();
@@ -38,7 +40,6 @@ namespace UI
             {
                 if (permiso is BEPermisoSimple permisoSimple)
                 {
-                    // si un permiso es simple lo agregamos a la lista de permisos del usuario
                     if (!permisosUsuario.Any(p => p.Id == permisoSimple.Id))
                     {
                         permisosUsuario.Add(permisoSimple);
@@ -46,34 +47,42 @@ namespace UI
                 }
                 else if (permiso is BEPermiso rol)
                 {
-                    // si un permiso es compuesto (rol), llamamos recursivamente al metodo
                     AplanarPermisos(rol.ObtenerPermisos());
                 }
             }
         }
 
-        private void ConfigurarMenusSegunPermisos()
+        private void OcultarTodosLosItemsDelMenu(ToolStripItemCollection items)
         {
-            // ocultamos todos los items primero
-            OcultarTodosLosItemsDelMenu(menuStrip1.Items);
+            foreach (ToolStripItem item in items)
+            {
+                if (item.Name == "inicio")
+                {
+                    continue;
+                }
 
-            // mostramos solo los items que el usuario tiene permiso
-            MostrarItemsSegunPermisos(menuStrip1.Items, permisosUsuario);
+                if (item is ToolStripMenuItem subMenuItem)
+                {
+                    subMenuItem.Visible = false;
+
+                    if (subMenuItem.DropDownItems.Count > 0)
+                    {
+                        OcultarTodosLosItemsDelMenu(subMenuItem.DropDownItems);
+                    }
+                }
+            }
         }
-
         private void MostrarItemsSegunPermisos(ToolStripItemCollection items, List<BEPermiso> permisosUsuario)
         {
             foreach (ToolStripItem item in items)
             {
                 if (item is ToolStripMenuItem menuItem)
                 {
-                    // metodo recursivo para verificar subitems
                     if (menuItem.DropDownItems.Count > 0)
                     {
                         MostrarSubItemsSegunPermisos(menuItem, permisosUsuario);
                     }
 
-                    // verificamos si el item tiene permisos
                     if (TienePermiso(menuItem.Name, permisosUsuario))
                     {
                         menuItem.Visible = true;
@@ -90,13 +99,11 @@ namespace UI
             {
                 if (subItem is ToolStripMenuItem subMenuItem)
                 {
-                    // metodo recursivo para verificar subitems
                     if (subMenuItem.DropDownItems.Count > 0)
                     {
                         MostrarSubItemsSegunPermisos(subMenuItem, permisosUsuario);
                     }
 
-                    // verificamos si el subitem tiene permisos
                     if (TienePermiso(subMenuItem.Name, permisosUsuario))
                     {
                         subMenuItem.Visible = true;
@@ -105,58 +112,16 @@ namespace UI
                 }
             }
 
-            // si algun subitem es visible, el item tambien debe ser visible
             if (algunSubItemVisible)
             {
                 menuItem.Visible = true;
             }
         }
-
-        private void OcultarTodosLosItemsDelMenu(ToolStripItemCollection items)
-        {
-            foreach (ToolStripItem item in items)
-            {
-                if (item is ToolStripMenuItem subMenuItem)
-                {
-                    if(item.Name == "inicio")
-                    {
-                        continue; // dejamos siempre visibles los items inicio
-                    }
-                    subMenuItem.Visible = false;
-
-                    // si el elemento tiene subitems, llamamos recursivamente
-                    if (subMenuItem.DropDownItems.Count > 0)
-                    {
-                        OcultarTodosLosItemsDelSubMenu(subMenuItem.DropDownItems);
-                    }
-                }
-            }
-        }
-
-        private void OcultarTodosLosItemsDelSubMenu(ToolStripItemCollection items)
-        {
-            foreach (ToolStripItem item in items)
-            {
-                if (item is ToolStripMenuItem subMenuItem)
-                {
-                    subMenuItem.Visible = false;
-
-                    // si el elemento tiene subitems, llamamos recursivamente
-                    if (subMenuItem.DropDownItems.Count > 0)
-                    {
-                        OcultarTodosLosItemsDelSubMenu(subMenuItem.DropDownItems);
-                    }
-                }
-            }
-        }
-
+       
         private bool TienePermiso(string nombreItem, List<BEPermiso> permisosUsuario)
         {
-            // verificamos si algun permiso en la lista de permisos del usuario coincide 
-            // con el nombre del item
             return permisosUsuario.Any(permiso =>
             {
-                // el permiso esta nomenclado como menu.permiso, por lo que extraemos el valor luego del "."
                 string nombrePermiso = permiso.Nombre.Contains(".")
                     ? permiso.Nombre.Split('.')[1]
                     : permiso.Nombre;

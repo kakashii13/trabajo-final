@@ -24,7 +24,6 @@ namespace UI
 
             CargarDatos();
 
-            // formateo el dateTimePicker para que solo muestre mes y año
             fechaPeriodo.Format = DateTimePickerFormat.Custom;
             fechaPeriodo.CustomFormat = "MM/yyyy";  
             fechaPeriodo.ShowUpDown = true;
@@ -34,7 +33,6 @@ namespace UI
         {
             try
             {
-                // cargar listado de afiliados
                 List<BEAfiliado> afiliados = bllAfiliado.ListarAfiliados();
                 foreach (BEAfiliado af in afiliados)
                 {
@@ -70,7 +68,6 @@ namespace UI
                 bllAporte.CrearAporte(aporte);
 
                 MessageBox.Show("Aporte registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // limpiamos los campos
                 txtCuil.Clear();
                 txtMonto.Clear();
                 fechaPeriodo.Value = DateTime.Now;

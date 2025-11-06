@@ -30,9 +30,9 @@ namespace BLL
 
                 usuario.Id = mppUsuario.ObtenerProximoId();
 
-                // password default encriptada
                 string passwordUsuario = usuario.Password;
                 usuario.Password = ServicioSeguridad.Encriptar(passwordUsuario);
+
                 usuario.Activo = true;
                 usuario.Eliminado = false;
 
@@ -77,6 +77,7 @@ namespace BLL
                 {
                     throw new Exception("El usuario ya está desactivado.");
                 }
+
                 usuario.Desactivar();
                 mppUsuario.ActualizarUsuario(usuario);
             }
@@ -94,6 +95,7 @@ namespace BLL
                 {
                     throw new Exception("El usuario ya está activado.");
                 }
+
                 usuario.Activar();
                 mppUsuario.ActualizarUsuario(usuario);
             }
@@ -116,6 +118,7 @@ namespace BLL
                 {
                     throw new Exception("El usuario ya está eliminado.");
                 }
+
                 usuario.Eliminar();
                 mppUsuario.EliminarUsuario(usuario);
             }
@@ -209,7 +212,6 @@ namespace BLL
                     throw new Exception("El usuario ha sido eliminado.");
                 }
 
-                // desencriptamos password guardada y comparamos
                 string passwordDesencriptada = ServicioSeguridad.Desencriptar(usuario.Password);
 
                 if (passwordDesencriptada != usuarioLogin.Password)
@@ -224,7 +226,6 @@ namespace BLL
         {
             try
             {
-                // encriptamos password
                 nuevaPassword = ServicioSeguridad.Encriptar(nuevaPassword);
                 usuario.CambiarPassword(nuevaPassword);
                 mppUsuario.ActualizarUsuario(usuario);
@@ -241,10 +242,11 @@ namespace BLL
                     throw new Exception("No se puede resetear la contraseña del usuario administrador.");
                 }
 
-                // password default encriptada
                 string passwordDefault = "1234";
                 string passwordEncriptada = ServicioSeguridad.Encriptar(passwordDefault);
+
                 usuario.CambiarPassword(passwordEncriptada);
+                
                 mppUsuario.ActualizarUsuario(usuario);
             }
             catch (Exception ex) { throw new Exception("Error al resetear password: " + ex.Message); }
@@ -253,13 +255,13 @@ namespace BLL
         {
             try
             {
-                List<int> idsPermisosUsuario = mppUsuario.ListarPermisosDeUsuario(usuario);
+                List<int> permisosIdUsuario = mppUsuario.ListarPermisosDeUsuario(usuario);
 
                 List<BEPermiso> permisos = new List<BEPermiso>();
 
-                foreach(int idPermiso in idsPermisosUsuario)
+                foreach(int permisoId in permisosIdUsuario)
                 {
-                    BEPermiso permiso = bllPermiso.ObtenerPorId(idPermiso);
+                    BEPermiso permiso = bllPermiso.ObtenerPorId(permisoId);
                     if(permiso is BERol)
                     {
                         BERol rol = (BERol)permiso;

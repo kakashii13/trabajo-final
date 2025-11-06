@@ -19,7 +19,6 @@ namespace MPP
         {
             rutaArchivo = Path.Combine(ServicioDirectorio.RutaBackups, "bitacora.xml");
             
-            // si no existe el archivo, crear uno nuevo con la estructura base
             if (!File.Exists(rutaArchivo))
             {
                 xDocument = new XDocument(

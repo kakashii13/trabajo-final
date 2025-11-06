@@ -66,7 +66,6 @@ namespace UI
         }
         private void add_practica_Click_1(object sender, EventArgs e)
         {
-            // comportamiento UI
             btnCancelar.Enabled = true;
             btnGuardar.Enabled = true;
             DeshabilitarAcciones();
@@ -121,7 +120,6 @@ namespace UI
         {
             try
             {
-                // validamos los campos
                 if (string.IsNullOrWhiteSpace(txtNombre.Text))
                 {
                     throw new Exception("El nombre de la practica es obligatorio.");

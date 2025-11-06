@@ -32,7 +32,6 @@ namespace UI
         {
             try
             {
-                // cargamos los aportes
                 aportes = bllAporte.ListarAportes()
                 .OrderByDescending(a => a.FechaRecibido)
                 .ToList();
@@ -60,7 +59,6 @@ namespace UI
 
                 BEAfiliado afiliadoSeleccionado = (BEAfiliado)listaAfiliados.SelectedItem;
 
-                // filtramos los aportes del afiliado seleccionado
                 var aportesFiltrados = aportes.Where(a => a.AfiliadoId == afiliadoSeleccionado.Id).ToList();
 
                 dgvAportes.DataSource = aportesFiltrados;
@@ -75,7 +73,6 @@ namespace UI
         {
             listaAfiliados.SelectedIndex = -1;
 
-            // mostramos todos los aportes
             dgvAportes.DataSource = aportes;
         }
     }

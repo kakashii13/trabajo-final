@@ -37,7 +37,6 @@ namespace UI
         {
             try
             {
-                // afiliados
                 List<BEAfiliado> afiliados = bllAfiliado.ListarAfiliados();
                 lbl_afiliados.Text = afiliados.Count.ToString();
                 var activos = afiliados.Where(a => a.Activo).Count();
@@ -47,16 +46,11 @@ namespace UI
                 
                 ConfigurarChartAfiliados(activos, inactivos);
 
-                // solicitudes
                 solicitudes = bllSolicitud.ListarSolicitudes();
-                // facturas
                 facturas = bllFactura.ListarFacturas();
-                // autorizaciones
                 autorizaciones = bllAutorizacion.ListarAutorizaciones();
 
                 ActualizarLabels(solicitudes, facturas, autorizaciones);
-
-                // practicas mas solicitadas
                 ActualizarPracticasChart(solicitudes);
 
             }
@@ -87,7 +81,6 @@ namespace UI
 
         private void ActualizarLabels(List<BESolicitud> solicitudes, List<BEFactura> facturas, List<BEAutorizacion> autorizaciones)
         {
-            // actualizar labels de solicitudes
             lbl_solicitudes_pendientes.Text = solicitudes.Where(s => s.Estado == "Pendiente").Count().ToString();
             lbl_solicitudes_aceptadas.Text = solicitudes.Where(s => s.Estado == "Aceptado").Count().ToString();
             lbl_solicitudes_rechazadas.Text = solicitudes.Where(s => s.Estado == "Rechazado").Count().ToString();
@@ -105,7 +98,6 @@ namespace UI
                 .ToString("C");
 
 
-            // actualizar labels de facturas
             lbl_facturas_pendientes.Text = facturas.Where(f => f.Estado == "Pendiente").Count().ToString();
             lbl_facturas_aceptadas.Text = facturas.Where(f => f.Estado == "Aceptada").Count().ToString();
             lbl_facturas_rechazadas.Text = facturas.Where(f => f.Estado == "Rechazada").Count().ToString();
@@ -128,7 +120,6 @@ namespace UI
                 .Sum(f => f.Monto)
                 .ToString("C");
 
-            // actualizar label de autorizacion
             lblAutorizaciones.Text = autorizaciones.Count.ToString();
         }
 
@@ -149,7 +140,6 @@ namespace UI
 
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
 
-                // practicas mas solicitadas
                 ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)
@@ -175,7 +165,6 @@ namespace UI
                     .ToList();
 
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
-                // practicas mas solicitadas
                 ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)
@@ -201,7 +190,6 @@ namespace UI
                     .ToList();
 
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
-                // practicas mas solicitadas
                 ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)
@@ -227,7 +215,6 @@ namespace UI
                     .ToList();
 
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
-                // practicas mas solicitadas
                 ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)
@@ -240,11 +227,9 @@ namespace UI
         {
             chartAfiliados.Series.Clear();
 
-            // creamos la serie de tipo torta
             var series = chartAfiliados.Series.Add("Afiliados");
             series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
-            // agregamos los puntos
             var puntoActivos = series.Points.Add(activos);
             puntoActivos.Label = $"Activos ({activos})";
             puntoActivos.LegendText = "Activos";
@@ -275,7 +260,6 @@ namespace UI
                     .ToList();
 
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
-                // practicas mas solicitadas
                 ActualizarPracticasChart(solicitudesFiltradas);
             }
             catch (Exception ex)

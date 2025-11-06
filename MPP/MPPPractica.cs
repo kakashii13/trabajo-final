@@ -21,7 +21,6 @@ namespace MPP
         {
             rutaPracticas = Path.Combine(ServicioDirectorio.RutaDB, "practicas.xml");
 
-            // si no existe el archivo, lo creamos
             if (!File.Exists(rutaPracticas))
             {
                 xDocument = new XDocument(

@@ -19,7 +19,6 @@ namespace MPP
         {
             rutaArchivo = Path.Combine(ServicioDirectorio.RutaDB, "pagos.xml");
 
-            // si el archivo no existe, lo creo con la estructura base
             if (!File.Exists(rutaArchivo))
             {
                 xDocument = new XDocument(

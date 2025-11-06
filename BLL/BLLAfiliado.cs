@@ -26,7 +26,6 @@ namespace BLL
         {
             try
             {
-                // validamos que no exista ese cuil
                 BEAfiliado afiliadoExistente = ObtenerAfiliadoPorCuil(afiliado.Cuil);
 
                 if (afiliadoExistente != null)
@@ -34,11 +33,9 @@ namespace BLL
                     throw new Exception("Ya existe un afiliado con ese CUIL.");
                 }
 
-                // obtenemos proximo id
                 afiliado.Id = mppAfiliado.ObtenerProximoId();
                 mppAfiliado.CrearAfiliado(afiliado);
 
-                // creamos el historial de planes del afiliado
                 if (plan != null)
                 {
                     int proximoId = bllHistorialPlan.ObtenerProximoId();
@@ -124,16 +121,13 @@ namespace BLL
                     throw new Exception("Afiliado no encontrado");
                 }
                 
-                // cargamos historial de planes
                 afiliado.HistorialPlanes = bllHistorialPlan.ObtenerPorAfiliado(afiliado);
 
-                // cargamos los planes relacionados a los historiales
                 foreach (BEHistorialPlan historial in afiliado.HistorialPlanes)
                 {
                     historial.Plan = bllPlan.ObtenerPlanPorId(historial.PlanId);
                 }
 
-                // cargamos aportes
                 afiliado.Aportes = bllAporte.ObtenerAportesPorAfiliado(afiliado);
 
                 return afiliado;
@@ -143,7 +137,6 @@ namespace BLL
                 throw new Exception("Error al obtener afiliado completo: " + ex.Message);
             }
         }
-        // listamos los afiliados y les agregamos datos para facilitar el cambio de plan
         public List<BEAfiliado> ListarAfiliadosConDatosCambioPlan()
         {
             try
@@ -153,10 +146,8 @@ namespace BLL
 
                 foreach (var afiliado in afiliados)
                 {
-                    // obtenemos el ultimo aporte por afiliado
                     BEAporte ultimoAporte = bllAporte.ObtenerUltimoAportePorAfiliado(afiliado);
 
-                    // cargamos historial de planes
                     afiliado.HistorialPlanes = bllHistorialPlan.ObtenerPorAfiliado(afiliado);
 
                     foreach (var historial in afiliado.HistorialPlanes)
@@ -164,11 +155,13 @@ namespace BLL
                         historial.Plan = bllPlan.ObtenerPlanPorId(historial.PlanId);
                     }
 
+                    BEPlan planActual = afiliado.ObtenerPlanActual()?.Plan;
+                    afiliado.PlanActual = planActual;
+
                     if (ultimoAporte != null)
                     {
                         afiliado.UltimoAporteMonto = ultimoAporte.Monto;
 
-                        // verificamos si corresponde cambio
                         var resultado = VerificarCambioPlan(afiliado, ultimoAporte, planes);
                         afiliado.CorrespondeCambioPlan = resultado.Corresponde;
                         afiliado.PlanSugeridoId = resultado.PlanSugeridoId;
@@ -192,7 +185,6 @@ namespace BLL
         {
             try
             {
-                // desactivamos el historial de plan actual
                 BEHistorialPlan historialActual = afiliado.ObtenerPlanActual();
                 if (historialActual != null)
                 {
@@ -204,7 +196,6 @@ namespace BLL
                     historialActual.Activo = false;
                     bllHistorialPlan.ModificarHistorialPlan(historialActual);
                 }
-                // creamos un nuevo historial de plan
                 int proximoId = bllHistorialPlan.ObtenerProximoId();
                 BEHistorialPlan nuevoHistorial = new BEHistorialPlan(
                     proximoId,
@@ -220,29 +211,34 @@ namespace BLL
                 throw new Exception("Error al cambiar plan del afiliado" + ex.Message);
             }
         }
-        // verificamos si al afiliado le corresponde un cambio de plan
         private (bool Corresponde, int? PlanSugeridoId) VerificarCambioPlan(BEAfiliado afiliado, BEAporte ultimoAporte, List<BEPlan> planes)
         {
             BEPlan planActual = afiliado.ObtenerPlanActual().Plan;
+            
             if (planActual == null)
                 return (false, null);
 
-            // ordenamos los planes por tope de aporte
-            var planesOrdenados = planes.OrderBy(p => p.AporteTope).ToList();
-            BEPlan planMasAlto = planesOrdenados.LastOrDefault();
-
-            // si ya esta en el plan mas alto, no corresponde cambio
-            if (planActual.Id == planMasAlto?.Id)
+            if (ultimoAporte.Monto <= planActual.AporteTope)
                 return (false, null);
 
-            // buscamos el primer plan que cumpla la condicion de tope de aporte
+            var planesOrdenados = planes.OrderBy(p => p.AporteTope).ToList();
+
             BEPlan planSugerido = planesOrdenados
-                .FirstOrDefault(p => ultimoAporte.Monto <= p.AporteTope && p.AporteTope > planActual.AporteTope);
+                .FirstOrDefault(p =>
+                p.AporteTope >= ultimoAporte.Monto &&    
+                p.AporteTope > planActual.AporteTope);
 
-            // corresponde cambio si el aporte supera el tope del plan actual y encontramos un plan sugerido
-            bool corresponde = ultimoAporte.Monto > planActual.AporteTope && planSugerido != null;
+            if (planSugerido == null)
+            {
+                BEPlan planMasAlto = planesOrdenados.LastOrDefault();
 
-            return (corresponde, corresponde ? planSugerido?.Id : null);
+                if (planMasAlto != null && planMasAlto.Id != planActual.Id)
+                {
+                    planSugerido = planMasAlto;
+                }
+            }
+
+            return (planSugerido != null, planSugerido?.Id);
         }
     }
 }

@@ -35,17 +35,13 @@ namespace UI
         {
             try
             {
-                // aportes del afiliado
                 dgvAportes.DataSource = bllAporte.ObtenerAportesPorAfiliado(afiliadoSeleccionado);
 
-                // fecha sugerida
                 fechaVigencia.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1);
 
-                // plan actual
                 BEPlan planActual = afiliadoSeleccionado.ObtenerPlanActual().Plan;
                 txtPlanActual.Text = planActual?.Nombre ?? "Sin plan";
 
-                // plan sugerido
                 planSugerido = bllPlan.ObtenerPlanPorId(afiliadoSeleccionado.PlanSugeridoId ?? 0);
                 txtNuevoPlan.Text = planSugerido?.Nombre ?? "No disponible";
                
@@ -70,7 +66,6 @@ namespace UI
                 MessageBox.Show("Cambio de plan realizado con éxito.",
                     "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // cerramos el formulario con resultado OK
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

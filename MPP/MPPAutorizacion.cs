@@ -20,7 +20,6 @@ namespace MPP
             rutaArchivo = Path.Combine(ServicioDirectorio.RutaDB, "autorizaciones.xml");
             if (!File.Exists(rutaArchivo))
             {
-                // si no existe el archivo, crear uno nuevo con la estructura base
                 xDocument = new XDocument(
                     new XElement("Autorizaciones")
                 );

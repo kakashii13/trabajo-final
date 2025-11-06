@@ -22,7 +22,6 @@ namespace MPP
             rutaArchivoPrestadores = Path.Combine(ServicioDirectorio.RutaDB, "prestadores.xml");
             rutaArchivoPracticasPrestadores = Path.Combine(ServicioDirectorio.RutaDB, "practicas_prestadores.xml");
 
-            // si el archivo no existe, lo creamos con la estructura basica
             if (!File.Exists(rutaArchivoPrestadores))
             {
                 xDocument = new XDocument(

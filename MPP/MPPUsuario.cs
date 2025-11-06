@@ -20,7 +20,7 @@ namespace MPP
         {
             rutaUsuarios = Path.Combine(ServicioDirectorio.RutaDB, "usuarios.xml");
             rutaUsuariosPermisos = Path.Combine(ServicioDirectorio.RutaDB, "usuarios_permisos.xml");
-            // si el archivo no existe, lo creamos con la estructura base
+            
             if (!File.Exists(rutaUsuarios))
             {
                 xDocument = new XDocument(

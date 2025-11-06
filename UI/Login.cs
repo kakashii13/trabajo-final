@@ -32,20 +32,16 @@ namespace UI
                     throw new Exception("Debe ingresar usuario y contraseña.");
                 }
 
-                // validar que el usuario exista y que la contrasena sea correcta
                 BEUsuario usuario = new BEUsuario(usuarioTxt, passwordTxt);
 
                 BEUsuario usuarioLogueado = bllUsuario.ValidarLogin(usuario);
 
-                if(usuarioLogueado == null)
-                {
-                    throw new Exception("Usuario o contraseña incorrecta.");
-                }
-
                 this.Hide();
+
                 Menu menu = new Menu(usuarioLogueado);
                 menu.FormClosed += (s, args) => this.Close();
                 menu.Show();
+
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

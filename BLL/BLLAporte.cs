@@ -26,7 +26,6 @@ namespace BLL
                     throw new Exception("Ya existe un aporte registrado para este afiliado en el período seleccionado.");
                 }
 
-                // asignamos id
                 aporte.Id = mppAporte.ObtenerProximoId();
 
                 mppAporte.CrearAporte(aporte);

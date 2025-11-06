@@ -15,7 +15,6 @@ namespace Infraestructura
         private static BLLPermiso bllPermiso;
         private static BLLUsuario bllUsuario;
 
-        // creamos un archivo control para verificar que la inicializacion ya se realizo
         private static readonly string ArchivoControl = Path.Combine(
         ServicioDirectorio.RutaSystem,
         "inicializado.txt"
@@ -23,16 +22,13 @@ namespace Infraestructura
 
         public static void InicializarSistema()
         {
-            // inicializamos la estructura de directorios
             ServicioDirectorio.InicializarEstructura();
 
-            // verificamos si el archivo de control existe
             if (!File.Exists(ArchivoControl))
             {
                 bllPermiso = new BLLPermiso();
                 bllUsuario = new BLLUsuario();
 
-                // creamos el archivo de control para futuras ejecuciones
                 File.WriteAllText(ArchivoControl, DateTime.Now.ToString());
 
                 try

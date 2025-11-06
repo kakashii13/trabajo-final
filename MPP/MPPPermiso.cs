@@ -21,12 +21,9 @@ namespace MPP
             rutaPermisos = Path.Combine(ServicioDirectorio.RutaDB, "permisos.xml");
             rutaRolesPermisos = Path.Combine(ServicioDirectorio.RutaDB, "roles_permisos.xml");
 
-            // si los archivos no existen, los creamos con la estructura base
             if (!File.Exists(rutaPermisos))
             {
-                xDocument = new XDocument(
-                    new XElement("Permisos")
-                );
+                xDocument = new XDocument(new XElement("Permisos"));
                 xDocument.Save(rutaPermisos);
             }
 
@@ -189,7 +186,7 @@ namespace MPP
 
             xDocument.Save(rutaRolesPermisos);
         }
-        public List<int> ObtenerIdsPermisosDeRol(int rolId)
+        public List<int> ObtenerPermisosIdsDeRol(int rolId)
         {
             xDocument = XDocument.Load(rutaRolesPermisos);
 
