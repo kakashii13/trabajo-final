@@ -133,8 +133,7 @@ namespace UI
                     BEUsuario usuario = new BEUsuario(nombre, apellido, password, nombreUsuario, 0, true, false);
                     bllUsuario.CrearUsuario(usuario);
 
-                    MessageBox.Show("Usuario creado exitosamente.", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Usuario creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (modo == "Modificacion")
                 {

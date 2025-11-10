@@ -43,7 +43,6 @@ namespace MPP
 
                 xDocument.Save(rutaArchivo);
         }
-
         public List<BEBitacora> ListarTodo()
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -60,7 +59,6 @@ namespace MPP
 
             return bitacora;
         }
-
         public int ObtenerProximoId()
         {
             xDocument = XDocument.Load(rutaArchivo);

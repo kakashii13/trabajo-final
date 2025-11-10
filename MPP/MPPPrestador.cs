@@ -52,7 +52,6 @@ namespace MPP
             
             xDocument.Save(rutaArchivoPrestadores);
         }
-
         public bool ExistePrestador(string cuit)
         {
             xDocument = XDocument.Load(rutaArchivoPrestadores);
@@ -62,19 +61,6 @@ namespace MPP
             
             return prestador != null;
         }
-
-        public int ObtenerProximoId()
-        {
-            xDocument = XDocument.Load(rutaArchivoPrestadores);
-            
-            var ultimoId = xDocument.Descendants("Prestador")
-                .Select(p => (int)p.Attribute("Id"))
-                .DefaultIfEmpty(0)
-                .Max();
-
-            return ultimoId + 1;
-        }
-
         public List<BEPrestador> ListarPrestadores()
         {
             xDocument = XDocument.Load(rutaArchivoPrestadores);
@@ -85,7 +71,6 @@ namespace MPP
 
             return prestadores;
         }
-
         public List<int> ListarPrestadoresIdsSegunPractica(BEPractica practica)
         {
             xDocument = XDocument.Load(rutaArchivoPracticasPrestadores);
@@ -97,7 +82,6 @@ namespace MPP
 
             return idsPrestadores;
         }
-
         public BEPrestador ObtenerPrestadorPorId(int id)
         {
             xDocument = XDocument.Load(rutaArchivoPrestadores);
@@ -109,7 +93,6 @@ namespace MPP
 
             return prestador; 
         }
-
         public List<int> ListarPracticasIdsPorPrestador(BEPrestador prestador)
         {
             xDocument = XDocument.Load(rutaArchivoPracticasPrestadores);
@@ -121,7 +104,6 @@ namespace MPP
 
             return idsPracticas;
         }
-
         public void AsignarPractica(BEPrestador prestador, BEPractica practica)
         {
             xDocument = XDocument.Load(rutaArchivoPracticasPrestadores);
@@ -134,7 +116,6 @@ namespace MPP
 
             xDocument.Save(rutaArchivoPracticasPrestadores);
         }
-
         public void QuitarPractica(BEPrestador prestador, BEPractica practica)
         {
             try
@@ -155,7 +136,6 @@ namespace MPP
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
-
         public bool ExisteAsignacion(BEPrestador prestador, BEPractica practica)
         {
             xDocument = XDocument.Load(rutaArchivoPracticasPrestadores);
@@ -166,7 +146,6 @@ namespace MPP
 
             return relacionElem != null;
         }
-
         private BEPrestador MapearPrestador(XElement prestadorElem)
         {
             return new BEPrestador
@@ -176,5 +155,17 @@ namespace MPP
                 prestadorElem.Element("RazonSocial").Value
             );
         }
+        public int ObtenerProximoId()
+        {
+            xDocument = XDocument.Load(rutaArchivoPrestadores);
+
+            var ultimoId = xDocument.Descendants("Prestador")
+                .Select(p => (int)p.Attribute("Id"))
+                .DefaultIfEmpty(0)
+                .Max();
+
+            return ultimoId + 1;
+        }
+
     }
 }

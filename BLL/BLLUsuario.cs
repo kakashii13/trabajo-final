@@ -18,7 +18,6 @@ namespace BLL
             mppUsuario = new MPPUsuario();
             bllPermiso = new BLLPermiso();
         }
-
         public void CrearUsuario(BEUsuario usuario)
         {
             try
@@ -64,6 +63,23 @@ namespace BLL
                 throw new Exception("Error al modificar usuario: " + ex.Message);
             }
         }
+        public void ActivarUsuario(BEUsuario usuario)
+        {
+            try
+            {
+                if (usuario.Activo)
+                {
+                    throw new Exception("El usuario ya está activado.");
+                }
+
+                usuario.Activar();
+                mppUsuario.ActualizarUsuario(usuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al activar usuario: " + ex.Message);
+            }
+        }
         public void DesactivarUsuario(BEUsuario usuario)
         {
             try
@@ -86,25 +102,6 @@ namespace BLL
                 throw new Exception("Error al borrar usuario: " + ex.Message);
             }
         }
-
-        public void ActivarUsuario(BEUsuario usuario)
-        {
-            try
-            {
-                if (usuario.Activo)
-                {
-                    throw new Exception("El usuario ya está activado.");
-                }
-
-                usuario.Activar();
-                mppUsuario.ActualizarUsuario(usuario);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al activar usuario: " + ex.Message);
-            }
-        }
-
         public void EliminarUsuario(BEUsuario usuario)
         {
             try {
@@ -124,6 +121,45 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al eliminar usuario: " + ex.Message); }
         }
+        public BEUsuario ObtenerUsuarioPorId(int id)
+        {
+            try
+            {
+                return mppUsuario.ObtenerPorId(id);
+            }
+            catch (Exception ex) { throw new Exception("Error al obtener usuario por ID: " + ex.Message); }
+        }
+        public BEUsuario ValidarLogin(BEUsuario usuarioLogin)
+        {
+            try
+            {
+                BEUsuario usuario = mppUsuario.ObtenerPorNombreUsuario(usuarioLogin.NombreUsuario);
+
+                if (usuario == null)
+                {
+                    throw new Exception("Usuario no encontrado.");
+                }
+
+                if (!usuario.Activo)
+                {
+                    throw new Exception("El usuario está desactivado.");
+                }
+
+                if(usuario.Eliminado)
+                {
+                    throw new Exception("El usuario ha sido eliminado.");
+                }
+
+                string passwordDesencriptada = ServicioSeguridad.Desencriptar(usuario.Password);
+
+                if (passwordDesencriptada != usuarioLogin.Password)
+                {
+                    throw new Exception("Contraseña incorrecta.");
+                }
+                return usuario;
+            }
+            catch (Exception ex) { throw new Exception("Error al validar login: " + ex.Message); }
+        }
         public List<BEUsuario> ListarUsuarios()
         {
             try
@@ -137,6 +173,39 @@ namespace BLL
                 return usuarios;
             }
             catch (Exception ex) { throw new Exception("Error al listar usuarios: " + ex.Message); }
+        }
+        public List<BEPermiso> ListarPermisosDeUsuario(BEUsuario usuario)
+        {
+            try
+            {
+                List<int> permisosIdUsuario = mppUsuario.ListarPermisosDeUsuario(usuario);
+
+                List<BEPermiso> permisos = bllPermiso.ObtenerPermisosPorIds(permisosIdUsuario);
+
+                List<BEPermiso> permisosUsuario = new List<BEPermiso>();
+
+                foreach (BEPermiso permiso in permisos)
+                {
+                    if(permiso is BERol)
+                    {
+                        BERol rol = (BERol)permiso;
+                        List<BEPermisoSimple> permisosDelRol = bllPermiso.ListarPermisosDeRol(rol);
+
+                        foreach (BEPermisoSimple permisoSimple in permisosDelRol)
+                        {
+                            rol.AgregarPermiso(permisoSimple);
+                        }
+
+                        permisosUsuario.Add(rol);
+                    }else
+                    {
+                        permisosUsuario.Add(permiso);
+                    }
+                }
+
+                return permisosUsuario;
+            }
+            catch (Exception ex) { throw new Exception("Error al listar permisos de usuario: " + ex.Message); }
         }
         public void AsignarRol(BEUsuario usuario, BERol rol)
         {
@@ -182,46 +251,6 @@ namespace BLL
             }
             catch(Exception ex) { throw new Exception("Error al quitar permiso: " + ex.Message); }
         }
-       
-        public BEUsuario ObtenerUsuarioPorId(int id)
-        {
-            try
-            {
-                return mppUsuario.ObtenerPorId(id);
-            }
-            catch (Exception ex) { throw new Exception("Error al obtener usuario por ID: " + ex.Message); }
-        }
-        public BEUsuario ValidarLogin(BEUsuario usuarioLogin)
-        {
-            try
-            {
-                BEUsuario usuario = mppUsuario.ObtenerPorNombreUsuario(usuarioLogin.NombreUsuario);
-
-                if (usuario == null)
-                {
-                    throw new Exception("Usuario no encontrado.");
-                }
-
-                if (!usuario.Activo)
-                {
-                    throw new Exception("El usuario está desactivado.");
-                }
-
-                if(usuario.Eliminado)
-                {
-                    throw new Exception("El usuario ha sido eliminado.");
-                }
-
-                string passwordDesencriptada = ServicioSeguridad.Desencriptar(usuario.Password);
-
-                if (passwordDesencriptada != usuarioLogin.Password)
-                {
-                    throw new Exception("Contraseña incorrecta.");
-                }
-                return usuario;
-            }
-            catch (Exception ex) { throw new Exception("Error al validar login: " + ex.Message); }
-        }
         public void CambiarPassword(BEUsuario usuario, string nuevaPassword)
         {
             try
@@ -232,7 +261,6 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al cambiar password: " + ex.Message); }
         }
-
         public void ResetearPassword(BEUsuario usuario)
         {
             try
@@ -250,38 +278,6 @@ namespace BLL
                 mppUsuario.ActualizarUsuario(usuario);
             }
             catch (Exception ex) { throw new Exception("Error al resetear password: " + ex.Message); }
-        }
-        public List<BEPermiso> ListarPermisosDeUsuario(BEUsuario usuario)
-        {
-            try
-            {
-                List<int> permisosIdUsuario = mppUsuario.ListarPermisosDeUsuario(usuario);
-
-                List<BEPermiso> permisos = new List<BEPermiso>();
-
-                foreach(int permisoId in permisosIdUsuario)
-                {
-                    BEPermiso permiso = bllPermiso.ObtenerPorId(permisoId);
-                    if(permiso is BERol)
-                    {
-                        BERol rol = (BERol)permiso;
-                        List<BEPermisoSimple> permisosDelRol = bllPermiso.ListarPermisosDeRol(rol);
-
-                        foreach (BEPermisoSimple permisoSimple in permisosDelRol)
-                        {
-                            rol.AgregarPermiso(permisoSimple);
-                        }
-
-                        permisos.Add(rol);
-                    }else
-                    {
-                        permisos.Add(permiso);
-                    }
-                }
-
-                return permisos;
-            }
-            catch (Exception ex) { throw new Exception("Error al listar permisos de usuario: " + ex.Message); }
         }
     }
 }

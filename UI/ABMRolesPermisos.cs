@@ -38,7 +38,6 @@ namespace UI
             ListarRoles();
             ListarUsuarios();
         }
-
         private void ListarRoles()
         {
             try
@@ -55,7 +54,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void ListarUsuarios()
         {
             try
@@ -73,7 +71,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void Resetear()
         {
             txtPermisoSimple.Text = "";
@@ -85,7 +82,6 @@ namespace UI
             btnEliminarRol.Enabled = false;
             btnModificarRol.Enabled = false;
         }
-
         private void ListarPermisos()
         {
             try
@@ -101,7 +97,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         #region permisos
         private void add_permiso_Click(object sender, EventArgs e)
         {
@@ -126,7 +121,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void del_permiso_Click(object sender, EventArgs e)
         {
             try {
@@ -155,7 +149,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void mod_permiso_Click(object sender, EventArgs e)
         {
             try
@@ -191,7 +184,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_clear_permiso_Click(object sender, EventArgs e)
         {
             btnCrearPermiso.Enabled = true;
@@ -199,7 +191,6 @@ namespace UI
             btnModificarPermiso.Enabled = false;
             txtPermisoSimple.Text = "";
         }
-
         private void tree_permisos_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try
@@ -231,7 +222,6 @@ namespace UI
         }
 
         #endregion
-
         #region roles
         private void add_role_Click(object sender, EventArgs e)
         {
@@ -256,7 +246,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void del_rol_Click(object sender, EventArgs e)
         {
             try
@@ -280,7 +269,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_mod_rol_Click(object sender, EventArgs e)
         {
             try
@@ -310,7 +298,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void list_roles_SelectedValueChanged(object sender, EventArgs e)
         {
             try
@@ -341,7 +328,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_clear_rol_Click(object sender, EventArgs e)
         {
             btnCrearRol.Enabled = true;
@@ -350,9 +336,7 @@ namespace UI
             txtRol.Text = "";
             listaRoles.ClearSelected();
         }
-
         #endregion
-
         #region asignacion permisos a roles
         private void attach_permiso_Click(object sender, EventArgs e)
         {
@@ -422,12 +406,10 @@ namespace UI
             }
         }
         #endregion
-
         private void btn_update_Click(object sender, EventArgs e)
         {
               CompletarListados();
         }
-
         #region usuarios
         private void list_usuarios_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -452,7 +434,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void CargarRolesPermisosUsuario()
         {
             try
@@ -490,9 +471,7 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         #endregion
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             try {
@@ -516,7 +495,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_asignar_rol_Click(object sender, EventArgs e)
         {
             try {
@@ -536,7 +514,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_remove_rol_Click(object sender, EventArgs e)
         {
             try
@@ -567,7 +544,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_quitar_permiso_user_Click(object sender, EventArgs e)
         {
             try {
@@ -587,7 +563,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_asignar_permiso_user_Click(object sender, EventArgs e)
         {
             try {
@@ -609,7 +584,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void tree_permisos_roles_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try{
@@ -622,7 +596,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void tree_user_permisos_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try
@@ -652,7 +625,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void CargarPermisosEnTreeView(TreeView treeView, IEnumerable<BEPermisoSimple> permisos, TreeNode nodoPadre = null)
         {
             treeView.Nodes.Clear();

@@ -51,7 +51,6 @@ namespace MPP
 
             xDocument.Save(rutaPlanes);
         }
-
         public void ModificarPlan(BEPlan plan)
         {
             xDocument = XDocument.Load(rutaPlanes);
@@ -78,7 +77,6 @@ namespace MPP
 
             return planes;
         }
-
         public BEPlan ObtenerPlanPorId(int id)
         {
             xDocument = XDocument.Load(rutaPlanes);
@@ -90,7 +88,6 @@ namespace MPP
 
             return plan;
         }
-
         public bool ExistePlanPorNombre(string nombre, int? idExcluir = null)
         {
             xDocument = XDocument.Load(rutaPlanes);
@@ -99,7 +96,6 @@ namespace MPP
                 .Where(p => idExcluir == null || (int)p.Attribute("Id") != idExcluir.Value)
                 .Any(p => p.Element("Nombre").Value.Trim().Equals(nombre.Trim(), StringComparison.OrdinalIgnoreCase));
         }
-
         public bool ExistePlanPorTope(int aporteTope, int? idExcluir = null)
         {
             xDocument = XDocument.Load(rutaPlanes);
@@ -108,19 +104,6 @@ namespace MPP
                 .Where(p => idExcluir == null || (int)p.Attribute("Id") != idExcluir.Value)
                 .Any(p => (int)p.Element("AporteTope") == aporteTope);
         }
-
-        public int ObtenerProximoId()
-        {
-            xDocument = XDocument.Load(rutaPlanes);
-
-            var ultimoId = xDocument.Descendants("Plan")
-                            .Select(p => (int)p.Attribute("Id"))
-                            .DefaultIfEmpty(0)
-                            .Max();
-
-            return ultimoId + 1;
-        }
-
         public List<int> ObtenerIdsPracticasDelPlan(int id)
         {
             xDocument = XDocument.Load(rutaPlanesPracticas);
@@ -133,7 +116,6 @@ namespace MPP
 
             return practicas;
         }
-
         public void AsignarPractica(BEPlan plan, BEPractica practica)
         {
             xDocument = XDocument.Load(rutaPlanesPracticas);
@@ -146,7 +128,6 @@ namespace MPP
 
             xDocument.Save(rutaPlanesPracticas);
         }
-
         public void QuitarPractica(BEPlan plan, BEPractica practica)
         {
             xDocument = XDocument.Load(rutaPlanesPracticas);
@@ -170,7 +151,6 @@ namespace MPP
             return xDocument.Descendants("PracticaPlan")
                 .Any(pp => (int)pp.Attribute("PlanId") == planId && (int)pp.Attribute("PracticaId") == practicaId);
         }
-
         private BEPlan MapearPlan(XElement element)
         {
             return new BEPlan(
@@ -179,5 +159,17 @@ namespace MPP
                    (int)element.Element("AporteTope")
                 );
         }
+        public int ObtenerProximoId()
+        {
+            xDocument = XDocument.Load(rutaPlanes);
+
+            var ultimoId = xDocument.Descendants("Plan")
+                            .Select(p => (int)p.Attribute("Id"))
+                            .DefaultIfEmpty(0)
+                            .Max();
+
+            return ultimoId + 1;
+        }
+
     }
 }

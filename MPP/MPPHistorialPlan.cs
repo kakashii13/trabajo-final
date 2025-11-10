@@ -26,7 +26,6 @@ namespace MPP
                 xDocument.Save(rutaArchivo);
             }
         }
-
         public void CrearHistorialPlan(BEHistorialPlan historialPlan)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -42,7 +41,6 @@ namespace MPP
             );
             xDocument.Save(rutaArchivo);
         }
-
         public List<BEHistorialPlan> ObtenerPorAfiliado(BEAfiliado afiliado)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -54,7 +52,6 @@ namespace MPP
 
             return historialPlanes;
         }
-
         public void ModificarHistorialPlan(BEHistorialPlan historialPlan)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -74,7 +71,16 @@ namespace MPP
 
             xDocument.Save(rutaArchivo);
         }
-
+        private BEHistorialPlan MapearHistorialPlan(XElement elemento)
+        {
+            return new BEHistorialPlan(
+                (int)elemento.Attribute("Id"),
+                (int)elemento.Element("AfiliadoId"),
+                (int)elemento.Element("PlanId"),
+                (bool)elemento.Element("Activo"),
+                (DateTime)elemento.Element("FechaDesde")
+            );
+        }
         public int ObtenerProximoId()
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -87,15 +93,5 @@ namespace MPP
             return maxId + 1;
         }
 
-        private BEHistorialPlan MapearHistorialPlan(XElement elemento)
-        {
-            return new BEHistorialPlan(
-                (int)elemento.Attribute("Id"),
-                (int)elemento.Element("AfiliadoId"),
-                (int)elemento.Element("PlanId"),
-                (bool)elemento.Element("Activo"),
-                (DateTime)elemento.Element("FechaDesde")
-            );
-        }
     }
 }

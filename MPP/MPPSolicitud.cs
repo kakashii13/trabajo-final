@@ -44,7 +44,6 @@ namespace MPP
 
             xDocument.Save(rutaSolicitudes);
         }
-
         public void ModificarSolicitud(BESolicitud solicitud)
         {
             
@@ -63,7 +62,6 @@ namespace MPP
 
             xDocument.Save(rutaSolicitudes);
         }
-
         public List<BESolicitud> ListarSolicitudes()
         {
             xDocument = XDocument.Load(rutaSolicitudes);
@@ -74,7 +72,6 @@ namespace MPP
             
             return solicitudes;
         }
-
         public int ObtenerProximoId()
         {
             xDocument = XDocument.Load(rutaSolicitudes);
@@ -86,7 +83,6 @@ namespace MPP
             
             return ultimoId + 1;
         }
-
         private BESolicitud MapearSolicitud(XElement elemento)
         {
             return new BESolicitud

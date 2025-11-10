@@ -71,6 +71,7 @@ namespace BLL
                 foreach(BERol rol in roles)
                 {
                     List<BEPermisoSimple> permisos = ListarPermisosDeRol(rol);
+
                     foreach (var permiso in permisos)
                     {
                         rol.AgregarPermiso(permiso);
@@ -81,7 +82,6 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al listar roles: " + ex.Message); }
         }
-
         public BEPermiso ObtenerPorId(int id)
         {
             try
@@ -90,8 +90,6 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al obtener permiso por ID: " + ex.Message); }
         }
-
-        #region roles y permisos
         public void AsignarPermiso(BERol rol, BEPermisoSimple permiso)
         {
             try
@@ -125,23 +123,20 @@ namespace BLL
         {
             try
             {
-                List<int> idsPermisos = mppPermiso.ObtenerPermisosIdsDeRol(rol.Id);
-                List<BEPermisoSimple> permisos = new List<BEPermisoSimple>();
-
-                foreach (int id in idsPermisos)
-                {
-                    BEPermiso permiso = mppPermiso.ObtenerPorId(id);
-                    if (permiso is BEPermisoSimple)
-                    {
-                        permisos.Add((BEPermisoSimple)permiso);
-                    }
-                }
-
-                return permisos;
+                return mppPermiso.ObtenerPermisosDeRol(rol.Id);
             }
             catch (Exception ex) { throw new Exception("Error al listar permisos del rol: " + ex.Message); }
         }
-
-        #endregion
+        public List<BEPermiso> ObtenerPermisosPorIds(List<int> ids)
+        {
+            try
+            {
+                return mppPermiso.ObtenerPermisosPorIds(ids);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener permisos: " + ex.Message);
+            }
+        }
     }
 }

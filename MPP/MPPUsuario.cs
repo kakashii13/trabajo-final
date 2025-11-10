@@ -37,7 +37,6 @@ namespace MPP
                 xDocument.Save(rutaUsuariosPermisos);
             }
         }
-
         public void CrearUsuario(BEUsuario usuario)
         {
             xDocument = XDocument.Load(rutaUsuarios);
@@ -74,7 +73,6 @@ namespace MPP
             
             xDocument.Save(rutaUsuarios);
         }
-
         public void EliminarUsuario(BEUsuario usuario)
         {
             xDocument = XDocument.Load(rutaUsuarios);
@@ -123,17 +121,6 @@ namespace MPP
                 .ToList();
             
             return usuarios;
-        }
-        public int ObtenerProximoId()
-        {
-            xDocument = XDocument.Load(rutaUsuarios);
-            
-            var ultimoId = xDocument.Descendants("Usuario")
-                .Select(u => (int)u.Attribute("Id"))
-                .DefaultIfEmpty(0)
-                .Max();
-
-            return ultimoId + 1;
         }
         public void AsignarRol(BEUsuario usuario, BERol rol)
         {
@@ -193,15 +180,6 @@ namespace MPP
 
             xDocument.Save(rutaUsuariosPermisos);
         }
-        public bool ExistePermisoAsignado(BEUsuario usuario, BEPermiso permiso)
-        {
-            xDocument = XDocument.Load(rutaUsuariosPermisos);
-
-            var existe = xDocument.Descendants("UsuarioPermiso")
-                .Any(r => (int)r.Element("UsuarioId") == usuario.Id &&
-                          (int)r.Element("PermisoId") == permiso.Id);
-            return existe;
-        }
         public List<int> ListarPermisosDeUsuario(BEUsuario usuario)
         {
             xDocument = XDocument.Load(rutaUsuariosPermisos);
@@ -213,7 +191,6 @@ namespace MPP
 
             return permisosIds;
         }
-
         private BEUsuario MapearUsuario(XElement element)
         {
             return new BEUsuario(
@@ -225,6 +202,17 @@ namespace MPP
                 bool.Parse(element.Element("Activo").Value),
                 bool.Parse(element.Element("Eliminado").Value)
             );
+        }
+        public int ObtenerProximoId()
+        {
+            xDocument = XDocument.Load(rutaUsuarios);
+
+            var ultimoId = xDocument.Descendants("Usuario")
+                .Select(u => (int)u.Attribute("Id"))
+                .DefaultIfEmpty(0)
+                .Max();
+
+            return ultimoId + 1;
         }
     }
 }

@@ -33,7 +33,6 @@ namespace MPP
                 xDocument.Save(rutaRolesPermisos);
             }
         }
-
         public void CrearPermiso(BEPermiso permiso, bool esRol)
         {
             xDocument = XDocument.Load(rutaPermisos);
@@ -96,7 +95,6 @@ namespace MPP
 
             return permisos;
         }
-
         public List<BERol> ListarRoles()
         {
             xDocument = XDocument.Load(rutaPermisos);
@@ -108,7 +106,6 @@ namespace MPP
 
             return roles;
         }
-
         public bool PermisoEnUso(BEPermiso permiso)
         {
             xDocument = XDocument.Load(rutaRolesPermisos);
@@ -127,18 +124,6 @@ namespace MPP
 
             return existe;
         }
-        public int ObtenerProximoId()
-        {
-            xDocument = XDocument.Load(rutaPermisos);
-
-            var ultimoId = xDocument.Descendants("Permiso")
-                .Select(p => (int)p.Attribute("Id"))
-                .DefaultIfEmpty(0)
-                .Max();
-
-            return ultimoId + 1;
-        }
-
         public BEPermiso ObtenerPorId(int id)
         {
             xDocument = XDocument.Load(rutaPermisos);
@@ -157,8 +142,6 @@ namespace MPP
                 return MapearPermisoSimple(elem);
             }
         }
-
-        #region roles y permisos
         public void AsignarPermiso(BERol rol, BEPermisoSimple permiso)
         {
             xDocument = XDocument.Load(rutaRolesPermisos);
@@ -186,20 +169,45 @@ namespace MPP
 
             xDocument.Save(rutaRolesPermisos);
         }
-        public List<int> ObtenerPermisosIdsDeRol(int rolId)
+        public List<BEPermisoSimple> ObtenerPermisosDeRol(int rolId)
         {
-            xDocument = XDocument.Load(rutaRolesPermisos);
+            XDocument docRolesPermisos = XDocument.Load(rutaRolesPermisos);
+            XDocument docPermisos = XDocument.Load(rutaPermisos);
 
-            List<int> permisoIds = xDocument.Descendants("RolPermiso")
-                .Where(rp => (int)rp.Attribute("RolId") == rolId)
-                .Select(rp => (int)rp.Attribute("PermisoId"))
+            var idsPermisos = docRolesPermisos.Descendants("RolPermiso")
+                .Where(rp => int.Parse(rp.Attribute("RolId").Value) == rolId)
+                .Select(rp => int.Parse(rp.Attribute("PermisoId").Value))
                 .ToList();
 
-            return permisoIds;
+            return docPermisos.Descendants("Permiso")
+                .Where(p => idsPermisos.Contains(int.Parse(p.Attribute("Id").Value)))
+                .Where(p => p.Element("EsRol")?.Value == "false")
+                .Select(p => MapearPermisoSimple(p))
+                .ToList();
         }
+        public List<BEPermiso> ObtenerPermisosPorIds(List<int> ids)
+        {
+            XDocument doc = XDocument.Load(rutaPermisos);
 
-        #endregion
+            List<BEPermiso> permisos = new List<BEPermiso>();
 
+            foreach (var elemento in doc.Descendants("Permiso")
+                .Where(p => ids.Contains(int.Parse(p.Attribute("Id").Value))))
+            {
+                bool esRol = bool.Parse(elemento.Element("EsRol").Value);
+
+                if (esRol)
+                {
+                    permisos.Add(MapearRol(elemento));
+                }
+                else
+                {
+                    permisos.Add(MapearPermisoSimple(elemento));
+                }
+            }
+
+            return permisos;
+        }
         private BEPermisoSimple MapearPermisoSimple(XElement elemento)
         {
             return new BEPermisoSimple(elemento.Element("Nombre").Value)
@@ -207,13 +215,23 @@ namespace MPP
                 Id = (int)elemento.Attribute("Id")
             };
         }
-
         private BERol MapearRol(XElement elemento)
         {
             return new BERol(elemento.Element("Nombre").Value)
             {
                 Id = (int)elemento.Attribute("Id")
             };
+        }
+        public int ObtenerProximoId()
+        {
+            xDocument = XDocument.Load(rutaPermisos);
+
+            var ultimoId = xDocument.Descendants("Permiso")
+                .Select(p => (int)p.Attribute("Id"))
+                .DefaultIfEmpty(0)
+                .Max();
+
+            return ultimoId + 1;
         }
 
     }

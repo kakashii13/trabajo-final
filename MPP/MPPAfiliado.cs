@@ -89,6 +89,16 @@ namespace MPP
 
             return afiliado;
         }
+        private BEAfiliado MapearAfiliado(XElement elemento)
+        {
+            return new BEAfiliado(
+                 (int)elemento.Element("Id"),
+                 elemento.Element("NombreApellido").Value,
+                 elemento.Element("Cuil").Value,
+                 bool.Parse(elemento.Element("Activo").Value),
+                 elemento.Element("Telefono").Value
+             );
+        }
         public int ObtenerProximoId()
         {
             string rutaArchivo = Path.Combine(ServicioDirectorio.RutaDB, "afiliados.xml");
@@ -100,15 +110,6 @@ namespace MPP
 
             return ultimoId + 1;
         }
-        private BEAfiliado MapearAfiliado(XElement elemento)
-        {
-            return new BEAfiliado(
-                 (int)elemento.Element("Id"),
-                 elemento.Element("NombreApellido").Value,
-                 elemento.Element("Cuil").Value,
-                 bool.Parse(elemento.Element("Activo").Value),
-                 elemento.Element("Telefono").Value
-             );
-        }
+
     }
 }

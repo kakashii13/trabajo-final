@@ -44,7 +44,6 @@ namespace MPP
 
             xDocument.Save(rutaPracticas);
         }
-
         public void ModificarPractica(BEPractica practica)
         {
             xDocument = XDocument.Load(rutaPracticas);
@@ -63,7 +62,6 @@ namespace MPP
 
             xDocument.Save(rutaPracticas);
         }
-
         public List<BEPractica> ListarPracticas()
         {
             xDocument = XDocument.Load(rutaPracticas);
@@ -74,7 +72,6 @@ namespace MPP
 
             return practicas;
         }
-
         public BEPractica ObtenerPracticaPorId(int id)
         {
             xDocument = XDocument.Load(rutaPracticas);
@@ -86,19 +83,6 @@ namespace MPP
             
             return practica;
         }
-
-        public int ObtenerProximoId()
-        {
-            xDocument = XDocument.Load(rutaPracticas);
-            
-            var ultimoId = xDocument.Descendants("Practica")
-                .Select(p => (int)p.Attribute("Id"))
-                .DefaultIfEmpty(0)
-                .Max();
-            
-            return ultimoId + 1;
-        }
-
         public bool ExistePractica(int codigo, int? id)
         {
             xDocument = XDocument.Load(rutaPracticas);
@@ -109,7 +93,6 @@ namespace MPP
 
             return practica != null;
         }
-
         private BEPractica MapearPractica(XElement practicaElem)
         {
             return new BEPractica
@@ -120,5 +103,17 @@ namespace MPP
                 decimal.Parse(practicaElem.Element("Precio").Value, CultureInfo.InvariantCulture)
             );
         }
+        public int ObtenerProximoId()
+        {
+            xDocument = XDocument.Load(rutaPracticas);
+
+            var ultimoId = xDocument.Descendants("Practica")
+                .Select(p => (int)p.Attribute("Id"))
+                .DefaultIfEmpty(0)
+                .Max();
+
+            return ultimoId + 1;
+        }
+
     }
 }

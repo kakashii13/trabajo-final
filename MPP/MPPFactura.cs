@@ -29,7 +29,6 @@ namespace MPP
                 xDocument.Save(rutaArchivo);
             }
         }
-
         public void CrearFactura(BEFactura factura)
         {
             
@@ -52,7 +51,6 @@ namespace MPP
 
             xDocument.Save(rutaArchivo);
         }
-
         public void ActualizarFactura(BEFactura factura)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -71,7 +69,6 @@ namespace MPP
 
             xDocument.Save(rutaArchivo);
         }
-
         public List<BEFactura> ListarFacturas()
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -81,19 +78,6 @@ namespace MPP
 
              return facturas;
         }
-
-        public int ObtenerProximoId()
-        {
-            xDocument = XDocument.Load(rutaArchivo);
-            
-            var ultimoId = xDocument.Descendants("Factura")
-                .Select(x => (int)x.Attribute("Id"))
-                .DefaultIfEmpty(0)
-                .Max();
-            
-            return ultimoId + 1;
-        }
-
         public bool ExisteFactura(int numeroFactura, int prestadorId)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -102,7 +86,6 @@ namespace MPP
                 .Any(f => (int)f.Element("Numero") == numeroFactura &&
                             (int)f.Element("PrestadorId") == prestadorId);
         }   
-
         public BEFactura ObtenerFacturaPorId(int facturaId)
         {
              xDocument = XDocument.Load(rutaArchivo);
@@ -114,7 +97,6 @@ namespace MPP
 
             return facturaElement;
         }
-
         private BEFactura MapearFactura(XElement element)
         {
             return new BEFactura(
@@ -131,5 +113,17 @@ namespace MPP
                     bool.Parse(element.Element("ImporteValidado").Value)
                 );
         }
+        public int ObtenerProximoId()
+        {
+            xDocument = XDocument.Load(rutaArchivo);
+
+            var ultimoId = xDocument.Descendants("Factura")
+                .Select(x => (int)x.Attribute("Id"))
+                .DefaultIfEmpty(0)
+                .Max();
+
+            return ultimoId + 1;
+        }
+
     }
 }

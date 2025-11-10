@@ -28,7 +28,6 @@ namespace MPP
                 xDocument.Save(rutaArchivo);
             }
         }
-
         public void CrearAporte(BEAporte aporte)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -44,19 +43,6 @@ namespace MPP
                 );
             xDocument.Save(rutaArchivo);
         }
-
-        public int ObtenerProximoId()
-        {
-            xDocument = XDocument.Load(rutaArchivo);
-
-            var ultimoId = xDocument.Descendants("Aporte")
-                .Select(a => (int)a.Element("Id"))
-                .DefaultIfEmpty(0)
-                .Max();
-
-            return ultimoId + 1;
-        }
-
         public List<BEAporte> ObtenerAportesPorAfiliado(BEAfiliado afiliado)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -68,7 +54,6 @@ namespace MPP
 
             return aportes;
         }
-
         public BEAporte ObtenerUltimoAportePorAfiliado(BEAfiliado afiliado)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -81,7 +66,6 @@ namespace MPP
 
             return ultimoAporte;
         }
-
         public List<BEAporte> ListarAportes()
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -90,7 +74,6 @@ namespace MPP
 
             return aportes;
         }
-
         private BEAporte MapearAporte(XElement elemento)
         {
           return new BEAporte(
@@ -101,5 +84,17 @@ namespace MPP
                 (int)elemento.Element("AfiliadoId")
            );
         }
+        public int ObtenerProximoId()
+        {
+            xDocument = XDocument.Load(rutaArchivo);
+
+            var ultimoId = xDocument.Descendants("Aporte")
+                .Select(a => (int)a.Element("Id"))
+                .DefaultIfEmpty(0)
+                .Max();
+
+            return ultimoId + 1;
+        }
+
     }
 }

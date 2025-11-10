@@ -27,7 +27,6 @@ namespace MPP
                 xDocument.Save(rutaArchivo);
             }
         }
-
         public void RegistrarPago(BEPago pago)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -44,18 +43,6 @@ namespace MPP
 
             xDocument.Save(rutaArchivo);
         }
-
-        public List<BEPago> ListarPagos()
-        {
-            xDocument = XDocument.Load(rutaArchivo);
-            
-            List<BEPago> listaPagos = xDocument.Descendants("Pago")
-                .Select(element => MapearPago(element))
-                .ToList();
-
-            return listaPagos;
-        }
-
         public BEPago ObtenerPagoPorFacturaId(int facturaId)
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -67,7 +54,29 @@ namespace MPP
 
             return pagoElement;
         }
+        public int ObtenerProximoNumeroRecibo()
+        {
+            xDocument = XDocument.Load(rutaArchivo);
+            
+            var ultimoNumeroRecibo = xDocument.Descendants("Pago")
+                .Select(xDocument => (int)xDocument
+                .Element("NumeroRecibo"))
+                .DefaultIfEmpty(0)
+                .Max();
 
+            return ultimoNumeroRecibo + 1;
+        }
+        private BEPago MapearPago(XElement element) { 
+            return new BEPago
+                (
+                    (int)element.Attribute("Id"),
+                    DateTime.Parse(element.Element("FechaPago").Value),
+                    (decimal)element.Element("Importe"),
+                    (int)element.Element("NumeroRecibo"),
+                    (int)element.Element("FacturaId"),
+                    element.Element("FormaPago").Value
+                );
+        }
         public int ObtenerProximoId()
         {
             xDocument = XDocument.Load(rutaArchivo);
@@ -81,29 +90,5 @@ namespace MPP
             return ultimoId + 1;
         }
 
-        public int ObtenerProximoNumeroRecibo()
-        {
-            xDocument = XDocument.Load(rutaArchivo);
-            
-            var ultimoNumeroRecibo = xDocument.Descendants("Pago")
-                .Select(xDocument => (int)xDocument
-                .Element("NumeroRecibo"))
-                .DefaultIfEmpty(0)
-                .Max();
-
-            return ultimoNumeroRecibo + 1;
-        }
-
-        private BEPago MapearPago(XElement element) { 
-            return new BEPago
-                (
-                    (int)element.Attribute("Id"),
-                    DateTime.Parse(element.Element("FechaPago").Value),
-                    (decimal)element.Element("Importe"),
-                    (int)element.Element("NumeroRecibo"),
-                    (int)element.Element("FacturaId"),
-                    element.Element("FormaPago").Value
-                );
-        }
     }
 }
