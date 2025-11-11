@@ -51,7 +51,6 @@ namespace BLL
                 throw new Exception("Error al realizar el backup." + ex.Message);
             }
         }
-
         public bool RestaurarBackup(BEUsuario usuario, string nombreBackup)
         {
             try
@@ -85,7 +84,6 @@ namespace BLL
                 throw new Exception("Error al restaurar el backup." + ex.Message);
             }
         }
-
         public List<DirectoryInfo> ListarBackupsDisponibles()
         {
             try

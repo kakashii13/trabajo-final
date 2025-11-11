@@ -48,7 +48,6 @@ namespace BLL
                 throw new Exception("Error al listar las bitácoras: " + ex.Message);
             }
         }
-
         public List<BEBitacora> ListarBackups()
         {
             try

@@ -18,7 +18,6 @@ namespace BLL
             mppPrestador = new MPPPrestador();
             bllPractica = new BLLPractica();
         }
-
         public void CrearPrestador(BEPrestador prestador)
         {
             try
@@ -35,7 +34,6 @@ namespace BLL
                 throw new Exception("Error al crear el prestador." + ex.Message);
             }
         }
-
         public List<BEPrestador> ListarPrestadores()
         {
             try
@@ -45,7 +43,6 @@ namespace BLL
             catch (Exception ex) { throw new Exception("Error al listar los prestadores." + ex.Message);
             }
         }
-
         public List<BEPrestador> ListarPrestadoresCompletos()
         {
             try
@@ -82,7 +79,6 @@ namespace BLL
                 throw new Exception("Error al listar los prestadores completos." + ex.Message);
             }
         }
-
         public List<int> ListarPracticasIdsDelPrestador(BEPrestador prestador)
         {
             try
@@ -92,7 +88,6 @@ namespace BLL
             catch (Exception ex) { throw new Exception("Error al listar las prácticas del prestador." + ex.Message);
             }
         }
-
         public List<BEPrestador> ListarPrestadoresSegunPractica(BEPractica practica)
         {
             try
@@ -140,7 +135,6 @@ namespace BLL
             catch (Exception ex) { throw new Exception("Error al quitar la práctica del prestador: " + ex.Message);
             }
         }
-
         public BEPrestador ObtenerPrestadorPorId(int id)
         {
             try

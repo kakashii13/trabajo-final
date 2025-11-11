@@ -59,7 +59,6 @@ namespace UI
                 MessageBox.Show("Error al cargar el dashboard: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void ActualizarPracticasChart(List<BESolicitud> solicitudes)
         {
             var practicasMasSolicitadas = solicitudes
@@ -78,7 +77,6 @@ namespace UI
                 series.Points.AddXY(practica.Practica, practica.Cantidad);
             }
         }
-
         private void ActualizarLabels(List<BESolicitud> solicitudes, List<BEFactura> facturas, List<BEAutorizacion> autorizaciones)
         {
             lbl_solicitudes_pendientes.Text = solicitudes.Where(s => s.Estado == "Pendiente").Count().ToString();
@@ -122,16 +120,16 @@ namespace UI
 
             lblAutorizaciones.Text = autorizaciones.Count.ToString();
         }
-
         private void btn_mes_Click(object sender, EventArgs e)
         {
             try {
                 var solicitudesFiltradas = solicitudes
                     .Where(s => s.FechaSolicitud.Month == DateTime.Now.Month && s.FechaSolicitud.Year == DateTime.Now.Year)
                     .ToList();
-                
+
                 var facturasFiltradas = facturas
-                    .Where(f => f.FechaRecibida.Month == DateTime.Now.Month && f.FechaRecibida.Year == DateTime.Now.Year)
+                    .Where(f => ObtenerFechaFactura(f).Month == DateTime.Now.Month
+                            && ObtenerFechaFactura(f).Year == DateTime.Now.Year)
                     .ToList();
 
                 var autorizacionesFiltradas = autorizaciones
@@ -147,7 +145,6 @@ namespace UI
                 MessageBox.Show("Error al filtrar por mes: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_ultimos_dias_Click(object sender, EventArgs e)
         {
             try { 
@@ -157,7 +154,7 @@ namespace UI
                     .ToList();
                 
                 var facturasFiltradas = facturas.
-                    Where(f => (DateTime.Now - f.FechaRecibida).TotalDays <= 7)
+                    Where(f => (DateTime.Now - ObtenerFechaFactura(f)).TotalDays <= 7)
                     .ToList();
 
                 var autorizacionesFiltradas = autorizaciones
@@ -172,7 +169,6 @@ namespace UI
                 MessageBox.Show("Error al filtrar por últimos días: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_hoy_Click(object sender, EventArgs e)
         {
             try 
@@ -182,7 +178,7 @@ namespace UI
                     .ToList();
                 
                 var facturasFiltradas = facturas
-                    .Where(f => f.FechaRecibida.Date == DateTime.Now.Date)
+                    .Where(f => ObtenerFechaFactura(f).Date == DateTime.Now.Date)
                     .ToList();
                 
                 var autorizacionesFiltradas = autorizaciones
@@ -197,7 +193,6 @@ namespace UI
                 MessageBox.Show("Error al filtrar por hoy: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_ultimos_treinta_Click(object sender, EventArgs e)
         {
             try
@@ -207,7 +202,7 @@ namespace UI
                     .ToList();
                 
                 var facturasFiltradas = facturas
-                    .Where(f => (DateTime.Now - f.FechaRecibida).TotalDays <= 30)
+                    .Where(f => (DateTime.Now - ObtenerFechaFactura(f)).TotalDays <= 30)
                     .ToList();
                 
                 var autorizacionesFiltradas = autorizaciones
@@ -222,7 +217,6 @@ namespace UI
                 MessageBox.Show("Error al filtrar por últimos treinta días: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void ConfigurarChartAfiliados(int activos, int inactivos)
         {
             chartAfiliados.Series.Clear();
@@ -240,7 +234,6 @@ namespace UI
             puntoInactivos.LegendText = "Inactivos";
             puntoInactivos.Color = Color.Brown;
         }
-
         private void btn_buscar_Click(object sender, EventArgs e)
         {
             try { 
@@ -252,7 +245,7 @@ namespace UI
                     .ToList();
                 
                 var facturasFiltradas = facturas
-                    .Where(f => f.FechaRecibida.Date >= fechaDesde && f.FechaRecibida.Date <= fechaHasta)
+                    .Where(f => ObtenerFechaFactura(f).Date >= fechaDesde && ObtenerFechaFactura(f).Date <= fechaHasta)
                     .ToList();
                
                 var autorizacionesFiltradas = autorizaciones
@@ -266,6 +259,15 @@ namespace UI
             {
                 MessageBox.Show("Error al buscar por fecha: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private DateTime ObtenerFechaFactura(BEFactura factura)
+        {
+            if (factura.Estado == "Pagada" && factura.Pago != null)
+            {
+                return factura.Pago.FechaPago;
+            }
+           
+            return factura.FechaRecibida;
         }
     }
 }

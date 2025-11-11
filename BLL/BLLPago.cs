@@ -45,7 +45,6 @@ namespace BLL
                 throw new Exception("Error al registrar el pago." + ex.Message);
             }
         }
-
         public BEPago ObtenerPagoPorFacturaId(int facturaId)
         {
             try

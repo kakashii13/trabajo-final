@@ -35,7 +35,6 @@ namespace BLL
                 throw new Exception("Error al crear el aporte: " + ex.Message);
             }
         }
-
         public List<BEAporte> ObtenerAportesPorAfiliado(BEAfiliado afiliado)
         {
             try
@@ -47,7 +46,6 @@ namespace BLL
                 throw new Exception("Error al obtener los aportes del afiliado: " + ex.Message);
             }
         }
-
         public BEAporte ObtenerUltimoAportePorAfiliado(BEAfiliado afiliado)
         {
             try
@@ -59,7 +57,6 @@ namespace BLL
                 throw new Exception("Error al obtener el último aporte del afiliado: " + ex.Message);
             }
         }
-
         public List<BEAporte> ListarAportes()
         {
             try
@@ -71,7 +68,6 @@ namespace BLL
                 throw new Exception("Error al listar los aportes: " + ex.Message);
             }
         }
-
         private bool ExisteAporteEnPeriodo(int afiliadoId, DateTime periodo)
         {
             var aportesAfiliado = mppAporte.ObtenerAportesPorAfiliado(new BEAfiliado { Id = afiliadoId });

@@ -33,7 +33,6 @@ namespace BLL
                 throw new Exception("Error al crear la práctica: " + ex.Message);
             }
         }
-
         public void ModificarPractica(BEPractica practica)
         {
             try
@@ -50,7 +49,6 @@ namespace BLL
                 throw new Exception("Error al modificar la práctica: " + ex.Message);
             }
         }
-
         public List<BEPractica> ListarPracticas()
         {
             try
@@ -59,7 +57,6 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al listar las prácticas: " + ex.Message); }
         }
-
         public BEPractica ObtenerPracticaPorId(int id)
         {
             try

@@ -41,7 +41,6 @@ namespace BLL
                 throw new Exception("Error al crear el plan: " + ex.Message);
             }
         }
-
         public void ModificarPlan(BEPlan plan)
         {
             try
@@ -63,7 +62,6 @@ namespace BLL
                 throw new Exception("Error al modificar el plan: " + ex.Message);
             }
         }
-
         public List<BEPlan> ListarPlanes()
         {
             try
@@ -74,7 +72,6 @@ namespace BLL
                 throw new Exception("Error al listar los planes: " + ex.Message);
             }
         }
-
         public List<BEPlan> ListarPlanesCompletos()
         {
             try
@@ -96,7 +93,6 @@ namespace BLL
                 throw new Exception("Error al listar los planes completos: " + ex.Message);
             }
         }
-
         public BEPlan ObtenerPlanPorId(int id)
         {
             try
@@ -108,8 +104,6 @@ namespace BLL
                 throw new Exception("Error al obtener el plan: " + ex.Message);
             }
         }
-
-
         public BEPlan ObtenerPlanCompleto(int id)
         {
             try
@@ -141,7 +135,6 @@ namespace BLL
                 throw new Exception("Error al obtener el plan completo: " + ex.Message);
             }
         }
-
         public List<BEPractica> ListarPracticasDelPlan(BEPlan plan)
         {
             try
@@ -165,8 +158,22 @@ namespace BLL
                 throw new Exception("Error al listar las prácticas del plan: " + ex.Message);
             }
         }
+        public List<BEPractica> ListarPracticasDisponibles(BEPlan plan)
+        {
+            try
+            {
+                List<BEPractica> todasLasPracticas = bllPractica.ListarPracticas();
+                List<BEPractica> practicasDelPlan = ListarPracticasDelPlan(plan);
 
-
+                return todasLasPracticas
+                    .Where(p => !practicasDelPlan.Any(pp => pp.Id == p.Id))
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar prácticas disponibles: " + ex.Message);
+            }
+        }
         public void AsignarPractica(BEPlan plan, BEPractica practica)
         {
             try
@@ -184,7 +191,6 @@ namespace BLL
                 throw new Exception("Error al asignar la práctica al plan: " + ex.Message);
             }
         }
-
         public void QuitarPractica(BEPlan plan, BEPractica practica)
         {
             try
@@ -200,23 +206,6 @@ namespace BLL
             catch (Exception ex)
             {
                 throw new Exception("Error al quitar la práctica del plan: " + ex.Message);
-            }
-        }
-
-        public List<BEPractica> ListarPracticasDisponibles(BEPlan plan)
-        {
-            try
-            {
-                List<BEPractica> todasLasPracticas = bllPractica.ListarPracticas();
-                List<BEPractica> practicasDelPlan = ListarPracticasDelPlan(plan);
-
-                return todasLasPracticas
-                    .Where(p => !practicasDelPlan.Any(pp => pp.Id == p.Id))
-                    .ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al listar prácticas disponibles: " + ex.Message);
             }
         }
     }

@@ -22,7 +22,6 @@ namespace BLL
             bllPractica = new BLLPractica();
             bllAutorizacion = new BLLAutorizacion();
         }
-
         public void CrearSolicitud(BESolicitud solicitud)
         {
             try
@@ -37,7 +36,6 @@ namespace BLL
                 throw new Exception("Error al crear la solicitud." + ex.Message);
             }
         }
-
         public List<BESolicitud> ListarSolicitudes()
         {
             try
@@ -58,7 +56,6 @@ namespace BLL
             }
 
         }
-
         public void ModificarSolicitud(BESolicitud solicitud)
         {
             try
@@ -67,7 +64,6 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al modificar la solicitud." + ex.Message); }
         }
-
         public void RechazarSolicitud(BESolicitud solicitud, string motivoRechazo)
         {
             try
@@ -88,7 +84,6 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al rechazar la solicitud." + ex.Message); }
         }
-
         public BEAutorizacion AutorizarSolicitud(BESolicitud solicitud, BEPrestador prestador)
         {
             try

@@ -27,7 +27,6 @@ namespace BLL
                 throw new Exception("Error al obtener el historial de planes del afiliado: " + ex.Message);
             }
         }
-
         public void CrearHistorialPlan(BEHistorialPlan historialPlan)
         {
             try { mppHistorialPlan.CrearHistorialPlan(historialPlan); }

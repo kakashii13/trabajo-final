@@ -23,7 +23,6 @@ namespace BLL
             bllAutorizacion = new BLLAutorizacion();
             bllPractica = new BLLPractica();
         }
-
         public void CrearFactura(BEFactura factura)
         {
             try
@@ -45,7 +44,6 @@ namespace BLL
                 throw new Exception("Error al crear la factura: " + ex.Message);
             }
         }
-
         public List<BEFactura> ListarFacturas()
         {
             try
@@ -65,7 +63,6 @@ namespace BLL
                 throw new Exception("Error al listar las facturas: " + ex.Message);
             }
         }
-
         public void ValidarAutorizacion(BEFactura factura)
         {
             try
@@ -100,7 +97,6 @@ namespace BLL
                 throw new Exception("Error al validar la autorización: " + ex.Message);
             }
         }
-
         public BEFactura ObtenerFacturaPorId(int facturaId)
         {
             try
@@ -112,7 +108,6 @@ namespace BLL
                 throw new Exception("Error al obtener la factura por ID: " + ex.Message);
             }
         }
-
         private void MarcarComoFacturada(BEAutorizacion autorizacion) {
             try
             {
@@ -129,7 +124,6 @@ namespace BLL
                 throw new Exception("Error al marcar autorización como facturada: " + ex.Message);
             }
         }
-
         public void ValidarImporte(BEFactura factura)
         {
             try
@@ -155,7 +149,6 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al validar el importe: " + ex.Message); }
         }
-
         public void RechazarFactura(BEFactura factura)
         {
             try
@@ -172,7 +165,6 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al rechazar la factura: " + ex.Message); }
         }
-
         public void AceptarFactura(BEFactura factura)
         {
             try
@@ -190,7 +182,6 @@ namespace BLL
             }
             catch (Exception ex) { throw new Exception("Error al aceptar la factura: " + ex.Message); }
         }
-
         public void ActualizarFactura(BEFactura factura)
         {
             try

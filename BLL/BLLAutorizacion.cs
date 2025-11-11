@@ -28,9 +28,7 @@ namespace BLL
             try
             { 
                 autorizacion.Id = mppAutorizacion.ObtenerProximoId();
-
                 autorizacion.NumeroAutorizacion = mppAutorizacion.ObtenerProximoNumeroAutorizacion();
-
                 autorizacion.Facturada = false;
 
                 mppAutorizacion.CrearAutorizacion(autorizacion);
@@ -42,7 +40,6 @@ namespace BLL
                 throw new Exception("Error al crear la autorizacion." + ex.Message);
             }
         }
-
         public void ModificarAutorizacion(BEAutorizacion autorizacion)
         {
             try
@@ -59,7 +56,6 @@ namespace BLL
                 throw new Exception("Error al actualizar la autorizacion." + ex.Message);
             }
         }
-
         public List<BEAutorizacion> ListarAutorizaciones()
         {
             try
