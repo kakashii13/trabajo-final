@@ -144,6 +144,8 @@ namespace BLL
                 List<BEAfiliado> afiliados = ListarAfiliados();
                 List<BEPlan> planes = bllPlan.ListarPlanes();
 
+                Dictionary<int, BEPlan> planesPorId = planes.ToDictionary(p => p.Id);
+
                 foreach (var afiliado in afiliados)
                 {
                     BEAporte ultimoAporte = bllAporte.ObtenerUltimoAportePorAfiliado(afiliado);
@@ -152,7 +154,10 @@ namespace BLL
 
                     foreach (var historial in afiliado.HistorialPlanes)
                     {
-                        historial.Plan = bllPlan.ObtenerPlanPorId(historial.PlanId);
+                        if (planesPorId.TryGetValue(historial.PlanId, out BEPlan plan))
+                        {
+                            historial.Plan = plan;
+                        }
                     }
 
                     BEPlan planActual = afiliado.ObtenerPlanActual()?.Plan;
