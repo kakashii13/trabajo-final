@@ -45,7 +45,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void CargarAutorizaciones()
         {
             try {
@@ -114,7 +113,11 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void btnActualizarListado_Click(object sender, EventArgs e)
+        {
+            CargarAfiliados();
+            CargarAutorizaciones();
+        }
         private void Dgv_autorizaciones_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             foreach (DataGridViewRow row in dgvAutorizaciones.Rows)
@@ -128,7 +131,6 @@ namespace UI
                 }
             }
         }
-
         private void lista_afiliados_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
@@ -147,11 +149,12 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_listar_Click(object sender, EventArgs e)
         {
             listaAfiliados.SelectedIndex = -1;
             dgvAutorizaciones.DataSource = autorizaciones;
         }
+
+       
     }
 }

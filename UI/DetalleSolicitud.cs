@@ -22,13 +22,12 @@ namespace UI
         BEPrestador prestadorSeleccionado;
         BEPractica practicaSolicitada;
         BEAutorizacion autorizacion;
-        BLLAutorizacion bllAutorizacion;
+
         public DetalleSolicitud(BESolicitud solicitudSeleccionada)
         {
             InitializeComponent();
             bllPrestador = new BLLPrestador();
             bllSolicitud = new BLLSolicitud();
-            bllAutorizacion = new BLLAutorizacion();
             this.solicitudSeleccionada = solicitudSeleccionada;
             practicaSolicitada = solicitudSeleccionada.Practica;
             CargarDatos();

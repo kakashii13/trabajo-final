@@ -32,6 +32,7 @@
             this.lista_backups = new System.Windows.Forms.ListBox();
             this.btn_restore = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
+            this.btnActualizarListado = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             // 
             this.btn_restore.BackColor = System.Drawing.Color.SeaGreen;
             this.btn_restore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_restore.Location = new System.Drawing.Point(19, 361);
+            this.btn_restore.Location = new System.Drawing.Point(19, 417);
             this.btn_restore.Name = "btn_restore";
             this.btn_restore.Size = new System.Drawing.Size(323, 41);
             this.btn_restore.TabIndex = 1;
@@ -69,7 +70,7 @@
             // 
             this.btn_cancelar.BackColor = System.Drawing.Color.Brown;
             this.btn_cancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_cancelar.Location = new System.Drawing.Point(19, 314);
+            this.btn_cancelar.Location = new System.Drawing.Point(19, 370);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(323, 41);
             this.btn_cancelar.TabIndex = 2;
@@ -77,11 +78,24 @@
             this.btn_cancelar.UseVisualStyleBackColor = false;
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
+            // btnActualizarListado
+            // 
+            this.btnActualizarListado.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnActualizarListado.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnActualizarListado.Location = new System.Drawing.Point(19, 323);
+            this.btnActualizarListado.Name = "btnActualizarListado";
+            this.btnActualizarListado.Size = new System.Drawing.Size(323, 41);
+            this.btnActualizarListado.TabIndex = 3;
+            this.btnActualizarListado.Text = "Actualizar listado";
+            this.btnActualizarListado.UseVisualStyleBackColor = false;
+            this.btnActualizarListado.Click += new System.EventHandler(this.btnActualizarListado_Click);
+            // 
             // Restore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 422);
+            this.ClientSize = new System.Drawing.Size(363, 469);
+            this.Controls.Add(this.btnActualizarListado);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_restore);
             this.Controls.Add(this.groupBox1);
@@ -98,5 +112,6 @@
         private System.Windows.Forms.ListBox lista_backups;
         private System.Windows.Forms.Button btn_restore;
         private System.Windows.Forms.Button btn_cancelar;
+        private System.Windows.Forms.Button btnActualizarListado;
     }
 }

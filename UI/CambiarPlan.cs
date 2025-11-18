@@ -30,7 +30,6 @@ namespace UI
            
             CargarDatosFormulario();
         }
-
         private void CargarDatosFormulario()
         {
             try
@@ -52,7 +51,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_save_Click(object sender, EventArgs e)
         {
             try {
@@ -61,7 +59,9 @@ namespace UI
                     throw new Exception("No hay un plan sugerido para asignar.");
                 }
 
-                bllAfiliado.CambiarPlan(afiliadoSeleccionado, planSugerido);
+                DateTime fechaDesde = fechaVigencia.Value;
+
+                bllAfiliado.CambiarPlan(afiliadoSeleccionado, planSugerido, fechaDesde);
                 
                 MessageBox.Show("Cambio de plan realizado con éxito.",
                     "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -73,6 +73,10 @@ namespace UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -38,6 +38,7 @@
             this.btnRechazar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnPagas = new System.Windows.Forms.Button();
+            this.btnActualizarListado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             // 
             this.btnAceptadas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAceptadas.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnAceptadas.Location = new System.Drawing.Point(204, 9);
+            this.btnAceptadas.Location = new System.Drawing.Point(510, 9);
             this.btnAceptadas.Name = "btnAceptadas";
             this.btnAceptadas.Size = new System.Drawing.Size(75, 37);
             this.btnAceptadas.TabIndex = 12;
@@ -67,7 +68,7 @@
             // 
             this.btnRechazadas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRechazadas.ForeColor = System.Drawing.Color.Brown;
-            this.btnRechazadas.Location = new System.Drawing.Point(366, 9);
+            this.btnRechazadas.Location = new System.Drawing.Point(672, 9);
             this.btnRechazadas.Name = "btnRechazadas";
             this.btnRechazadas.Size = new System.Drawing.Size(75, 37);
             this.btnRechazadas.TabIndex = 11;
@@ -79,7 +80,7 @@
             // 
             this.btnPendientes.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPendientes.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnPendientes.Location = new System.Drawing.Point(123, 9);
+            this.btnPendientes.Location = new System.Drawing.Point(429, 9);
             this.btnPendientes.Name = "btnPendientes";
             this.btnPendientes.Size = new System.Drawing.Size(75, 37);
             this.btnPendientes.TabIndex = 10;
@@ -152,7 +153,7 @@
             // 
             this.btnPagas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPagas.ForeColor = System.Drawing.Color.YellowGreen;
-            this.btnPagas.Location = new System.Drawing.Point(285, 9);
+            this.btnPagas.Location = new System.Drawing.Point(591, 9);
             this.btnPagas.Name = "btnPagas";
             this.btnPagas.Size = new System.Drawing.Size(75, 37);
             this.btnPagas.TabIndex = 17;
@@ -160,11 +161,24 @@
             this.btnPagas.UseVisualStyleBackColor = false;
             this.btnPagas.Click += new System.EventHandler(this.btnPagas_Click);
             // 
+            // btnActualizarListado
+            // 
+            this.btnActualizarListado.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnActualizarListado.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnActualizarListado.Location = new System.Drawing.Point(98, 9);
+            this.btnActualizarListado.Name = "btnActualizarListado";
+            this.btnActualizarListado.Size = new System.Drawing.Size(96, 37);
+            this.btnActualizarListado.TabIndex = 18;
+            this.btnActualizarListado.Text = "Actualizar listado";
+            this.btnActualizarListado.UseVisualStyleBackColor = false;
+            this.btnActualizarListado.Click += new System.EventHandler(this.btnActualizarListado_Click);
+            // 
             // ConsultarFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 375);
+            this.Controls.Add(this.btnActualizarListado);
             this.Controls.Add(this.btnPagas);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnRechazar);
@@ -195,5 +209,6 @@
         private System.Windows.Forms.Button btnRechazar;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnPagas;
+        private System.Windows.Forms.Button btnActualizarListado;
     }
 }

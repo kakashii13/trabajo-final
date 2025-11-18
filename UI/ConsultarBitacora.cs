@@ -35,17 +35,18 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void btnActualizarListado_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
         private void btn_backups_Click(object sender, EventArgs e)
         {
             dgvBitacora.DataSource = bitacoras.Where(b => b.Operacion == "Backup").ToList();
         }
-
         private void btn_restore_Click(object sender, EventArgs e)
         {
             dgvBitacora.DataSource = bitacoras.Where(b => b.Operacion == "Restore").ToList();
         }
-
         private void btn_todo_Click(object sender, EventArgs e)
         {
             dgvBitacora.DataSource = bitacoras;

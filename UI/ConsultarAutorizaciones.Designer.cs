@@ -33,6 +33,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnListarTodas = new System.Windows.Forms.Button();
+            this.btnActualizarListado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutorizaciones)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -44,7 +45,7 @@
             this.dgvAutorizaciones.Location = new System.Drawing.Point(6, 27);
             this.dgvAutorizaciones.Name = "dgvAutorizaciones";
             this.dgvAutorizaciones.ReadOnly = true;
-            this.dgvAutorizaciones.Size = new System.Drawing.Size(652, 278);
+            this.dgvAutorizaciones.Size = new System.Drawing.Size(801, 278);
             this.dgvAutorizaciones.TabIndex = 0;
             // 
             // listaAfiliados
@@ -71,14 +72,14 @@
             this.groupBox2.Controls.Add(this.dgvAutorizaciones);
             this.groupBox2.Location = new System.Drawing.Point(228, 11);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(667, 311);
+            this.groupBox2.Size = new System.Drawing.Size(813, 311);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Autorizaciones";
             // 
             // btnListarTodas
             // 
-            this.btnListarTodas.Location = new System.Drawing.Point(752, 328);
+            this.btnListarTodas.Location = new System.Drawing.Point(898, 328);
             this.btnListarTodas.Name = "btnListarTodas";
             this.btnListarTodas.Size = new System.Drawing.Size(143, 32);
             this.btnListarTodas.TabIndex = 4;
@@ -86,11 +87,22 @@
             this.btnListarTodas.UseVisualStyleBackColor = true;
             this.btnListarTodas.Click += new System.EventHandler(this.btn_listar_Click);
             // 
+            // btnActualizarListado
+            // 
+            this.btnActualizarListado.Location = new System.Drawing.Point(749, 328);
+            this.btnActualizarListado.Name = "btnActualizarListado";
+            this.btnActualizarListado.Size = new System.Drawing.Size(143, 32);
+            this.btnActualizarListado.TabIndex = 5;
+            this.btnActualizarListado.Text = "Actualizar listado";
+            this.btnActualizarListado.UseVisualStyleBackColor = true;
+            this.btnActualizarListado.Click += new System.EventHandler(this.btnActualizarListado_Click);
+            // 
             // ConsultarAutorizaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 372);
+            this.ClientSize = new System.Drawing.Size(1053, 372);
+            this.Controls.Add(this.btnActualizarListado);
             this.Controls.Add(this.btnListarTodas);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -110,5 +122,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnListarTodas;
+        private System.Windows.Forms.Button btnActualizarListado;
     }
 }

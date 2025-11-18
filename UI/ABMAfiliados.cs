@@ -25,7 +25,7 @@ namespace UI
             btnInactivar.Enabled = false;
 
             ConfigurarDataGrid();
-            CargarAfiliados();
+            ListarAfiliados();
         }
 
         private void ConfigurarDataGrid()
@@ -77,8 +77,7 @@ namespace UI
                 HeaderText = "Cambio Plan"
             });
         }
-
-        private void CargarAfiliados()
+        private void ListarAfiliados()
         {
             try
             {
@@ -90,7 +89,10 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            ListarAfiliados();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             try {
@@ -121,7 +123,7 @@ namespace UI
 
                 if (cambioPlan.ShowDialog() == DialogResult.OK)
                 {
-                    CargarAfiliados(); 
+                    ListarAfiliados(); 
                 }
             }
             catch (Exception ex)
@@ -129,7 +131,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void dg_afiliados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -161,7 +162,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_activar_Click(object sender, EventArgs e)
         {
             try {
@@ -185,14 +185,13 @@ namespace UI
                 
                 MessageBox.Show("Afiliado activado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
-                CargarAfiliados();
+                ListarAfiliados();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_inactivar_Click(object sender, EventArgs e)
         {
             try
@@ -227,7 +226,7 @@ namespace UI
                 
                 MessageBox.Show("Afiliado inactivado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
-                CargarAfiliados();
+                ListarAfiliados();
             }
             catch (Exception ex)
             {

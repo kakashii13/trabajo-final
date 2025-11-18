@@ -50,7 +50,10 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void btnActualizarListado_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
         private void list_afiliados_SelectedValueChanged(object sender, EventArgs e)
         {
             try
@@ -68,7 +71,6 @@ namespace UI
                 MessageBox.Show(ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_clear_Click(object sender, EventArgs e)
         {
             listaAfiliados.SelectedIndex = -1;

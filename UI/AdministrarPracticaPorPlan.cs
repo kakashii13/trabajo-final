@@ -46,7 +46,10 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
         private void btn_listar_Click(object sender, EventArgs e)
         {
             listaPracticas.Items.Clear();
@@ -55,7 +58,6 @@ namespace UI
                 listaPracticas.Items.Add(practica);
             }
         }
-
         private void lista_planes_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
@@ -84,7 +86,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void lista_practicas_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
@@ -103,7 +104,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_asignar_Click(object sender, EventArgs e)
         {
             try {
@@ -126,7 +126,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void lista_practicas_plan_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
@@ -145,7 +144,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
             try

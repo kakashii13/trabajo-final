@@ -42,12 +42,14 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void btnActualizarListado_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void btn_restore_Click(object sender, EventArgs e)
         {
             try

@@ -37,6 +37,10 @@ namespace UI
                 MessageBox.Show("Error al cargar las facturas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btnActualizarListado_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
         private void FiltrarPorEstado(string estado)
         {
             try
@@ -51,27 +55,22 @@ namespace UI
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_pendientes_Click(object sender, EventArgs e)
         {
             FiltrarPorEstado("Pendiente");
         } 
-
         private void btn_aceptadas_Click(object sender, EventArgs e)
         {
             FiltrarPorEstado("Aceptada");
         }
-
         private void btn_rechazadas_Click(object sender, EventArgs e)
         {
             FiltrarPorEstado("Rechazada");
         }
-
         private void btnPagas_Click(object sender, EventArgs e)
         {
             FiltrarPorEstado("Pagada");
         }
-
         private void btn_validar_importe_Click(object sender, EventArgs e)
         {
             try { 
@@ -91,7 +90,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }   
         }
-
         private void btn_validar_autorizacion_Click(object sender, EventArgs e)
         {
             try {
@@ -110,7 +108,6 @@ namespace UI
                 MessageBox.Show("Error al validar la autorizacion: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_rechazar_Click(object sender, EventArgs e)
         {
             try {
@@ -143,7 +140,6 @@ namespace UI
                 MessageBox.Show("Error al rechazar la factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
             try { 
@@ -165,7 +161,6 @@ namespace UI
                 MessageBox.Show("Error al aceptar la factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void dgv_facturas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try {
@@ -187,7 +182,5 @@ namespace UI
                 MessageBox.Show("Error al seleccionar la factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-       
     }
 }

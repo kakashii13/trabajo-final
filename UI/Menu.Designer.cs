@@ -114,14 +114,14 @@
             // usuarios
             // 
             this.usuarios.Name = "usuarios";
-            this.usuarios.Size = new System.Drawing.Size(180, 22);
+            this.usuarios.Size = new System.Drawing.Size(162, 22);
             this.usuarios.Text = "Usuarios";
             this.usuarios.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // rolesPermisos
             // 
             this.rolesPermisos.Name = "rolesPermisos";
-            this.rolesPermisos.Size = new System.Drawing.Size(180, 22);
+            this.rolesPermisos.Size = new System.Drawing.Size(162, 22);
             this.rolesPermisos.Text = "Roles y permisos";
             this.rolesPermisos.Click += new System.EventHandler(this.rolesYPermisosToolStripMenuItem_Click);
             // 
@@ -139,28 +139,28 @@
             // registrarAfiliado
             // 
             this.registrarAfiliado.Name = "registrarAfiliado";
-            this.registrarAfiliado.Size = new System.Drawing.Size(180, 22);
+            this.registrarAfiliado.Size = new System.Drawing.Size(167, 22);
             this.registrarAfiliado.Text = "Registrar afiliado";
             this.registrarAfiliado.Click += new System.EventHandler(this.registrarAfiliadoToolStripMenuItem_Click);
             // 
             // listadoAfiliados
             // 
             this.listadoAfiliados.Name = "listadoAfiliados";
-            this.listadoAfiliados.Size = new System.Drawing.Size(180, 22);
+            this.listadoAfiliados.Size = new System.Drawing.Size(167, 22);
             this.listadoAfiliados.Text = "Listado afiliados";
             this.listadoAfiliados.Click += new System.EventHandler(this.listadoAfiliados_Click);
             // 
             // registrarAporte
             // 
             this.registrarAporte.Name = "registrarAporte";
-            this.registrarAporte.Size = new System.Drawing.Size(180, 22);
+            this.registrarAporte.Size = new System.Drawing.Size(167, 22);
             this.registrarAporte.Text = "Registrar aporte";
             this.registrarAporte.Click += new System.EventHandler(this.registrarAporteToolStripMenuItem_Click);
             // 
             // consultarAportes
             // 
             this.consultarAportes.Name = "consultarAportes";
-            this.consultarAportes.Size = new System.Drawing.Size(180, 22);
+            this.consultarAportes.Size = new System.Drawing.Size(167, 22);
             this.consultarAportes.Text = "Consultar aportes";
             this.consultarAportes.Click += new System.EventHandler(this.consultarAportes_Click);
             // 
@@ -322,6 +322,7 @@
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -181,16 +181,22 @@ namespace BLL
                 throw new Exception("Error al listar afiliados con datos de cambio de plan: " + ex.Message);
             }
         }
-        public void CambiarPlan(BEAfiliado afiliado, BEPlan nuevoPlan)
+        public void CambiarPlan(BEAfiliado afiliado, BEPlan nuevoPlan, DateTime fechaDesde)
         {
             try
             {
                 BEHistorialPlan historialActual = afiliado.ObtenerPlanActual();
+
                 if (historialActual != null)
                 {
                     if(historialActual.PlanId == nuevoPlan.Id)
                     {
                         throw new Exception("El afiliado ya se encuentra en el plan seleccionado.");
+                    }
+
+                    if (fechaDesde < historialActual.FechaDesde)
+                    {
+                        throw new Exception("La fecha del nuevo plan no puede ser anterior a la del plan actual.");
                     }
 
                     historialActual.Activo = false;
@@ -202,13 +208,13 @@ namespace BLL
                     afiliado.Id,
                     nuevoPlan.Id,
                     true,
-                    DateTime.Now);
+                    fechaDesde);
 
                 bllHistorialPlan.CrearHistorialPlan(nuevoHistorial);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al cambiar plan del afiliado" + ex.Message);
+                throw new Exception("Error al cambiar plan del afiliado: " + ex.Message);
             }
         }
         private (bool Corresponde, int? PlanSugeridoId) VerificarCambioPlan(BEAfiliado afiliado, BEAporte ultimoAporte, List<BEPlan> planes)

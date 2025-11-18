@@ -88,6 +88,10 @@ namespace UI
             }
         }
 
+        private void btnActualizarListado_Click(object sender, EventArgs e)
+        {
+            CargarSolicitudes();
+        }
         private void Dgv_solicitudes_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             foreach (DataGridViewRow row in dgvSolicitudes.Rows)

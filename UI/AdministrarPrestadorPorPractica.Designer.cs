@@ -45,6 +45,7 @@
             this.txtPracticaPrestador = new System.Windows.Forms.TextBox();
             this.btnEliminarPracticaPrestador = new System.Windows.Forms.Button();
             this.txtPrestadorSeleccionado = new System.Windows.Forms.TextBox();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -56,7 +57,7 @@
             // 
             this.btnListarPracticas.Location = new System.Drawing.Point(403, 220);
             this.btnListarPracticas.Name = "btnListarPracticas";
-            this.btnListarPracticas.Size = new System.Drawing.Size(132, 41);
+            this.btnListarPracticas.Size = new System.Drawing.Size(182, 41);
             this.btnListarPracticas.TabIndex = 47;
             this.btnListarPracticas.Text = "Listar practicas disponibles";
             this.btnListarPracticas.UseVisualStyleBackColor = true;
@@ -65,9 +66,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.listaPracticas);
-            this.groupBox3.Location = new System.Drawing.Point(383, 12);
+            this.groupBox3.Location = new System.Drawing.Point(405, 14);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(152, 200);
+            this.groupBox3.Size = new System.Drawing.Size(180, 200);
             this.groupBox3.TabIndex = 46;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Practicas disponibles";
@@ -77,16 +78,16 @@
             this.listaPracticas.FormattingEnabled = true;
             this.listaPracticas.Location = new System.Drawing.Point(6, 19);
             this.listaPracticas.Name = "listaPracticas";
-            this.listaPracticas.Size = new System.Drawing.Size(140, 173);
+            this.listaPracticas.Size = new System.Drawing.Size(168, 173);
             this.listaPracticas.TabIndex = 2;
             this.listaPracticas.SelectedValueChanged += new System.EventHandler(this.lista_practicas_SelectedValueChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listaPracticasPrestador);
-            this.groupBox2.Location = new System.Drawing.Point(197, 12);
+            this.groupBox2.Location = new System.Drawing.Point(213, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(166, 200);
+            this.groupBox2.Size = new System.Drawing.Size(185, 200);
             this.groupBox2.TabIndex = 45;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Practicas por prestador";
@@ -96,7 +97,7 @@
             this.listaPracticasPrestador.FormattingEnabled = true;
             this.listaPracticasPrestador.Location = new System.Drawing.Point(6, 19);
             this.listaPracticasPrestador.Name = "listaPracticasPrestador";
-            this.listaPracticasPrestador.Size = new System.Drawing.Size(154, 173);
+            this.listaPracticasPrestador.Size = new System.Drawing.Size(173, 173);
             this.listaPracticasPrestador.TabIndex = 1;
             this.listaPracticasPrestador.SelectedValueChanged += new System.EventHandler(this.lista_practicas_prestador_SelectedValueChanged);
             // 
@@ -105,7 +106,7 @@
             this.groupBox1.Controls.Add(this.listaPrestadores);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(164, 200);
+            this.groupBox1.Size = new System.Drawing.Size(195, 200);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Prestadores";
@@ -115,7 +116,7 @@
             this.listaPrestadores.FormattingEnabled = true;
             this.listaPrestadores.Location = new System.Drawing.Point(6, 19);
             this.listaPrestadores.Name = "listaPrestadores";
-            this.listaPrestadores.Size = new System.Drawing.Size(152, 173);
+            this.listaPrestadores.Size = new System.Drawing.Size(183, 173);
             this.listaPrestadores.TabIndex = 0;
             this.listaPrestadores.SelectedValueChanged += new System.EventHandler(this.lista_prestadores_SelectedValueChanged);
             // 
@@ -123,7 +124,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 232);
+            this.label1.Location = new System.Drawing.Point(9, 298);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 16);
             this.label1.TabIndex = 49;
@@ -134,7 +135,7 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.txtNuevaPractica);
             this.groupBox4.Controls.Add(this.btnAsignarPracticaPrestador);
-            this.groupBox4.Location = new System.Drawing.Point(219, 291);
+            this.groupBox4.Location = new System.Drawing.Point(404, 298);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(181, 110);
             this.groupBox4.TabIndex = 50;
@@ -176,7 +177,7 @@
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.txtPracticaPrestador);
             this.groupBox5.Controls.Add(this.btnEliminarPracticaPrestador);
-            this.groupBox5.Location = new System.Drawing.Point(12, 291);
+            this.groupBox5.Location = new System.Drawing.Point(197, 298);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(185, 110);
             this.groupBox5.TabIndex = 51;
@@ -215,17 +216,28 @@
             // 
             // txtPrestadorSeleccionado
             // 
-            this.txtPrestadorSeleccionado.Location = new System.Drawing.Point(12, 253);
+            this.txtPrestadorSeleccionado.Location = new System.Drawing.Point(12, 319);
             this.txtPrestadorSeleccionado.Name = "txtPrestadorSeleccionado";
             this.txtPrestadorSeleccionado.ReadOnly = true;
             this.txtPrestadorSeleccionado.Size = new System.Drawing.Size(147, 20);
             this.txtPrestadorSeleccionado.TabIndex = 48;
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(12, 218);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(195, 41);
+            this.btnActualizar.TabIndex = 52;
+            this.btnActualizar.Text = "Actualizar prestadores";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // AdministrarPrestadorPorPractica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 415);
+            this.ClientSize = new System.Drawing.Size(596, 416);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnListarPracticas);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -267,5 +279,6 @@
         private System.Windows.Forms.TextBox txtPracticaPrestador;
         private System.Windows.Forms.Button btnEliminarPracticaPrestador;
         private System.Windows.Forms.TextBox txtPrestadorSeleccionado;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }

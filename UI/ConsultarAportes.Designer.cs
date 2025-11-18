@@ -33,6 +33,7 @@
             this.listaAfiliados = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnMostrarTodos = new System.Windows.Forms.Button();
+            this.btnActualizarListado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAportes)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -43,7 +44,7 @@
             this.dgvAportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAportes.Location = new System.Drawing.Point(6, 19);
             this.dgvAportes.Name = "dgvAportes";
-            this.dgvAportes.Size = new System.Drawing.Size(487, 270);
+            this.dgvAportes.Size = new System.Drawing.Size(563, 270);
             this.dgvAportes.TabIndex = 0;
             // 
             // groupBox1
@@ -70,14 +71,14 @@
             this.groupBox2.Controls.Add(this.dgvAportes);
             this.groupBox2.Location = new System.Drawing.Point(225, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(499, 295);
+            this.groupBox2.Size = new System.Drawing.Size(575, 295);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Aportes";
             // 
             // btnMostrarTodos
             // 
-            this.btnMostrarTodos.Location = new System.Drawing.Point(600, 306);
+            this.btnMostrarTodos.Location = new System.Drawing.Point(676, 306);
             this.btnMostrarTodos.Name = "btnMostrarTodos";
             this.btnMostrarTodos.Size = new System.Drawing.Size(124, 33);
             this.btnMostrarTodos.TabIndex = 1;
@@ -85,11 +86,22 @@
             this.btnMostrarTodos.UseVisualStyleBackColor = true;
             this.btnMostrarTodos.Click += new System.EventHandler(this.btn_clear_Click);
             // 
+            // btnActualizarListado
+            // 
+            this.btnActualizarListado.Location = new System.Drawing.Point(546, 306);
+            this.btnActualizarListado.Name = "btnActualizarListado";
+            this.btnActualizarListado.Size = new System.Drawing.Size(124, 33);
+            this.btnActualizarListado.TabIndex = 5;
+            this.btnActualizarListado.Text = "Actualizar listado";
+            this.btnActualizarListado.UseVisualStyleBackColor = true;
+            this.btnActualizarListado.Click += new System.EventHandler(this.btnActualizarListado_Click);
+            // 
             // ConsultarAportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 351);
+            this.ClientSize = new System.Drawing.Size(812, 351);
+            this.Controls.Add(this.btnActualizarListado);
             this.Controls.Add(this.btnMostrarTodos);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -109,5 +121,6 @@
         private System.Windows.Forms.ListBox listaAfiliados;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnMostrarTodos;
+        private System.Windows.Forms.Button btnActualizarListado;
     }
 }

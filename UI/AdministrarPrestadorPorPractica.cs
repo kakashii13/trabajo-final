@@ -46,7 +46,10 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
         private void lista_prestadores_SelectedValueChanged(object sender, EventArgs e)
         {
             try
@@ -74,7 +77,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void lista_practicas_prestador_SelectedValueChanged(object sender, EventArgs e)
         {
             try
@@ -92,7 +94,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_listar_Click_1(object sender, EventArgs e)
         {
             listaPracticas.Items.Clear();

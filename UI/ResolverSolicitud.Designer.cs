@@ -34,6 +34,7 @@
             this.btnPendientes = new System.Windows.Forms.Button();
             this.btnRechazadas = new System.Windows.Forms.Button();
             this.btnAceptadas = new System.Windows.Forms.Button();
+            this.btnActualizarListado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitudes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             // 
             this.btnPendientes.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPendientes.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnPendientes.Location = new System.Drawing.Point(123, 9);
+            this.btnPendientes.Location = new System.Drawing.Point(561, 9);
             this.btnPendientes.Name = "btnPendientes";
             this.btnPendientes.Size = new System.Drawing.Size(75, 37);
             this.btnPendientes.TabIndex = 6;
@@ -87,7 +88,7 @@
             // 
             this.btnRechazadas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRechazadas.ForeColor = System.Drawing.Color.Brown;
-            this.btnRechazadas.Location = new System.Drawing.Point(285, 9);
+            this.btnRechazadas.Location = new System.Drawing.Point(723, 9);
             this.btnRechazadas.Name = "btnRechazadas";
             this.btnRechazadas.Size = new System.Drawing.Size(75, 37);
             this.btnRechazadas.TabIndex = 7;
@@ -99,7 +100,7 @@
             // 
             this.btnAceptadas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAceptadas.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnAceptadas.Location = new System.Drawing.Point(204, 9);
+            this.btnAceptadas.Location = new System.Drawing.Point(642, 9);
             this.btnAceptadas.Name = "btnAceptadas";
             this.btnAceptadas.Size = new System.Drawing.Size(75, 37);
             this.btnAceptadas.TabIndex = 8;
@@ -107,11 +108,24 @@
             this.btnAceptadas.UseVisualStyleBackColor = false;
             this.btnAceptadas.Click += new System.EventHandler(this.btn_aceptadas_Click);
             // 
+            // btnActualizarListado
+            // 
+            this.btnActualizarListado.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnActualizarListado.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnActualizarListado.Location = new System.Drawing.Point(111, 9);
+            this.btnActualizarListado.Name = "btnActualizarListado";
+            this.btnActualizarListado.Size = new System.Drawing.Size(129, 37);
+            this.btnActualizarListado.TabIndex = 9;
+            this.btnActualizarListado.Text = "Actualizar listado";
+            this.btnActualizarListado.UseVisualStyleBackColor = false;
+            this.btnActualizarListado.Click += new System.EventHandler(this.btnActualizarListado_Click);
+            // 
             // ResolverSolicitud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 342);
+            this.Controls.Add(this.btnActualizarListado);
             this.Controls.Add(this.btnAceptadas);
             this.Controls.Add(this.btnRechazadas);
             this.Controls.Add(this.btnPendientes);
@@ -134,5 +148,6 @@
         private System.Windows.Forms.Button btnPendientes;
         private System.Windows.Forms.Button btnRechazadas;
         private System.Windows.Forms.Button btnAceptadas;
+        private System.Windows.Forms.Button btnActualizarListado;
     }
 }

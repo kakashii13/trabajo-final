@@ -33,6 +33,7 @@
             this.btnRestore = new System.Windows.Forms.Button();
             this.btnListarTodo = new System.Windows.Forms.Button();
             this.btnBackups = new System.Windows.Forms.Button();
+            this.btnActualizarListado = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBitacora)).BeginInit();
             this.SuspendLayout();
@@ -85,11 +86,22 @@
             this.btnBackups.UseVisualStyleBackColor = true;
             this.btnBackups.Click += new System.EventHandler(this.btn_backups_Click);
             // 
+            // btnActualizarListado
+            // 
+            this.btnActualizarListado.Location = new System.Drawing.Point(367, 283);
+            this.btnActualizarListado.Name = "btnActualizarListado";
+            this.btnActualizarListado.Size = new System.Drawing.Size(112, 33);
+            this.btnActualizarListado.TabIndex = 4;
+            this.btnActualizarListado.Text = "Actualizar listado";
+            this.btnActualizarListado.UseVisualStyleBackColor = true;
+            this.btnActualizarListado.Click += new System.EventHandler(this.btnActualizarListado_Click);
+            // 
             // ConsultarBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(845, 328);
+            this.Controls.Add(this.btnActualizarListado);
             this.Controls.Add(this.btnBackups);
             this.Controls.Add(this.btnListarTodo);
             this.Controls.Add(this.btnRestore);
@@ -109,5 +121,6 @@
         private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.Button btnListarTodo;
         private System.Windows.Forms.Button btnBackups;
+        private System.Windows.Forms.Button btnActualizarListado;
     }
 }
