@@ -209,7 +209,6 @@ namespace UI
 
             return true;
         }
-
         private void btnInactivar_Click(object sender, EventArgs e)
         {
             try
@@ -244,7 +243,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_activar_Click(object sender, EventArgs e)
         {
             try {
@@ -278,7 +276,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -323,7 +320,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnResetearPass_Click(object sender, EventArgs e)
         {
             try {

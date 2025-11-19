@@ -20,7 +20,6 @@ namespace Servicios
                 throw new Exception("Error al encriptar: " + ex.Message);
             }
         }
-
         public static string Desencriptar(string textoEncriptado)
         {
             try

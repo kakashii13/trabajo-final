@@ -100,7 +100,7 @@ namespace MPP
 
             return usuario;
         }
-        public BEUsuario ObtenerPorId(int id)
+        public BEUsuario ObtenerUsuarioPorId(int id)
         {
             xDocument = XDocument.Load(rutaUsuarios);
             

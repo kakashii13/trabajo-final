@@ -15,17 +15,14 @@ namespace BE
         {
             _permisos = new List<BEPermiso>();
         }
-
         public override void AgregarPermiso(BEPermiso permiso)
         {
             _permisos.Add(permiso);
         }
-
         public override List<BEPermiso> ObtenerPermisos()
         {
             return _permisos;
         }
-
         public override void RemoverPermiso(BEPermiso permiso)
         {
 
@@ -38,7 +35,6 @@ namespace BE
                 }
             }
         }
-
         public override bool TienePermiso(string nombre)
         {
             foreach (var permiso in _permisos)

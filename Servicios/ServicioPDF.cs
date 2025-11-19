@@ -40,7 +40,6 @@ namespace Servicios
                 throw new Exception("Error al generar PDF de autorización: " + ex.Message);
             }
         }
-
         private static void AgregarEncabezado(Document documento)
         {
             Font fuenteTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.DARK_GRAY);
@@ -52,7 +51,6 @@ namespace Servicios
             documento.Add(new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator())));
             documento.Add(new Paragraph(" ")); 
         }
-
         private static void AgregarDatosAutorizacion(Document documento, BEAutorizacion autorizacion)
         {
             Font fuenteNegrita = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
@@ -102,7 +100,6 @@ namespace Servicios
             AgregarLinea(documento, "Razón Social:", autorizacion.Prestador.RazonSocial, fuenteNegrita, fuenteNormal);
             AgregarLinea(documento, "CUIT:", autorizacion.Prestador.Cuit, fuenteNegrita, fuenteNormal);
         }
-
         private static void AgregarLinea(Document documento, string etiqueta, string valor, Font fuenteEtiqueta, Font fuenteValor)
         {
             Paragraph linea = new Paragraph();
@@ -111,7 +108,6 @@ namespace Servicios
             linea.SpacingAfter = 5f;
             documento.Add(linea);
         }
-
         private static void AgregarPieDePagina(Document documento)
         {
             documento.Add(new Paragraph(" ")); 
@@ -166,7 +162,6 @@ namespace Servicios
                 throw new Exception("Error al generar PDF de recibo: " + ex.Message);
             }
         }
-
         private static void AgregarEncabezadoRecibo(Document documento)
         {
             Font fuenteTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.DARK_GRAY);
@@ -178,7 +173,6 @@ namespace Servicios
             documento.Add(new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator())));
             documento.Add(new Paragraph(" "));
         }
-
         private static void AgregarDatosRecibo(Document documento, BEFactura factura)
         {
             BEPago pago = factura.Pago;
@@ -254,7 +248,6 @@ namespace Servicios
 
             documento.Add(tablaMonto);
         }
-
         private static void AgregarPieDePaginaRecibo(Document documento)
         {
             documento.Add(new Paragraph(" "));

@@ -19,7 +19,6 @@ namespace BE
             Afiliado = new BEAfiliado();
             Practica = new BEPractica();
         }
-
         public BESolicitud(int id, DateTime fechaSolicitud, string estado, string motivoRechazo, BEAfiliado afiliado, BEPractica practica)
         {
             Id = id;
@@ -29,7 +28,6 @@ namespace BE
             Afiliado = afiliado;
             Practica = practica;
         }
-
         public override string ToString()
         {
             return $"{Afiliado} - {Practica} - {FechaSolicitud}";

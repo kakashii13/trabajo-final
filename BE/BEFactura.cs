@@ -24,7 +24,6 @@ namespace BE
         {
 
         }
-
         public BEFactura(int id, 
             DateTime fechaRecibida, 
             decimal monto, int numero, 
@@ -48,7 +47,6 @@ namespace BE
             AutorizacionValidada = autorizacionValidada;
             ImporteValidado = importeValidado;
         }
-
         public override string ToString()
         {
             return $"{Numero} - ${Monto}";

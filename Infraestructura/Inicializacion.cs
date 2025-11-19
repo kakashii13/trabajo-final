@@ -19,7 +19,6 @@ namespace Infraestructura
         ServicioDirectorio.RutaSystem,
         "inicializado.txt"
         );
-
         public static void InicializarSistema()
         {
             ServicioDirectorio.InicializarEstructura();
@@ -43,7 +42,6 @@ namespace Infraestructura
                 }
             }
         }
-
         private static void CrearPermisosDefault()
         {
             List<BEPermiso> permisos = new List<BEPermiso>
@@ -90,7 +88,6 @@ namespace Infraestructura
                 bllPermiso.AsignarPermiso(rolAdmin, permiso);
             }
         }
-
         private static void CrearUsuarioAdmin()
         {
             BERol rol = bllPermiso.ListarRolesConPermisos()

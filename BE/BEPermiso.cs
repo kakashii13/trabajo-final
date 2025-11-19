@@ -22,7 +22,6 @@ namespace BE
         public abstract void RemoverPermiso(BEPermiso permiso);
         public abstract List<BEPermiso> ObtenerPermisos();
         public abstract bool TienePermiso(string nombre);
-
         public override string ToString()
         {
             return _nombre;

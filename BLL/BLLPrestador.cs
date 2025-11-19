@@ -144,6 +144,5 @@ namespace BLL
             catch (Exception ex) { throw new Exception("Error al obtener el prestador por ID: " + ex.Message);
             }
         }
-
     }
 }

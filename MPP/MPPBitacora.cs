@@ -27,7 +27,6 @@ namespace MPP
                 xDocument.Save(rutaArchivo);
             }
         }
-
         public void RegistrarAccion(BEBitacora bitacora)
         {
             xDocument = XDocument.Load(rutaArchivo);

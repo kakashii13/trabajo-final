@@ -32,7 +32,6 @@ namespace UI
             practicaSolicitada = solicitudSeleccionada.Practica;
             CargarDatos();
         }
-
         private void CargarDatos()
         {
             try { 
@@ -54,7 +53,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_listar_Click(object sender, EventArgs e)
         {
             try {
@@ -77,7 +75,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void lista_prestadores_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
@@ -96,7 +93,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_rechazar_Click(object sender, EventArgs e)
         {
             try {
@@ -137,8 +133,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
         private void btn_asignar_Click(object sender, EventArgs e)
         {
             try {
@@ -158,7 +152,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_autorizar_Click_1(object sender, EventArgs e)
         {
             try {

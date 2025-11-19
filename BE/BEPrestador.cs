@@ -20,13 +20,11 @@ namespace BE
             Id = id;
             Practicas = new List<BEPractica>();
         }
-
         public BEPrestador(int id, string cuit, string razonSocial) {
             Id = id;
             Cuit = cuit;
             RazonSocial = razonSocial;
         }
-
         public override string ToString()
         {
             return $"{RazonSocial} - {Cuit}";

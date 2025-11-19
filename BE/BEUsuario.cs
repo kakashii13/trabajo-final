@@ -35,14 +35,12 @@ namespace BE
             Activo = activo;
             Eliminado = eliminado;
         }
-
         public void ActualizarDatos(string nombre, string apellido, string nombreUsuario)
         {
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.NombreUsuario = nombreUsuario;
         }
-
         public bool TienePermiso(string nombrePermiso)
         {
             foreach (var permiso in Permisos)
@@ -54,7 +52,6 @@ namespace BE
             }
             return false;
         }
-
         public void AgregarPermiso(BEPermiso permiso)
         {
             if (!Permisos.Contains(permiso))
@@ -62,7 +59,6 @@ namespace BE
                 Permisos.Add(permiso);
             }
         }
-
         public void RemoverPermiso(BEPermiso permiso)
         {
             if (Permisos.Contains(permiso))
@@ -70,22 +66,18 @@ namespace BE
                 Permisos.Remove(permiso);
             }
         }
-
         public void Desactivar()
         {
             this.Activo = false;
         }
-
         public void Activar()
         {
             this.Activo = true;
         }   
-
         public void Eliminar()
         {
             this.Eliminado = true;
         }
-
         public void CambiarPassword(string nuevaPassword)
         {
             this.Password = nuevaPassword;

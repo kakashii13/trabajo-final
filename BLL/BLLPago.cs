@@ -18,7 +18,6 @@ namespace BLL
             mppPago = new MPPPago();
             bllFactura = new BLLFactura();
         }
-
         public BEPago RegistrarPago(BEPago pago)
         {
             try

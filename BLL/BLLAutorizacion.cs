@@ -22,7 +22,6 @@ namespace BLL
             bllPrestador = new BLLPrestador();
             bllPractica = new BLLPractica();
         }
-
         public BEAutorizacion CrearAutorizacion(BEAutorizacion autorizacion)
         {
             try

@@ -20,7 +20,6 @@ namespace BE
             Periodo = periodo;
             AfiliadoId = afiliadoId;
         }
-
         public override string ToString()
         {
             return $"{Monto} - {Periodo.ToString("MM/yyyy")}";

@@ -22,7 +22,6 @@ namespace BE
             Activo = activo;
             FechaDesde = fechaDesde;
         }
-
         public override string ToString() { 
             return Plan != null ? Plan.ToString() : $"PlanId: {PlanId}";
         }

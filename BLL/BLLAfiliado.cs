@@ -121,7 +121,7 @@ namespace BLL
                     throw new Exception("Afiliado no encontrado");
                 }
                 
-                afiliado.HistorialPlanes = bllHistorialPlan.ObtenerPorAfiliado(afiliado);
+                afiliado.HistorialPlanes = bllHistorialPlan.ObtenerHistorialPlanPorAfiliado(afiliado);
 
                 foreach (BEHistorialPlan historial in afiliado.HistorialPlanes)
                 {
@@ -150,7 +150,7 @@ namespace BLL
                 {
                     BEAporte ultimoAporte = bllAporte.ObtenerUltimoAportePorAfiliado(afiliado);
 
-                    afiliado.HistorialPlanes = bllHistorialPlan.ObtenerPorAfiliado(afiliado);
+                    afiliado.HistorialPlanes = bllHistorialPlan.ObtenerHistorialPlanPorAfiliado(afiliado);
 
                     foreach (var historial in afiliado.HistorialPlanes)
                     {

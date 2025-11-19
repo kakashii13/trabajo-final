@@ -15,12 +15,11 @@ namespace BLL
         {
             mppHistorialPlan = new MPPHistorialPlan();
         }
-
-        public List<BEHistorialPlan> ObtenerPorAfiliado(BEAfiliado afiliado)
+        public List<BEHistorialPlan> ObtenerHistorialPlanPorAfiliado(BEAfiliado afiliado)
         {
             try
             {
-                return mppHistorialPlan.ObtenerPorAfiliado(afiliado);
+                return mppHistorialPlan.ObtenerHistorialPlanPorAfiliado(afiliado);
             }
             catch (Exception ex)
             {

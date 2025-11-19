@@ -27,7 +27,6 @@ namespace BE
             FacturaId = facturaId;
             FormaPago = formaPago;
         }
-
         public override string ToString()
         {
             return $"{NumeroRecibo} - ${Monto} - {FechaPago.ToString("yyyy-MM-dd")}";

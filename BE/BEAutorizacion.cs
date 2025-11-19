@@ -16,7 +16,6 @@ namespace BE
         public BEAfiliado Afiliado { get; set; }
 
         public BEAutorizacion() { }
-
         public BEAutorizacion(int numeroAutorizacion)
         {
             NumeroAutorizacion = numeroAutorizacion;
@@ -31,7 +30,6 @@ namespace BE
             Practica = practica;
             Afiliado = afiliado;
         }
-
         public override string ToString()
         {
             if(Afiliado != null)

@@ -27,7 +27,6 @@ namespace BE
             Nombre = nombre;
             Precio = precio;
         }
-
         public override string ToString()
         {
             return $"{Codigo} - {Nombre}";

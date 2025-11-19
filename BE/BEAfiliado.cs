@@ -25,7 +25,6 @@ namespace BE
             HistorialPlanes = new List<BEHistorialPlan>();
             Aportes = new List<BEAporte>();
         }
-
         public BEAfiliado(int id)
         {
             Id = id;
@@ -38,7 +37,6 @@ namespace BE
             Activo = activo;
             Telefono = telefono;
         }
-
         public BEHistorialPlan ObtenerPlanActual()
         {
             if (HistorialPlanes == null || !HistorialPlanes.Any())
@@ -46,14 +44,12 @@ namespace BE
 
             return HistorialPlanes.FirstOrDefault(h => h.Activo);
         }
-
         public BEAporte ObtenerUltimoAporte()
         {
             if (Aportes == null || !Aportes.Any())
                 return null;
             return Aportes.OrderByDescending(a => a.Periodo).FirstOrDefault();
         }
-
         public override string ToString()
         {
             return $"{Cuil} - {NombreApellido}";

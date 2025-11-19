@@ -27,7 +27,6 @@ namespace MPP
                 xDocument.Save(rutaSolicitudes);
             }
         }
-
         public void CrearSolicitud(BESolicitud solicitud)
         {
             xDocument = XDocument.Load(rutaSolicitudes);

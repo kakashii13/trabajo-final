@@ -41,7 +41,7 @@ namespace MPP
             );
             xDocument.Save(rutaArchivo);
         }
-        public List<BEHistorialPlan> ObtenerPorAfiliado(BEAfiliado afiliado)
+        public List<BEHistorialPlan> ObtenerHistorialPlanPorAfiliado(BEAfiliado afiliado)
         {
             xDocument = XDocument.Load(rutaArchivo);
            

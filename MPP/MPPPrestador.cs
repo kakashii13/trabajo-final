@@ -38,7 +38,6 @@ namespace MPP
                 xDocument.Save(rutaArchivoPracticasPrestadores);
             }
         }
-
         public void CrearPrestador(BEPrestador prestador)
         {
             xDocument = XDocument.Load(rutaArchivoPrestadores);
@@ -166,6 +165,5 @@ namespace MPP
 
             return ultimoId + 1;
         }
-
     }
 }

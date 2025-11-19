@@ -21,7 +21,6 @@ namespace BE
             Operacion = operacion;
             Detalle = detalle;
         }
-
         public override string ToString()
         {
             return $"{FechaHora} - {Usuario.NombreUsuario} - {Operacion} - {Detalle}";

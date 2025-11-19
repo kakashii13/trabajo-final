@@ -46,7 +46,7 @@ namespace BLL
         {
             try
             {
-                if (mppUsuario.ObtenerPorNombreUsuario(usuario.NombreUsuario) == null)
+                if (mppUsuario.ObtenerUsuarioPorId(usuario.Id) == null)
                 {
                     throw new Exception("El usuario no existe.");
                 }
@@ -125,7 +125,7 @@ namespace BLL
         {
             try
             {
-                return mppUsuario.ObtenerPorId(id);
+                return mppUsuario.ObtenerUsuarioPorId(id);
             }
             catch (Exception ex) { throw new Exception("Error al obtener usuario por ID: " + ex.Message); }
         }
@@ -139,15 +139,15 @@ namespace BLL
                 {
                     throw new Exception("Usuario no encontrado.");
                 }
+                
+                if (usuario.Eliminado)
+                {
+                    throw new Exception("El usuario ha sido eliminado.");
+                }
 
                 if (!usuario.Activo)
                 {
                     throw new Exception("El usuario está desactivado.");
-                }
-
-                if(usuario.Eliminado)
-                {
-                    throw new Exception("El usuario ha sido eliminado.");
                 }
 
                 string passwordDesencriptada = ServicioSeguridad.Desencriptar(usuario.Password);
