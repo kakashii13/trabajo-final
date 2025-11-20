@@ -17,7 +17,10 @@ namespace BE
         }
         public override void AgregarPermiso(BEPermiso permiso)
         {
-            _permisos.Add(permiso);
+            if (!_permisos.Any(p => p.Nombre == permiso.Nombre))
+            {
+                _permisos.Add(permiso);
+            }
         }
         public override List<BEPermiso> ObtenerPermisos()
         {
