@@ -33,6 +33,7 @@ namespace UI
         private void CargarAfiliados()
         {
             try {
+                listaAfiliados.Items.Clear();
 
                 List<BEAfiliado> afiliados = bllAfiliado.ListarAfiliados();
                 foreach(BEAfiliado afiliado in afiliados)
@@ -48,6 +49,9 @@ namespace UI
         private void CargarAutorizaciones()
         {
             try {
+
+                dgvAutorizaciones.DataSource = null;
+
                 autorizaciones = bllAutorizaciones.ListarAutorizaciones()
                                 .OrderByDescending(a => a.FechaAutorizacion) 
                                 .ToList();

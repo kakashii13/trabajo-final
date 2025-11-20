@@ -34,6 +34,7 @@ namespace UI
             {
                 practicas = bllPractica.ListarPracticas();
 
+                listaPrestadores.Items.Clear();
                 List<BEPrestador> prestadores = bllPrestador.ListarPrestadoresCompletos();
 
                 foreach (var prestador in prestadores)

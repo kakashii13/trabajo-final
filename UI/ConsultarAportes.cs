@@ -32,10 +32,14 @@ namespace UI
         {
             try
             {
+                dgvAportes.DataSource = null;
+
                 aportes = bllAporte.ListarAportes()
                 .OrderByDescending(a => a.FechaRecibido)
                 .ToList();
                 dgvAportes.DataSource = aportes;
+
+                listaAfiliados.Items.Clear();
 
                 afiliados = bllAfiliado.ListarAfiliados();
                 foreach(var afiliado in afiliados)

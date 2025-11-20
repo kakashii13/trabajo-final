@@ -16,14 +16,14 @@ namespace UI
     {
         BLLSolicitud bllSolicitud;
         BLLAfiliado bllAfiliado;
-        BLLPractica bllPractica;
         BEAfiliado afiliadoSeleccionado;
+        BEPlan planAfiliado;
+        List<BEPractica> practicasDisponibles;
         public CrearSolicitud()
         {
             InitializeComponent();
             bllSolicitud = new BLLSolicitud();
             bllAfiliado = new BLLAfiliado();
-            bllPractica = new BLLPractica();
             CargarData();
         }
 
@@ -35,9 +35,9 @@ namespace UI
                 {
                     listaAfiliados.Items.Add(afiliado);
                 }
-                selectPracticas.DataSource = bllPractica.ListarPracticas(); 
+                practicasDisponibles = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -89,12 +89,10 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void lista_afiliados_SelectedValueChanged(object sender, EventArgs e)
         {
             try {
@@ -106,6 +104,13 @@ namespace UI
                 }
                 afiliadoSeleccionado = (BEAfiliado)listaAfiliados.SelectedItem;
                 txtCuil.Text = afiliadoSeleccionado.Cuil;
+
+
+                selectPracticas.DataSource = null;
+
+                planAfiliado = bllAfiliado.ObtenerPlanActualAfiliado(afiliadoSeleccionado);
+                txtPlan.Text = planAfiliado.Nombre;
+                selectPracticas.DataSource = planAfiliado.Practicas;
             }
             catch (Exception ex)
             {

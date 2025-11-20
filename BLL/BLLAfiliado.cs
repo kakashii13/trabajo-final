@@ -111,6 +111,7 @@ namespace BLL
                 throw new Exception("Error al obtener afiliado por ID" + ex.Message);
             }
         }
+
         public BEAfiliado ObtenerAfiliadoCompleto(int afiliadoId)
         {
             try
@@ -137,6 +138,25 @@ namespace BLL
                 throw new Exception("Error al obtener afiliado completo: " + ex.Message);
             }
         }
+
+        public BEPlan ObtenerPlanActualAfiliado(BEAfiliado afiliado)
+        {
+            try {
+
+                BEHistorialPlan historialActual = bllHistorialPlan
+                    .ObtenerHistorialPlanPorAfiliado(afiliado)
+                    .FirstOrDefault(h => h.Activo);
+
+                if (historialActual == null)
+                    throw new Exception("El afiliado no tiene un plan asignado");
+
+                BEPlan plan = bllPlan.ObtenerPlanCompleto(historialActual.PlanId);
+
+                return plan;
+            }
+            catch (Exception ex) { throw new Exception("Error al obtener el plan actual del afiliado: " + ex.Message); } 
+        }
+
         public List<BEAfiliado> ListarAfiliadosConDatosCambioPlan()
         {
             try
@@ -144,24 +164,11 @@ namespace BLL
                 List<BEAfiliado> afiliados = ListarAfiliados();
                 List<BEPlan> planes = bllPlan.ListarPlanes();
 
-                Dictionary<int, BEPlan> planesPorId = planes.ToDictionary(p => p.Id);
-
                 foreach (var afiliado in afiliados)
                 {
                     BEAporte ultimoAporte = bllAporte.ObtenerUltimoAportePorAfiliado(afiliado);
 
-                    afiliado.HistorialPlanes = bllHistorialPlan.ObtenerHistorialPlanPorAfiliado(afiliado);
-
-                    foreach (var historial in afiliado.HistorialPlanes)
-                    {
-                        if (planesPorId.TryGetValue(historial.PlanId, out BEPlan plan))
-                        {
-                            historial.Plan = plan;
-                        }
-                    }
-
-                    BEPlan planActual = afiliado.ObtenerPlanActual()?.Plan;
-                    afiliado.PlanActual = planActual;
+                    afiliado.PlanActual = ObtenerPlanActualAfiliado(afiliado);
 
                     if (ultimoAporte != null)
                     {
@@ -190,7 +197,9 @@ namespace BLL
         {
             try
             {
-                BEHistorialPlan historialActual = afiliado.ObtenerPlanActual();
+                BEHistorialPlan historialActual = bllHistorialPlan
+                            .ObtenerHistorialPlanPorAfiliado(afiliado)
+                            .FirstOrDefault(h => h.Activo);
 
                 if (historialActual != null)
                 {
@@ -224,8 +233,8 @@ namespace BLL
         }
         private (bool Corresponde, int? PlanSugeridoId) VerificarCambioPlan(BEAfiliado afiliado, BEAporte ultimoAporte, List<BEPlan> planes)
         {
-            BEPlan planActual = afiliado.ObtenerPlanActual().Plan;
-            
+            BEPlan planActual = afiliado.PlanActual;
+
             if (planActual == null)
                 return (false, null);
 

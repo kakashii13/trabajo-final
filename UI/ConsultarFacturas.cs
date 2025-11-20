@@ -28,6 +28,8 @@ namespace UI
         {
             try
             {
+                dgvFacturas.DataSource = null;
+
                 facturas = bllFactura.ListarFacturas();
 
                 dgvFacturas.DataSource = facturas;

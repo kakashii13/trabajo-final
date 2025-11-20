@@ -37,19 +37,6 @@ namespace BE
             Activo = activo;
             Telefono = telefono;
         }
-        public BEHistorialPlan ObtenerPlanActual()
-        {
-            if (HistorialPlanes == null || !HistorialPlanes.Any())
-                return null;
-
-            return HistorialPlanes.FirstOrDefault(h => h.Activo);
-        }
-        public BEAporte ObtenerUltimoAporte()
-        {
-            if (Aportes == null || !Aportes.Any())
-                return null;
-            return Aportes.OrderByDescending(a => a.Periodo).FirstOrDefault();
-        }
         public override string ToString()
         {
             return $"{Cuil} - {NombreApellido}";

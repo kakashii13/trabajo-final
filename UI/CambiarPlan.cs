@@ -38,7 +38,7 @@ namespace UI
 
                 fechaVigencia.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1);
 
-                BEPlan planActual = afiliadoSeleccionado.ObtenerPlanActual().Plan;
+                BEPlan planActual = afiliadoSeleccionado.PlanActual;
                 txtPlanActual.Text = planActual?.Nombre ?? "Sin plan";
 
                 planSugerido = bllPlan.ObtenerPlanPorId(afiliadoSeleccionado.PlanSugeridoId ?? 0);

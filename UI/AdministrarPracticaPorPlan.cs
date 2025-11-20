@@ -34,7 +34,9 @@ namespace UI
 
                practicas = bllPractica.ListarPracticas();
 
-               List<BEPlan> planes = bllPlan.ListarPlanesCompletos();
+                listaPlanes.Items.Clear();
+
+                List<BEPlan> planes = bllPlan.ListarPlanesCompletos();
 
                 foreach (var plan in planes)
                 {
