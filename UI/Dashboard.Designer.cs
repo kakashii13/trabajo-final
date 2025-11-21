@@ -73,7 +73,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.chartAfiliados = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -103,18 +102,17 @@
             this.lblAutorizaciones = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.chartAutorizacionesAfiliado = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label17 = new System.Windows.Forms.Label();
+            this.chartAutorizacionesAfiliado = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.chartAportesPorPeriodo = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart_practicas_solicitadas)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartAfiliados)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -131,7 +129,7 @@
             // 
             this.lbl_afiliados.AutoSize = true;
             this.lbl_afiliados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_afiliados.Location = new System.Drawing.Point(120, 60);
+            this.lbl_afiliados.Location = new System.Drawing.Point(16, 40);
             this.lbl_afiliados.Name = "lbl_afiliados";
             this.lbl_afiliados.Size = new System.Drawing.Size(51, 20);
             this.lbl_afiliados.TabIndex = 0;
@@ -142,7 +140,7 @@
             this.lbl_afiliados_activos.AutoSize = true;
             this.lbl_afiliados_activos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_afiliados_activos.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lbl_afiliados_activos.Location = new System.Drawing.Point(199, 60);
+            this.lbl_afiliados_activos.Location = new System.Drawing.Point(16, 80);
             this.lbl_afiliados_activos.Name = "lbl_afiliados_activos";
             this.lbl_afiliados_activos.Size = new System.Drawing.Size(51, 20);
             this.lbl_afiliados_activos.TabIndex = 1;
@@ -153,7 +151,7 @@
             this.lbl_afiliados_inactivos.AutoSize = true;
             this.lbl_afiliados_inactivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_afiliados_inactivos.ForeColor = System.Drawing.Color.Brown;
-            this.lbl_afiliados_inactivos.Location = new System.Drawing.Point(295, 60);
+            this.lbl_afiliados_inactivos.Location = new System.Drawing.Point(16, 120);
             this.lbl_afiliados_inactivos.Name = "lbl_afiliados_inactivos";
             this.lbl_afiliados_inactivos.Size = new System.Drawing.Size(51, 20);
             this.lbl_afiliados_inactivos.TabIndex = 3;
@@ -240,7 +238,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 1);
+            this.label6.Location = new System.Drawing.Point(6, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(298, 20);
             this.label6.TabIndex = 7;
@@ -252,13 +250,13 @@
             this.chart_practicas_solicitadas.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart_practicas_solicitadas.Legends.Add(legend1);
-            this.chart_practicas_solicitadas.Location = new System.Drawing.Point(15, 31);
+            this.chart_practicas_solicitadas.Location = new System.Drawing.Point(7, 31);
             this.chart_practicas_solicitadas.Name = "chart_practicas_solicitadas";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart_practicas_solicitadas.Series.Add(series1);
-            this.chart_practicas_solicitadas.Size = new System.Drawing.Size(453, 195);
+            this.chart_practicas_solicitadas.Size = new System.Drawing.Size(606, 232);
             this.chart_practicas_solicitadas.TabIndex = 11;
             this.chart_practicas_solicitadas.Text = "chart1";
             // 
@@ -266,9 +264,9 @@
             // 
             this.groupBox6.Controls.Add(this.chart_practicas_solicitadas);
             this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Location = new System.Drawing.Point(19, 484);
+            this.groupBox6.Location = new System.Drawing.Point(748, 232);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(475, 240);
+            this.groupBox6.Size = new System.Drawing.Size(619, 272);
             this.groupBox6.TabIndex = 12;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "groupBox6";
@@ -301,7 +299,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(96, 40);
+            this.label7.Location = new System.Drawing.Point(7, 20);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 20);
             this.label7.TabIndex = 3;
@@ -375,9 +373,9 @@
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(19, 135);
+            this.panel1.Location = new System.Drawing.Point(455, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(475, 156);
+            this.panel1.Size = new System.Drawing.Size(456, 156);
             this.panel1.TabIndex = 13;
             // 
             // groupBox3
@@ -390,7 +388,7 @@
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Location = new System.Drawing.Point(196, 32);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(272, 111);
+            this.groupBox3.Size = new System.Drawing.Size(246, 111);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Monto";
@@ -484,7 +482,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel2.Controls.Add(this.groupBox7);
+            this.panel2.Controls.Add(this.chartAfiliados);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.lbl_afiliados_inactivos);
@@ -492,19 +490,10 @@
             this.panel2.Controls.Add(this.lbl_afiliados_activos);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.lbl_afiliados);
-            this.panel2.Location = new System.Drawing.Point(539, 16);
+            this.panel2.Location = new System.Drawing.Point(19, 510);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(440, 363);
+            this.panel2.Size = new System.Drawing.Size(487, 214);
             this.panel2.TabIndex = 14;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.chartAfiliados);
-            this.groupBox7.Location = new System.Drawing.Point(10, 88);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(414, 271);
-            this.groupBox7.TabIndex = 16;
-            this.groupBox7.TabStop = false;
             // 
             // chartAfiliados
             // 
@@ -512,14 +501,14 @@
             this.chartAfiliados.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartAfiliados.Legends.Add(legend2);
-            this.chartAfiliados.Location = new System.Drawing.Point(10, 21);
+            this.chartAfiliados.Location = new System.Drawing.Point(102, 29);
             this.chartAfiliados.Name = "chartAfiliados";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartAfiliados.Series.Add(series2);
-            this.chartAfiliados.Size = new System.Drawing.Size(398, 244);
+            this.chartAfiliados.Size = new System.Drawing.Size(371, 155);
             this.chartAfiliados.TabIndex = 15;
             this.chartAfiliados.Text = "chart1";
             // 
@@ -528,7 +517,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label14.Location = new System.Drawing.Point(265, 40);
+            this.label14.Location = new System.Drawing.Point(7, 100);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(72, 20);
             this.label14.TabIndex = 10;
@@ -539,7 +528,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label13.Location = new System.Drawing.Point(177, 40);
+            this.label13.Location = new System.Drawing.Point(7, 60);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 20);
             this.label13.TabIndex = 9;
@@ -561,9 +550,9 @@
             this.panel3.Controls.Add(this.groupBox5);
             this.panel3.Controls.Add(this.groupBox4);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(19, 306);
+            this.panel3.Location = new System.Drawing.Point(920, 12);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(475, 153);
+            this.panel3.Size = new System.Drawing.Size(447, 157);
             this.panel3.TabIndex = 16;
             // 
             // groupBox5
@@ -579,7 +568,7 @@
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(203, 30);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(265, 120);
+            this.groupBox5.Size = new System.Drawing.Size(228, 120);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Monto";
@@ -800,9 +789,9 @@
             this.panel4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel4.Controls.Add(this.lblAutorizaciones);
             this.panel4.Controls.Add(this.label40);
-            this.panel4.Location = new System.Drawing.Point(539, 400);
+            this.panel4.Location = new System.Drawing.Point(19, 142);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(563, 59);
+            this.panel4.Size = new System.Drawing.Size(421, 59);
             this.panel4.TabIndex = 17;
             // 
             // lblAutorizaciones
@@ -810,7 +799,7 @@
             this.lblAutorizaciones.AutoSize = true;
             this.lblAutorizaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAutorizaciones.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lblAutorizaciones.Location = new System.Drawing.Point(381, 8);
+            this.lblAutorizaciones.Location = new System.Drawing.Point(264, 11);
             this.lblAutorizaciones.Name = "lblAutorizaciones";
             this.lblAutorizaciones.Size = new System.Drawing.Size(128, 39);
             this.lblAutorizaciones.TabIndex = 7;
@@ -819,10 +808,10 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.Location = new System.Drawing.Point(17, 21);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(329, 24);
+            this.label40.Size = new System.Drawing.Size(241, 16);
             this.label40.TabIndex = 6;
             this.label40.Text = "AUTORIZACIONES GENERADAS:";
             // 
@@ -830,11 +819,21 @@
             // 
             this.groupBox8.Controls.Add(this.label17);
             this.groupBox8.Controls.Add(this.chartAutorizacionesAfiliado);
-            this.groupBox8.Location = new System.Drawing.Point(985, 16);
+            this.groupBox8.Location = new System.Drawing.Point(19, 232);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(507, 363);
+            this.groupBox8.Size = new System.Drawing.Size(700, 272);
             this.groupBox8.TabIndex = 27;
             this.groupBox8.TabStop = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(11, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(376, 20);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "TOP 10 AFILIADOS CON MAS AUTORIZACIONES";
             // 
             // chartAutorizacionesAfiliado
             // 
@@ -842,46 +841,26 @@
             this.chartAutorizacionesAfiliado.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chartAutorizacionesAfiliado.Legends.Add(legend3);
-            this.chartAutorizacionesAfiliado.Location = new System.Drawing.Point(15, 29);
+            this.chartAutorizacionesAfiliado.Location = new System.Drawing.Point(6, 29);
             this.chartAutorizacionesAfiliado.Name = "chartAutorizacionesAfiliado";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chartAutorizacionesAfiliado.Series.Add(series3);
-            this.chartAutorizacionesAfiliado.Size = new System.Drawing.Size(474, 324);
+            this.chartAutorizacionesAfiliado.Size = new System.Drawing.Size(688, 237);
             this.chartAutorizacionesAfiliado.TabIndex = 0;
             this.chartAutorizacionesAfiliado.Text = "chart1";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(6, 2);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(376, 20);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "TOP 10 AFILIADOS CON MAS AUTORIZACIONES";
             // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.chartAportesPorPeriodo);
             this.groupBox9.Controls.Add(this.label23);
-            this.groupBox9.Location = new System.Drawing.Point(512, 485);
+            this.groupBox9.Location = new System.Drawing.Point(512, 516);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(980, 239);
+            this.groupBox9.Size = new System.Drawing.Size(855, 208);
             this.groupBox9.TabIndex = 28;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "groupBox9";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(6, -1);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(201, 20);
-            this.label23.TabIndex = 12;
-            this.label23.Text = "APORTES POR PERIODO";
             // 
             // chartAportesPorPeriodo
             // 
@@ -895,17 +874,27 @@
             series4.Legend = "Legend1";
             series4.Name = "Series1";
             this.chartAportesPorPeriodo.Series.Add(series4);
-            this.chartAportesPorPeriodo.Size = new System.Drawing.Size(968, 195);
+            this.chartAportesPorPeriodo.Size = new System.Drawing.Size(843, 172);
             this.chartAportesPorPeriodo.TabIndex = 13;
             this.chartAportesPorPeriodo.Text = "chart1";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(6, -1);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(201, 20);
+            this.label23.TabIndex = 12;
+            this.label23.Text = "APORTES POR PERIODO";
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1504, 744);
-            this.Controls.Add(this.groupBox9);
+            this.ClientSize = new System.Drawing.Size(1393, 744);
             this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_ultimos_treinta);
@@ -917,7 +906,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox6);
             this.Name = "Dashboard";
-            this.Text = "Dashboard";
+            this.Text = " ";
             ((System.ComponentModel.ISupportInitialize)(this.chart_practicas_solicitadas)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -929,7 +918,6 @@
             this.groupBox2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartAfiliados)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -1010,7 +998,6 @@
         private System.Windows.Forms.Label lbl_facturas_aceptadas_monto;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label lbl_facturas_pendientes_monto;
-        private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label lblAutorizaciones;

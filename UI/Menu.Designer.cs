@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inicio = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarClave = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,14 +114,14 @@
             // usuarios
             // 
             this.usuarios.Name = "usuarios";
-            this.usuarios.Size = new System.Drawing.Size(180, 22);
+            this.usuarios.Size = new System.Drawing.Size(162, 22);
             this.usuarios.Text = "Usuarios";
             this.usuarios.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // rolesPermisos
             // 
             this.rolesPermisos.Name = "rolesPermisos";
-            this.rolesPermisos.Size = new System.Drawing.Size(180, 22);
+            this.rolesPermisos.Size = new System.Drawing.Size(162, 22);
             this.rolesPermisos.Text = "Roles y permisos";
             this.rolesPermisos.Click += new System.EventHandler(this.rolesYPermisosToolStripMenuItem_Click);
             // 
@@ -140,28 +139,28 @@
             // registrarAfiliado
             // 
             this.registrarAfiliado.Name = "registrarAfiliado";
-            this.registrarAfiliado.Size = new System.Drawing.Size(180, 22);
+            this.registrarAfiliado.Size = new System.Drawing.Size(167, 22);
             this.registrarAfiliado.Text = "Registrar afiliado";
             this.registrarAfiliado.Click += new System.EventHandler(this.registrarAfiliadoToolStripMenuItem_Click);
             // 
             // listadoAfiliados
             // 
             this.listadoAfiliados.Name = "listadoAfiliados";
-            this.listadoAfiliados.Size = new System.Drawing.Size(180, 22);
+            this.listadoAfiliados.Size = new System.Drawing.Size(167, 22);
             this.listadoAfiliados.Text = "Listado afiliados";
             this.listadoAfiliados.Click += new System.EventHandler(this.listadoAfiliados_Click);
             // 
             // registrarAporte
             // 
             this.registrarAporte.Name = "registrarAporte";
-            this.registrarAporte.Size = new System.Drawing.Size(180, 22);
+            this.registrarAporte.Size = new System.Drawing.Size(167, 22);
             this.registrarAporte.Text = "Registrar aporte";
             this.registrarAporte.Click += new System.EventHandler(this.registrarAporteToolStripMenuItem_Click);
             // 
             // consultarAportes
             // 
             this.consultarAportes.Name = "consultarAportes";
-            this.consultarAportes.Size = new System.Drawing.Size(180, 22);
+            this.consultarAportes.Size = new System.Drawing.Size(167, 22);
             this.consultarAportes.Text = "Consultar aportes";
             this.consultarAportes.Click += new System.EventHandler(this.consultarAportes_Click);
             // 
@@ -209,21 +208,21 @@
             // registrarFactura
             // 
             this.registrarFactura.Name = "registrarFactura";
-            this.registrarFactura.Size = new System.Drawing.Size(180, 22);
+            this.registrarFactura.Size = new System.Drawing.Size(170, 22);
             this.registrarFactura.Text = "Registrar factura";
             this.registrarFactura.Click += new System.EventHandler(this.registrarFactura_Click);
             // 
             // consultarFacturas
             // 
             this.consultarFacturas.Name = "consultarFacturas";
-            this.consultarFacturas.Size = new System.Drawing.Size(180, 22);
+            this.consultarFacturas.Size = new System.Drawing.Size(170, 22);
             this.consultarFacturas.Text = "Consultar facturas";
             this.consultarFacturas.Click += new System.EventHandler(this.consultarFacturas_Click);
             // 
             // registrarPago
             // 
             this.registrarPago.Name = "registrarPago";
-            this.registrarPago.Size = new System.Drawing.Size(180, 22);
+            this.registrarPago.Size = new System.Drawing.Size(170, 22);
             this.registrarPago.Text = "Registrar pago";
             this.registrarPago.Click += new System.EventHandler(this.registrarPago_Click);
             // 
@@ -287,21 +286,21 @@
             // bitacora
             // 
             this.bitacora.Name = "bitacora";
-            this.bitacora.Size = new System.Drawing.Size(180, 22);
+            this.bitacora.Size = new System.Drawing.Size(117, 22);
             this.bitacora.Text = "Bitacora";
             this.bitacora.Click += new System.EventHandler(this.bitacora_Click);
             // 
             // backup
             // 
             this.backup.Name = "backup";
-            this.backup.Size = new System.Drawing.Size(180, 22);
+            this.backup.Size = new System.Drawing.Size(117, 22);
             this.backup.Text = "Backup";
             this.backup.Click += new System.EventHandler(this.backup_Click);
             // 
             // restore
             // 
             this.restore.Name = "restore";
-            this.restore.Size = new System.Drawing.Size(180, 22);
+            this.restore.Size = new System.Drawing.Size(117, 22);
             this.restore.Text = "Restore";
             this.restore.Click += new System.EventHandler(this.restore_Click);
             // 
@@ -318,7 +317,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 711);
             this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Menu";
