@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -96,6 +102,12 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblAutorizaciones = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.chartAutorizacionesAfiliado = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.chartAportesPorPeriodo = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chart_practicas_solicitadas)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -109,6 +121,10 @@
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartAutorizacionesAfiliado)).BeginInit();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartAportesPorPeriodo)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_afiliados
@@ -232,17 +248,17 @@
             // 
             // chart_practicas_solicitadas
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart_practicas_solicitadas.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart_practicas_solicitadas.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart_practicas_solicitadas.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_practicas_solicitadas.Legends.Add(legend1);
             this.chart_practicas_solicitadas.Location = new System.Drawing.Point(15, 31);
             this.chart_practicas_solicitadas.Name = "chart_practicas_solicitadas";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart_practicas_solicitadas.Series.Add(series3);
-            this.chart_practicas_solicitadas.Size = new System.Drawing.Size(462, 195);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_practicas_solicitadas.Series.Add(series1);
+            this.chart_practicas_solicitadas.Size = new System.Drawing.Size(453, 195);
             this.chart_practicas_solicitadas.TabIndex = 11;
             this.chart_practicas_solicitadas.Text = "chart1";
             // 
@@ -250,9 +266,9 @@
             // 
             this.groupBox6.Controls.Add(this.chart_practicas_solicitadas);
             this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Location = new System.Drawing.Point(539, 391);
+            this.groupBox6.Location = new System.Drawing.Point(19, 484);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(496, 240);
+            this.groupBox6.Size = new System.Drawing.Size(475, 240);
             this.groupBox6.TabIndex = 12;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "groupBox6";
@@ -476,7 +492,7 @@
             this.panel2.Controls.Add(this.lbl_afiliados_activos);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.lbl_afiliados);
-            this.panel2.Location = new System.Drawing.Point(576, 16);
+            this.panel2.Location = new System.Drawing.Point(539, 16);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(440, 363);
             this.panel2.TabIndex = 14;
@@ -492,17 +508,17 @@
             // 
             // chartAfiliados
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartAfiliados.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartAfiliados.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chartAfiliados.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartAfiliados.Legends.Add(legend2);
             this.chartAfiliados.Location = new System.Drawing.Point(10, 21);
             this.chartAfiliados.Name = "chartAfiliados";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartAfiliados.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartAfiliados.Series.Add(series2);
             this.chartAfiliados.Size = new System.Drawing.Size(398, 244);
             this.chartAfiliados.TabIndex = 15;
             this.chartAfiliados.Text = "chart1";
@@ -784,9 +800,9 @@
             this.panel4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel4.Controls.Add(this.lblAutorizaciones);
             this.panel4.Controls.Add(this.label40);
-            this.panel4.Location = new System.Drawing.Point(19, 476);
+            this.panel4.Location = new System.Drawing.Point(539, 400);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(475, 138);
+            this.panel4.Size = new System.Drawing.Size(563, 59);
             this.panel4.TabIndex = 17;
             // 
             // lblAutorizaciones
@@ -794,7 +810,7 @@
             this.lblAutorizaciones.AutoSize = true;
             this.lblAutorizaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAutorizaciones.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lblAutorizaciones.Location = new System.Drawing.Point(193, 55);
+            this.lblAutorizaciones.Location = new System.Drawing.Point(381, 8);
             this.lblAutorizaciones.Name = "lblAutorizaciones";
             this.lblAutorizaciones.Size = new System.Drawing.Size(128, 39);
             this.lblAutorizaciones.TabIndex = 7;
@@ -803,18 +819,93 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(106, 13);
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(17, 21);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(259, 18);
+            this.label40.Size = new System.Drawing.Size(329, 24);
             this.label40.TabIndex = 6;
-            this.label40.Text = "AUTORIZACIONES GENERADAS";
+            this.label40.Text = "AUTORIZACIONES GENERADAS:";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label17);
+            this.groupBox8.Controls.Add(this.chartAutorizacionesAfiliado);
+            this.groupBox8.Location = new System.Drawing.Point(985, 16);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(507, 363);
+            this.groupBox8.TabIndex = 27;
+            this.groupBox8.TabStop = false;
+            // 
+            // chartAutorizacionesAfiliado
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chartAutorizacionesAfiliado.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartAutorizacionesAfiliado.Legends.Add(legend3);
+            this.chartAutorizacionesAfiliado.Location = new System.Drawing.Point(15, 29);
+            this.chartAutorizacionesAfiliado.Name = "chartAutorizacionesAfiliado";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartAutorizacionesAfiliado.Series.Add(series3);
+            this.chartAutorizacionesAfiliado.Size = new System.Drawing.Size(474, 324);
+            this.chartAutorizacionesAfiliado.TabIndex = 0;
+            this.chartAutorizacionesAfiliado.Text = "chart1";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(6, 2);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(376, 20);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "TOP 10 AFILIADOS CON MAS AUTORIZACIONES";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.chartAportesPorPeriodo);
+            this.groupBox9.Controls.Add(this.label23);
+            this.groupBox9.Location = new System.Drawing.Point(512, 485);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(980, 239);
+            this.groupBox9.TabIndex = 28;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "groupBox9";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(6, -1);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(201, 20);
+            this.label23.TabIndex = 12;
+            this.label23.Text = "APORTES POR PERIODO";
+            // 
+            // chartAportesPorPeriodo
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chartAportesPorPeriodo.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartAportesPorPeriodo.Legends.Add(legend4);
+            this.chartAportesPorPeriodo.Location = new System.Drawing.Point(6, 30);
+            this.chartAportesPorPeriodo.Name = "chartAportesPorPeriodo";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartAportesPorPeriodo.Series.Add(series4);
+            this.chartAportesPorPeriodo.Size = new System.Drawing.Size(968, 195);
+            this.chartAportesPorPeriodo.TabIndex = 13;
+            this.chartAportesPorPeriodo.Text = "chart1";
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 643);
+            this.ClientSize = new System.Drawing.Size(1504, 744);
+            this.Controls.Add(this.groupBox9);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_ultimos_treinta);
@@ -850,6 +941,12 @@
             this.groupBox1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartAutorizacionesAfiliado)).EndInit();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartAportesPorPeriodo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -917,5 +1014,11 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label lblAutorizaciones;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartAutorizacionesAfiliado;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartAportesPorPeriodo;
     }
 }

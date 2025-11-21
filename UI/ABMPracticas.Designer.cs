@@ -140,6 +140,7 @@
             // 
             this.dgvPracticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPracticas.Location = new System.Drawing.Point(5, 17);
+            this.dgvPracticas.MultiSelect = false;
             this.dgvPracticas.Name = "dgvPracticas";
             this.dgvPracticas.ReadOnly = true;
             this.dgvPracticas.Size = new System.Drawing.Size(457, 139);

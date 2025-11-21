@@ -43,7 +43,9 @@
             // 
             this.dgvAportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAportes.Location = new System.Drawing.Point(6, 19);
+            this.dgvAportes.MultiSelect = false;
             this.dgvAportes.Name = "dgvAportes";
+            this.dgvAportes.ReadOnly = true;
             this.dgvAportes.Size = new System.Drawing.Size(563, 270);
             this.dgvAportes.TabIndex = 0;
             // 

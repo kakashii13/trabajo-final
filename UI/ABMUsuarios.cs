@@ -142,6 +142,11 @@ namespace UI
                         throw new Exception("No hay un usuario seleccionado para modificar.");
                     }
 
+                    if (usuarioSeleccionado.NombreUsuario == "admin")
+                    {
+                        throw new Exception("No se puede modificar el usuario administrador.");
+                    }
+
                     usuarioSeleccionado.ActualizarDatos(nombre, apellido,nombreUsuario);
                     bllUsuario.ModificarUsuario(usuarioSeleccionado);
 
@@ -161,6 +166,11 @@ namespace UI
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (usuarioSeleccionado != null)
+                {
+                    usuarioSeleccionado = bllUsuario.ObtenerUsuarioPorId(usuarioSeleccionado.Id);
+                }
+                ListarUsuarios();
             }
         }
         private void btn_cancel_Click(object sender, EventArgs e)

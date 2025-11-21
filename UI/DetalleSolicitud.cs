@@ -127,6 +127,7 @@ namespace UI
                 txtEstadoSolicitud.Text = "Rechazado";
                 btnAutorizar.Enabled = false;
                 btnRechazar.Enabled = false;
+                btnAsignarPrestador.Enabled = false;
             }
             catch (Exception ex)
             {

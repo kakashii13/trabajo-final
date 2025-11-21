@@ -42,11 +42,7 @@ namespace UI
                 DataPropertyName = "NombreApellido",
                 HeaderText = "Nombre y apellido"
             });
-            dgvAfiliados.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "NroAfiliado",
-                HeaderText = "Numero de afiliado"
-            });
+          
             dgvAfiliados.Columns.Add(new DataGridViewCheckBoxColumn
             {
                 DataPropertyName = "Activo",

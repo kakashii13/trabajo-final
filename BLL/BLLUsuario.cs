@@ -46,14 +46,25 @@ namespace BLL
         {
             try
             {
-                if (mppUsuario.ObtenerUsuarioPorId(usuario.Id) == null)
+                BEUsuario usuarioOriginal = mppUsuario.ObtenerUsuarioPorId(usuario.Id);
+
+                if (usuarioOriginal == null)
                 {
                     throw new Exception("El usuario no existe.");
                 }
 
-                if(usuario.Nombre == "admin")
+                if (usuarioOriginal.NombreUsuario == "admin")
                 {
                     throw new Exception("No se puede modificar el usuario administrador.");
+                }
+
+                if (usuario.NombreUsuario != usuarioOriginal.NombreUsuario)
+                {
+                    BEUsuario usuarioConMismoNombre = mppUsuario.ObtenerPorNombreUsuario(usuario.NombreUsuario);
+                    if (usuarioConMismoNombre != null)
+                    {
+                        throw new Exception("El nombre de usuario ya existe en la base de datos.");
+                    }
                 }
 
                 mppUsuario.ActualizarUsuario(usuario);
@@ -67,6 +78,11 @@ namespace BLL
         {
             try
             {
+                if (usuario.NombreUsuario == "admin")
+                {
+                    throw new Exception("No se puede activar el usuario administrador.");
+                }
+
                 if (usuario.Activo)
                 {
                     throw new Exception("El usuario ya está activado.");
@@ -265,7 +281,7 @@ namespace BLL
         {
             try
             {
-                if(usuario.Nombre == "admin")
+                if(usuario.NombreUsuario == "admin")
                 {
                     throw new Exception("No se puede resetear la contraseña del usuario administrador.");
                 }

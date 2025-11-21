@@ -85,7 +85,7 @@ namespace UI
                 BEAutorizacion autorizacion = new BEAutorizacion(numero_autorizacion);
                 BEFactura factura = new BEFactura(0, fecha, monto, numero_factura, observacion, null, prestadorSeleccionado, autorizacion, rutaPDFGuardado, false, false);
 
-                bllFactura.CrearFactura(factura);
+                bllFactura.RegistrarFactura(factura);
              
                 MessageBox.Show("Factura registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

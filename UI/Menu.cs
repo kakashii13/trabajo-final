@@ -23,6 +23,8 @@ namespace UI
             InitializeComponent();
             this.usuarioLogueado = usuarioLogueado;
 
+            this.Text = $"Menu - Usuario: {usuarioLogueado.NombreUsuario}";
+
             bllUsuario = new BLLUsuario();
 
             ConfigurarMenu();

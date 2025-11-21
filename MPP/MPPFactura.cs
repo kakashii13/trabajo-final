@@ -29,7 +29,7 @@ namespace MPP
                 xDocument.Save(rutaArchivo);
             }
         }
-        public void CrearFactura(BEFactura factura)
+        public void RegistrarFactura(BEFactura factura)
         {
             
             xDocument = XDocument.Load(rutaArchivo);

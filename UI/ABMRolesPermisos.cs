@@ -644,7 +644,7 @@ namespace UI
                 foreach (var permiso in grupoModulo)
                 {
                     var permisoNombre = permiso.Nombre.Contains('.')
-                        ? permiso.Nombre.Substring(permiso.Nombre.IndexOf('.') + 1)
+                        ? permiso.Nombre.Split('.')[1]
                         : permiso.Nombre;
                     TreeNode permisoNode = new TreeNode(permisoNombre);
                     permisoNode.Tag = permiso;

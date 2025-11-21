@@ -36,7 +36,7 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar las facturas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnActualizarListado_Click(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al validar la autorizacion: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btn_rechazar_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al rechazar la factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btn_aceptar_Click(object sender, EventArgs e)
@@ -160,7 +160,7 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al aceptar la factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void dgv_facturas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -181,7 +181,7 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al seleccionar la factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

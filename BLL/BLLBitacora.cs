@@ -39,7 +39,22 @@ namespace BLL
                 List<BEBitacora> bitacoras = mppBitacora.ListarTodo();
                 foreach (BEBitacora bitacora in bitacoras)
                 {
-                    bitacora.Usuario = bllUsuario.ObtenerUsuarioPorId(bitacora.Usuario.Id);
+                    BEUsuario usuario = bllUsuario.ObtenerUsuarioPorId(bitacora.Usuario.Id);
+
+                    if (usuario != null)
+                    {
+                        bitacora.Usuario = usuario;
+                    }
+                    else
+                    {
+                        bitacora.Usuario = new BEUsuario
+                        {
+                            Id = bitacora.Usuario.Id,
+                            NombreUsuario = "[Usuario eliminado]",
+                            Nombre = "N/A",
+                            Apellido = "N/A"
+                        };
+                    }
                 }
                 return bitacoras;
             }
@@ -52,7 +67,7 @@ namespace BLL
         {
             try
             {
-                return mppBitacora.ListarTodo()
+                return ListarTodo()
                 .Where(b => b.Operacion == "Backup")
                 .ToList();
             }

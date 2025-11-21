@@ -45,11 +45,11 @@
             this.crearSolicitud = new System.Windows.Forms.ToolStripMenuItem();
             this.resolverSolicitud = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarAutorizaciones = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagoProveedores = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarFactura = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarFacturas = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarPago = new System.Windows.Forms.ToolStripMenuItem();
-            this.prestadores = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionPrestaciones = new System.Windows.Forms.ToolStripMenuItem();
             this.abmPlanes = new System.Windows.Forms.ToolStripMenuItem();
             this.abmPracticas = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarPrestador = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,8 +70,8 @@
             this.admin,
             this.padron,
             this.autorizaciones,
-            this.facturacion,
-            this.prestadores,
+            this.pagoProveedores,
+            this.gestionPrestaciones,
             this.baseDatos,
             this.dashboard});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -115,14 +115,14 @@
             // usuarios
             // 
             this.usuarios.Name = "usuarios";
-            this.usuarios.Size = new System.Drawing.Size(162, 22);
+            this.usuarios.Size = new System.Drawing.Size(180, 22);
             this.usuarios.Text = "Usuarios";
             this.usuarios.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // rolesPermisos
             // 
             this.rolesPermisos.Name = "rolesPermisos";
-            this.rolesPermisos.Size = new System.Drawing.Size(162, 22);
+            this.rolesPermisos.Size = new System.Drawing.Size(180, 22);
             this.rolesPermisos.Text = "Roles y permisos";
             this.rolesPermisos.Click += new System.EventHandler(this.rolesYPermisosToolStripMenuItem_Click);
             // 
@@ -140,28 +140,28 @@
             // registrarAfiliado
             // 
             this.registrarAfiliado.Name = "registrarAfiliado";
-            this.registrarAfiliado.Size = new System.Drawing.Size(167, 22);
+            this.registrarAfiliado.Size = new System.Drawing.Size(180, 22);
             this.registrarAfiliado.Text = "Registrar afiliado";
             this.registrarAfiliado.Click += new System.EventHandler(this.registrarAfiliadoToolStripMenuItem_Click);
             // 
             // listadoAfiliados
             // 
             this.listadoAfiliados.Name = "listadoAfiliados";
-            this.listadoAfiliados.Size = new System.Drawing.Size(167, 22);
+            this.listadoAfiliados.Size = new System.Drawing.Size(180, 22);
             this.listadoAfiliados.Text = "Listado afiliados";
             this.listadoAfiliados.Click += new System.EventHandler(this.listadoAfiliados_Click);
             // 
             // registrarAporte
             // 
             this.registrarAporte.Name = "registrarAporte";
-            this.registrarAporte.Size = new System.Drawing.Size(167, 22);
+            this.registrarAporte.Size = new System.Drawing.Size(180, 22);
             this.registrarAporte.Text = "Registrar aporte";
             this.registrarAporte.Click += new System.EventHandler(this.registrarAporteToolStripMenuItem_Click);
             // 
             // consultarAportes
             // 
             this.consultarAportes.Name = "consultarAportes";
-            this.consultarAportes.Size = new System.Drawing.Size(167, 22);
+            this.consultarAportes.Size = new System.Drawing.Size(180, 22);
             this.consultarAportes.Text = "Consultar aportes";
             this.consultarAportes.Click += new System.EventHandler(this.consultarAportes_Click);
             // 
@@ -196,48 +196,48 @@
             this.consultarAutorizaciones.Text = "Consultar autorizaciones";
             this.consultarAutorizaciones.Click += new System.EventHandler(this.listarAutorizaciones_Click);
             // 
-            // facturacion
+            // pagoProveedores
             // 
-            this.facturacion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pagoProveedores.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarFactura,
             this.consultarFacturas,
             this.registrarPago});
-            this.facturacion.Name = "facturacion";
-            this.facturacion.Size = new System.Drawing.Size(81, 20);
-            this.facturacion.Text = "Facturacion";
+            this.pagoProveedores.Name = "pagoProveedores";
+            this.pagoProveedores.Size = new System.Drawing.Size(114, 20);
+            this.pagoProveedores.Text = "Pago proveedores";
             // 
             // registrarFactura
             // 
             this.registrarFactura.Name = "registrarFactura";
-            this.registrarFactura.Size = new System.Drawing.Size(170, 22);
+            this.registrarFactura.Size = new System.Drawing.Size(180, 22);
             this.registrarFactura.Text = "Registrar factura";
             this.registrarFactura.Click += new System.EventHandler(this.registrarFactura_Click);
             // 
             // consultarFacturas
             // 
             this.consultarFacturas.Name = "consultarFacturas";
-            this.consultarFacturas.Size = new System.Drawing.Size(170, 22);
+            this.consultarFacturas.Size = new System.Drawing.Size(180, 22);
             this.consultarFacturas.Text = "Consultar facturas";
             this.consultarFacturas.Click += new System.EventHandler(this.consultarFacturas_Click);
             // 
             // registrarPago
             // 
             this.registrarPago.Name = "registrarPago";
-            this.registrarPago.Size = new System.Drawing.Size(170, 22);
+            this.registrarPago.Size = new System.Drawing.Size(180, 22);
             this.registrarPago.Text = "Registrar pago";
             this.registrarPago.Click += new System.EventHandler(this.registrarPago_Click);
             // 
-            // prestadores
+            // gestionPrestaciones
             // 
-            this.prestadores.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestionPrestaciones.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abmPlanes,
             this.abmPracticas,
             this.registrarPrestador,
             this.administrarPracticaPorPlan,
             this.administrarPrestadorPorPractica});
-            this.prestadores.Name = "prestadores";
-            this.prestadores.Size = new System.Drawing.Size(139, 20);
-            this.prestadores.Text = "Prestadores y practicas";
+            this.gestionPrestaciones.Name = "gestionPrestaciones";
+            this.gestionPrestaciones.Size = new System.Drawing.Size(144, 20);
+            this.gestionPrestaciones.Text = "Gestion de prestaciones";
             // 
             // abmPlanes
             // 
@@ -287,21 +287,21 @@
             // bitacora
             // 
             this.bitacora.Name = "bitacora";
-            this.bitacora.Size = new System.Drawing.Size(117, 22);
+            this.bitacora.Size = new System.Drawing.Size(180, 22);
             this.bitacora.Text = "Bitacora";
             this.bitacora.Click += new System.EventHandler(this.bitacora_Click);
             // 
             // backup
             // 
             this.backup.Name = "backup";
-            this.backup.Size = new System.Drawing.Size(117, 22);
+            this.backup.Size = new System.Drawing.Size(180, 22);
             this.backup.Text = "Backup";
             this.backup.Click += new System.EventHandler(this.backup_Click);
             // 
             // restore
             // 
             this.restore.Name = "restore";
-            this.restore.Size = new System.Drawing.Size(117, 22);
+            this.restore.Size = new System.Drawing.Size(180, 22);
             this.restore.Text = "Restore";
             this.restore.Click += new System.EventHandler(this.restore_Click);
             // 
@@ -340,11 +340,11 @@
         private System.Windows.Forms.ToolStripMenuItem rolesPermisos;
         private System.Windows.Forms.ToolStripMenuItem padron;
         private System.Windows.Forms.ToolStripMenuItem autorizaciones;
-        private System.Windows.Forms.ToolStripMenuItem facturacion;
+        private System.Windows.Forms.ToolStripMenuItem pagoProveedores;
         private System.Windows.Forms.ToolStripMenuItem inicio;
         private System.Windows.Forms.ToolStripMenuItem cambiarClave;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesion;
-        private System.Windows.Forms.ToolStripMenuItem prestadores;
+        private System.Windows.Forms.ToolStripMenuItem gestionPrestaciones;
         private System.Windows.Forms.ToolStripMenuItem registrarAfiliado;
         private System.Windows.Forms.ToolStripMenuItem listadoAfiliados;
         private System.Windows.Forms.ToolStripMenuItem registrarAporte;

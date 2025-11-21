@@ -23,7 +23,7 @@ namespace BLL
             bllAutorizacion = new BLLAutorizacion();
             bllPractica = new BLLPractica();
         }
-        public void CrearFactura(BEFactura factura)
+        public void RegistrarFactura(BEFactura factura)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace BLL
                 factura.AutorizacionValidada = false;
                 factura.ImporteValidado = false;
 
-                mppFactura.CrearFactura(factura);
+                mppFactura.RegistrarFactura(factura);
             }
             catch (Exception ex)
             {
@@ -157,8 +157,11 @@ namespace BLL
                     throw new Exception("Solo se pueden rechazar facturas en estado Pendiente.");
 
                 BEAutorizacion autorizacion = bllAutorizacion.ObtenerAutorizacionPorNumero(factura.Autorizacion.NumeroAutorizacion);
-                autorizacion.Facturada = false;
-                bllAutorizacion.ModificarAutorizacion(autorizacion);
+                
+                if (autorizacion != null) { 
+                    autorizacion.Facturada = false;
+                    bllAutorizacion.ModificarAutorizacion(autorizacion);
+                }
 
                 factura.Estado = "Rechazada";
                 ActualizarFactura(factura);

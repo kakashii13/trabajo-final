@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public abstract class BEPermiso : BEEntidad
+    public abstract class BEPermiso
     {
+        public int Id { get; set; }
         private string _nombre;
         public BEPermiso(string nombre) {
             _nombre = nombre;

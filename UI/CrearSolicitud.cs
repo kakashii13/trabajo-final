@@ -18,7 +18,6 @@ namespace UI
         BLLAfiliado bllAfiliado;
         BEAfiliado afiliadoSeleccionado;
         BEPlan planAfiliado;
-        List<BEPractica> practicasDisponibles;
         public CrearSolicitud()
         {
             InitializeComponent();
@@ -35,7 +34,6 @@ namespace UI
                 {
                     listaAfiliados.Items.Add(afiliado);
                 }
-                practicasDisponibles = null;
             }
             catch (Exception ex)
             {

@@ -52,7 +52,9 @@
             // 
             this.dgvBitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBitacora.Location = new System.Drawing.Point(6, 19);
+            this.dgvBitacora.MultiSelect = false;
             this.dgvBitacora.Name = "dgvBitacora";
+            this.dgvBitacora.ReadOnly = true;
             this.dgvBitacora.Size = new System.Drawing.Size(799, 235);
             this.dgvBitacora.TabIndex = 0;
             // 

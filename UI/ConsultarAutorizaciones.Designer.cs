@@ -43,6 +43,7 @@
             // 
             this.dgvAutorizaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAutorizaciones.Location = new System.Drawing.Point(6, 27);
+            this.dgvAutorizaciones.MultiSelect = false;
             this.dgvAutorizaciones.Name = "dgvAutorizaciones";
             this.dgvAutorizaciones.ReadOnly = true;
             this.dgvAutorizaciones.Size = new System.Drawing.Size(801, 278);

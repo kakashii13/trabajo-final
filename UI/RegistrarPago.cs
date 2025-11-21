@@ -142,7 +142,8 @@ namespace UI
                 txtFactura.Clear();
                 txtImporte.Value = 0;
                 listaFacturas.ClearSelected();
-                selectFormaPago.SelectedIndex = 0; 
+                selectFormaPago.SelectedIndex = 0;
+                CargarDatos();
             }
             catch (Exception ex)
             {

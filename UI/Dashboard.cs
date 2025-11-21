@@ -18,6 +18,7 @@ namespace UI
         BLLFactura bllFactura;
         BLLSolicitud bllSolicitud;
         BLLAutorizacion bllAutorizacion;
+        BLLAporte bllAporte;
         List<BESolicitud> solicitudes;
         List<BEFactura> facturas;
         List<BEAutorizacion> autorizaciones;
@@ -29,6 +30,7 @@ namespace UI
             bllFactura = new BLLFactura();
             bllSolicitud = new BLLSolicitud();
             bllAutorizacion = new BLLAutorizacion();
+            bllAporte = new BLLAporte();
 
             CargarDashboard();
         }
@@ -49,10 +51,14 @@ namespace UI
                 solicitudes = bllSolicitud.ListarSolicitudes();
                 facturas = bllFactura.ListarFacturas();
                 autorizaciones = bllAutorizacion.ListarAutorizaciones();
+                List<BEAporte> aportes = bllAporte.ListarAportes();
+
 
                 ActualizarLabels(solicitudes, facturas, autorizaciones);
                 ActualizarPracticasChart(solicitudes);
 
+                ActualizarAfiliadosConMasAutorizaciones(autorizaciones);
+                ActualizarAportesPorPeriodo(aportes);
             }
             catch(Exception ex)
             {
@@ -139,6 +145,7 @@ namespace UI
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
 
                 ActualizarPracticasChart(solicitudesFiltradas);
+                ActualizarAfiliadosConMasAutorizaciones(autorizacionesFiltradas);
             }
             catch (Exception ex)
             {
@@ -163,6 +170,8 @@ namespace UI
 
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
                 ActualizarPracticasChart(solicitudesFiltradas);
+                ActualizarAfiliadosConMasAutorizaciones(autorizacionesFiltradas);
+
             }
             catch (Exception ex)
             {
@@ -187,6 +196,7 @@ namespace UI
 
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
                 ActualizarPracticasChart(solicitudesFiltradas);
+                ActualizarAfiliadosConMasAutorizaciones(autorizacionesFiltradas);
             }
             catch (Exception ex)
             {
@@ -211,6 +221,7 @@ namespace UI
 
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
                 ActualizarPracticasChart(solicitudesFiltradas);
+                ActualizarAfiliadosConMasAutorizaciones(autorizacionesFiltradas);
             }
             catch (Exception ex)
             {
@@ -254,6 +265,7 @@ namespace UI
 
                 ActualizarLabels(solicitudesFiltradas, facturasFiltradas, autorizacionesFiltradas);
                 ActualizarPracticasChart(solicitudesFiltradas);
+                ActualizarAfiliadosConMasAutorizaciones(autorizacionesFiltradas);
             }
             catch (Exception ex)
             {
@@ -268,6 +280,55 @@ namespace UI
             }
            
             return factura.FechaRecibida;
+        }
+
+        private void ActualizarAfiliadosConMasAutorizaciones(List<BEAutorizacion> autorizaciones)
+        {
+            chartAutorizacionesAfiliado.Series.Clear();
+            var afiliadosTop = autorizaciones
+                .GroupBy(a => new { a.Afiliado.Id, Nombre = $"{a.Afiliado.NombreApellido} \n {a.Afiliado.Cuil}" })
+                .Select(g => new {
+                    Afiliado = g.Key.Nombre,
+                    Cantidad = g.Count()
+                })
+                .OrderByDescending(x => x.Cantidad)
+                .Take(10)
+                .ToList();
+
+            chartAutorizacionesAfiliado.Series.Clear();
+            var series = chartAutorizacionesAfiliado.Series.Add("Autorizaciones");
+            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+
+            foreach (var afiliado in afiliadosTop)
+            {
+                series.Points.AddXY(afiliado.Afiliado, afiliado.Cantidad);
+            }
+        }
+
+        private void ActualizarAportesPorPeriodo(List<BEAporte> aportes)
+        {
+            var aportesPorMes = aportes
+                .GroupBy(a => new {
+                    Año = a.Periodo.Year,
+                    Mes = a.Periodo.Month
+                })
+                .Select(g => new {
+                    Periodo = new DateTime(g.Key.Año, g.Key.Mes, 1),
+                    Total = g.Sum(a => a.Monto)
+                })
+                .OrderBy(x => x.Periodo)
+                .ToList();
+
+            chartAportesPorPeriodo.Series.Clear();
+            var series = chartAportesPorPeriodo.Series.Add("Aportes");
+            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+
+            foreach (var item in aportesPorMes)
+            {
+                series.Points.AddXY(item.Periodo.ToString("MMM yyyy"), item.Total);
+            }
+
+            chartAportesPorPeriodo.ChartAreas[0].AxisY.LabelStyle.Format = "C0";
         }
     }
 }

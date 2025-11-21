@@ -41,6 +41,7 @@
             // 
             this.dgvAfiliados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAfiliados.Location = new System.Drawing.Point(12, 62);
+            this.dgvAfiliados.MultiSelect = false;
             this.dgvAfiliados.Name = "dgvAfiliados";
             this.dgvAfiliados.ReadOnly = true;
             this.dgvAfiliados.Size = new System.Drawing.Size(856, 229);

@@ -52,6 +52,7 @@ namespace UI
                    "Confirmar backup",
                    MessageBoxButtons.YesNo,
                    MessageBoxIcon.Question);
+
                 if (resultado != DialogResult.Yes)
                 {
                     return;
