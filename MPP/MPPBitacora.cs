@@ -35,7 +35,9 @@ namespace MPP
                 new XElement("Bitacora",
                     new XAttribute("Id", bitacora.Id),
                     new XElement("FechaHora", bitacora.FechaHora),
-                    new XElement("Usuario", bitacora.Usuario.Id),
+                    new XElement("NombreUsuario", bitacora.Usuario.NombreUsuario),
+                    new XElement("UsuarioNombre", bitacora.Usuario.Nombre),
+                    new XElement("UsuarioApellido", bitacora.Usuario.Apellido),
                     new XElement("Operacion", bitacora.Operacion),
                     new XElement("Detalle", bitacora.Detalle)
                     ));
@@ -51,7 +53,11 @@ namespace MPP
                 {
                     Id = int.Parse(x.Attribute("Id").Value),
                     FechaHora = DateTime.Parse(x.Element("FechaHora").Value),
-                    Usuario = new BEUsuario { Id = int.Parse(x.Element("Usuario").Value) },
+                    Usuario = new BEUsuario(
+                        x.Element("NombreUsuario").Value,
+                        x.Element("UsuarioNombre").Value,
+                        x.Element("UsuarioApellido").Value
+                        ),
                     Operacion = x.Element("Operacion").Value,
                     Detalle = x.Element("Detalle").Value
                 }).ToList();

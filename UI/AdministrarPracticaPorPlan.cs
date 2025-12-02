@@ -32,7 +32,6 @@ namespace UI
         {
             try {
 
-               practicas = bllPractica.ListarPracticas();
 
                 listaPlanes.Items.Clear();
 
@@ -42,6 +41,7 @@ namespace UI
                 {
                     listaPlanes.Items.Add(plan);
                 }
+
             }
             catch(Exception ex)
             {
@@ -54,6 +54,7 @@ namespace UI
         }
         private void btn_listar_Click(object sender, EventArgs e)
         {
+            practicas = bllPractica.ListarPracticas();
             listaPracticas.Items.Clear();
             foreach (var practica in practicas)
             {
@@ -74,9 +75,7 @@ namespace UI
 
                 planSeleccionado = (BEPlan)listaPlanes.SelectedItem;
                 
-                
                 txtPlanSeleccionado.Text = planSeleccionado.ToString();
-
                 
                 foreach(BEPractica practica in planSeleccionado.Practicas)
                 {

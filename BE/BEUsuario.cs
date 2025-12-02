@@ -24,6 +24,12 @@ namespace BE
             this.Password = password;
             this.Permisos = new List<BEPermiso>();
         }
+        public BEUsuario(string nombreUsuario, string nombre, string apellido)
+        {
+            this.NombreUsuario = nombreUsuario;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+        }
         public BEUsuario(string nombre, string apellido, string password,string nombreUsuario,int id, bool activo, bool eliminado)
         {
             this.Nombre = nombre;

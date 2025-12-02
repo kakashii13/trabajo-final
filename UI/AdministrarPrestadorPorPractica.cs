@@ -32,7 +32,6 @@ namespace UI
         {
             try
             {
-                practicas = bllPractica.ListarPracticas();
 
                 listaPrestadores.Items.Clear();
                 List<BEPrestador> prestadores = bllPrestador.ListarPrestadoresCompletos();
@@ -41,6 +40,7 @@ namespace UI
                 {
                      listaPrestadores.Items.Add(prestador);
                 }
+
             }
             catch (Exception ex)
             {
@@ -97,6 +97,7 @@ namespace UI
         }
         private void btn_listar_Click_1(object sender, EventArgs e)
         {
+            practicas = bllPractica.ListarPracticas();
             listaPracticas.Items.Clear();
             foreach (var practica in practicas)
             {

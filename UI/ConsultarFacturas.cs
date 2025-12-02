@@ -178,6 +178,11 @@ namespace UI
                 {
                     btnAceptar.Enabled = false;
                 }
+
+               if(facturaSeleccionada.Estado == "Pendiente" && !btnRechazar.Enabled)
+                {
+                    btnRechazar.Enabled = true;
+                }
             }
             catch (Exception ex)
             {
