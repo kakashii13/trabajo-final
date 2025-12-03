@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -38,7 +39,7 @@ namespace MPP
                         new XElement("AfiliadoId", aporte.AfiliadoId),
                         new XElement("Periodo", aporte.Periodo.ToString("yyyy-MM")),
                         new XElement("FechaRecibido", aporte.FechaRecibido.ToString("yyyy-MM-dd")),
-                        new XElement("Monto", aporte.Monto)
+                        new XElement("Monto", aporte.Monto.ToString(CultureInfo.InvariantCulture))
                     )
                 );
             xDocument.Save(rutaArchivo);
@@ -78,7 +79,7 @@ namespace MPP
         {
           return new BEAporte(
                 (int)elemento.Element("Id"),
-                (decimal)elemento.Element("Monto"),
+                decimal.Parse(elemento.Element("Monto").Value.ToString(CultureInfo.InvariantCulture)),
                 (DateTime)elemento.Element("FechaRecibido"),
                 DateTime.ParseExact((string)elemento.Element("Periodo"), "yyyy-MM", null),
                 (int)elemento.Element("AfiliadoId")

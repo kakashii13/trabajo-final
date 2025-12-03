@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -46,7 +47,7 @@ namespace MPP
                     new XElement("Plan",
                         new XAttribute("Id", plan.Id),
                         new XElement("Nombre", plan.Nombre),
-                        new XElement("AporteTope", plan.AporteTope)
+                        new XElement("AporteTope", plan.AporteTope.ToString(CultureInfo.InvariantCulture))
                 ));
 
             xDocument.Save(rutaPlanes);
@@ -156,7 +157,7 @@ namespace MPP
             return new BEPlan(
                    (int)element.Attribute("Id"),
                    element.Element("Nombre").Value,
-                   (int)element.Element("AporteTope")
+                   int.Parse(element.Element("AporteTope").Value.ToString(CultureInfo.InvariantCulture))
                 );
         }
         public int ObtenerProximoId()

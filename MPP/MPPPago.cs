@@ -2,6 +2,7 @@
 using Servicios;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,7 +36,7 @@ namespace MPP
                 new XElement("Pago",
                 new XAttribute("Id", pago.Id),
                 new XElement("FechaPago", pago.FechaPago.ToString("yyyy-MM-dd")),
-                new XElement("Importe", pago.Monto),
+                new XElement("Importe", pago.Monto.ToString(CultureInfo.InvariantCulture)),
                 new XElement("FormaPago", pago.FormaPago),
                 new XElement("NumeroRecibo", pago.NumeroRecibo),
                 new XElement("FacturaId", pago.FacturaId)
@@ -71,7 +72,7 @@ namespace MPP
                 (
                     (int)element.Attribute("Id"),
                     DateTime.Parse(element.Element("FechaPago").Value),
-                    (decimal)element.Element("Importe"),
+                    decimal.Parse(element.Element("Importe").Value, CultureInfo.InvariantCulture),
                     (int)element.Element("NumeroRecibo"),
                     (int)element.Element("FacturaId"),
                     element.Element("FormaPago").Value
