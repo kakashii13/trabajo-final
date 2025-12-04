@@ -149,7 +149,7 @@ namespace UI
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            ABMUsuarios ABM = new ABMUsuarios();
+            ABMUsuarios ABM = new ABMUsuarios(usuarioLogueado);
             ABM.MdiParent = this;
             ABM.WindowState = FormWindowState.Maximized;
             ABM.Show();

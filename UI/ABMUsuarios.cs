@@ -20,10 +20,12 @@ namespace UI
         string modo = null;
         BLLUsuario bllUsuario = new BLLUsuario();
         BEUsuario usuarioSeleccionado = null;
+        BEUsuario usuarioLogueado;
 
-        public ABMUsuarios()
+        public ABMUsuarios(BEUsuario usuarioLogueado)
         {
             InitializeComponent();
+            this.usuarioLogueado = usuarioLogueado;
             LimpiarInputs();
             ListarUsuarios();
         }
@@ -239,7 +241,7 @@ namespace UI
                     return;
                 }
 
-                bllUsuario.DesactivarUsuario(usuarioSeleccionado);
+                bllUsuario.DesactivarUsuario(usuarioSeleccionado, usuarioLogueado);
 
                 MessageBox.Show("Usuario desactivado exitosamente.", "Éxito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -317,7 +319,7 @@ namespace UI
                     return;
                 }
 
-                bllUsuario.EliminarUsuario(usuarioSeleccionado);
+                bllUsuario.EliminarUsuario(usuarioSeleccionado, usuarioLogueado);
                 MessageBox.Show("Usuario eliminado exitosamente.", "Éxito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 

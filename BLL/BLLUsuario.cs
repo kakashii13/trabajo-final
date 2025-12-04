@@ -96,13 +96,18 @@ namespace BLL
                 throw new Exception("Error al activar usuario: " + ex.Message);
             }
         }
-        public void DesactivarUsuario(BEUsuario usuario)
+        public void DesactivarUsuario(BEUsuario usuario, BEUsuario usuarioLogueado)
         {
             try
             {
                 if(usuario.NombreUsuario == "admin")
                 {
                     throw new Exception("No se puede desactivar el usuario administrador.");
+                }
+
+                if(usuario.Id == usuarioLogueado.Id)
+                {
+                    throw new Exception("No se puede desactivar a si mismo.");
                 }
 
                 if (!usuario.Activo)
@@ -118,7 +123,7 @@ namespace BLL
                 throw new Exception("Error al borrar usuario: " + ex.Message);
             }
         }
-        public void EliminarUsuario(BEUsuario usuario)
+        public void EliminarUsuario(BEUsuario usuario, BEUsuario usuarioLogueado)
         {
             try {
 
@@ -130,6 +135,11 @@ namespace BLL
                 if (usuario.Eliminado)
                 {
                     throw new Exception("El usuario ya está eliminado.");
+                }
+
+                if (usuario.Id == usuarioLogueado.Id)
+                {
+                    throw new Exception("No puede eliminar su propio usuario");
                 }
 
                 usuario.Eliminar();
