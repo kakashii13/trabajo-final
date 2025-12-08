@@ -32,7 +32,7 @@ namespace MPP
 
             xDocument.Element("Afiliados").Add(
                 new XElement("Afiliado",
-                    new XElement("Id", afiliado.Id),
+                    new XAttribute("Id", afiliado.Id),
                     new XElement("NombreApellido", afiliado.NombreApellido),
                     new XElement("Cuil", afiliado.Cuil),
                     new XElement("Activo", afiliado.Activo.ToString().ToLower()),
@@ -47,7 +47,7 @@ namespace MPP
             xDocument = XDocument.Load(rutaArchivo);
             
             var afiliadoElement = xDocument.Descendants("Afiliado")
-                .FirstOrDefault(a => (int)a.Element("Id") == afiliado.Id);
+                .FirstOrDefault(a => (int)a.Attribute("Id") == afiliado.Id);
             
             if (afiliadoElement == null)
             {
@@ -83,7 +83,7 @@ namespace MPP
             xDocument = XDocument.Load(rutaArchivo);
 
             var afiliado = xDocument.Descendants("Afiliado")
-                .Where(a => (int)a.Element("Id") == id)
+                .Where(a => (int)a.Attribute("Id") == id)
                 .Select(a => MapearAfiliado(a))
                 .FirstOrDefault();
 
@@ -92,7 +92,7 @@ namespace MPP
         private BEAfiliado MapearAfiliado(XElement elemento)
         {
             return new BEAfiliado(
-                 (int)elemento.Element("Id"),
+                 (int)elemento.Attribute("Id"),
                  elemento.Element("NombreApellido").Value,
                  elemento.Element("Cuil").Value,
                  bool.Parse(elemento.Element("Activo").Value),
@@ -104,7 +104,7 @@ namespace MPP
             string rutaArchivo = Path.Combine(ServicioDirectorio.RutaDB, "afiliados.xml");
             xDocument = XDocument.Load(rutaArchivo);
             var ultimoId = xDocument.Descendants("Afiliado")
-                .Select(a => (int)a.Element("Id"))
+                .Select(a => (int)a.Attribute("Id"))
                 .DefaultIfEmpty(0)
                 .Max();
 

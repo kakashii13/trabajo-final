@@ -35,6 +35,7 @@ namespace Infraestructura
                     CrearPermisosDefault();
                     CrearRolDefault();
                     CrearUsuarioAdmin();
+                    Seed.Ejecutar();
                 }
                 catch (Exception ex)
                 {
