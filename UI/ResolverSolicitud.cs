@@ -146,6 +146,7 @@ namespace UI
                 detalle.ShowDialog();
                 CargarSolicitudes();
                 solicitudSeleccionada= null;
+                btnAnalizar.Enabled = false;
             }
             catch(Exception ex)
             {
