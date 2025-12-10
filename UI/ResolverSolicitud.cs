@@ -145,6 +145,7 @@ namespace UI
                 DetalleSolicitud detalle = new DetalleSolicitud(solicitudSeleccionada);
                 detalle.ShowDialog();
                 CargarSolicitudes();
+                solicitudSeleccionada= null;
             }
             catch(Exception ex)
             {
