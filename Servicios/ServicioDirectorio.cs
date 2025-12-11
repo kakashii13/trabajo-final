@@ -10,6 +10,7 @@ namespace Servicios
     public static class ServicioDirectorio
     {
         private static readonly string RutaBase = AppDomain.CurrentDomain.BaseDirectory;
+
         public static string RutaDB => Path.Combine(RutaBase, "db");
         public static string RutaBackups => Path.Combine(RutaBase, "backups");
         public static string RutaPDFs => Path.Combine(RutaBase, "pdfs");

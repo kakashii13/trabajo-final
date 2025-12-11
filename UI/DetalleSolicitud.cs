@@ -39,7 +39,9 @@ namespace UI
                 txtNombreApellido.Text = solicitudSeleccionada.Afiliado.NombreApellido;
                 txtActivo.Text = solicitudSeleccionada.Afiliado.Activo ? "Si" : "No";
 
-                var planActual = solicitudSeleccionada.Afiliado.PlanActual;
+                var planActual = solicitudSeleccionada.Afiliado.HistorialPlanes
+                    .FirstOrDefault(hp => hp.Activo)?.Plan;
+
                 txtPlan.Text = planActual?.ToString() ?? "Sin plan";
                 
                 txtTelefono.Text = solicitudSeleccionada.Afiliado.Telefono;
